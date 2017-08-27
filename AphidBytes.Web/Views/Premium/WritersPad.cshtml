@@ -1,0 +1,292 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@* <!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AphidTise</title>
+<link rel="stylesheet" href="stylecss.css" type="text/css">
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery.cycle.all.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="script.js"></script>*@
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+    
+	$("#abc").mouseover(function(){
+	$("#pop-up-over-m").css('display','block');
+		})
+		$("#abc").mouseleave(function(){
+			$("#pop-up-over-m").css('display','none');
+			});
+
+});
+</script>
+
+ 
+<div class="header_aphidtise" style="margin-top:1%;">
+<div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a> <br/><a class="box_backt" href="#" onclick="goback();">Back</a></div>
+</div>
+
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="margin:auto; float:none;width:95%;">
+<div class="my_story_wrap">
+<div class="tools_story">
+<div>
+<div class="delete_box"><a href="#" class="topopup"><img id="delcontent" src="/Images/delete_tools.png"></a></div>
+</div>
+
+<div id="contentwriter" style="background:#f4deba; height:600px;">
+ <textarea id="1" class="tarea" style="width:100%;height:100%;">
+
+ </textarea>
+  
+</div>
+
+<div class="tools_box3" align="center">
+<p><img src="/Images/writers-bg.png"></p>
+<p>Writers Pad</p>
+<div class="tools_box4">
+<p align="center" style="float:none;">Select</p>
+
+@*<li><a href="#" class="beforeClick"> &#8226;Poem 1</a></li>
+<li><a href="#" class="beforeClick"> &#8226;My Story</a></li>
+<li><a href="#" class="beforeClick"> &#8226;New Song</a></li>*@
+   @foreach (var item in ViewBag.FileNames)
+   {
+       
+        <li id="write" class="filetxt" style="color:white;">@item</li>
+          
+    
+   }
+
+</div>
+<div class="tools_box5">
+<p><img id="createnew" src="/Images/greate_text.png"></p>
+
+</div>
+ <div id="popup" style="display:none; background:url('/images/aphidtisebg.png'); width:45%; left:16%!important; margin-top:24px;height:535px;margin-left:226px;height:60%">
+<div class="popbyter-mianz" style="height:0px!important;">
+<div class="popbyter-miansub">
+<div class="popbyter-subleft" style="margin-left:-160px;">
+ <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/bphidbyte_sicon.png" style="width:70%;margin-left:-19px;"></a><br/>
+<p><a href="#" style=" display: block;
+    margin-bottom: 20px;margin-top: -13px;">Back</a></p>
+
+</div>
+
+    
+  <div class="popbyter-sub1">
+<div class="popbyter-sub1left"></div>
+
+        </div>
+    </div>
+            </div>
+    
+            <div id="popup-close" href="" class="button" style="text-align:right;margin-top:-14px; margin-right:-1.2px;">
+                <img src="/Images/closebotton.png" onclick="CloseThis();" />
+               
+
+            </div>
+          <div>
+             
+          <div id="textbox_content"> <!--your content start-->
+	             <p>Are you sure you want to 
+                 <br/>Save “ ” ?<br/>
+                </p>
+            </div>
+               <input type="text" id="txt" value="" />
+                <div><p>Yes</p></div>
+              <div><p>No</p></div>
+        
+              <div><button id="inptext1" value="Save" onclick="SaveText()"></button> </div>
+            
+      @*  <object data="" type="application/pdf" width="100%" height="400%" id="pdfview" contenteditable="true">
+            <embed src="" type="application/pdf" />*@
+           @* <iframe  src="" width="500px" height="400px"></iframe>*@
+            
+        @*</object>*@
+              
+
+    
+<div class="popbyter-subright" style="width:30%!important; margin-top:-80px;">
+
+    
+<div style="margin-top:135px;">
+      
+
+    </div>
+</div>
+
+          <div style="width:28%; float:right; margin-top:144px;">
+            
+          </div>    
+    </div>
+   
+ 
+     </div>
+
+@*<p class="tools_saveb">*@@*</p>*@
+
+</div>
+    <div>
+     
+        <button id="inptxt" value="Save" onclick="ShowPopUp()"></button>
+    </div>
+
+<!--your popup  start-->
+            <div id="box_popupdelete" >
+	        <div class="close" style="float:right; width:13%;"></div>
+	        <div id="textbox_content"> <!--your content start-->
+	             <p>Are you sure you want to 
+                 <br/>delete “ My Story” ?<br/>
+                </p>
+            </div>
+<!--your popup start--> 
+
+</div>
+</div>
+</div> 
+
+   
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+ </script> 
+ 
+ <script type="text/javascript">
+     function SaveText()
+     {
+         
+         var ID1 = $(".tarea").attr('id');
+         var text = $(".tarea").val();
+         var filename = $("#txt").val();
+         //if ($(".filetxt").contains(filename)) {
+         //    alert("File already exist");
+         //}
+         //else
+         //{
+             $.post('/Premium/WriterPad', {
+                 content: text, id1: ID1, file: filename
+             }, function (data) {
+                 alert(data);
+                 location.reload();
+                 if (data == "Success") {
+                     $("#popup").hide();
+                     $(".tarea").val("");
+                     $(".filetxt").show();
+                 }
+                 else
+                 {
+                    
+                 }
+             });
+         //}
+        
+       
+     }
+     function goback()
+     {
+         history.back();
+     }
+     function ShowPopUp()
+     {
+         $("#txt").val("");
+         $("#popup").show();
+     }
+     $(document).ready(function () {
+         
+         function CloseThis() {
+             $("#ImgClose").hide();
+             $("#txt").hide();
+
+         }
+         $("#popup-close").click(function (e) {
+             e.preventDefault();
+             $("#popup").fadeOut("fast");
+         });
+
+         $(".filetxt").click(function () {
+            
+             var text = $(this).text();
+             $.post('/Premium/WriterContent', { content: text }, function (data)
+             {
+                 alert(data);
+              
+                $('.tarea').append(data);
+                // $('.tarea').html(data);
+                
+             });
+         });
+         $("#delcontent").click(function () {
+             var ID1 = $(".tarea").attr('id');
+             var text = $(".tarea").val();
+             var filename = $("#txt").val();
+             var txt = $('.tarea').text();
+             var rr=confirm("Do you want to delete?");
+           
+             if (rr == true)
+             {
+                 $.post('/Premium/Deletefile', { content: text, id1: ID1}, function (data)
+                 {
+                     alert(data);
+                     $(".tarea").val("");
+                     $("#txt").val("");
+                     location.reload();
+
+                 });
+             }
+                
+                 else
+                 {
+                     alert("Cancelled");
+                 }
+        
+         });
+         $("#createnew").click(function () {
+             var text1 = $(".tarea").val();
+             if (text1 != "") 
+             {
+                 var r = confirm("Are you sure you want to save? Click OK to continue saving");
+                 if (r == true) {
+                     ShowPopUp();
+                   
+                 }
+                 else
+                 {
+                     $('.tarea').val("");
+
+                   
+                   
+                 }
+             }
+           
+
+         });
+        
+      
+   $('.beforeClick').click(function (){
+       $('.beforeClick').css('color',"#fff");
+           $(this).css('color',"#6f9a49");
+   });
+});
+</script>
+ 
+ 

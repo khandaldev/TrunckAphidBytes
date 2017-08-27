@@ -1,0 +1,29 @@
+$color_1: #000;
+
+.main_content {
+	.right_content {
+		padding-left: 0px;
+		padding-top: 0px;
+	}
+}
+.widget-list {
+	.widget_top_icon {
+		margin-bottom: 60px;
+	}
+	.widget-list_block {
+		.widget_details {
+			margin-bottom: 50px;
+			h5 {
+				padding-bottom: 20px;
+				font-size: 11px;
+				color: $color_1;
+				font-weight: 600;
+			}
+			p {
+				font-size: 9px;
+				color: $color_1;
+				font-weight: 600;
+			}
+		}
+	}
+}

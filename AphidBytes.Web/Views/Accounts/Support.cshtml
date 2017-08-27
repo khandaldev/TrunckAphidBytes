@@ -1,0 +1,90 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/support")
+}
+
+@section scripts {
+    @Scripts.Render("~/js/home/support.js")
+}
+
+<div class="container-fluid support-links">
+    <div class="row row-offset-med">
+        <div class="col-md-12">
+            <h2>Support</h2> 
+        </div> 
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 little-margin">
+            <a href="@Url.Action("Index", "FeedBack")">
+                <img src="~/img/support/feedback.png">
+                Feedback
+            </a>
+        </div> 
+        <div class="col-md-3 little-margin">
+            <a href="@Url.Action("VideoTutorials", "Accounts", new { s = "accounts" })">
+                <img src="~/img/support/faqs.png">
+                FAQ's
+            </a>
+        </div> 
+        <div class="col-md-3 little-margin">
+            <a href="@Url.Action("SystemRequirment", "Accounts")">
+                <img src="~/img/support/system-requirements.png">
+                System Requirements
+            </a>
+        </div> 
+        <div class="col-md-3 little-margin">
+            <a href="@Url.Action("ContactUs", "Accounts")">
+                <img src="~/img/support/technical-support.png">
+                Technical Support
+            </a>
+        </div> 
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 little-margin">
+            <a href="@Url.Action("ChatSupport", "Accounts")">
+                <img src="~/img/support/live-chat.png">
+                Live Chat Support
+            </a>
+        </div> 
+        <div class="col-md-3 little-margin">
+            <a href="@Url.Action("VideoTutorials", "Accounts", new { s = "videos" })">
+                <img src="~/img/support/video-tutorials.png">
+                Video Tutorials
+            </a>
+        </div> 
+        <div class="col-md-3 little-margin">
+            <a href="@Url.Action("Guides", "Accounts")">
+                <img src="~/img/support/guides.png">
+                Guides
+            </a>
+        </div> 
+        <div class="col-md-3 little-margin">
+            <a href="@Url.Action("Contact", "Accounts")">
+                <img src="~/img/support/contact-us.png">
+                Contact Us
+            </a>
+        </div> 
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 little-margin">
+            <a href="#">
+                <img src="~/img/support/widgets.png">
+                Widgets
+            </a>
+        </div>
+        <div class="col-md-3 little-margin">
+            <a href="@Url.Action("DataPlan", "Accounts")">
+                <img src="~/img/support/data-plan.png">
+                Data Plan
+            </a>
+        </div>
+    </div>
+</div>

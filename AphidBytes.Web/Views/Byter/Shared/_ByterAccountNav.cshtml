@@ -1,0 +1,45 @@
+﻿<div class="col-md-3 side-navigation">
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("ByterAccountInfo")" class="btn btn-selects byter @(ViewBag.SelectedPage == "acctinfo" ? "selected" : "")">
+                Account Info
+                <img src="~/img/info/accountinfo.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("Message")" class="btn btn-selects byter @(ViewBag.SelectedPage == "message" ? "selected" : "")">
+                Messages <span class="message-count">@ViewBag.MsgCount</span>
+                <img src="~/img/info/messages.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("Playlists")" class="btn btn-selects byter @(ViewBag.SelectedPage == "playlist" ? "selected" : "")">
+                Playlists
+                <img src="~/img/info/playlists.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 txt-center">
+            <a href="#" class="btn-support">
+                <img src="~/img/support/widgets.png">
+                Widgets
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("History")" class="btn btn-selects byter @(ViewBag.SelectedPage == "history" ? "selected" : "")">
+                History
+                <img src="~/img/info/history.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+   
+
+   
+</div>

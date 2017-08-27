@@ -1,0 +1,455 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="/images/profilebg.png">
+                </div>
+                <div class="profiletext-ct-info">
+                    <img src="/images/clone-pa.png">
+                    Basic Account</div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="confmBox" class="confirm_send_mail_div sendme_con" style="display: none;">
+
+    <div>
+        <h5 class="sendme_con_h5">Confirmation:<img onclick="close_confmBox_popup()" class="cancel_delete-link" style="cursor: pointer; float: right; margin-top: 7px;" src="/Images/close.png">
+        </h5>
+        <p style="margin-top: 8%;">
+            <strong>Are you Sure want to Upgrade ?</strong> <span id="Ncontacts"></span>
+        </p>
+
+
+        <div class="btn-group sendme_con_groupbtn">
+            <button id="confrm_yes" class="btn add  sendme_con_yes" onclick="UpgradeTOPremium()">Yes</button>
+            <div class="btn cancel sendme_con_no" onclick="close_confmBox_popup()" style="cursor: pointer;">No</div>
+        </div>
+
+    </div>
+</div>
+<div id="yesno" style="display: none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div>
+                <p>Are you sure to Upgrade?</p>
+            </div>
+            <div>
+                <p id="yes"><a href="#">Yes</a></p>
+                <p id="no"><a href="#">No</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Error Occured Try Again
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" />
+    </div>
+
+</div>
+
+<div style="display: none;" id="upgradebox">
+    <div class="bg_othr_box">
+        <div class="bg_othr_box_1">
+            <p>Account Upgraded Successfully Completed</p>
+            <p></p>
+            <p style="margin-top: 22px; margin-left: 137px;">
+                <img src="~/Images/right-icone.png"></p>
+
+            <p style="margin-top: 88px;"><a href="~/Accounts/Logout">OK</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="header_aphidtise">
+    <div id="logo">
+         <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png" style="margin-top: -35px;"></a>
+    </div>
+    <div class="headertab_aphidtise">
+        <div class="aphidbyteleft">
+
+            <ul class="aphidbytelist-basic">
+                <li><a href="BasicAccountInfo">Account Info</a></li>
+                <li></li>
+                <li><a href="GenerateClones">Upload</a></li>
+                <li>
+                    <img src="/images/right_line.png" height="2"></li>
+                <li><a href="Message">Messages</a></li>
+                @if (Model.NewCount != "0")
+                {
+                    <p class="in_c_text_4">@Model.NewCount</p>          
+                }
+                <li></li>
+                <li><a href="bytetracker">Byte Tracker</a></li>
+                <li></li>
+                <li><a href="History">History</a></li>
+                <li></li>
+                <li><a href="Playlist">Playlists</a></li>
+                <li></li>
+                <li><a href="Dataplan">Data Plan</a></li>
+                <li></li>
+            </ul>
+
+            <div class="dsbox-basic">
+                <p>Dashboard<img src="/images/das-left.png"></p>
+            </div>
+            <p class="dstext-basic">UPGRADE to
+                <samp id="upgradePremium" style="cursor: pointer;">Premium</samp></p>
+
+            <div class="info-footer-social"></div>
+            <div class="aphidbyteleftright-basic"></div>
+        </div>
+        <p class="info-p" style="margin-bottom: 25px; cursor: pointer;"><span id="genclone">Upload</span><span id="byteyourvideo">> Byte Your Videos</span><span id="selectchannel"> > Select Channel(s) to Flood to</span></p>
+        <div style="height: 600px; width: 100%;">
+            <div class="byter-header-caemrapic">
+                <div class="byter-caemrapicpic">
+                    <p>
+                        <img src="/images/basic-iconeb.png"></p>
+                    <p>Byte Your Videos</p>
+                </div>
+                <p class="byter-iinfo"><a href="#" id="trigger">
+                    <img src="/images/boldbg.png"></a></p>
+            </div>
+            <div>
+                <p>hello how r u??</p>
+
+            </div>
+
+            <div id="content_1" class="aphidbytecenter content scrollWidth mCustomScrollbar _mCS_1" style="margin: 5px 0 0 95px;">
+                <div style="position: relative; height: 100%; overflow: hidden; max-width: 100%;" id="mCSB_1" class="mCustomScrollBox mCS-light">
+                    <div style="position: relative; top: 0;" class="mCSB_container">
+                        <div class="mecscroll">
+                            <div id="slider1" style="position: relative; width: 473px; height: 600px; overflow: hidden;">
+                                <p class="info-p">Select Channel(s) to Flood to</p>
+
+                                <div style="width: 100%; height: 600px; margin: auto; overflow: hidden; position: absolute; margin-top: 0px; left: 0px; display: block; z-index: 5; opacity: 1;">
+
+                                    <div class="social-nav">
+                                        <ul>
+                                            <div class="byter-right-li">
+                                                <img src="/images/linedwonp.png"></div>
+
+                                            <li>
+                                                <div class="byter-infoc"><a href="#" id="trigger2">
+                                                    <img src="/images/boldbg.png"></a></div>
+                                                <div class="byter-sing-b">
+                                                    <input id="chkclk" name="" type="checkbox" value=""></div>
+                                                <div id="sociallimain-pic">
+                                                    <img src="/images/mtv-bytli.png">
+                                                </div>
+                                                <a href="#">MTV</a>
+                                                <div id="mec-closebyter">
+                                                    <img src="/images/dots-close-byter.png"></div>
+                                            </li>
+
+                                            <li>
+                                                <div class="byter-sing-b">
+                                                    <input id="chkclk" name="" type="checkbox" value=""></div>
+                                                <div id="sociallipic">
+                                                    <img src="/images/vimeoicone.png">
+                                                </div>
+                                                <a href="#">Daily Motion</a>
+                                                <div id="mec-closebyter">
+                                                    <img src="/images/dots-close-byter.png"></div>
+                                            </li>
+                                            <div>
+                                                <li>
+                                                    <div class="byter-sing-b">
+                                                        <input id="chkclk" name="" type="checkbox" value=""></div>
+                                                    <div id="sociallipic">
+                                                        <img src="/images/youticone.png">
+                                                    </div>
+                                                    <a href="#">YouTube</a>
+                                                    <div id="mec-closebyter">
+                                                        <img src="/images/dots-close-byter.png"></div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="byter-sing-b">
+                                                        <input id="chkclk" name="" type="checkbox" value=""></div>
+                                                    <div id="sociallipic">
+                                                        <img src="/images/dailymotionicone.png">
+                                                    </div>
+                                                    <a href="#">Vimeo</a>
+                                                    <div id="mec-closebyter">
+                                                        <img src="/images/dots-close-byter.png"></div>
+                                                </li>
+                                                <li>
+                                                    <div class="byter-sing-b">
+                                                        <input id="chkclk" name="" type="checkbox" value=""></div>
+                                                    <div id="sociallipic">
+                                                        <img src="/images/micone.png">
+                                                    </div>
+                                                    <a href="#">MySpace</a>
+                                                    <div id="mec-closebyter">
+                                                        <img src="/images/dots-close-byter.png"></div>
+                                                </li>
+                                            </div>
+
+                                            <div class="byter-postb">
+                                                <p>Byter</p>
+                                            </div>
+
+                                            <div class="byter-postb2">
+                                                <input type="submit" id="Postingofdata" />
+                                            </div>
+                                            <div class="byter-postb3"></div>
+
+
+
+                                        </ul>
+
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div id="mec-footer">
+    <div class="mec-footer-box">
+        <div class="mecbox-l">
+            <img src="/img/icone.png">
+        </div>
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/AddChannel" style="color: white; cursor: pointer">Add more sites from our database to your Channel Group</a></samp>
+        </div>
+        <div class="mecbox-l" style="clear: left;">
+            <img src="/img/toplogo.png" style="width: 55%;">
+        </div>
+
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/ModifyExistingNetworks" style="color: white; cursor: pointer">Modify Existing Channels</a></samp>
+        </div>
+        <div class="mecbox-l" style="clear: left;">
+            <img src="/img/w-icone.png">
+        </div>
+        <div class="mecbox-rec">
+            <samp class="mectext-t" style="margin-top: 5px;"><a href="/SocialNetworks/AddNetworkToDb" style="color: white; cursor: pointer">Request another site</a></samp>
+        </div>
+        <div class="mecbox-l" style="clear: left;">
+            <img src="/img/csocialnetwork.png">
+        </div>
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/Index" style="color: white; cursor: pointer">Connect Your Social Networks</a></samp>
+        </div>
+    </div>
+    <div class="byter-waring">
+        <p>Warning: File should have Interruption added prior to this flood.</p>
+    </div>
+
+    <div id="i-pop-up">
+        <p>
+            Channels change when Category is changed. For example. If “Byte Your Music” is selected, Reverbnation, Myspace, Soundclick, etc. is shown as the options to select. If Videos is selected, Youtube, Dailymotion, etc. are the options. Etc. Same for ebooks, art and photos
+
+        </p>
+    </div>
+
+    <div id="i-pop-up2">
+        <p>
+            Matrix is selected automatically. Cannot be unselected.
+
+        </p>
+    </div>
+
+    <script src="jquery.mCustomScrollbar.js"></script>
+    <script>
+        (function($){
+
+            $("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+            $( ".browseInput" ).each(function( index ) {
+                if (index > 3)
+                    $(this).remove();
+            });
+            $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+            $(window).load(function(){
+                $(".content").mCustomScrollbar();
+            });
+        })(jQuery);
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+        
+            $('#upgradePremium').click(function () {
+                $("#yesno").attr('style', 'display:block');
+            });
+
+            $("#yes").click(function () {
+                $("#yesno").attr('style', 'display:none');
+                $.post('/Basic/UpgardeToPremium', {}, function (data) {
+                    if (data == "Success") {
+
+                        $("#upgradebox").attr('style', 'display:block');
+                    } else { $("#button-bg3").attr('style', 'display:block'); }
+
+                });
+
+            });
+            $("#no").click(function () {
+                $("#yesno").attr("style", "display:none");
+            });
+
+
+
+            $("#genclone").click(function(){
+                window.location.href="/Basic/GenerateClones";
+            });
+            $("#byteyourvideo").click(function(){
+                window.location.href="/Basic/Byteyourvideo";
+            });
+            $("#selectchannel").click(function(){
+                window.location.href="/Basic/selectchanneltoflood"
+            });
+            $("#Postingofdata").click(function () {
+                alert("heelo");
+            });
+            //var list = [];
+            //$("#chkclk").each(function() {
+            //    list.push($(this).val());
+              
+
+        });
+               
+           
+
+         
+            
+        //var bb = $(this).val();
+        //$.post('/SocialNetworks/Youtube', function (data) {
+                
+     
+        $("#basicbyter").click(function() {
+            $("#byterclick").toggle();
+        });
+                        
+        $("#byterclick li a").click(function() {
+            var text = $(this).html();
+            $("#basicbyter span").html(text);
+            $("#byterclick").hide();
+        });
+        
+        $(document).bind('click', function(e) {
+            var $clicked = $(e.target);
+            if (! $clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick").hide();
+        });
+			
+        $("#basicbyterone").click(function() {
+            $("#byterclick2").toggle();
+        });
+                        
+        $("#byterclick2 li a").click(function() {
+            var text = $(this).html();
+            $("#basicbyterone span").html(text);
+            $("#byterclick2").hide();
+        });
+        
+        $(document).bind('click', function(e) {
+            var $clicked = $(e.target);
+            if (! $clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick2").hide();
+        });
+			
+			
+			
+        $("#basicbytertwo").click(function() {
+            $("#byterclick3").toggle();
+        });
+                        
+        $("#byterclick3 li a").click(function() {
+            var text = $(this).html();
+            $("#basicbytertwo span").html(text);
+            $("#byterclick3").hide();
+        });
+        
+        $(document).bind('click', function(e) {
+            var $clicked = $(e.target);
+            if (! $clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick3").hide();
+        });
+			
+			
+        $("#basicbyterfour").click(function() {
+            $("#byterclick4").toggle();
+        });
+                        
+        $("#byterclick4 li a").click(function() {
+            var text = $(this).html();
+            $("#basicbyterfour span").html(text);
+            $("#byterclick4").hide();
+        });
+        
+        $(document).bind('click', function(e) {
+            var $clicked = $(e.target);
+            if (! $clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick4").hide();
+        });
+			
+			
+		   	
+        $("#basicbyter5").click(function() {
+            $("#byterclick5").toggle();
+        });
+                        
+        $("#byterclick5 li a").click(function() {
+            var text = $(this).html();
+            $("#basicbyter5 span").html(text);
+            $("#byterclick5").hide();
+        });
+        
+        $(document).bind('click', function(e) {
+            var $clicked = $(e.target);
+            if (! $clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick5").hide();
+        });
+			
+			
+
+        });
+    </script>

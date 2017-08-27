@@ -1,0 +1,30 @@
+﻿@model Nullable<System.DateTime>
+@if ( Model.HasValue ) {
+    
+   @Html.TextBox( "" , String.Format( "{0:MM/dd/yyyy}" , Model.Value ) , new  { @class = "datePicker" ,  @readonly ="readonly" } )
+}
+else
+{
+    
+   @Html.TextBox( "" , String.Format( "{0:MM/dd/yyyy}" , DateTime.Now.AddYears(-25)  ) , new { @class = "datePicker"  ,@Value = DateTime.Now.ToString("MM/dd/yyyy") ,@readonly ="readonly"} )
+
+    
+}
+<script>
+    $(document).ready(function() {
+        
+        $('.datePicker').datepicker({
+            dateFormat: 'mm/dd/yy',
+            showStatus: true,
+            showWeeks: true,
+            highlightWeek: true,
+            numberOfMonths: 1,
+            showAnim: "scale",
+            showOptions: {
+                origin: ["top", "right"]
+            }
+        });
+    });
+ 
+
+</script>

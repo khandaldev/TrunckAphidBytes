@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+<h2>SessionExpire</h2>
+<div style="margin-left: 9%; margin-top: 5%;">
+
+    <img src="~/Images/Timedoutbutton.png" id="sessionExpire" style="height: 50%;margin-left: 15%;width: 60%;">
+    
+</div>
+<div style="text-align: center; width: 100%;margin-top: -46px;">
+  
+    @Html.ActionLink("Login Again", "LoginUser", "Accounts", new {@style="Color:black;" })
+</div>
+
+<script>
+    $("#sessionExpire").click(function () {
+        var newURL = window.location.protocol + "//" + window.location.host;
+        window.location =  newURL+"/Accounts/LoginUser";
+
+    })
+</script>

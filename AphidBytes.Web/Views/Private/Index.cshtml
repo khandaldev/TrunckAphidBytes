@@ -1,0 +1,23 @@
+﻿@using AphidBytes.Web.Session_Helper
+
+@{
+    Layout = "~/Views/Shared/_LayoutPrivate.cshtml";
+    
+}
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/home")
+}
+<div class="container-fluid">
+    <div class="row row-offset-med">
+    </div>
+@using (Html.BeginForm())
+{
+    <div class="row row-offset-small">
+        <div class="col-md-6 col-md-offset-3 center-responsive">
+            <input type="password" class="form-control search-box-gall" id="password" name="password"/>
+            <input type="submit" class="btn btn-primary search-button" id="submit" />
+
+        </div>
+    </div>
+}
+</div>

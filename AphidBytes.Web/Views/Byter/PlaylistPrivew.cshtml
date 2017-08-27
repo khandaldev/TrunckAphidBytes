@@ -1,0 +1,317 @@
+﻿@using System.Web.UI.WebControls
+@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+
+<script type="text/javascript">
+    $(function () {
+
+        function scroll(direction) {
+
+            var scroll,
+                i,
+                positions = [],
+                here = $(window).scrollTop(),
+                collection = $('p');
+
+            collection.each(function () {
+                positions.push(parseInt($(this).offset()['top'], 10));
+            });
+
+            for (i = 0; i < positions.length; i++) {
+                if (direction == 'next' && positions[i] > here) {
+                    scroll = collection.get(i);
+                    break;
+                }
+                if (direction == 'prev' && i > 0 && positions[i] >= here) {
+                    scroll = collection.get(i - 1);
+                    break;
+                }
+            }
+
+            if (scroll) {
+                $.scrollTo(scroll, {
+                    duration: 750
+                });
+            }
+
+            return false;
+        }
+
+        $("#next, #prev").click(function () {
+            return scroll($(this).attr('id'));
+
+
+        });
+        $(document).ready(function () {
+
+            if ('@ViewBag.Record_To_Preview.CatID' == 1) {
+                $('#playMmusic').show();
+                var audioElement = document.getElementById('Current_Song');
+                audioElement.setAttribute('src', '@ViewBag.Record_To_Preview.AudioFilePath');
+                //audioElement.setAttribute('autoplay', 'autoplay');
+                audioElement.addEventListener("loadedmetadata", function (_event) {
+                    durat = audioElement.duration;
+                    var timeline1 = document.getElementById('duration_p');
+                    var s11 = parseInt(audioElement.duration % 60);
+                    var m11 = parseInt((audioElement.duration / 60) % 60);
+                    if (s11 > 10) {
+                        timeline1.innerHTML = m11 + ':' + s11;
+                    }
+                    else {
+                        timeline1.innerHTML = m11 + ':0' + s11;
+                    }
+                }); audioElement.addEventListener("load", function () {
+                }, true);
+                //
+                audioElement.addEventListener("timeupdate", function () {
+                    var timeline = document.getElementById('duration_pl');
+                    var s = parseInt(audioElement.currentTime % 60);
+                    var m = parseInt((audioElement.currentTime / 60) % 60);
+                    if (s < 10) {
+                        timeline.innerHTML = m + ':0' + s;
+                    }
+                    else {
+                        timeline.innerHTML = m + ':' + s;
+                    }
+                    var progress = parseInt(audioElement.currentTime / audioElement.duration * 100, 10);
+                    $('#tick_img').css('left', progress + '%');
+                }, false);
+
+
+                //
+                audioElement.play();
+                $('#Play_Muzic').click(function () {
+
+                    audioElement.play();
+                });
+
+                $('#Pause_Muzic').click(function () {
+                    audioElement.pause();
+                });
+                $('#Stop_Muzic').click(function () {
+                    audioElement.pause();
+                    audioElement.currentTime = 0;
+                });
+            } 
+        });
+
+
+    });
+
+</script>
+
+
+
+
+<div class="aphidtise_wrap">
+
+   <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="@Url.Action("Overview", "Byter")" height="100px" />
+                </div>
+                <div class="profiletext-ct-info">
+                    <img src="/images/clone-pa.png">
+                    Basic Account
+                </div>
+            </div>
+
+        </div>
+
+</div>
+
+<div class="header_aphidtise">
+
+    <div id="logo">
+     <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+    </div>
+</div>
+
+<div class="headertab_aphidtise" style="margin: auto;">
+    <div style="width: 60%; margin: auto; clear: both; height: 80px;">
+        <p class="info-p">Playlists > My Playlists > @ViewBag.Playlist_Name > View</p>
+    </div>
+    <div class="aphidbytecenter content scrollWidth" id="content_1" style="margin-top: 85px; margin: auto; float: none;">
+        <div class="massage_index">
+            <div class="play_view_lista">
+                <div id="image">
+                    <img src="@ViewBag.Record_To_Preview.MatrixImagePath"></div>
+                <div style="width: 45%;">
+                    <p>@ViewBag.FileName</p>
+                    <p>@ViewBag.Record_To_Preview.AlbumTitle</p>
+                    <p>@ViewBag.Record_To_Preview.ArtistName</p>
+                    <p>Tracking Number: @ViewBag.Record_To_Preview.TrackingNumber</p>
+                </div>
+                @*<div style="width: 12%; float: left;">
+                    <img src="/img/logo-channel.png"></div>*@
+            </div>
+
+            <div id="playMmusic" class="play_lista_control" style="display: none;">
+
+                <div class="apb_progressbar">
+
+                    <div class="apb_player_ticker">
+                        <img id="tick_img" src="/img/apb_player_ticker.png">
+                    </div>
+
+                    <div id="cur_time" class="apb_player_time_control">
+                         <span id="duration_pl" style="float: left;">0.00</span>
+                    </div>
+                    <div class="apb_player_volume_control">
+                        <img src="/img/apb_control_volume.png">
+                    </div>
+                    <div id="tot_time" class="apb_player_volume_text_control">
+                         <span id="duration_p" style="float: left;">0.00</span>
+                    </div>
+                    <div class="apb_progress_wrapper">
+                        <img src="/img/aphd_progressbar.png">
+                    </div>
+                </div>
+                <div class="apb_controls">
+                    <img src="/img/controls_bg.png">
+                </div>
+                <div class="apb_player_btns">
+
+                    <ul>
+                        <li style="width: 7%">
+                            <img id="Play_Muzic" src="/img/coltrol_play.png"></li>
+                        <li style="width: 7%">
+                            <img id="Pause_Muzic" src="/img/control_pause.png"></li>
+                        <li style="width: 7%">
+                            <img id="Stop_Muzic" src="/img/control_stop.png"></li>
+                    </ul>
+                </div>
+
+                @*<p><img src="/img/play-pic.png" >
+            <img id="Play_Muzic" src="~/Images/play-bt.png" style="height: 7.8%;margin-left : -88%; margin-top: 7.25%; position: absolute; width: auto; z-index: 990;"/> 
+           <img id="Pause_Muzic" src="~/img/pauseb.png" style=" height: 3%; margin-left: -35%; margin-top: -5.9%; position: absolute; width: 4%; z-index: 999;"/>
+        </p>*@
+
+            </div>
+
+             <div class="play_view_listb" id="htmllistedit">
+            </div>
+
+            <div class="play_stopcs">
+                <a href="#">
+                    <img src="/img/next_b.png"></a>
+                <a href="#">
+                    <img src="/img/prev_b.png"></a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<audio id="Current_Song" preload="metadata" autoplay="autoplay" />
+<div class="massage-footer-m" style="height: 100px;">
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script>
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+
+    $(document).ready(function () {
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+
+    function divClicked() {
+        var divHtml = [];
+
+        $("#mydiv div").each(function () {
+            divHtml.push($(this).html());
+            var editableText = $("<input type='text' />");
+            editableText.val($(this).html());
+            $(this).replaceWith(editableText);
+            editableText.blur(editableTextBlurred);
+        });
+        editableText.focus();
+        // setup the blur event for this new textarea
+
+    }
+
+    function editableTextBlurred() {
+        var html = $(this).val();
+        var viewableText = $("<div>");
+        viewableText.html(html);
+        $(this).replaceWith(viewableText);
+        // setup the click event for this new div
+        //  viewableText.click(divClicked);
+    }
+
+    $(document).ready(function () {
+        $("#buttonclick2").click(divClicked);
+
+
+
+        var UserID = '@AphidSession.Current.AuthenticatedUser?.Identity?.UserId ';
+        var Trackingnumber = '@Session["Trackingnumber"]';
+        var Playlist_Name = '@Session["Playlist_Name"]';
+        var k = 1;
+        $.post('/Basic/GetSongListmusic', { PlaylistName: Playlist_Name }, function () { }).done(function (data) {
+            var i = 0;
+            var htmml = '<div class="play_view_mianwrap"><div class="play_viewlist">';
+            while (i < data.length) {
+                htmml += '<p class="nextsng" id="' + data[i].TrackingID + '">' + k + '. ' + data[i].FileName + '</p>';
+                i++;
+                k++;
+            }
+            htmml += '</div></div>';
+            $("#htmllistedit").append(htmml);
+        });
+
+    });
+
+    $("#htmllistedit").on('click', '.nextsng', function () {
+        var newt = $(this).attr('id');
+        var pl = '@Session["Playlist_Name"]';
+        $.post('/Basic/Before_PlaylistPrivew', { Trackingnumber: newt, Playlist_Name: pl }, function (data) {
+            window.location = data;
+        });
+    });
+
+
+    $("#closeicon").show();
+    $("#closebox").click(function (event) {
+        event.preventDefault();
+        $(this).hide();
+    });
+</script>
+
+
+
+

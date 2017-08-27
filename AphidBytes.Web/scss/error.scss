@@ -1,0 +1,39 @@
+$color_1: #000000;
+$color_2: #000;
+$border_color_1: #bada55;
+
+.main_content {
+	.right_content {
+		padding-left: 0px;
+	}
+}
+.error_page {
+	padding: 8em 0px;
+	text-align: center;
+	.subheading {
+		padding: 40px 0px;
+		img {
+			padding-bottom: 10px;
+		}
+		p {
+			color: $color_1;
+			font-size: 16px;
+		}
+	}
+	.buttons {
+		ul {
+			li {
+				a.btn {
+					width: 100% !important;
+					font-size: 13px;
+					padding: 13px;
+				}
+				a.btn-default {
+					color: $color_2;
+					background: #bada55;
+					border-color: $border_color_1;
+				}
+			}
+		}
+	}
+}

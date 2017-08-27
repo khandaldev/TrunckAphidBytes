@@ -1,0 +1,81 @@
+$color_1: #000;
+
+header {
+	.header {
+		.nav {
+			ul {
+				float: none !important;
+				li {
+					margin-left: 20px;
+					img {
+						max-width: 38px;
+					}
+					a {
+						span {
+							display: block;
+							color: $color_1;
+							font-size: 14px;
+							margin-top: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.advertiseform {
+	.form-group {
+		label {
+			font-size: 14px;
+			text-align: right;
+			display: block;
+			margin: 7px 0px;
+		}
+		span {
+			display: block;
+			text-align: center;
+			padding: 5px;
+			font-size: 12px;
+		}
+		.checkbox {
+			padding: 40px 0px;
+			input {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				vertical-align: middle;
+			}
+			span {
+				display: inline-block;
+				vertical-align: middle;
+				font-size: 14px;
+				color: $color_1;
+				padding: 0px;
+				margin-left: 10px;
+			}
+		}
+	}
+}
+.checkout_details {
+	text-align: right;
+	ul {
+		li {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 30px;
+			.preview {
+				text-align: center;
+				span {
+					display: block;
+					font-size: 14px;
+					padding-top: 10px;
+				}
+			}
+			a.btn {
+				width: auto;
+				font-size: 13px;
+				padding: 9px 20px;
+			}
+		}
+	}
+}

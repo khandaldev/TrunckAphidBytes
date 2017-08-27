@@ -1,0 +1,637 @@
+﻿@{
+    ViewBag.Title = "AddChannel";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+
+<div class="socialsetupwrap">
+    <div style="width: 20%; float: left;">
+        <div class="logosocila">
+           <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/img/bphidbyte_sicon2.png"></a>
+        </div>
+        <div class="tophedboxa"><a href="#">Back</a></div>
+    </div>
+
+    <div class="mec-hed" style="width: 100%;">
+
+        <div class="au_add_ch">
+            <div>
+                <p>(Add Channels)</p>
+                <p>
+                    Add more sites from our database to your Channel Group
+                    <samp>
+                        <a href="#">
+                            <img src="/Images/icone.png" /></a></samp>
+                </p>
+            </div>
+            <div>
+                <samp>
+                    <input type="text"></samp>
+                <samp>
+                    <a href="#">
+                        <img src="/Images/searcclick.png"></a></samp>
+
+            </div>
+
+        </div>
+
+        <div class="mec-hed1">
+            <div class="mec-hed2">
+                <div id="slider3" class="img-sllider">
+                    <img src="/Images/audio_bicon.png">
+                    <img src="/Images/video_vicon.png">
+                    <img src="/Images/ebook_eicon.png">
+                    <img src="/Images/photo_picon.png">
+                    <img src="/Images/file_ficon.png">
+                </div>
+                <div id='next' class="mecprev_s_b">
+                    <img src="/img/prev_s.png">
+                </div>
+
+                <div class="mec-video" style="overflow: hidden;">
+                    <div id="slider2" class="text-sllider">
+                        <p>Music Channels</p>
+                        <p>Video</p>
+                        <p>Ebook</p>
+                        <p>Photography</p>
+                        <p>Files</p>
+                    </div>
+
+                </div>
+
+                <div id='prev' class="mecnext_s_b">
+                    <img src="/img/next_s.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="mecsllider" style="width: 100%;">
+            <div class="aphidbytecenter content scrollWidth" id="content_1">
+                <div class="mecscroll">
+                    <div id="slider1">
+                        <div style="width: 100%; height: 600px; margin: auto; overflow: hidden;">
+                            <div class="audio_ch_box1">
+                                @foreach (var item in ViewBag.SocialChannel)
+                                {
+                                    if (item.categorytype == "Music")
+                                    {
+@*
+                                    <div>
+                                        <p>
+                                            <img src="/images/reversnpic.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" /></samp></p>
+                                        <p>Reverbnation</p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <img src="/images/minelinxpic.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" /></samp></p>
+                                        <p>LimeLinx</p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <img src="/images/soundclickpic.png" />
+                                            <samp><a href="#">
+                                                <img src="/images/green.png" /></a></samp></p>
+                                        <p>Soundclick</p>
+                                    </div>
+                                    *@
+
+                                        if (item.category == "SoundCloud" && item.CurrentStatusSocial == "false")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/images/soundloadpic.png" />
+
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" style="margin-right: -79%;margin-top: -17%;" /></samp>
+                                        </p>
+                                        <p>Soundcloud</p>
+                                    </div> 
+                                        }
+                                        else if (item.category == "SoundCloud" && item.CurrentStatusSocial == "true")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/images/soundloadpic.png" />
+                                            <samp>
+                                                <img src="/images/green.png" style="margin-right: -79%;margin-top: -17%;" onclick="AddSocialPage('SoundCloud');" /></samp>
+                                        </p>
+                                        <p>Soundcloud</p>
+                                    </div>
+                                        }
+
+@*<div>
+    <p>
+        <img src="/images/miconexpic.png" />
+        <samp>
+            <img src="/images/v_cha_icon.png" /></samp></p>
+    <p>MySpace</p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <img src="/images/siconespic.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" /></samp></p>
+                                        <p>Grooveshark</p>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <img src="/images/miconepica.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" /></samp></p>
+                                        <p>LiveMixtapes</p>
+                                    </div>*@
+
+
+
+
+                                    }
+                                }
+                            </div>
+                            <div class="snd_f_s">
+                                <p>
+                                    <img src="/images/moniter2.png" />
+                                </p>
+                                <p>Zip File Only, choose “Files Channels” category</p>
+                            </div>
+                        </div>
+
+                        <div style="width: 100%; height: 345px; margin: auto;">
+                            <div class="audio_ch_box1">
+                                @foreach (var item in ViewBag.SocialChannel)
+                                {
+                                    if (item.categorytype == "Video")
+                                    {<div>
+@*@if (item.category == "MySpace")
+                                        {
+                                         <div>
+                                             <p>
+                                                 <img src="/img/micone.png" />
+                                                 <samp>
+                                                     <img src="/images/v_cha_icon.png" /></samp>
+                                             </p>
+                                             <p>Instagram</p>
+                                         </div>
+                                    }
+                                     else
+                                    {
+                                        <div>
+                                            <p>
+                                                <img src="/img/micone.png" />
+                                                <samp>
+                                                    <img src="/images/green.png" /></samp>
+                                            </p>
+                                            <p>MySpace</p>
+                                        </div>
+                                    }
+                                        @if (item.category == "DeviantArt")
+                                        {
+                                         <div>
+                                             <p>
+                                                 <img src="/img/mtv-li.png" />
+                                                 <samp>
+                                                     <img src="/images/v_cha_icon.png" /></samp>
+                                             </p>
+                                             <p>MTV</p>
+                                         </div>
+                                    }else
+                                    {
+                                        <div>
+                                            <p>
+                                                <img src="/img/mtv-li.png" />
+                                                <samp>
+                                                    <img src="/images/green.png" /></samp>
+                                            </p>
+                                            <p>MTV</p>
+                                        </div>
+                                    }
+                                        @if (item.category == "Vimeo")
+                                        {                                                   
+                                        <div>
+                                            <p>
+                                                <img src="/img/dailymotionicone.png" />
+                                                <samp>
+                                                    <img src="/images/v_cha_icon.png" /></samp>
+                                            </p>
+                                            <p>Vimeo</p>
+                                        </div>
+                                    }
+                                        else
+                                        {
+                                        <div>
+                                            <p>
+                                                <img src="/img/dailymotionicone.png" />
+                                                <samp>
+                                                    <img src="/images/green.png" /></samp>
+                                            </p>
+                                            <p>Vimeo</p>
+                                        </div>
+                                    }*@
+                                       @if (item.category == "DailyMotion" && item.CurrentStatusSocial == "false")
+                                       {                                                   
+                                    <div>
+                                        <p>
+                                            <img src="/img/vimeoicone.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" style="margin-top: -25%; margin-left: -63%;" /></samp>@*tick mark*@
+                                        </p>
+                                        <p>DailyMotion</p>
+                                    </div>
+                                    
+                                       }
+                                       else if (item.category == "DailyMotion" && item.CurrentStatusSocial == "true")
+                                       {
+                                    <div>
+                                        <p>
+                                            <img src="/img/vimeoicone.png" />
+                                            <samp>
+                                                <img src="/images/green.png" style="margin-top: -25%; margin-left: -63%;" onclick="AddSocialPage('DailyMotion');" /></samp>@*add new*@
+                                        </p>
+                                        <p>DailyMotion</p>
+                                    </div>
+                                       }
+
+                                        @if (item.category == "YouTube" && item.CurrentStatusSocial == "false")
+                                        {                                                   
+                                    <div>
+                                        <p>
+                                            <img src="/img/youticone.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" style="margin-left: -64%; margin-top: -8%;" /></samp>
+                                        </p>
+                                        <p>You Tube</p>
+                                    </div>
+                                        }
+                                        else if (item.category == "YouTube" && item.CurrentStatusSocial == "true")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/img/youticone.png" />
+                                            <samp>
+                                                <img src="/images/green.png" style="margin-left: -64%;margin-top: -8%;" onclick="AddSocialPage('YouTube');" /></samp>
+                                        </p>
+                                        <p>You Tube</p>
+                                    </div>
+                                        }</div>
+
+                                    }
+                                }
+                            </div>
+                            @*@if (item.category == "FreeBook")
+                            {
+                                <div>
+                                    <p>
+                                        <img src="/img/freebookicone.png" />
+                                        <samp>
+                                            <img src="/images/v_cha_icon.png" /></samp>
+                                    </p>
+                                    <p>FreeBook</p>
+                                </div>
+                            }
+                            else
+                            {
+                                        <div>
+                                            <p>
+                                                <img src="/img/freebookicone.png" />
+                                                <samp>
+                                                    <img src="/images/green.png" /></samp>
+                                            </p>
+                                            <p>FreeBook</p>
+                                        </div>
+                            }*@
+
+
+                        </div>
+                        <div style="width: 100%; height: 345px; margin: auto;">
+                            <div class="audio_ch_box1">
+                                @foreach (var item in ViewBag.SocialChannel)
+                                {
+                                    if (item.categorytype == "Pdf")
+                                    {
+                                        if (item.category == "Scribd")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/img/scribdicone.png" />
+                                            @if (item.category == "Scribd" && item.CurrentStatusSocial == "false")
+                                            {
+                                                <samp>
+                                                    <img src="/images/v_cha_icon.png" /></samp>
+                                            }
+                                        </p>
+                                        <p>Scribd</p>
+                                    </div>
+                                        }
+                                        else if (item.category == "Scribd" && item.CurrentStatusSocial == "true")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/img/scribdicone.png" />
+                                            <samp>
+                                                <img src="/images/green.png" onclick="AddSocialPage('Scribd');" /></samp>
+                                        </p>
+                                        <p>Scribd</p>
+                                    </div>
+                                        }
+
+                                    }
+
+                                }
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 345px; margin: auto;">
+                            <div class="audio_ch_box1">
+                                @foreach (var item in ViewBag.SocialChannel)
+                                {
+                                    if (item.categorytype == "Photos")
+                                    {
+@*@if (item.category == "Instagram")
+                                        {
+                                         <div>
+                                             <p>
+                                                 <img src="/img/cmicone.png" />
+                                                 <samp>
+                                                     <img src="/images/v_cha_icon.png" /></samp>
+                                             </p>
+                                             <p>Instagram</p>
+                                         </div>
+                                    }
+                                     else
+                                    {
+                                        <div>
+                                            <p>
+                                                <img src="/img/cmicone.png" />
+                                                <samp>
+                                                    <img src="/images/green.png" /></samp>
+                                            </p>
+                                            <p>Instagram</p>
+                                        </div>
+                                    }
+                                        @if (item.category == "DeviantArt")
+                                        {
+                                         <div>
+                                             <p>
+                                                 <img src="/img/devianicone.png" />
+                                                 <samp>
+                                                     <img src="/images/v_cha_icon.png" /></samp>
+                                             </p>
+                                             <p>DeviantArt</p>
+                                         </div>
+                                    }else
+                                    {
+                                        <div>
+                                            <p>
+                                                <img src="/img/devianicone.png" />
+                                                <samp>
+                                                    <img src="/images/green.png" /></samp>
+                                            </p>
+                                            <p>DeviantArt</p>
+                                        </div>
+                                    }*@
+                                        if (item.category == "Flicker" && item.CurrentStatusSocial == "false")
+                                        {                                                   
+                                    <div>
+                                        <p>
+                                            <img src="/img/flickricone.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" /></samp>
+                                        </p>
+                                        <p>Flicker</p>
+                                    </div>
+                                        }
+                                        else if (item.category == "Flicker" && item.CurrentStatusSocial == "true")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/img/flickricone.png" />
+                                            <samp>
+                                                <img src="/images/green.png" onclick="AddSocialPage('Flicker');" /></samp>
+                                        </p>
+                                        <p>Flicker</p>
+                                    </div>
+                                        }
+@*  @if (item.category == "Fotki")
+                                        {                                                   
+                                       <div>
+                                           <p>
+                                               <img src="/img/fokiicone.png" />
+                                               <samp>
+                                                   <img src="/images/v_cha_icon.png" /></samp>
+                                           </p>
+                                           <p>Fotki</p>
+                                       </div>
+                                    }
+                                        else
+                                        {
+                                        <div>
+                                            <p>
+                                                <img src="/img/fokiicone.png" />
+                                                <samp>
+                                                    <img src="/images/green.png" /></samp>
+                                            </p>
+                                            <p>Fotki</p>
+                                        </div>
+                                    }  *@
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div style="width: 100%; height: 345px; margin: auto;">
+                            <div class="audio_ch_box1">
+                                @foreach (var item in ViewBag.SocialChannel)
+                                {
+                                    if (item.categorytype == "All")
+                                    {
+
+                                        if (item.category == "Twitter" && item.CurrentStatusSocial == "false")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/Images/ticone.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" /></samp>
+                                        </p>
+                                        <p>Twitter</p>
+                                    </div>
+                                        }
+                                        else if (item.category == "Twitter" && item.CurrentStatusSocial == "true")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/Images/ticone.png" />
+                                            <samp>
+                                                <img src="/images/green.png" onclick="AddSocialPage('Twitter');" /></samp>
+                                        </p>
+                                        <p>Twitter</p>
+                                    </div>
+                                        }
+@* @if (item.category == "GooglePlus")
+                                     {
+                                         <div>
+                                             <p>
+                                                 <img src="/Images/googleplus.jpg" />
+                                                 <samp>
+                                                     <img src="/images/v_cha_icon.png" /></samp>
+                                             </p>
+                                             <p>Google+</p>
+                                         </div>
+                                    }
+                                     else
+                                     {
+                                         <div>
+                                             <p>
+                                                 <img src="/Images/googleplus.jpg" />
+                                                 <samp>
+                                                     <img src="/images/green.png" /></samp>
+                                             </p>
+                                             <p>Google+</p>
+                                         </div>
+                                    }*@
+                                        if (item.category == "Facebook" && item.CurrentStatusSocial == "false")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/Images/ficone.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" style="margin-left: -93%;" /></samp>
+                                        </p>
+                                        <p>Facebook</p>
+                                    </div>
+                                        }
+                                        else if (item.category == "Facebook" && item.CurrentStatusSocial == "true")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/Images/ficone.png" />
+                                            <samp>
+                                                <img src="/images/green.png" onclick="AddSocialPage('Facebook');" /></samp>
+                                        </p>
+                                        <p>Facebook</p>
+                                    </div>
+                                        }
+                                        if (item.category == "LinkedLin" && item.CurrentStatusSocial == "false")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/Images/linkdicone.png" />
+                                            <samp>
+                                                <img src="/images/v_cha_icon.png" /></samp>
+                                        </p>
+                                        <p>Linkedin</p>
+                                    </div>
+                                        }
+                                        else if (item.category == "LinkedLin" && item.CurrentStatusSocial == "true")
+                                        {
+                                    <div>
+                                        <p>
+                                            <img src="/Images/linkdicone.png" />
+                                            <samp>
+                                                <img src="/images/green.png" onclick="AddSocialPage('LinkedLin');" /></samp>
+                                        </p>
+                                        <p>Linkedin</p>
+                                    </div>
+                                        }
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script language="javascript">
+    $(document).ready(function () {
+
+        $('#slider1').cycle({
+            fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+            speed: 'slow',
+            timeout: 0,
+            next: '#next',
+            prev: '#prev',
+            pager: '#thumb',
+
+            pagerAnchorBuilder: function (idx, slide) {
+                return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+            }
+        });
+
+        $('#slider2').cycle({
+            fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+            speed: 'slow',
+            timeout: 0,
+            next: '#next',
+            prev: '#prev',
+            pager: '#thumb',
+
+            pagerAnchorBuilder: function (idx, slide) {
+                return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+            }
+        });
+
+        $('#slider3').cycle({
+            fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+            speed: 'slow',
+            timeout: 0,
+            next: '#next',
+            prev: '#prev',
+            pager: '#thumb',
+
+            pagerAnchorBuilder: function (idx, slide) {
+                return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+            }
+        });
+
+
+    });
+</script>
+
+
+
+
+<script src="js/jquery.mCustomScrollbar.js"></script>
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+    function AddSocialPage(socialname) {
+        $.post('@Url.Action("FindChannel", "SocialNetworks")', { socialname: socialname }, function () {
+        }).done(function (data)
+        {
+
+            $('#button-sucess').dialog("open");
+            $('#socialname1').text(data);
+            setTimeout(function () {
+                $('#button-sucess').dialog("close");
+            }, 400);
+        });
+    }
+</script>
+<div id="button-sucess" style="display: none">
+
+    <div class="suceessmsg">
+        <p id="socialname1"></p>
+    </div>
+</div>

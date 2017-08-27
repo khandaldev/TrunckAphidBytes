@@ -1,0 +1,174 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.BaseTypes.IPaymentProvider
+
+@{
+    List<SelectListItem> listMonth = new List<SelectListItem>();
+    List<SelectListItem> listYear = new List<SelectListItem>();
+
+    for (int i = 1; i < 13; i++)
+    {
+        if (i == 1)
+        {
+            listMonth.Add(new SelectListItem { Text = "Month" });
+        }
+        listMonth.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+    }
+
+    int currentYear = DateTime.Now.Year;
+    for (int i = currentYear; i < currentYear + 50; i++)
+    {
+        if (i == currentYear)
+        {
+            listYear.Add(new SelectListItem { Text = "Year", });
+        }
+        listYear.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+    }
+}
+<div class="form-group">
+    <label for="txt-nameoncard" class="col-sm-3 control-label">Name On Card:</label>
+    <div class="col-sm-4">
+        @Html.TextBoxFor(model => model.NameOnCard, new { id = "txt-nameoncard", @class = "form-control" })
+    </div>
+</div>
+<div class="form-group">
+    <label for="txt-cardnumber" class="col-sm-3 control-label">Card Number:</label>
+    <div class="col-sm-4">
+        <input id="txt-cardnumber" type="text" size="20" class="form-control" data-stripe="number">
+        <span class="required-field">*</span>
+    </div>
+</div>
+<div class="form-group">
+    <label for="txt-expmonth" class="col-sm-3 control-label">Exp:</label>
+    <div class="col-sm-2">
+        <select id="txt-expmonth" class="form-control" data-stripe="exp_month">
+            @foreach (var month in listMonth)
+            {
+                <option value="@month.Value">@month.Text</option>
+            }
+        </select>
+    </div>
+    <div class="col-sm-2">
+        <select id="txt-expyear" class="form-control" data-stripe="exp_year">
+            @foreach (var year in listYear)
+            {
+                <option value="@year.Value">@year.Text</option>
+            }
+        </select>
+        <span class="required-field">*</span>
+    </div>
+</div>
+<div class="form-group">
+    <label for="txt-cvc" class="col-sm-3 control-label">CVC:</label>
+    <div class="col-sm-2">
+        <input id="txt-cvc" type="text" size="4" class="form-control" data-stripe="cvc">
+        <span class="required-field">*</span>
+    </div>
+</div>
+
+<div id="StripeMessage"></div>
+
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+    Stripe.setPublishableKey("@Model.StripeConfig.ApiKey");
+   
+    $(function () {
+
+        $("#btnSendPayment").click(function () {
+            validateFields();
+            getCardToken();
+        });
+        function validateFields() {
+            var isValid = true;
+            $('input[type="text"]').each(function () {
+                if ($(this).attr('id') != 'txt-address2' && $(this).attr('id') != 'txt-address1' && $(this).attr('id') != 'txt-promo' && $(this).attr('id') != 'txt-city' && $(this).attr('id') != 'txt-state' && $(this).attr('id') != 'txt-zip')
+                
+
+                    {
+                if ($.trim($(this).val()) == '') {
+                    isValid = false;
+                    $(this).css({
+                        "border": "1px solid red",
+                        "background": "#FFCECE"
+                    });
+                }
+                else {
+                    $(this).css({
+                        "border": "",
+                        "background": ""
+                    });
+                }
+                }
+            });
+            if (isValid == false) {
+                e.preventDefault();
+                return false;
+            }
+
+        }
+        function getCardToken() {
+            //punishable Key            
+            Stripe.card.createToken({
+                number: $('#txt-cardnumber').val(),
+                cvc: $('#txt-cvc').val(),
+                exp_month: $('#txt-expmonth').val(),
+                exp_year: $('#txt-expyear').val(),
+                name: $('#txt-nameoncard').val()                
+            }, stripeResponseHandler);
+        }
+
+        /*
+        var $form = $('#payment-form');
+        $form.submit(function (event) {
+            // Disable the submit button to prevent repeated clicks:
+            $form.find('#btnSendPayment').prop('disabled', true);
+
+            // Request a token from Stripe:
+            Stripe.card.createToken($form, stripeResponseHandler);
+
+            // Prevent the form from being submitted:
+            return false;
+        });*/
+    });
+
+    function stripeResponseHandler(status, response) {
+        // Grab the form:
+        var $form = $('#payment-form');
+
+        if (response.error) { // Problem!
+            // Show the errors on the form:
+            $("#StripeMessage").html("<div class=\"alert alert-danger\" role=\"alert\"> <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span><span class=\"sr-only\">Error:</span><strong>Error!! </strong>" + response.error.message + "</div>");
+            $form.find('.payment-errors').text(response.error.message);
+            $form.find('.submit').prop('disabled', false); // Re-enable submission
+
+        } else { // Token was created!
+            // Get the token ID:
+            var token = response.id;
+            // Insert the token ID into the form so it gets submitted to the server:
+            $form.append($('<input type="hidden" name="stripeToken">').val(token));
+            // Submit the form:
+            $form.get(0).submit();
+        }
+    };
+
+   
+    $("#txt-cardnumber").on("keyup", function () {
+        var valid = /^\d{0,16}(\.\d{0,0})?$/.test(this.value),
+            val = this.value;
+
+        if (!valid) {
+            console.log("Invalid input!");
+            this.value = val.substring(0, val.length - 1);
+        }
+    });
+    $("#txt-cvc").on("keyup", function () {
+        var valid = /^\d{0,4}?$/.test(this.value),
+            val = this.value;
+
+        if (!valid) {
+            console.log("Invalid input!");
+            this.value = val.substring(0, val.length - 1);
+        }
+    });
+
+   
+</script>

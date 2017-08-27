@@ -1,0 +1,683 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+<link href="~/Content/StylePop.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+
+        $("#abc").mouseover(function () {
+            $("#pop-up-over-m").css('display', 'block');
+        })
+        $("#abc").mouseleave(function () {
+            $("#pop-up-over-m").css('display', 'none');
+        });
+
+    });
+
+    function checklist(ctrl) {
+        $("#searchbtn").attr('class', ctrl);
+        $("#creditt-menu li").removeClass("credit-menu-bgli");
+        $("#one").removeClass("one123");
+        var list = document.getElementById("creditt-menu").getElementsByTagName('li');
+
+        for (i = 0; i < list.length; i++) {
+
+            // list[i].style.background = '#ffffff';
+
+        }
+
+        //ctrl.style.background = '#000';
+        $("#" + ctrl).addClass("credit-menu-bgli");
+    }
+
+
+</script>
+
+
+<div class="aphidtise_wrap">
+
+    <div class="header_aphidtise">
+        <div class="menunav">
+            <ul>
+                <li><a href="Services">Services</a></li>
+                <li><a class="" href="LoginUser">Login</a></li>
+                <li><a href="#">The Gall</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="AboutUsPage">About Us</a></li>
+                <li><a href="Support">Support</a></li>
+            </ul>
+        </div>
+        <div id="logo"><a style="cursor:pointer;" href="/"> <img src="/images/hphidbytelogo.png"></a> </div>
+    </div>
+</div>
+
+<div id="LogOut" class="logid_out">
+
+    <ul>
+        <li><a style="color:#DCA806;" href="#">tech</a></li>
+        <li><a href="/Accounts/Logout">Logout</a></li>
+    </ul>
+
+    <div class="profilebg">
+        <div class="migprofile">
+
+            <img height="100px;" src="/AphidTise/Overview">
+        </div>
+        <div class="profiletext txt1">AphidTise Account</div>
+        <div class="logo txtL">
+            <img src="/images/logobg.png">
+        </div>
+    </div>
+
+
+
+</div>   
+
+    @*<div class="header_aphidtise">
+        <div id="logo">
+           <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+        </div>
+    </div>*@
+
+
+    <div class="creditt-head-wrap">
+        <div class="creditt-left-box">
+            <p class="info-p" style="cursor:pointer;">Byte Tracker >@Html.ActionLink("Ad History","AphidtiseHistory","AphidTise") </p>
+            <div class="creditt-menu">
+                <ul id="creditt-menu">
+                    <li onclick="checklist(this.id);" id="one" class="one123"><a href="#">Ad History</a></li>
+                    <li onclick="checklist(this.id);" id="two" i><a href="#">Edit an active Ad</a></li>
+                    <li onclick="checklist(this.id);" id="three"><a href="#">Active Ads</a></li>
+                   
+                </ul>
+            </div>
+
+            <div class="credit-head2-menu" style="margin-top: 20px;">
+                <p><a href="#">Sort Composers</a></p>
+                <p id="sort" ><a href="#" style="color: #e46c0a;" onclick="Sorting('AtoZ')">A to Z</a></p>
+            </div>
+
+            <div class="credit-head2-menu">
+                <p><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+                <p id="descsort" ><a href="#" style="color: #e46c0a; width: 361px;" onclick="Sorting('ZtoA')">Z to A</a></p>
+            </div>
+        </div>
+
+
+        <div class="credit-search-m1">
+            <div class="credit-search-m2">
+                <div class="credit-search-m3">
+                    <input name="" type="text" class="credtit-search">
+                      </div>
+               
+                <a href="#">
+                    <img src="/images/credits-bgsearch.png" id="searchbtn" class="" onclick="Search();"></a>
+                   
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="headertab_aphidtise" style="margin-top: -60px;">
+        <div class="left-info" style="margin-top: -20px;">
+
+            <ul class="aphidbytelistA aphdc" style="padding-left: 0px;">
+                <li><a href="/AphidTise/AphidTiseAccountInfo">Account Info</a></li>
+                <li></li>
+                <li><a href="/AphidTise/AphidTiseGenrateAds">Generate Ads</a></li>
+                <li></li>
+                <li><a href="/AphidTise/AphidtiseMessage">Messages</a></li>
+                <li></li>
+                <li><a href="/AphidTise/AphidTiseByteTracker">Byte Tracker</a></li>
+                <li>
+                    <img src="/images/right_line.png">
+                </li>
+                <li><a href="/AphidTise/AphidtiseHistory">History</a></li>
+                <li></li>
+
+            </ul>
+
+            @*<div class="info-right" style="margin-top: -360px !important;"></div>*@
+            <div class="info-footer-social"></div>
+             
+        </div>
+
+
+
+        <div class="aphidbytecenter content scrollWidth" id="content_1" style="height: 400px; margin-top: 15px; width: 70% !important;">
+            <div class="massage_index">
+                <div style="width: 100%; height: 400px; margin: auto;">
+                    <br />
+                    <!-- Table goes in the document BODY -->
+                    <table align="center" class="gradienttable_red">
+                        <tr>
+                            <th>
+                                <p>Title</p>
+                            </th>
+                            <th>
+                                <p>Channel</p>
+                            </th>
+                            <th>
+                                <p>Impressions</p>
+                            </th>
+                            <th>
+                                <p>Views</p>
+                            </th>
+                            <th>
+                                <p>Type</p>
+                            </th>
+                            <th>
+                                <p>Tracking #</p>
+                            </th>
+                            <th>
+                                <p>Shared</p>
+                            </th>
+                            <th>
+                                <p>Status</p>
+                            </th>
+
+
+                        </tr>
+
+
+                        @foreach (var item in ViewBag.PostData)
+                        {
+                            
+                            <tr class="table-trb3_red" id="onload1">
+                                <td>
+                                    <p>@item.Title</p>
+                                </td>
+                                <td align="center">
+                                    <p></p>
+                                </td>
+                                <td align="center">
+                                    <p>0</p>
+                                </td>
+                                <td>
+                                    <p>0</p>
+                                </td>
+                                <td>
+                                    <p>@item.Adtypename</p>
+                                </td>
+                                <td>
+                                    <p>@item.TrackingNumber</p>
+                                </td>
+                                <td>
+                                    <p>0</p>
+                                </td>
+                                <td>
+                                    <p>Ended</p>
+                                </td>
+
+
+                            </tr>
+                          
+                        }
+
+                        @*  <tr class="table-trb3_red">
+    <td> <p>file2</p></td>
+    <td align="center"><p>Matrix</p></td>
+    <td align="center"><p>8</p></td>
+    <td><p>458</p></td>
+    <td><p>Ad Watched</p></td>
+    <td><p>85435345345</p></td>
+    <td><p>890</p></td>
+    <td><p>Ended</p></td>
+  
+  
+</tr>
+  *@
+
+
+
+
+
+                        @*<tr class="table-trb3_red">
+    <td> <p>file2</p></td>
+    <td align="center"><p>Matrix</p></td>
+    <td align="center"><p>8</p></td>
+    <td><p>458</p></td>
+    <td><p>Ad Watched</p></td>
+    <td><p>85435345345</p></td>
+    <td><p>890</p></td>
+    <td><p>Ended</p></td>
+  
+  
+</tr>
+<tr class="table-trb4_red">
+  <td><p>Starships</p></td>
+  <td align="center"><p>Reverbnation</p></td>
+  <td align="center"><p>5</p></td>
+  <td><p>55</p></td>
+  <td><p>Survey</p></td>
+  <td><p>545435435</p></td>
+  <td><p>56</p></td>
+  <td><p>Ends  4/12/13</p></td>
+
+</tr>
+<tr class="table-trb3_red">
+  <td><p>Flashing Lights</p></td>
+  <td align="center"><p>iM1</p></td>
+  <td align="center"><p>9</p></td>
+  <td><p>954</p></td>
+  <td><p>Ad Watched</p></td>
+  <td><p>945345435</p></td>
+  <td><p>9</p></td>
+  <td><p>Ended</p></td>
+ 
+</tr>
+<tr class="table-trb4_red">
+  <td><p>Make it rain</p></td>
+  <td align="center"><p>Matrix</p></td>
+  <td align="center"><p>11</p></td>
+  <td><p>811</p></td>
+  <td><p>Survey</p></td>
+  <td><p>115435345</p></td>
+  <td><p>11</p></td>
+  <td><p>Ends  9/22/13</p></td>
+
+</tr>
+<tr class="table-trb3_red">
+  <td><p>Batman</p></td>
+  <td align="center"><p>Soundclick</p></td>
+  <td align="center"><p>14</p></td>
+  <td><p>1434</p></td>
+  <td><p>Ad Watched</p></td>
+  <td><p>14345345435</p></td>
+  <td><p>1234</p></td>
+  <td><p>Ended</p></td>
+ 
+</tr>
+<tr class="table-trb3_red">
+  <td><p>Blow</p></td>
+  <td align="center"><p>DailyMotion</p></td>
+  <td align="center"><p>16</p></td>
+  <td><p>Survey</p></td>
+  <td><p>Survey</p></td>
+  <td><p>16345435435</p></td>
+  <td><p>166</p></td>
+  <td><p>Ended</p></td>
+
+</tr>*@
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="massage-footer-m">
+        </div>
+    </div>
+
+
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script>
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+
+<script>
+    function Sorting(dir)
+    {
+        var clsname = $("#searchbtn").attr('class');
+        alert(clsname);
+        var searchval = $('.credtit-search').val();
+
+       
+        $.post('/AphidTise/Order', { Sort: dir, Classname: clsname }, function (data) {
+           
+            if (data != null) {
+
+                $(".table-trb3_red").remove();
+                $(".table-trb4_red").remove();
+                for (var i = 0; i < data.length; i++) {
+                    
+                        if (i % 2 == 0) {
+
+                            body = "<tr class='newData'>";
+                            body += "<tr class='table-trb3_red'>";
+                            body += "<td><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center'><p></p></td>";
+                            body += "<td align='center'><p>0</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>" + data[i].Adtypename + "</p></td>";
+                            body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>Active</p></td>";
+                            if (clsname == "two") {
+                                body += "<td> <a href=/AphidTise/AdvGenAds?TrackNo=" + data[i].TrackingNumber + ">Edit</a></td>"
+                            }
+                            body += "</tr>";
+
+
+                            $(".gradienttable_red").append(body);
+
+                        }
+                        else {
+                            body = "<tr class='newData'>";
+                            body = "<tr class='newData'>";
+                            body += "<tr class='table-trb4_red'>";
+                            body += "<td><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center'><p></p></td>";
+                            body += "<td align='center'><p>0</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>" + data[i].Adtypename + "</p></td>";
+                            body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>Active</p></td>";
+                            if (clsname == "two") {
+                                body += "<td> <a href=/AphidTise/AdvGenAds?TrackNo=" + data[i].TrackingNumber + ">Edit</a></td>"
+                            }
+                            body += "</tr>";
+
+                            $(".gradienttable_red").append(body);
+                        }
+                    
+                   
+                    
+                   
+                }
+            }
+        });
+                
+
+      
+    }
+    
+
+    function Search()
+    {
+       
+        var clsname = $("#searchbtn").attr('class');
+        alert(clsname);
+        var searchval = $('.credtit-search').val();
+       
+       
+        $.post('/AphidTise/SearchAd', { Text: searchval, clsName: clsname }, function (data) {
+           
+            $('.table-trb3_red').remove();
+            $('.table-trb4_red').remove();
+            for (var i = 0; i < data.length; i++) {
+                
+                    if (i % 2 == 0) {
+
+                        body = "<tr class='newData'>";
+                        body += "<tr class='table-trb3_red'>";
+                        body += "<td><p>" + data[i].Title + "</p></td>";
+                        body += "<td align='center'><p></p></td>";
+                        body += "<td align='center'><p>0</p></td>";
+                        body += "<td><p>0</p></td>";
+                        body += "<td><p>" + data[i].Adtypename + "</p></td>";
+                        body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                        body += "<td><p>0</p></td>";
+                        if (data[i].IsActive == true) {
+                            body += "<td><p>Active</p></td>";
+                        }
+                        else {
+                            body += "<td><p>Ended</p></td>";
+                        }
+                        if (clsname=="two") {
+                            body += "<td> <a href=/AphidTise/AdvGenAds?TrackNo=" + data[i].TrackingNumber + ">Edit</a></td>"
+                        }
+                        body += "</tr>";
+
+
+                        $(".gradienttable_red").append(body);
+
+                    }
+                    else {
+                        body = "<tr class='newData'>";
+                        body = "<tr class='newData'>";
+                        body += "<tr class='table-trb4_red'>";
+                        body += "<td><p>" + data[i].Title + "</p></td>";
+                        body += "<td align='center'><p></p></td>";
+                        body += "<td align='center'><p>0</p></td>";
+                        body += "<td><p>0</p></td>";
+                        body += "<td><p>" + data[i].Adtypename + "</p></td>";
+                        body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                        body += "<td><p>0</p></td>";
+                        if (data[i].IsActive == true) {
+                            body += "<td><p>Active</p></td>";
+                        }
+                        else {
+                            body += "<td><p>Ended</p></td>";
+                        }
+                        body += "</tr>";
+
+                        $(".gradienttable_red").append(body);
+                    }
+                }
+
+       });
+    }
+
+              
+     
+    $(document).ready(function () {
+     $("#searchbtn").attr('class','one');
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+</script>
+
+<script type="text/jscript">
+    function divClicked() {
+        var divHtml = [];
+
+        $("#mydiv div").each(function () {
+            divHtml.push($(this).html());
+            var editableText = $("<input type='text' />");
+            editableText.val($(this).html());
+            $(this).replaceWith(editableText);
+            editableText.blur(editableTextBlurred);
+        });
+        editableText.focus();
+        // setup the blur event for this new textarea
+
+    }
+
+    function editableTextBlurred() {
+        var html = $(this).val();
+        var viewableText = $("<div>");
+        viewableText.html(html);
+        $(this).replaceWith(viewableText);
+        // setup the click event for this new div
+        //  viewableText.click(divClicked);
+    }
+
+    $(document).ready(function () {
+        $("#buttonclick").click(divClicked);
+    });
+
+</script>
+<script>
+    var body = "";
+    $("#one").click(function () {
+        body = "";
+       $.post('/AphidTise/GetAdHistory', { }, function (data) {
+            $("#onload1").remove();
+            $(".table-trb3_red").remove();
+            $(".table-trb4_red").remove();
+            if (data != null) {
+                for (var i = 0; i < data.length; i++) {
+
+                    if (i % 2 == 0) {
+
+                        body = "<tr class='newData'>";
+                        body += "<tr class='table-trb3_red'>";
+                        body += "<td><p>" + data[i].Title + "</p></td>";
+                        body += "<td align='center'><p></p></td>";
+                        body += "<td align='center'><p>0</p></td>";
+                        body += "<td><p>0</p></td>";
+                        body += "<td><p>" + data[i].Adtypename + "</p></td>";
+                        body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                        body += "<td><p>0</p></td>";
+                        body += "<td><p>Ended</p></td>";
+                        body += "</tr>";
+
+
+                        $(".gradienttable_red").append(body);
+
+                    }
+                    else {
+
+                        body = "<tr class='newData'>";
+                        body += "<tr class='table-trb4_red'>";
+                        body += "<td><p>" + data[i].Title + "</p></td>";
+                        body += "<td align='center'><p></p></td>";
+                        body += "<td align='center'><p>0</p></td>";
+                        body += "<td><p>0</p></td>";
+                        body += "<td><p>" + data[i].Adtypename + "</p></td>";
+                        body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                        body += "<td><p>0</p></td>";
+                        body += "<td><p>Ended</p></td>";
+                        body += "</tr>";
+
+                        $(".gradienttable_red").append(body);
+                    }
+
+                }
+            }
+        });
+    });
+    
+    $("#two").click(function () {
+        body = "";
+        $.post('/AphidTise/EditActiveAd', {}, function (data) {
+            $("#onload1").remove();
+            $(".table-trb3_red").remove();
+            $(".table-trb4_red").remove();
+            if (data != null) {
+                for (var i = 0; i < data.length; i++) {
+                    
+
+                        if (i % 2 == 0) {
+
+                            body = "<tr class='newData'>";
+                            body += "<tr class='table-trb3_red'>";
+                            body += "<td><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center'><p></p></td>";
+                            body += "<td align='center'><p>0</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>" + data[i].AdTypeID + "</p></td>";
+                            body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>Active</p></td>";
+                            body += "<td> <a href=/AphidTise/AdvGenAds?TrackNo=" + data[i].TrackingNumber + ">Edit</a></td>"
+                            body += "</tr>"; 
+                           
+
+
+                            $(".gradienttable_red").append(body);
+
+                        }
+                        else {
+                            body = "<tr class='newData'>";
+                            body = "<tr class='newData'>";
+                            body += "<tr class='table-trb4_red'>";
+                            body += "<td><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center'><p></p></td>";
+                            body += "<td align='center'><p>0</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>" + data[i].AdTypeID + "</p></td>";
+                            body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>Active</p></td>";
+                            body += "<td><p> <a href=/AphidTise/AdvGenAds?TrackNo=" + data[i].TrackingNumber + ">Edit</a></p></td>"
+
+                            body += "</tr>";
+
+                            $(".gradienttable_red").append(body);
+                        }
+                   
+                }
+            }
+        });
+    });
+    
+    $("#three").click(function () {
+        body = "";
+        $.post('/AphidTise/GetActiveAds', {}, function (data) {
+            $("#onload1").remove();
+            $(".table-trb3_red").remove();
+            $(".table-trb4_red").remove();
+            if (data != null) {
+              
+                for (var i = 0; i < data.length; i++) {
+                    
+                        if (i % 2 == 0) {
+                            body = "<tr class='newData'>";
+                            body += "<tr class='table-trb3_red'>";
+                            body += "<td><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center'><p></p></td>";
+                            body += "<td align='center'><p>0</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>" + data[i].Adtypename + "</p></td>";
+                            body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>Active</p></td>";
+                            body += "</tr>";
+
+                            $(".gradienttable_red").append(body);
+
+                        }
+                        else {
+                            body = "<tr class='newData'>";
+                            body = "<tr class='newData'>";
+                            body += "<tr class='table-trb4_red'>";
+                            body += "<td><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center'><p></p></td>";
+                            body += "<td align='center'><p>0</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>" + data[i].Adtypename + "</p></td>";
+                            body += "<td><p>" + data[i].TrackingNumber + "</p></td>";
+                            body += "<td><p>0</p></td>";
+                            body += "<td><p>Active</p></td>";
+                            body += "</tr>";
+
+                            $(".gradienttable_red").append(body);
+                        }
+                    
+                    
+                }
+            }
+        });
+    });
+    
+  
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

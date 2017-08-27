@@ -1,0 +1,224 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+
+<script type="text/javascript">
+$(function() {
+
+    function scroll(direction) {
+
+        var scroll, i,
+                positions = [],
+                here = $(window).scrollTop(),
+                collection = $('p');
+
+        collection.each(function() {
+            positions.push(parseInt($(this).offset()['top'],10));
+        });
+
+        for(i = 0; i < positions.length; i++) {
+            if (direction == 'next' && positions[i] > here) { scroll = collection.get(i); break; }
+            if (direction == 'prev' && i > 0 && positions[i] >= here) { scroll = collection.get(i-1); break; }
+        }
+
+        if (scroll) {
+            $.scrollTo(scroll, {
+                duration: 750       
+            });
+        }
+
+        return false;
+    }
+
+    $("#next,#prev").click(function() {        
+        return scroll($(this).attr('id'));        
+  
+ 
+    });
+
+});
+</script>
+
+
+
+
+<div class="aphidtise_wrap">
+
+<div class="logid">
+
+<div class="logid_out">
+<ul>
+<li><a href="#" style="color:#ffc000;">AdamLevl</a></li>
+<li><a href="#">Logout</a></li>
+</ul>
+
+<div class="profilebg">
+<div class="migprofile"> <img src="/Images/profilebg.png"> </div>
+<div class="premi-info-box"><img src="/Images/premiumaccount_star_bg.png" style="width:100%;"><p class="preum-p-text">Premium Account</p></div>
+<div class="premi-info-box">  <a href="@Url.Action("EditChannelPage","Premium")"> <img src="/Images/grid14bg.png" style="margin: 10px 0 0 10px;"></a></div>
+ 
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="header_aphidtise">
+
+<div id="logo"> <a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/Images/hphidbytelogo.png"></a> </div>
+</div>
+
+<div class="headertab_aphidtise" style="margin:auto;">
+<div style="width:60%;margin:auto;clear:both;height:80px;"><p class="info-p">Generate Clones > Byte Your </p>
+</div>
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="margin-top:85px; margin:auto; float:none;">
+<div class="massage_index">
+<div  class="play_view_lista">
+<div><img src="/Images/playlist_viewa.png"></div>
+<div style="width:45%;">
+<p>Wiz Khalifa</p>
+<p>Black & Yellow</p>
+<p>Rolling Papers</p>
+<p>Tracking Number: 434763249</p>
+</div>
+<div style="width:12%; float:left;"><img src="/img/logo-channel.png"></div>
+</div>
+<div class="play_lista_control"><img src="/img/play-pic.png"></div>
+
+<div class="play_view_listb">
+<div class="play_view_mianwrap">
+<div class="play_viewlist">
+<p>1. When I’m Gone</p>
+<p>2. On My Level (feat. Too $hort)</p>
+<p>3. Black And Yellow</p>
+<p>4. Roll Up</p>
+<p>5.Hopes & Dreams</p>
+<p>6. Wake Up</p>
+<p>7. The Race</p>
+<p>8. Star Of The Show (feat. Chevy Woods)</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>8. Star Of The Show (feat. Chevy Woods)</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>8. Star Of The Show (feat. Chevy Woods)</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>8. Star Of The Show (feat. Chevy Woods)</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+<p>1. When I’m Gone</p>
+</div>
+</div>
+</div>
+
+<div class="play_stopcs">
+<a href="#"><img src="/img/next_b.png"></a>
+<a href="#"><img src="/img/prev_b.png"></a>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="massage-footer-m" style="height:100px;">
+
+
+</div>
+</div>
+
+
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+
+<script>
+$(document).ready(function() {
+    $("#content").find("[id^='tab']").hide(); // Hide all content
+    $("#tabs li:first").attr("id","current"); // Activate the first tab
+    $("#content #tab1").fadeIn(); // Show first tab's content
+    
+    $('#tabs a').click(function(e) {
+        e.preventDefault();
+        if ($(this).closest("li").attr("id") == "current"){ //detection for current tab
+         return;       
+        }
+        else{             
+          $("#content").find("[id^='tab']").hide(); // Hide all content
+          $("#tabs li").attr("id",""); //Reset id's
+          $(this).parent().attr("id","current"); // Activate this
+          $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+        }
+    });
+});
+</script>
+
+<script type="text/jscript">
+function divClicked() {
+    var divHtml = [];
+
+    $("#mydiv div").each(function(){
+    divHtml.push($(this).html());
+     var editableText = $("<input type='text' />");
+    editableText.val($(this).html());
+    $(this).replaceWith(editableText);
+     editableText.blur(editableTextBlurred);
+    });
+    editableText.focus();
+    // setup the blur event for this new textarea
+   
+}
+
+function editableTextBlurred() {
+    var html = $(this).val();
+    var viewableText = $("<div>");
+    viewableText.html(html);
+    $(this).replaceWith(viewableText);
+    // setup the click event for this new div
+  //  viewableText.click(divClicked);
+}
+
+$(document).ready(function() {
+    $("#buttonclick2").click(divClicked);
+});
+
+</script>
+
+<script>
+$( "#closeicon" ).show();
+$( "#closebox" ).click(function( event ) {
+  event.preventDefault();
+  $( this ).hide();
+});
+</script>
+
+
+
+

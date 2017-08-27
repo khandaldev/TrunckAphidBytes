@@ -1,0 +1,18 @@
+﻿@mixin border-radius($radius) { 
+    -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin rgba($property, $background: black, $opacity: 0.75, $mix: white) {
+    #{$property}: mix($background, $mix, $opacity * 100%);
+    #{$property}: rgba($background, $opacity);
+}
+
+@mixin box-shadow($param1, $param2, $param3, $param4, $color) { 
+    -webkit-box-shadow: $param1 $param2 $param3 $param4 $color;
+     -moz-box-shadow: $param1 $param2 $param3 $param4 $color;
+      -ms-box-shadow: $param1 $param2 $param3 $param4 $color;
+          box-shadow: $param1 $param2 $param3 $param4 $color;
+}

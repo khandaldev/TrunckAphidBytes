@@ -1,0 +1,25 @@
+﻿@model AphidBytes.Core.PaymentServices.StripePackages.DataPlans
+
+@{
+    var storageTitle = string.Format("{0}GB", Model.StorageAmount);
+    var storageAmount = string.Format("${0}", Math.Round(Model.Amount / 100d, 2));
+    if (Model.Amount == 0)
+    {
+        storageAmount = "FREE";
+    }
+}
+<div class="row dataplan-item">
+    <div class="col-xs-6 dataplan-title">
+        @storageTitle - @storageAmount
+    </div>
+    <div class="col-xs-6 dataplan-action">
+        @if (ViewBag.SelectedPlan == Model.PlanId)
+        {
+            <a href="@ViewBag.PlanUrl" class="addplan btn btn-plans selected" data-planid="@Model.PlanId">Selected</a>
+        }
+        else
+        {
+            <a href="@ViewBag.PlanUrl" class="addplan btn btn-plans" data-planid="@Model.PlanId">Select Plan</a>
+        }
+    </div>
+</div>

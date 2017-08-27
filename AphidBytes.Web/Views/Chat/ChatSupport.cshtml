@@ -1,0 +1,148 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@*<link rel="stylesheet" href="stylecss.css" type="text/css">
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="button_tabs/slider.css" type="text/css">
+
+
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery.cycle.all.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="button_tabs/prototype.js"></script>
+<script type="text/javascript" src="button_tabs/helper.js"></script>
+<script type="text/javascript" src="button_tabs/ajaxtabs.js"></script>*@
+
+
+
+
+
+<div class="aphidtise_wrap">
+
+    <div class="header_aphidtise">
+        <div class="menunav" style="width: 80%;">
+            <ul>
+                <li><a href="/Accounts/Services">Services</a></li>
+                <li><a href="/Accounts/LoginUser">Login</a></li>
+                <li><a href="#">The Gall</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="/Accounts/AboutUsPage">About Us</a></li>
+                <li><a href="/Accounts/Support">Support</a></li>
+            </ul>
+        </div>
+        <div id="logo">
+            <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+        </div>
+    </div>
+</div>
+<div class="about_headtext">
+    <p>Support > Contact Us</p>
+</div>
+<div class="about_headbg" style="height: 500px;">
+    <div style="margin: auto; float: none; height: 100%; width: 80%;">
+        <div class="supportvideo_tutorials">
+            <div class="contact_infocss_3">
+                <a>
+                    <img src="/images/live_chatbg.png"></a>
+                <p>Live Chat Support</p>
+
+            </div>
+
+            <style>
+                #chat {
+                    display: table;
+                    height: 200px;
+                    width: 200px;
+                    border: 1px solid #000;
+                }
+
+                .chatMessage {
+                    display: table-cell;
+                    vertical-align: bottom;
+                }
+            </style>
+
+            <div class="contact_infocss">
+                <div class="contact_bgframe">
+                    <img src="/images/chatbox_bg_a1.png">
+                    <div id="chattbox" style="word-wrap: break-word; width: 44%; background: none repeat scroll 0px 0px white; position: absolute; overflow-y: scroll; height: 67%; top: 101%; left: 28%; margin: -50% auto auto;">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+<div id="wel_text" style="height: auto; position: absolute; width: 21%; margin-left: 55.5%; margin-top: -31%; text-align: center; color: white;"></div>
+<div id="e_text" style="height: auto; position: absolute; width: 21%; margin-left: 55.5%; margin-top: -24%; color: white;"></div>
+
+<div class="menunav_footerc1">
+    <ul>
+        <li><a href="#">Navigation  </a></li>
+        <li><a href="#">Menu    </a></li>
+        <li><a href="#">Advertise   </a></li>
+        <li><a href="#">Store     </a></li>
+        <li><a href="#">Terms    </a></li>
+        <li><a href="#">Privacy Policy </a></li>
+        <li><a href="/UserSponsored/Index">Sponsoring</a></li>
+    </ul>
+</div>
+
+<div id="#iframe"></div>
+
+
+
+<input id="msgtext" type="text" style="position: absolute; margin-top: -5%; margin-left: 55.5%; width: 16%; height: auto;" />
+<input id="sndbtn" type="button" style="position: absolute; margin-top: -5%; margin-left: 72.2%;" value="SEND" />
+
+
+
+<script src="~/Scripts/jquery.signalR-2.1.0.js" type="text/javascript"></script>
+<script src="signalr/hubs" type="text/javascript"></script>
+<script src="jquery.mCustomScrollbar.js"></script>
+<script>
+
+    $(document).ready(function () {
+        if ('@ViewBag.emsg' != '') {
+            $('#e_text').text('@ViewBag.emsg');
+            $('#chattbox').hide();
+            $('#msgtext').hide();
+            $('#sndbtn').hide();
+        }
+        if ('@ViewBag.msg' != '') {
+            $('#wel_text').text('@ViewBag.msg');
+            }
+        var chat = $.connection.chatHub;
+        
+    });
+        //$('#sndbtn').click(function () {
+        //    var a = $('#msgtext').val();
+        //    var html = "<div style=height: auto; margin: auto; position: absolute; right: 0px; vertical-align: top; z-index: 999; background: none repeat scroll 0px 0px rgb(211, 238, 211); left: 32%; text-align: right; top: 84%; width: 21%;">+a+</div>'";
+        //    $('#textm').html(a);
+        //});
+        (function ($) {
+
+            $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+            $(".browseInput").each(function (index) {
+                if (index > 3)
+                    $(this).remove();
+            });
+            $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+            $(window).load(function () {
+                $(".content").mCustomScrollbar();
+            });
+        })(jQuery);
+
+
+
+        //var mypets=new ddajaxtabs("pettabs", "petsdivcontainer")
+        //mypets.setpersist(false)
+        //mypets.setselectedClassTarget("link")
+        //mypets.init()
+
+
+</script>

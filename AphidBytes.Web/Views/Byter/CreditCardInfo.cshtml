@@ -1,0 +1,52 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.ByterAccountViewModel
+@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+    ViewBag.UsernameLabel = "Username to be Displayed";
+
+    Model.IsPasswordReadonly = true;
+    Model.IsUserNameReadonly = true;
+    ViewBag.SelectedPage = "acctinfo";
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/register")
+    @Styles.Render("~/Content/themes/base/css")
+}
+
+@section scripts{
+    @Scripts.Render("~/js/home/register.js")
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("~/Views/Byter/Shared/_ByterAccountNav.cshtml")
+
+        <div class="col-md-9">
+            @if (Model.Validation.HasCta)
+            {
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Partial("~/Views/Shared/_ValidationErrors.cshtml", Model.Validation)
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-sm-12">
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "payment-form", enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+                        @Html.Partial("~/Views/Shared/_StripePaymentForm.cshtml", Model);
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

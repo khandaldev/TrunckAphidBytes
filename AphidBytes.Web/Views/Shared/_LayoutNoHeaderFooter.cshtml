@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+   @* @RenderSection("JavaScript", required: false)*@
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/script.js"></script>
+    <script src="~/Scripts/jquery.horizontal.scroll.js"></script>
+  
+    <script src="~/Scripts/jquery.cycle.all.js"></script>
+    <script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+    <title>@(string.IsNullOrWhiteSpace(ViewBag.PageTitle) ? "AphidByte" : ViewBag.PageTitle)</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+   
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryFileUpload")
+    @Scripts.Render("~/bundles/ProgressBar")
+    @Styles.Render("~/bundles/PregressCss")
+  
+@*<script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+<link rel="stylesheet" href="~/Content/jquery.mCustomScrollbar.css" />
+<link rel="stylesheet" href="~/Content/style.css" />
+<link  rel="stylesheet" href="~/Content/styleresponsive.css" />*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#horiz_container_outer').horizontalScroll();
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            var moveLeft = 20;
+            var moveDown = -50;
+
+            $('a#trigger').hover(function (e) {
+                $('div#i-pop-up').show();
+                //.css('top', e.pageY + moveDown)
+                //.css('left', e.pageX + moveLeft)
+                //.appendTo('body');
+            }, function () {
+                $('div#i-pop-up').hide();
+            });
+
+            $('a#trigger').mousemove(function (e) {
+                $("div#i-pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+            var theDiv;
+            var theDiv1;
+
+            theDiv = $("#new");
+            theDiv1 = $("#new4");
+            theDiv2 = $("#newa6");
+            theDiv3 = $("#newb6");
+            theDiv4 = $("#newc6");
+            theDiv5 = $("#newd6");
+            theDiv6 = $("#newe6");
+            // fill();
+
+            $("#new2").click(function () {
+                // alert(theDiv.height());
+                var a = theDiv.scrollTop + 40;
+                //theDiv.children().slideUp( "slow", function() {});
+                theDiv.animate({ scrollTop: theDiv.scrollTop() + 60 }, 500);
+                //theDiv.scrollTop(theDiv.scrollTop() + 30,$("#new p"));
+            });
+            $("#new1").click(function () {
+                theDiv.animate({ scrollTop: theDiv.scrollTop() - 100 }, 1000);
+            });
+
+            $("#new5").click(function () {
+                // alert(theDiv.height());
+                var a1 = theDiv1.scrollTop + 40;
+                //theDiv.children().slideUp( "slow", function() {});
+                theDiv1.animate({ scrollTop: theDiv1.scrollTop() + 60 }, 500);
+                //theDiv.scrollTop(theDiv.scrollTop() + 30,$("#new p"));
+            });
+
+            $("#new6").click(function () {
+                theDiv1.animate({ scrollTop: theDiv1.scrollTop() - 100 }, 1000);
+            });
+
+            // fill();
+
+            $("#newa").click(function () {
+                // alert(theDiv.height());
+                var a2 = theDiv.scrollTop + 40;
+                //theDiv.children().slideUp( "slow", function() {});
+                theDiv2.animate({ scrollTop: theDiv2.scrollTop() + 60 }, 500);
+                //theDiv.scrollTop(theDiv.scrollTop() + 30,$("#new p"));
+            });
+            $("#newb").click(function () {
+                theDiv2.animate({ scrollTop: theDiv2.scrollTop() - 100 }, 1000);
+            });
+
+
+            $("#newd1").click(function () {
+                // alert(theDiv.height());
+                var a3 = theDiv.scrollTop + 40;
+                //theDiv.children().slideUp( "slow", function() {});
+                theDiv3.animate({ scrollTop: theDiv3.scrollTop() + 60 }, 500);
+                //theDiv.scrollTop(theDiv.scrollTop() + 30,$("#new p"));
+            });
+            $("#newc1").click(function () {
+                theDiv3.animate({ scrollTop: theDiv3.scrollTop() - 100 }, 1000);
+            });
+
+
+            $("#newe1").click(function () {
+                // alert(theDiv.height());
+                var a4 = theDiv.scrollTop + 40;
+                //theDiv.children().slideUp( "slow", function() {});
+                theDiv4.animate({ scrollTop: theDiv4.scrollTop() + 60 }, 500);
+                //theDiv.scrollTop(theDiv.scrollTop() + 30,$("#new p"));
+            });
+            $("#newf1").click(function () {
+                theDiv4.animate({ scrollTop: theDiv4.scrollTop() - 100 }, 1000);
+            });
+
+            $("#newg1").click(function () {
+                // alert(theDiv.height());
+                var a5 = theDiv.scrollTop + 40;
+                //theDiv.children().slideUp( "slow", function() {});
+                theDiv5.animate({ scrollTop: theDiv5.scrollTop() + 60 }, 500);
+                //theDiv.scrollTop(theDiv.scrollTop() + 30,$("#new p"));
+            });
+            $("#newh1").click(function () {
+                theDiv5.animate({ scrollTop: theDiv5.scrollTop() - 100 }, 1000);
+            });
+
+            $("#newi1").click(function () {
+                // alert(theDiv.height());
+                var a6 = theDiv.scrollTop + 40;
+                //theDiv.children().slideUp( "slow", function() {});
+                theDiv6.animate({ scrollTop: theDiv6.scrollTop() + 60 }, 500);
+                //theDiv.scrollTop(theDiv.scrollTop() + 30,$("#new p"));
+            });
+            $("#newj1").click(function () {
+                theDiv6.animate({ scrollTop: theDiv6.scrollTop() - 100 }, 1000);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $(window).load(function () {
+                $("#button-bg").dialog({
+                    autoOpen: true,
+                    title: false,
+                    width: 400,
+                    height: 115,
+                    resizable: false,
+
+                });
+                $(".ui-dialog-titlebar").hide();
+                $("#dialog").siblings('div').attr("class", "ui-dialog ui-widget  ui-corner-all ui-draggable");
+                // $("#dialog").next(
+                // $("#button-bg").show();
+            });
+            $("#button-bg").dialog("open");
+            $("#button-c").click(function () {
+                window.location = "LoginUser";
+                $("#button-bg").dialog("close");
+
+            });
+
+            @*  $('#dialog').dialog({
+             autoOpen: false,
+             width: 200,
+             height: 200,
+             resizable: false,
+             title: 'Login Failed',
+             modal: true,
+           open: function(event, ui) {
+                $(this).load("@Url.Action("ProductPartial", "Popup")");
+            },
+    buttons: {
+        "Close": function () {
+            $(this).dialog("close");
+        }
+    }
+});*@
+            //$("#opener").click(function () {
+            //    $("#dialog").dialog("open");
+            //});
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            var moveLeft = 20;
+            var moveDown = -50;
+
+            $('a#trigger').hover(function (e) {
+                $('div#i-pop-up').show();
+                //.css('top', e.pageY + moveDown)
+                //.css('left', e.pageX + moveLeft)
+                //.appendTo('body');
+            }, function () {
+                $('div#i-pop-up').hide();
+            });
+
+            $('a#trigger').mousemove(function (e) {
+                $("div#i-pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+            });
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $(window).load(function () {
+                $("#button-bg1").dialog({
+                    autoOpen: false,
+                    title: false,
+                    width: 400,
+                    height: 115,
+                    resizable: false,
+
+                });
+                $(".ui-dialog-titlebar").hide();
+                $("#dialog").siblings('div').attr("class", "ui-dialog ui-widget  ui-corner-all ui-draggable");
+
+            });
+            $("#button-bg1").dialog("open");
+            $("#button-c1").click(function () {
+                window.location = "#";
+                $("#button-bg1").dialog("close");
+
+            });
+
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $(window).load(function () {
+                $("#button-bg2").dialog({
+                    autoOpen: false,
+                    title: false,
+                    width: 400,
+                    height: 115,
+                    resizable: false,
+
+                });
+                $(".ui-dialog-titlebar").hide();
+                $("#dialog").siblings('div').attr("class", "ui-dialog ui-widget  ui-corner-all ui-draggable");
+
+            });
+            $("#button-bg2").dialog("open");
+            $("#button-c2").click(function () {
+                window.location = "#";
+                $("#button-bg2").dialog("close");
+
+            });
+
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(window).load(function () {
+                $("#button-bg3").dialog({
+                    autoOpen: false,
+                    title: false,
+                    width: 400,
+                    height: 115,
+                    resizable: false,
+                });
+                $(".ui-dialog-titlebar").hide();
+                $("#dialog").siblings('div').attr("class", "ui-dialog ui-widget  ui-corner-all ui-draggable");
+
+            });
+            $("#button-bg3").dialog("open");
+            $("#button-c3").click(function () {
+                window.location = "#";
+                $("#button-bg3").dialog("close");
+
+            });
+
+        });
+    </script>
+
+    <style type="text/css">
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+        @RenderBody()
+          @RenderSection("scripts", required: false)
+    </div>
+  
+</body>
+</html>

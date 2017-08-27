@@ -1,0 +1,98 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.ToolsModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@* <!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AphidTise</title>
+<link rel="stylesheet" href="stylecss.css" type="text/css">
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery.cycle.all.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>*@
+ 
+<div class="tools_pagewrap">
+<div class="tools_pagewrap_subhead">
+<p><img src="/images/premium-tools.png"></p>
+<p><input type="text"></p>
+<p><a href="#"><img src="/Images/searcclick.png"></a></p>
+  
+<div class="tools_box4">
+ <ul>
+      <li><a href="#" class="beforeClick">@Html.ActionLink("All Tools", "PremiumTools", "Premium")</a></li>
+     @*<li><a href="WritersPad" id="tools Added" class="beforeClick">@Html.ActionLink("Tools I’ve Added", "ShowUserTools", "Premium")</a></li>*@
+           <li><a href="#"  class="beforeClick" id="toolsAdded">&#8226; Tools I’ve Added</a></li>
+      </ul>
+    
+</div>
+</div>
+<div class="tools_two_fram" >
+<div>
+   
+<div class="ad_module" id="Credit_Module" style="float:none; width:70%;">
+<p><img id="credits" src="/Images/credits-bg.png" style="margin-top:-25px;"></p>
+<p>Ad Module for Desktop</p>
+<p><img src="/Images/singpic.png" style="width:8%; float:right; margin-top:-35px;"></p>
+<div class="flash_lightcinnera1">
+<br/><br/>
+<p style="font-weight:bold;">Earn credits for watching ads, taking surveys, etc. This module provides a  desktop toolbar shortcut.</p>
+<p style="color:#dadb01; margin-top:10px;">Free</p>
+    /Images/greate_text.png
+</div>
+        
+</div>
+</div>
+
+<div>
+<div class="ad_module" style="float:none; width:70%;">
+    
+ @foreach (var item in Model.AllToolsInfo)
+    {
+
+<p><a href="WritersPad"><img id="Writers" src="@item.ImagePath" style="margin-top:-25px;"></a></p>
+<p id="tooltext">@item.ToolName</p>
+<p><img id="@item.ToolId" src="/Images/singpic.png" style="width:8%; float:right; margin-top:-35px;"></p> 
+<p><a href="WritersPad" ><img id="@item.ToolId" class="addtools"style="width:8%; float:right; margin-top:-35px;"></a></p>
+<div class="flash_lightcinnera1">
+<br/><br/>
+<p style="font-weight:bold;">@item.ToolINfo</p>
+<p style="color:#dadb01; margin-top:10px;">Free</p>
+</div>
+    }
+    
+</div>
+<div style="height:100px;"></div>
+
+</div>
+</div>
+
+
+
+<script>
+    $(document).ready(function (){
+        $('.addtools').click(function () {
+            var id1 = this.id;
+            var txttool = $("#tooltext").text();
+            $.post('/Premium/ShowUserTools', {
+                ID:id1,Text:txttool
+            });
+        });
+       
+   $('.beforeClick').click(function (){
+       $('.beforeClick').css('color',"#fff");
+       $(this).css('color', "#6f9a49");
+      
+         
+   });
+});
+</script>
+
+
+ 
+
+
+

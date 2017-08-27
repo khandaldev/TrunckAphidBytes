@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eeacee1229e74a01948f076b921afc73" Name="Diagram1" ZoomLevel="35">
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.SocialNetworkLogin" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_BCMSErrorLog" Width="1.5" PointX="2.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_ByterMessage" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_ChannelSubscription" Width="1.5" PointX="10.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_FeedBack" Width="1.5" PointX="10.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_Message" Width="1.5" PointX="10.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_MTUserSubscription" Width="1.5" PointX="5.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_PlayList" Width="1.5" PointX="7.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_SendLinkToMT" Width="1.5" PointX="12.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_SocialNetworkStatus" Width="1.5" PointX="8.375" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_Surveys" Width="1.5" PointX="12.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_TotalCredits" Width="1.5" PointX="12.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_UrlLinkSites" Width="1.5" PointX="12.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_UserInfo" Width="1.5" PointX="14.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblAd" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblAllGenerateClone" Width="1.5" PointX="14.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblAudioInterruption" Width="1.5" PointX="5.25" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblBasicGenerateClone" Width="1.5" PointX="9.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblCategory" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblChannelPage" Width="1.5" PointX="14.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblCreateLinkPost" Width="1.5" PointX="11.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblCreditDetail" Width="1.5" PointX="16.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblDataStoragePlan" Width="1.5" PointX="16.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblFavourite" Width="1.5" PointX="16.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblForgetPassword" Width="1.5" PointX="16.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblInterruptedBasicAudioFile" Width="1.5" PointX="13.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblInterruptedFile" Width="1.5" PointX="15.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblMasGenClonesType" Width="1.5" PointX="17.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblMasterAccountType" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblMasterAdsType" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblMasterCatType" Width="1.5" PointX="18.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblMasterCredit" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblMerchantAccount" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblPersonAddress" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblPostingStatu" Width="1.5" PointX="18.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblPremiumGeterateClone" Width="1.5" PointX="18.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblRelease" Width="1.5" PointX="18.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblReleaseUpdate" Width="1.5" PointX="19.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblSecurityQuestion" Width="1.5" PointX="0.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblSocialNetwork" Width="1.5" PointX="8" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblSurveyQuestion" Width="1.5" PointX="0.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblTool" Width="1.5" PointX="20.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblToolsInfo" Width="1.5" PointX="5.375" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblUserActivation" Width="1.5" PointX="20.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblUsersSponsored" Width="1.5" PointX="20.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblVideoInterruption" Width="1.5" PointX="5.25" PointY="44.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblWaterMarkUpInterruption" Width="1.5" PointX="5.25" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblAdmin" Width="1.5" PointX="11.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblToolFile" Width="1.5" PointX="17.75" PointY="21.5" IsExpanded="true" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tbl_SocialNetworkStatus_tblCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblAds_tblMasterAdsType" ManuallyRouted="false" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblAds_tblMasterCredits" ManuallyRouted="false" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblAds_tblSurveyQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblSocialNetwork_tblCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblMerchantAccount_tblMasterAccountType" ManuallyRouted="false" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblMerchantAccount_tblPersonAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblMerchantAccount_tblSecurityQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblToolsInfo_tblToolsInfo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblUser" Width="1.5" PointX="3" PointY="43.875" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblAudioInterruption_tblUsers" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblVideoInterruption_tblUsers" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblWaterMarkUpInterruption_tblUsers" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_AphidLabSoftware" Width="1.5" PointX="20.375" PointY="21.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_AphidLabVideoUpload" Width="1.5" PointX="14.375" PointY="22.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblAphidlabAccount" Width="1.5" PointX="3" PointY="18.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblAphidTiseAccount" Width="1.5" PointX="6" PointY="17.625" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblPremiumAccount" Width="1.5" PointX="7.5" PointY="26.5" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblAphidlabAccount_tblPersonAddress" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblAphidlabAccount_tblSecurityQuestions" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblAphidTiseAccount_tblMasterAccountType" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblAphidTiseAccount_tblPersonAddress" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblAphidTiseAccount_tblSecurityQuestions" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblPremiumAccount_tblAudioInterruption" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblPremiumAccount_tblMasterAccountType" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblPremiumAccount_tblPersonAddress" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblPremiumAccount_tblSecurityQuestions" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblPremiumAccount_tblWaterMarkUpInterruption" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblByterAccount" Width="1.5" PointX="4" PointY="12.5" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblByterAccount_tblMasterAccountType" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblByterAccount_tblPersonAddress" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblByterAccount_tblSecurityQuestions" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tbl_Messages" Width="1.5" PointX="22.375" PointY="19.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblBasicAccount" Width="1.5" PointX="2.2031006264514756" PointY="12.026632359263783" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblBasicAccount_tblSecurityQuestions" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.Feedback" Width="1.5" PointX="23.375" PointY="4.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.TrainingBatch" Width="1.5" PointX="23.375" PointY="8.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.Users" Width="1.5" PointX="23.375" PointY="12.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.Demo" Width="1.5" PointX="8.375" PointY="23.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblLoginTokens" Width="1.5" PointX="5.25" PointY="32.375" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblLoginTokens_tblLoginTokens" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblLoginTokens_tblMasterAccountType" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblLoginTokens_tblUsers" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblUsers_tblUsers" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblAccountTypes" Width="1.5" PointX="23.375" PointY="0.75" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_SocialNetworkLogin_tblUsers" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblPremiumCodes" Width="1.5" PointX="22.375" PointY="16.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblByteExternalSource" Width="1.5" PointX="24.625" PointY="26.625" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblByteExternalSourceClone" Width="1.5" PointX="26.875" PointY="26.75" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblByteSubType" Width="1.5" PointX="24.625" PointY="24" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblByteType" Width="1.5" PointX="22.375" PointY="25.5" />
+        <EntityTypeShape EntityType="jobseeders_com_aphidbyteModel.tblCollaborators" Width="1.5" PointX="5.375" PointY="23.75" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblByteExternalSource_tblByteType" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblByteExternalSourceClone_tblByteExternalSource" />
+        <AssociationConnector Association="jobseeders_com_aphidbyteModel.FK_tblByteSubType_tblByteType" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

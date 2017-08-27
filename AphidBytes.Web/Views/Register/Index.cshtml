@@ -1,0 +1,243 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true; 
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/register")
+}
+
+@section scripts{ 
+    <script type="text/javascript">
+        window.aphidByte = window.aphidByte || {};
+        window.aphidByte.services = window.aphidByte.services || {};
+        window.aphidByte.services.signUpFacebook = "@Url.Action("RegisterFacevook", "SocialNetworks")";
+        window.aphidByte.services.signUpGooglePlus = "@Url.Action("RegisterGooglePlus", "SocialNetworks")";
+        window.aphidByte.services.signUpEmailByter = "@Url.Action("ByterRegister", "Register")";
+        window.aphidByte.services.signUpEmailBasic = "@Url.Action("BasicRegister", "Register")";
+        window.aphidByte.services.signUpEmailPremium = "@Url.Action("PremiumRegister", "Register")";
+        window.aphidByte.services.signUpEmailAphidLab = "@Url.Action("AphidLabRegister", "Register")";
+    </script>
+    @Scripts.Render("~/js/home/register.js")
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-9 txt-left inner-navigation">
+            <ul class="no-bullets">
+                <li><a href="#" class="navigate-to-byter selected">Byter</a></li>
+                <li><a href="#" class="navigate-to-basic">Basic</a></li>
+                <li><a href="#" class="navigate-to-premium">Premium</a></li>
+                <li><a href="#" class="navigate-to-aphidlabs">AphidLabs</a></li> 
+            </ul>
+            <a href="#" class="account-comparison-button">See Full Account Comparison Chart</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="row">
+            <div class="col-md-1 row-offset-lrg">
+                <a href="#" class="navigate-left" style="display:none;">
+                    <img src="/img/navigate-left.png" alt="Left" />
+                </a>
+            </div>
+            <div class="col-md-10 byter-content">
+                <div class="account-types">
+                    <div class="account-logo">
+                        <img src="/img/byter-account.png" alt="byter account" />
+                    </div>
+                    <h2 class="byter">Byter Account</h2>
+                    <ul>
+                        <li>Receive free news and updates on movies, music, eBooks, etc</li>
+                        <li>Create playlists from files within the Gall</li>
+                        <li>Registering enters you into our membership participation program to receive rewards</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 basic-content" style="display: none;">
+                <div class="account-types">
+                    <div class="account-logo">
+                        <img src="/img/basic-account.png" alt="basic account" />
+                    </div>
+                    <h2 class="basic">Basic Account</h2>
+                    <ul>
+                        <li>Receive free news and updates on movies, music, eBooks, etc.</li>
+                        <li>Upload media files and clone internet locations</li>
+                        <li>View web analytics on your clones</li>
+                        <li>Public User Channel</li>
+                        <li>Use Basic Account “Widgets” to increase marketing and select widgets of choice to maximize clientele experience</li>
+                        <li>Create playlists from files within the Gall</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 premium-content" style="display: none;">
+                <div class="account-types">
+                    <div class="account-logo">
+                        <img src="/img/premium-account.png" alt="premium account" />
+                    </div>
+                    <h2 class="premium">Premium Account</h2>
+                    <ul>
+                        <li>Receive free news and updates on movies, music, eBooks, etc.</li>
+                        <li>Upload media files and clone internet locations</li>
+                        <li>View web analytics on your clones</li>
+                        <li>Public User Channel</li>
+                        <li>Use Premium Account “Widgets” to increase marketing and select widgets of choice to maximize clientele experience</li>
+                        <li>Create playlists from files within the Gall</li>
+                        <li>Upload Store Item Locations in Store</li>
+                        <li>Verified User</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 aphidlabs-content" style="display: none;">
+                <div class="account-types">
+                    <div class="account-logo">
+                        <img src="/img/aphidlabs-account.png" alt="aphidlabs account" />
+                    </div>
+                    <h2 class="aphidlabs">AphidLabs Account</h2>
+                    <ul>
+                        <li>Receive free news and updates on movies, music, eBooks, etc.</li>
+                        <li>Post portfolio of your works</li>
+                        <li>Public User Channel</li>
+                        <li>Upload video file locations</li>
+                        <li>Upload software and documents</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-1 row-offset-lrg">
+                <a href="#" class="navigate-right">
+                    <img src="/img/navigate-right.png" alt="Left" />
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-8 txt-right byter-content">
+                <span class="price">Free</span> 
+            </div> 
+            <div class="col-md-4 col-md-offset-8 txt-right basic-content" style="display:none;">
+                <span class="price">$79.99</span>
+            </div> 
+            <div class="col-md-4 col-md-offset-8 txt-right premium-content" style="display:none;">
+                <span class="price">&nbsp;</span>
+            </div> 
+            <div class="col-md-4 col-md-offset-8 txt-right aphidlabs-content" style="display:none;">
+                <span class="price">$79.99</span>
+            </div> 
+        </div>
+
+        <div class="row button-content">
+            <div class="col-md-12 text-center">
+                <div class="social-group">
+                    <img src="~/img/fb-sq.png" alt="facebook" />
+                    <a href="#" class="btn btn-social btn-medium btn-facebook">
+                        Sign Up with Facebook
+                    </a>
+                </div>
+                <div class="social-group">
+                    <img src="~/img/gp-sq.png" alt="google plus" />
+                    <a href="#" class="btn btn-social btn-medium btn-googleplus">
+                        Sign Up with Google Plus
+                    </a>
+                </div>
+                <div class="social-group">
+                    <img src="~/img/email.png" class="email" alt="username or email">
+                    <a href="#" class="btn btn-social btn-medium btn-email">
+                        Sign Up with Email Address
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="comparison-chart" style="display: none;">
+        <div class="row">
+            <div class="col-md-12 txt-right">
+                <a href="#" class="close-button">
+                    <img class="responsive-img" src="~/img/close.png" alt="Close" />
+                </a>
+            </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row">
+                    <div class="col-sm-3 comparison-account-container">
+                        <div class="comparison-account">
+                            <div class="account-logo">
+                                <img src="/img/byter-account.png" alt="byter account" />
+                            </div>
+                            <h2 class="byter">Byter Account</h2>
+                            <ul>
+                                <li>Receive free news and updates on movies, music, eBooks, etc</li>
+                                <li>Create playlists from files within the Gall</li>
+                                <li>Registering enters you into our membership participation program to receive rewards</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 comparison-account-container">
+                        <div class="comparison-account">
+                            <div class="account-logo">
+                                <img src="/img/basic-account.png" alt="basic account" />
+                            </div>
+                            <h2 class="basic">Basic Account</h2>
+                            <ul>
+                                <li>Receive free news and updates on movies, music, eBooks, etc.</li>
+                                <li>Upload media files and clone internet locations</li>
+                                <li>View web analytics on your clones</li>
+                                <li>Public User Channel</li>
+                                <li>Use Basic Account “Widgets” to increase marketing and select widgets of choice to maximize clientele experience</li>
+                                <li>Create playlists from files within the Gall</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 comparison-account-container">
+                        <div class="comparison-account">
+                            <div class="account-logo">
+                                <img src="/img/premium-account.png" alt="premium account" />
+                            </div>
+                            <h2 class="premium">Premium Account</h2>
+                            <ul>
+                                <li>Receive free news and updates on movies, music, eBooks, etc.</li>
+                                <li>Upload media files and clone internet locations</li>
+                                <li>View web analytics on your clones</li>
+                                <li>Public User Channel</li>
+                                <li>Use Premium Account “Widgets” to increase marketing and select widgets of choice to maximize clientele experience</li>
+                                <li>Create playlists from files within the Gall</li>
+                                <li>Upload Store Item Locations in Store</li>
+                                <li>Verified User</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 comparison-account-container">
+                        <div class="comparison-account">
+                            <div class="account-logo">
+                                <img src="/img/aphidlabs-account.png" alt="aphidlabs account" />
+                            </div>
+                            <h2 class="aphidlabs">AphidLabs Account</h2>
+                            <ul>
+                                <li>Receive free news and updates on movies, music, eBooks, etc.</li>
+                                <li>Post portfolio of your works</li>
+                                <li>Public User Channel</li>
+                                <li>Upload video file locations</li>
+                                <li>Upload software and documents</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+                <br />
+                <br />
+                <p class="smalltext">*Music and Video files post for 48 hours, after 48 hours the clone internet sites are where viewers have to stream the file.</p>
+            </div> 
+        </div>
+    </div>
+</div>

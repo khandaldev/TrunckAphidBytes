@@ -1,0 +1,79 @@
+$color_1: black;
+
+.main_content {
+	.right_content {
+		padding-left: 0px;
+		padding-top: 5em;
+	}
+}
+.which_account {
+	.close_icon {
+		text-align: right;
+	}
+	.heading {
+		text-align: center;
+		padding: 40px 0px;
+		img {
+			margin: 0px;
+		}
+		h4 {
+			font-size: 21px;
+		}
+	}
+	.listing {
+		margin: 0px;
+		.listing_left {
+			margin: 0px;
+		}
+		.listig_block {
+			padding-bottom: 40px;
+			li {
+				position: relative;
+				padding-left: 20px;
+				margin: 0px;
+				position: relative;
+				padding-left: 20px;
+				margin: 0px;
+				a {
+					font-size: 14px;
+					color: $color_1;
+				}
+				&::after {
+					position: absolute;
+					content: "";
+					width: 3px;
+					height: 3px;
+					left: 0px;
+					top: 11px;
+					background: black;
+				}
+			}
+		}
+		.listing_right {
+			text-align: center;
+			padding-bottom: 40px;
+			img {
+				float: right;
+				display: block;
+				padding-bottom: 10px;
+				margin: 0px auto;
+			}
+			span {
+				text-align: right;
+				display: block;
+				clear: both;
+				&:after {
+					position: absolute;
+					content: "";
+					left: 0px;
+					right: 150px;
+					border: 1px dashed #a2a2a2;
+					bottom: 50px;
+				}
+			}
+		}
+		.listingright_block {
+			position: relative;
+		}
+	}
+}

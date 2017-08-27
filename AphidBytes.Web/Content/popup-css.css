@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+#confirm {display:none;}
+
+/* Overlay */
+#confirm-overlay {background-color:#eee;}
+
+/* Container */
+#confirm-container {
+	height:140px; width:420px; color: #FFFFFF;
+    font-family: MyWebFont;
+    font-size: 14px;
+	 text-align:left; background:#131313; border:2px solid #809c46;
+	
+	}
+#confirm-container .header span {padding-left:8px;}
+#confirm-container .message {color:#FFF; font-size:14px; margin:0; padding: 40px 4px 15px 8px;}
+#confirm-container .buttons {line-height:26px; width:160px; float:right; padding:10px 8px 0;} 
+#confirm-container .buttons div {float:right; margin-left:4px; width:70px; height:26px; color:#FFF; font-weight:bold; text-align:center; background:url(../img/confirm/button.gif) repeat-x; border:1px solid #bbb; cursor:pointer;} 
+#confirm-container a.modal-close,
+#confirm-container a.modal-close:link,
+#confirm-container a.modal-close:active,
+#confirm-container a.modal-close:visited {text-decoration:none; font-weight:bold; position:absolute; right:10px; top:2px; color:#fff;}
+#confirm-container a.modal-close:hover {color:#ccc;}

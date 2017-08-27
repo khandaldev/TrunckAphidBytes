@@ -1,0 +1,193 @@
+﻿@import "partials/mixins";
+@import "partials/variables";
+
+$used-space: #fafafa;
+$free-space: #91cc4e;
+
+.data-plan-check { 
+    img { 
+        float: left;
+        max-height: 64px;
+    }
+    
+    p { 
+        float: left;
+        line-height: 64px;
+    }
+
+    .posttext2 { 
+        display: block;
+        margin-top: -48px;
+        font-size: 10px;
+    }
+}
+
+
+.byter-girt-gt { 
+    @include border-radius(5px); 
+    border: 1px solid $dark-gray; 
+
+    .used-space { 
+        width: 50%;
+        display: inline-block;
+        float: left;
+        background-color: $used-space;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .free-space { 
+        width: 50%;
+        display: inline-block;
+        float: left;
+        background-color: $free-space;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    p { 
+        line-height: 2em;
+        vertical-align: middle;
+        margin: 0;
+    }
+
+   
+}
+
+ .smalltext { 
+        font-size: 10px;
+    }
+
+.header-img { 
+    img { 
+        max-height: 64px;
+    }
+}
+
+.dataplan-item { 
+    .dataplan-title { 
+        text-align: left; 
+        line-height: 3em; 
+        vertical-align: middle;
+    }
+
+    .dataplan-action { 
+        text-align: center; 
+        line-height: 3em; 
+        vertical-align: middle;
+    }
+}
+.inner-navigation { 
+    ul { 
+        a { 
+            color: $dark-gray; 
+            text-decoration: none; 
+
+            &:hover, &:focus { 
+                text-decoration: none; 
+            }
+
+            &.selected { 
+                color: $black;
+            }
+        }
+    }
+}
+
+.account-types { 
+    height: 300px; 
+    position: relative; 
+    
+    .account-logo {
+        text-align: center;  
+
+        img { 
+            max-height: 60px; 
+        }
+    }
+
+    ul { 
+        li { 
+            list-style-position: inside;
+            text-align: center; 
+            margin: 10px;
+        }
+    }
+
+    h2 {
+        font-size: 1.25em; 
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
+.close-button { 
+    img { 
+        max-height: 25px;
+    }
+}
+
+.comparison-account-container { 
+    background: $white;
+    @include box-shadow(0px, 3px, 5px, 0px, rgba(0,0,0,0.75)); 
+
+    .comparison-account { 
+        margin-top: 10%; 
+        min-height: 500px; 
+        position: relative; 
+
+        .account-logo {
+            text-align: center;  
+
+            img { 
+                margin-top: -65px; 
+                max-height: 60px; 
+            }
+        }
+
+        ul { 
+            padding: 0 1em;
+
+            li { 
+                list-style-position: inside;
+                text-align: center; 
+                margin: 15px 5px;
+            }
+        }
+
+        h2 {
+            font-size: 1.1em; 
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            &.byter { 
+                color: $byter-color;
+            }
+
+            &.aphidlabs {
+                color: $aphidlabs-color;
+            }
+
+            &.basic { 
+                color: $basic-color;
+            }
+
+            &.premium { 
+                color: $premium-color;
+            }
+        }
+    }
+}
+
+.price { 
+    color: $dark-green; 
+    font-size: 1.4em; 
+    font-weight: bold; 
+    text-transform: uppercase;
+}

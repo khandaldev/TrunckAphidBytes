@@ -1,0 +1,91 @@
+﻿@import "partials/mixins";
+@import "partials/variables";
+@import "partials/layout";
+
+body {
+    background: url("/img/aphid-logo-a.png") no-repeat fixed center center rgba(255, 255, 255, 1) !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0; 
+    padding-bottom: 70px;
+    background-size: cover !important;
+}
+
+.terms-container { 
+
+}
+
+.profile-picture { 
+    max-height: 30px;
+    border-radius: 15px;
+    border: 2px solid #999;
+}
+
+.navbar-main-center { 
+    width: 80%; 
+
+    li { 
+        width: 20%; 
+        text-align: center;
+    }
+}
+
+.navbar-center { 
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    display: table;
+    text-align: center; 
+    float: none; 
+
+    li { 
+        width: 20%;
+    }
+
+    &.navbar-footer { 
+        li { 
+            width: 14%;
+        }
+    }
+}
+
+.navbar-default { 
+    @include rgba(background-color, white, 0.8, white); 
+
+    &.footer-nav {
+        background-color: #2C343E; 
+
+        .navbar-nav  { 
+            li { 
+                a { 
+                    color: white; 
+                }
+            } 
+        }
+    }
+}
+
+.navbar-brand {
+    padding: 0; 
+
+    img { 
+        max-height: 50px; 
+    }
+}
+
+.breadcrumb-trail { 
+    display: none;
+
+    p { 
+        text-align:left;
+        line-height: 40px; 
+        vertical-align: middle;
+    }
+    .back-button { 
+        img { 
+            max-height: 40px;
+            float:left; 
+        }
+    }
+}
+

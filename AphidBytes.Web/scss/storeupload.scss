@@ -1,0 +1,102 @@
+//colors
+$color_fern_frond_approx: #557321;
+$color_log_cabin_approx: #232323;
+$color_chicago_approx: #605e5e;
+$color_mine_shaft_approx: #2f2e2e;
+$white: #fff;
+
+.storeupload {
+	.storeupload_heading {
+		text-align: center;
+		padding-right: 95px;
+		padding-bottom: 50px;
+		img {
+			width: 41px;
+			margin-left: 30px;
+			margin-bottom: 10px;
+		}
+		span {
+			font-size: 12px;
+		}
+		a {
+			display: block;
+			font-size: 12px;
+			color: $color_fern_frond_approx;
+			font-weight: bold;
+		}
+	}
+	.storeupload_form {
+		.form_group {
+		}
+		.form-group {
+			label {
+				font-size: 14px;
+				color: $color_log_cabin_approx;
+				text-align: right;
+				line-height: 15px;
+			}
+			.form-control {
+				height: 34px;
+			}
+			span {
+				font-size: 8px;
+				color: $color_chicago_approx;
+			}
+			textarea.form-control {
+				height: 150px;
+			}
+			.category .form-control .col-sm-4 {
+			}
+		}
+		.screenshot_listing {
+			text-align: center;
+			padding: 40px 0;
+			h5 {
+				font-size: 11px;
+				padding-bottom: 30px;
+			}
+			ul li {
+				border: 1px solid $color_mine_shaft_approx;
+				background-color: $white;
+				//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+				border-radius: 5px;
+				display: inline-block;
+				width: 80px;
+				height: 80px;
+				line-height: 80px;
+				margin-right: 20px;
+				vertical-align: top;
+				img {
+					width: 100%;
+				}
+				span {
+					font-size: 51px;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.checkbox {
+		width: 220px;
+		margin: 20px 0;
+		input {
+			float: right;
+			width: 20px;
+			height: 20px;
+			margin-right: 10px;
+			margin-top: 20px;
+		}
+		span {
+			font-size: 11px;
+			float: left;
+			width: 100%;
+			margin-left: -30px;
+			padding-left: 30px;
+			strong {
+				display: block;
+				font-weight: 500;
+				font-size: 17px;
+			}
+		}
+	}
+}

@@ -1,0 +1,641 @@
+﻿@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.MessageModel
+<script type="text/javascript">
+    $(function () {
+        var moveLeft = 20;
+        var moveDown = -50;
+
+        $('a#trigger').hover(function (e) {
+            $('div#i-pop-up').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up').hide();
+        });
+
+        $('a#trigger').mousemove(function (e) {
+            $("div#i-pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    $('body').on('click', '#Delete', function () {
+        var id = $('#MessageId').val();
+
+        $.ajax({
+            type: 'Post',
+            url: 'MessageDelete',
+            async: true,
+            data: { MessageID: id },
+            success: function (result) {
+                if (result == true) {
+                    alert("Message Deleted Successfully!!!");
+                    window.location.reload();
+                }
+            },
+            error: function (a, b, c) {
+
+                alert(a);
+            }
+        });
+
+
+
+        $(function () {
+            var moveLeft = -60;
+            var moveDown = -80;
+
+            $('a#trigger2').hover(function (e) {
+                $('div#i-pop-up2').show();
+                //.css('top', e.pageY + moveDown)
+                //.css('left', e.pageX + moveLeft)
+                //.appendTo('body');
+            }, function () {
+                $('div#i-pop-up2').hide();
+            });
+
+            $('a#trigger2').mousemove(function (e) {
+                $("div#i-pop-up2").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+            });
+
+        });
+    });
+
+</script>
+
+<style>
+    /* CSS Document */
+
+
+    h1 {
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .container {
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .tabs {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        // background: #2c3e50;
+        border-bottom: 3px solid #525252;
+    }
+
+        .tabs li {
+            display: inline-block;
+            margin: 0;
+            padding: 10px 20px 5px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            line-height: 2em;
+            color: #FFF;
+            font-family: MyWebFont;
+            width: 20%;
+            text-align: center;
+        }
+
+            .tabs li:hover {
+                background: #d35400;
+            }
+
+            .tabs li.current {
+                // background: #e67e22;
+                color: #FFF;
+                font-family: MyWebFont;
+            }
+
+    .tab-content {
+        display: none;
+        // background: #ededed;
+        padding: 15px;
+        line-height: 1.4;
+        font-family: MyWebFont;
+    }
+
+        .tab-content.current {
+            display: inherit;
+            font-family: MyWebFont;
+        }
+
+    .col-1box {
+        display: block;
+        padding-left: 0;
+    }
+
+        .col-1box li {
+            background-image: url("/images/inbox_ngimg.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            color: #fff;
+            font-size: 14px;
+            height: 100%;
+            list-style: outside none none;
+            margin: auto auto 25px;
+            min-height: 235px;
+            padding: 34px;
+        }
+
+            .col-1box li p {
+                width: 80%;
+                float: left;
+            }
+
+    .colwth-a {
+        width: 20% !important;
+    }
+
+    .edit_ing img {
+        height: auto;
+        padding-bottom: 0;
+        padding-top: 2px;
+        text-align: center;
+        width: 40px;
+    }
+</style>
+
+<div class="aphidtise_wrap">
+
+    <div class="header_aphidtise">
+        <div class="menunav">
+            <ul>
+                <li><a href="~/Accounts/Services" class="sect_l">Services</a></li>
+                <li><a href="~/Accounts/LoginUser">Login</a></li>
+                <li><a href="#">The Gall</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="~/Accounts/AboutUsPage">About Us</a></li>
+                <li><a href="~/Accounts/Support">Support</a></li>
+            </ul>
+        </div>
+        <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a> </div>
+    </div>
+</div>
+<div id="button-bg1" class="hidden popupyesorno" style="display:none; position:absolute; z-index:999; margin-top:17%; margin-left:36%;" onclick="$(this).hide();">
+
+    <div class=" errormsg" style="display: block; margin-top:10%; margin-left:3%; padding: 0; text-align: center; width: 100% !important; " onclick="$(this).hide();">
+        Your Message Has Been Sent
+    </div>
+
+
+</div>
+@*@if (ViewBag.Sucess)
+{
+    
+   
+}*@
+<div class="@*aphidtise_wrap*@">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile"><img src="@Url.Action("Overview", "Basic")" height="100px" /> </div>
+                <div class="profiletext-ct-info"> <img src="/images/clone-pa.png"> Basic Account</div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="backgroundPopup"></div>
+<div style="display:none;" id="upgradebox">
+    <div class="bg_othr_box">
+        <div class="bg_othr_box_1">
+            <p>Account Upgraded Successfully Completed</p>
+            <p></p>
+            <p style="margin-top: 22px; margin-left: 137px;"><img src="~/Images/right-icone.png"></p>
+
+            <p style="margin-top: 88px;"><a href="~/Accounts/Logout">OK</a></p>
+        </div>
+    </div>
+</div>
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Error Occured Try Again
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" />
+    </div>
+
+</div>
+
+
+
+<div id="yesno" style="display:none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div>
+                <p>Are you sure to Upgrade?</p>
+            </div>
+            <div>
+                <p id="yes"><a href="#">Yes</a></p>
+                <p id="no"><a href="#">No</a></p>
+            </div>
+        </div>
+    </div>
+</div>@*YesNo PopUP*@
+
+<div id="confmBox" class="confirm_send_mail_div sendme_con" style="display:none;">
+
+    <div>
+        <h5 class="sendme_con_h5">
+            Confirmation:<img onclick="close_confmBox_popup()" class="cancel_delete-link" style="cursor: pointer; float: right; margin-top: 7px;" src="/Images/close.png">
+        </h5>
+        <p style="margin-top:8%;">
+            <strong>Are you Sure want to Upgrade ?</strong>
+            <span id="Ncontacts">
+            </span>
+        </p>
+
+
+        <div class="btn-group sendme_con_groupbtn">
+            <button id="confrm_yes" class="btn add  sendme_con_yes" onclick="UpgradeTOPremium()">Yes</button>
+            <div class="btn cancel sendme_con_no" onclick="close_confmBox_popup()" style="cursor: pointer;">No</div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="header_aphidtise">
+ 
+    <div class="headertab_aphidtise">
+        <div class="aphidbyteleft">
+            <ul class="aphidbytelist-tq">
+                <li><a href="BAsicAccountInfo">Account Info</a></li>
+                <li></li>
+                <li><a href="Uploadmedia">Upload</a></li>
+                <li></li>
+                <li>
+                    <a href="Message" class="basicselects">Messages</a>
+                    <span class="basiccircle">@Model.listMessageModel.Where(m => m.IsRead == false).Count()</span>
+                </li>
+                <li>@*<img class="rltop_s" src="/images/right_line.png" height="2">*@</li>
+                <li><a href="bytetracker">Byte Tracker</a></li>
+                <li></li>
+                <li><a href="History">History</a></li>
+                <li></li>
+                <li><a href="Playlist">Playlists</a></li>
+                <li></li>
+                <li><a href="Dataplan">Data Plan</a></li>
+                <li></li>
+            </ul>
+
+            <div class="dsbox">
+                <samp><img src="../images/widegts_img.png"></samp>
+            </div>
+
+            <div class="info-footer-social"></div>
+            @*<div class="aphidbyteleftright-basic"></div>*@
+        </div>
+        <p class="info-p" style="margin-bottom:25px;">Messages</p>
+        @*@if (Model.NewCount != 0)
+            {
+                <div style="position: absolute; background-color: red; color: white; margin-top: -56px; margin-left:0px; padding: 5px; border-radius: 67px;">@Model.NewCount</div>
+            }*@
+        <div style="height:600px; width:100%;">
+            <div id="content_1" class="aphidbytecenter content scrollWidth mCustomScrollbar _mCS_1" style="margin: 5px 0 0 0px;">
+
+                <div style="position:relative; height:100%; overflow:hidden; max-width:100%;" id="mCSB_1" class="mCustomScrollBox mCS-light">
+                    <div style="position:relative; top:0;" class="mCSB_container">
+                        <div class="mecscroll2" style="width: 90%;">
+                            @using (Html.BeginForm(null, null, FormMethod.Post, new {@id="formdata", enctype = "multipart/form-data" }))
+                            {
+                                <div class="container">
+
+                                    <ul class="tabs">
+                                        <li class="tab current" data-tab="inboxtab" onclick="FetchMessageDetails()">Inbox</li>
+                                        <li class="tab edit_ing" data-tab="edittab"><img src="/images/inboxediticon.png" /></li>
+                                        <li class="tab" data-tab="outboxtab">Outbox</li>
+
+                                    </ul>
+                                    <span id="PartialMessage">
+                                        @Html.Partial("_MessageInbox")
+                                    </span>
+
+                                    <div id="edittab" class="tab-content">
+                                        <ul class="col-1box">
+                                            <li>
+                                                <p class="colwth-a">To :</p>
+                                                <p>@Html.TextBoxFor(model => model.receiver_Email)</p>
+                                                <p class="colwth-a">Username :</p>
+                                                <p>@Html.TextBoxFor(model => model.receiver_username)</p>
+                                                <p class="colwth-a">Subject :</p>
+                                                <p>@Html.TextBoxFor(model => model.message_subject)</p>
+                                                <p class="colwth-a">Body :</p>
+                                                <p>@Html.TextBoxFor(model => model.message_body)</p>
+                                            </li>
+                                        </ul>
+                                        <input type="button" id="SentMsg" value="Send" onclick=" return Data()" />
+                                    </div>
+                                    
+                                        <div id="outboxtab" class="tab-content">
+                                            <ul class="col-1box">
+                                                @foreach (var item in Model.Outboxlist)
+                                                {
+                                                    <li>
+                                                        <p class="colwth-a">To :</p>
+                                                        <p id="sendername">@item.receiver_username</p>
+                                                        <p class="colwth-a">Message :</p>
+                                                        <p>@item.message_body</p>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    
+                                </div><!-- container -->
+                            }
+
+                            <div id="mec-footer">
+                                <div id="i-pop-up">
+                                    <p>
+                                        Channels change when Category is changed. For example. If “Byte Your Music” is selected, Reverbnation, Myspace, Soundclick, etc. is shown as the options to select. If Videos is selected, Youtube, Dailymotion, etc. are the options. Etc. Same for ebooks, art and photos
+
+                                    </p>
+                                </div>
+
+                                @*<div id="i-pop-up2">
+                                       <p>
+                                     Links to Post category does not upload a file. It can only select a pre-existing Clone of theirs, that is already in The Matrix.
+
+                                       </p>
+                                    </div>*@
+                            </div>
+
+
+                            <script>
+                                function Data()
+                                {
+                                    var to=$("#receiver_Email").val();
+                                    var user=$("#receiver_username").val();
+                                    var subject=$("#message_subject").val();
+                                    var body=$("#message_body").val();
+                                    if (to == "" || user == "" || subject == "" || body=="")
+                                    {
+                                        return false;
+                                    }
+                                else
+                                    {
+
+                                       
+                                        $("#formdata").submit();
+                                        $("#button-bg1").attr('style', 'display:block');
+                                       
+                                       
+
+                                        
+
+                                }
+                                    
+                                }
+                                $(document).ready(function () {
+                                    $("#receiver_Email").val("");
+                                    $("#receiver_username").val("");
+                                    $("#message_subject").val("");
+                                    $("#message_body").val("");
+
+                                    $('ul.tabs li').click(function () {
+                                        var tab_id = $(this).attr('data-tab');
+
+                                        $('ul.tabs li').removeClass('current');
+                                        $('.tab-content').removeClass('current');
+
+                                        $(this).addClass('current');
+                                        $("#" + tab_id).addClass('current');
+                                    });
+
+                                });
+                            </script>
+
+
+                            <script src="jquery.mCustomScrollbar.js"></script>
+
+                            <script>
+                                (function ($) {
+
+                                    $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+                                    $(".browseInput").each(function (index) {
+                                        if (index > 3)
+                                            $(this).remove();
+                                    });
+                                    $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+                                    $(window).load(function () {
+                                        $(".content").mCustomScrollbar();
+                                    });
+                                })(jQuery);
+                            </script>
+
+                            <script type="text/javascript">
+                                
+                                function FetchMessageDetails() {
+                                    $.ajax({
+                                        type: 'Post',
+                                        url: 'MessageInbox',
+                                        async: true,
+                                        success: function (result) {
+                                            $("#PartialMessage").html(result);
+
+                                        },
+                                        error: function (a, b, c) {
+
+                                            alert(a);
+                                        }
+                                    });
+
+                                }
+                                $(document).ready(function () {
+
+                                    $('#upgradePremium').click(function () {
+                                        $("#yesno").attr('style', 'display:block');
+                                    });
+                                    $("#yes").click(function () {
+                                        $("#yesno").attr('style', 'display:none');
+                                        $.post('/Basic/UpgardeToPremium', {}, function (data) {
+                                            if (data == "Success") {
+
+                                                $("#upgradebox").attr('style', 'display:block');
+                                            } else { $("#button-bg3").attr('style', 'display:block'); }
+
+                                        });
+
+                                    });
+                                    $("#no").click(function () {
+                                        $("#yesno").attr("style", "display:none");
+                                    });
+
+
+                                    $("#basicbyter").click(function () {
+                                        $("#byterclick").toggle();
+                                    });
+
+                                    $("#byterclick li a").click(function () {
+                                        var text = $(this).html();
+                                        $("#basicbyter span").html(text);
+                                        $("#byterclick").hide();
+                                    });
+
+                                    $(document).bind('click', function (e) {
+                                        var $clicked = $(e.target);
+                                        if (!$clicked.parents().hasClass("dropdownbyter"))
+                                            $("#byterclick").hide();
+                                    });
+
+
+                                    $("#basicbyterone").click(function () {
+                                        $("#byterclick2").toggle();
+                                    });
+
+                                    $("#byterclick2 li a").click(function () {
+                                        var text = $(this).html();
+                                        $("#basicbyterone span").html(text);
+                                        $("#byterclick2").hide();
+                                    });
+
+                                    $(document).bind('click', function (e) {
+                                        var $clicked = $(e.target);
+                                        if (!$clicked.parents().hasClass("dropdownbyter"))
+                                            $("#byterclick2").hide();
+                                    });
+
+                                    //$('body').on('click', '#inboxtab', function () {
+
+                                    //    $.ajax({
+                                    //        type: 'Post',
+                                    //        url: 'ReadMessages',
+                                    //        async: true,
+                                    //        success: function (result) {
+                                    //            if (result == "Success") {
+                                    //                //$(".basiccircle").html();
+                                    //                //alert($(this).find("#Showimage").attr('style'));
+                                    //                //$(this).find("#Showimage").hide();
+                                    //                $("#Showimage").hide();
+                                    //                var count = parseInt($(".basiccircle").html()) - 1;
+                                    //                $(".basiccircle").html(count);
+                                    //            }
+                                    //            else
+                                    //            {
+                                    //                $("#Showimage").hide();
+                                    //            }
+
+
+                                    //        },
+                                    //        error: function (a, b, c) {
+
+                                    //            alert(a);
+                                    //        }
+                                    //    });
+
+                                    //});
+
+
+
+                                    $("#basicbytertwo").click(function () {
+                                        $("#byterclick3").toggle();
+                                    });
+
+                                    $("#byterclick3 li a").click(function () {
+                                        var text = $(this).html();
+                                        $("#basicbytertwo span").html(text);
+                                        $("#byterclick3").hide();
+                                    });
+
+                                    $(document).bind('click', function (e) {
+                                        var $clicked = $(e.target);
+                                        if (!$clicked.parents().hasClass("dropdownbyter"))
+                                            $("#byterclick3").hide();
+                                    });
+
+
+                                    $("#basicbyterfour").click(function () {
+                                        $("#byterclick4").toggle();
+                                    });
+
+                                    $("#byterclick4 li a").click(function () {
+                                        var text = $(this).html();
+                                        $("#basicbyterfour span").html(text);
+                                        $("#byterclick4").hide();
+                                    });
+
+                                    $(document).bind('click', function (e) {
+                                        var $clicked = $(e.target);
+                                        if (!$clicked.parents().hasClass("dropdownbyter"))
+                                            $("#byterclick4").hide();
+                                    });
+
+
+
+                                    $("#basicbyter5").click(function () {
+                                        $("#byterclick5").toggle();
+                                    });
+
+                                    $("#byterclick5 li a").click(function () {
+                                        var text = $(this).html();
+                                        $("#basicbyter5 span").html(text);
+                                        $("#byterclick5").hide();
+                                    });
+
+                                    $(document).bind('click', function (e) {
+                                        var $clicked = $(e.target);
+                                        if (!$clicked.parents().hasClass("dropdownbyter"))
+                                            $("#byterclick5").hide();
+                                    });
+
+
+
+                                });
+
+                                function readMsg(id) {
+                                    var divId = "inbox" + id;
+                                    $.ajax({
+                                        type: 'Post',
+                                        url: '@Url.Action("ReadMessages","Basic")',
+                                        data: ({ "msgId": id }),
+                                        async: true,
+                                        success: function (result) {
+                                            if (result == "Success") {
+                                                var count = parseInt($(".basiccircle").html());
+                                                if (count > 0) {
+                                                    count -= 1;
+                                                    $(".basiccircle").html(count);
+                                                    $('#' + divId + ' .Showimage').hide();
+                                                }
+                                            }
+                                        },
+                                        error: function (a, b, c) {
+                                            alert(a);
+                                        }
+                                    });
+                                }
+                            </script>
+
+
+                            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

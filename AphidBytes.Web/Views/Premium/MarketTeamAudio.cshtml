@@ -1,0 +1,145 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.PostingDataModel
+
+@Model.Credits
+  
+<div id="button-bg3"  class="hidden" style="display:none">
+ 
+    <div class="errormsg" >Already Send!!!!
+</div>
+    <div id="button-c2"><img src="/img/button_bgw.png" onclick="Remove();" /></div>
+
+</div>
+
+
+<div class="popbyter-mianz">
+<div class="popbyter-miansub">
+<div class="popbyter-subleft" style="width:60%;">
+  <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img id="Navigate" src="/images/bphidbyte_sicon.png" style="width:20%;"></a><br/>
+<p style="width:100%; cursor:pointer;" id="genclone"><a>RETURN TO GENERATE CLONES</a></p>
+
+</div>
+<div class="popbyter-sub1">
+
+</div>
+
+<div class="popbyter-footer1">  
+<div class="return-popupc">
+<p>@Model.Title</p>
+<p><img src="/Images/return-line-bg.png"></p>
+
+</div>
+<div class="flash_lightc" style="margin-bottom:97px;">
+<div class="flash_lightcinner">
+@if(Model.Title != null)
+    {
+<p>Are you sure you want to send the link “@Model.Title” to your Marketing Team?</p>
+    }
+<div class="flash_lightcinnera1">
+<br/>
+<p><a href="#" id="YES" style="color:#00b050;" onclick="LinkSend('@Model.Original','@Model.Title','@Model.TrackingNumber','@Model.Category','@Model.ComposerName','@Model.Credits')">Yes</a></p>
+<p><a href="#" style="color:#d10804;" onclick="SendData()">No</a></p>
+<br/><br/><br/><br/><br/>
+<img src="/img/audio-p.png" style="float:left; margin-top:-15px;">
+    @if (Model.Path != null && Model.TrackingNumber != null && Model.Title != null)
+    {
+<p style="width:100%; height:50px;">@Model.ComposerName New Music “@Model.Title” Listen here<samp><a href="#" style="color:#0364a2; width:100%;">@Model.Path/@Model.TrackingNumber</a></samp></p>
+    }
+</div>
+
+</div>
+</div>
+<div class="flash_lightc">
+<div class="flash_lightcinner">
+<div class="flashwave"><img src="/Images/byteraudiopbg6.png"></div>
+<div class="flash_wave">
+<p><a href="#"><img id="Playbtn" src="/Images/play-bt.png">
+<audio id="audiotr" src= @Model.Original></audio>
+
+   </a></p>
+<p><a href="#"><img id="Pausebtn" src="/Images/stop-bt.png"></a></p>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="b-preimum_2" style="margin-top:20px;"></div>
+<div class="flash_team">
+<p>“@Model.Title” has just been sent to your Marketing Team!</p>
+<p><img src="/img/flashing_flay.png"></p>
+</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    function Remove()
+    {
+        $("#button-bg3").hide();
+    }
+    $(document).ready(function () {
+        $("#genclone").click(function () {
+            window.location.href = "/Premium/GenerateClones";
+        });
+        
+       
+        $('.flash_team').hide();
+       
+    });
+    var abc = document.getElementById('audiotr');
+    $("#Playbtn").click(function () {
+        
+        abc.play();
+
+        $('.flash_team').hide();
+
+
+    });
+
+
+
+    $("#Pausebtn").click(function () {
+        abc.pause();
+    });
+    function LinkSend(path,title,track,cat,composer,credit)
+    {
+        //alert("dasd");
+        $.post('/Premium/SendtoSubscriber', { Path: path, Title: title, TrackingNo: track, CAT: cat, ComposerName: composer, Credits: credit }, function (data)
+        {
+          
+
+           // alert(data);
+            if (data == "Send Successful") {
+              
+                $('.flash_team').show();
+            }
+            else {
+                $("#button-bg3").dialog("open");
+            }
+            
+        });
+
+    }
+    function SendData()
+    {
+        window.location.href = '/Premium/Premiumbytetracker';
+    }
+
+
+   
+   
+     
+            
+       
+
+</script>
+
+
+
+

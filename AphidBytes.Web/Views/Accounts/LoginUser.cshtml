@@ -1,0 +1,87 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.LoginUser
+@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/login")
+}
+
+@section scripts { 
+<script>
+        $(document).ready(function () {
+
+            if ('@ViewBag.userdeleted' == '1') {
+                $("#del_confirm_box").attr('style', 'display:block;position: absolute; width: 83%; z-index: 999; margin-left: 8%;');
+            }
+        });
+</script>
+}
+
+@*Confirm PopUp*@
+<div style="display: none; position: absolute; width: 83%; z-index: 999; margin-left: 8%; " id="del_confirm_box">
+<div class="bg_othr_box">
+<div class="bg_othr_box_1">
+<P>User Account has already been deleted...</P>
+<p></p>
+<p style="margin-top: 22px; margin-left: 137px;"><img src="~/Images/right-icone.png"></p>
+
+<P style="margin-top: 88px;"><a href="~/Accounts/Logout">OK</a></P>
+</div>
+</div>
+</div>
+@*Confirm PopUp*@
+
+<div class="container-fluid">
+    <div class="row row-offset-lrg">
+        <div class="col-md-6 col-md-offset-3">
+                @if (Model.Validation.HasCta)
+                {
+                    <div class="row">
+                        <div class="col-sm-offset-3 col-sm-6">
+                            @Html.Partial("~/Views/Shared/_ValidationErrors.cshtml", Model.Validation)
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-sm-12">
+                        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                        {
+                            @Html.ValidationSummary(true)
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-6 txt-center">
+                                    <h3 class="login-header">Login</h3>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    @Html.TextBoxFor(model => Model.UserName, new { id = "txt-username", @class = "form-control", placeholder = "Username or Email Address" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    @Html.TextBoxFor(model => Model.Password, new { id = "txt-password", @class = "form-control", type = "password", placeholder = "Password" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-6 txt-right">
+                                    <button type="submit" class="btn-login">
+                                        Submit
+                                        <img src="~/img/login-out.png" alt="icon" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-6 txt-center">
+                                    <a href="@Url.Action("ForgetPassword", "Accounts")">Forgot Password?</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

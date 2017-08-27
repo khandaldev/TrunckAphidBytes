@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="/images/profilebg.png">
+                </div>
+                <div class="profiletext-ct-info">
+                    <img src="/images/clone-pa.png">
+                    AphidLAb Account
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

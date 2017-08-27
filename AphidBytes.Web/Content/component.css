@@ -1,0 +1,287 @@
+ *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+
+
+.stage {
+	list-style: none;
+	padding: 0;
+}
+
+/*************************************
+Build the scene and rotate on hover
+**************************************/
+
+.scene {
+	width: 260px;
+	height: 300px;
+	margin: 60px;
+	float: left;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	perspective: 1000px;
+}
+
+.movie {
+	width: 260px;
+	height: 300px;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: translateZ(-130px);
+	-moz-transform: translateZ(-130px);
+	transform: translateZ(-130px);
+	-webkit-transition: -webkit-transform 350ms;
+	-moz-transition: -moz-transform 350ms;
+	transition: transform 350ms;
+	cursor:pointer;	
+}
+
+.movie:hover {
+	-webkit-transform: rotateY(-78deg) translateZ(20px);
+	-moz-transform: rotateY(-78deg) translateZ(20px);
+	transform: rotateY(-78deg) translateZ(20px);
+}
+
+/*************************************
+Transform and style the two planes
+**************************************/
+
+.movie .poster, 
+.movie .info {
+	position: absolute;
+	width: 260px;
+	height: 300px;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.movie .poster  {
+	-webkit-transform: translateZ(130px);
+	-moz-transform: translateZ(130px);
+	transform: translateZ(130px);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.movie .info {
+	-webkit-transform: rotateY(90deg) translateZ(130px);
+	-moz-transform: rotateY(90deg) translateZ(130px);
+	transform: rotateY(90deg) translateZ(130px);
+	
+}
+
+/*************************************
+Shadow beneath the 3D object
+**************************************/
+
+.csstransforms3d .movie::after {
+	content: '';
+	width: 260px;
+	height: 260px;
+	position: absolute;
+	bottom: 0;
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+	-webkit-transform: rotateX(90deg) translateY(130px);
+	-moz-transform: rotateX(90deg) translateY(130px);
+	transform: rotateX(90deg) translateY(130px);
+	-webkit-transition: box-shadow 350ms;
+	-moz-transition: box-shadow 350ms;
+	transition: box-shadow 350ms;
+}
+
+.csstransforms3d .movie:hover::after {
+	box-shadow: 0px -px 0px rgba(0,0,0,0.0);
+}
+
+/*************************************
+Movie information
+**************************************/
+
+.info header {
+	color: #FFF;
+	font-weight: bold;
+	height: 195px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	text-shadow: 0px 1px 1px rgba(0,0,0,1);
+}
+
+.info header h1 {
+	margin: 0 0 2px;
+	font-size: 1.4em;
+}
+
+.info header .rating {
+	border: 1px solid #FFF;
+	padding: 0px 3px;
+}
+
+.info p {
+	padding: 1.2em 1.4em;
+	margin: 2px 0 0;
+	font-weight: 700;
+	color: #666;
+	line-height: 1.4em;
+}
+
+/*************************************
+Generate "lighting" using box shadows
+**************************************/
+
+.movie .poster,
+.movie .info,
+.movie .info header {
+	-webkit-transition: box-shadow 350ms;
+	-moz-transition: box-shadow 350ms;
+	transition: box-shadow 350ms;
+}
+
+.csstransforms3d .movie .poster {
+}
+
+.csstransforms3d .movie:hover .poster {
+}
+
+.csstransforms3d .movie .info, 
+.csstransforms3d .movie .info header {
+	box-shadow: inset 0px 0px 0px rgba(0,0,0,0.0);
+}
+
+.csstransforms3d .movie:hover .info, 
+.csstransforms3d .movie:hover .info header {
+}
+
+/*************************************
+Posters and still images
+**************************************/
+
+.scene:nth-child(1) .movie .poster {
+}
+
+.scene:nth-child(2) .poster {
+}
+
+.scene:nth-child(3) .poster {
+
+}
+
+.scene:nth-child(1) .info header {
+	background-image: url(../img/still01.jpg);
+}
+
+.scene:nth-child(2) .info header {
+	background-image: url(../img/still02.jpg);
+}
+
+.scene:nth-child(3) .info header {
+	background-image: url(../img/still03.jpg);
+}
+
+/*************************************
+Fallback
+**************************************/
+.no-csstransforms3d .movie .poster, 
+.no-csstransforms3d .movie .info {
+	position: relative;
+}
+
+
+.slider2nad3d{
+	width:100%;
+	clear:both;
+	background:#00CC99;
+	}
+
+.slider-head3d{
+	height:20px; width:100%;
+}
+
+
+.slider-head3d img{
+width:5%;
+height:auto;	
+}
+
+.slider-head3d p a{
+	text-decoration:none;
+	color:#f3b801;
+	font-family: 'MyWebFont';
+	 margin-left: 8px;
+    margin-top: -19px;
+    position: absolute;
+}
+
+.sliderthead3d{
+	text-decoration:none;
+	color:#FFFFFF;
+	font-family: 'MyWebFont2';
+	 margin-left: 8px;
+    margin-top: -50px;
+	text-align:center;
+   
+}
+
+
+.sliderthead3df1{
+	float:right; width:50%;
+	
+	}
+
+.sliderthead3df2{
+float:left; width:50%;
+	}
+
+
+
+.sliderthead3df1 p{
+	text-align:center;
+	text-decoration:none;
+	color:#FFFFFF;
+	font-family: 'MyWebFont2';
+	line-height:55px;
+	}
+
+
+.sliderthead3df1 p a{
+	text-align:center;
+	text-decoration:none;
+	background:url(../img/3d-chnagebg.png) no-repeat;
+	font-family: 'MyWebFont2';
+	color:#000000;
+	padding: 8px 30px;
+	background-size: cover;
+   -moz-background-size: cover;  /* Firefox 3.6 */
+    background-position: top center;  /* Internet Explorer 7/8 */
+	background-size:100% 100%;
+	}
+	
+.3dimagefooter{
+height:300px; width:30px; clear:both;
+
+}
+
+#3dza{margin-left: 35px;
+    margin-top: -107px;
+    position: absolute;
+    z-index: 99;}
+
+
+.3dimgview{
+float: right;
+    margin-top: -69px;
+    width: 10%;	
+}
+
+
+/*************************************
+Media Queries
+**************************************/
+@media screen and (max-width: 60.75em){
+	.scene {
+		float: none;
+		margin: 30px auto 60px;
+	}
+}

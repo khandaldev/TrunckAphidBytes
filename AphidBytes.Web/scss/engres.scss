@@ -1,0 +1,107 @@
+body {
+  overflow-x: hidden;
+}
+
+.main_content .right_content {
+  padding-left: 0px;
+}
+
+.engres_top_header {
+  padding: 15px 0px 5em;
+  .engres_icons {
+    float: left;
+    width: 65%;
+    text-align: right;
+    ul li {
+      display: inline-block;
+      margin-right: 20px;
+	      vertical-align: middle;
+      a {
+	      display: block;
+		img{
+		} 
+		span {
+		margin-bottom: -10px;
+		display: block;
+		color:#000;    text-align: center;}
+	  }
+    }
+  }
+  .pagination {
+    float: right;
+    width: 20%;
+    text-align: right;
+    ul li {
+      display: inline-block;
+      margin-left: 10px;
+      a {
+        font-size: 17px;
+        color: #605E5E;
+      }
+    }
+  }
+}
+
+.engres_listing .engres_box {
+  background: rgba(41, 37, 37, 0.2);
+  border-top: 2px solid #9c9c9c;
+  border-bottom: 1px solid #333;
+  margin-bottom: 60px;
+  &.top_hit {
+    background: #4e6420;
+    color: #fff;
+  }
+  .top_hit_btn {
+    position: absolute;
+    top: -13px;
+    left: 0px;
+    a {
+      background-color: #fca400;
+      border: solid #002e5d 0px;
+      padding: 13px 26px;
+      line-height: 1;
+      color: #fff;
+      font-size: 12px;
+      border-radius: 3px;
+    }
+  }
+  .engres_box_block {
+    padding: 2em 5em 2em 9em;
+    position: relative;
+  }
+  .left_thumbnail {
+    float: left;
+    width: 105px;
+    img {}
+  }
+  .mid_content {
+    float: left;
+    width: 80%;
+    padding-right: 70px;
+    margin-left: -105px;
+    padding-left: 115px;
+    box-sizing: border-box;
+    text-align: center;
+    h3 {
+      font-size: 15px;
+      padding-bottom: 20px;
+    }
+    p, ul.skills li {
+      font-size: 12px;
+    }
+  }
+  .right_img_content {
+    float: left;
+    .top_icon {
+      margin-top: -60px;
+      img {
+        max-width: 100%;
+      }
+    }
+    .bottom_icon {
+      position: absolute;
+      bottom: 30px;
+      img {}
+    }
+  }
+}

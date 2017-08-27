@@ -1,0 +1,108 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+ 
+
+
+<div class="aphidtise_wrap">
+
+<div class="logid">
+
+<div class="logid_out">
+
+</div>
+</div>
+
+</div>
+
+
+<div class="header_aphidtise">
+<div class="menunav" style="width:80%;">
+<ul>
+<li><a href="Services">Services</a></li>
+<li><a href="LoginUser">Login</a></li>
+<li><a href="#">The Gall</a></li>
+<li><a href="#">Store</a></li>
+<li><a href="AboutUsPage">About Us</a></li>
+<li><a href="Support">Support</a></li>
+</ul>
+</div>
+<div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;">  <img src="/images/hphidbytelogo.png"></a> </div>
+</div>
+<div class="headertab_aphidtise">
+<div class="aphidbyteleft" style="margin-left: 70px;margin-top: 6px;">
+
+<ul class="sponsored_menu">
+<li></li><li></li>
+<li><a href="#">Upload</a></li><li><img src="/images/right_line.png" height="2" width="103"></li>
+</ul>
+ 
+
+
+<div class="info-footer-social"></div>
+<div class="sponsored_rightline"></div>
+</div>
+<p class="info-p">Byte Your Music</p>
+
+<p class="sponsored_user_logo"><img src="/images/sponsored_user_logo.png"></p>
+
+
+<div class="from_aphid"  style="width:60%;">
+<div class="pramium-byte-music">
+<div class="basic-byte-musicm">
+<div class="basic-right-gridm"><p>Select One</p></div>
+<div class="premium_grid-right-grid"><a href="#" style="color:#FFFFFF;">Byte Your Music</a></div>
+<div class="basic-byte-music-grid2"><img src="/images/basic-iconea.png"></div>
+<div class="basic-byte-music-grid-line"><img src="/images/grid-line-bg.png"></div>
+<div class="basic-byte-music-grid-re"><a href="SponsoredSingle">Single</a>
+<div class="basic-reel-b"><img src="/images/cassette-bg.png"></div>
+</div>
+<div class="basic-byte-music-grid-line"><img src="/images/grid-line-bg2.png"><samp class="premiumor">or</samp></div>
+<div class="basic-byte-music-grid-album"><a href="SponsoredAlbum">Album</a></div>
+<div class="basic-byte-musicalbum-grid"><img src="/images/cassettebox-bg.png"></div>
+</div>
+</div>
+
+<div id="i-pop-up">
+   <p>
+  This is where you post a link (file that is already in the Matrix). to your social networks. This is also where you upload a pre-existing Music, Video, EBook, Photo/Art, file to your personal sites  (Youtube, Dailymotion, etc.) When clicked it shows Byte Tracker for you to select which file and proceeds to screen of selecting which social network.  
+
+   </p>
+</div>
+
+</div>
+
+
+</div>
+<div class="tophedboxa">
+  <p onclick="goBack()" style="color: #FFC000; margin-top: -221px;margin-left: -73px; cursor: pointer">Back</p>
+  </div>
+
+
+<script src="jquery.mCustomScrollbar.js">
+    
+</script> 
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+$('.basic-byte-music-grid-re').click(function(){
+$(this).addClass('active');
+	
+	$('.basic-byte-music-grid-album').removeClass('active');		
+});
+
+$('.basic-byte-music-grid-album').click(function(){
+    $(this).addClass('active');
+	$('.basic-byte-music-grid-re').removeClass('active');	
+	
+	
+});
+
+</script>
+
+ 
+

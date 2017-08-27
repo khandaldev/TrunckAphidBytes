@@ -1,0 +1,46 @@
+$color_1: #0e01f2;
+$color_2: #605E5E;
+
+.main_content {
+	.right_content {
+		padding-left: 0px;
+		padding-top: 40px;
+	}
+}
+.singleoralbum {
+	.subheading {
+		padding: 40px 0px;
+		text-align: center;
+		span {
+			color: $color_1;
+			font-size: 12px;
+			font-weight: bold;
+			display: block;
+		}
+	}
+	.singleoralbum_listing {
+		ul {
+			text-align: center;
+			li {
+				margin-bottom: 40px;
+				span {
+					color: $color_2;
+					font-size: 17px;
+				}
+				a.circle_radio {
+					width: 29px;
+					height: 29px;
+					background: #fff;
+					border: 1px solid #000;
+					border-radius: 50%;
+					display: inline-block;
+					vertical-align: middle;
+					margin-left: 50px;
+				}
+				a.circle_radio.check {
+					background: #68b04d;
+				}
+			}
+		}
+	}
+}

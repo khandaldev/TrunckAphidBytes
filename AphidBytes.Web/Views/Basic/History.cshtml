@@ -1,0 +1,484 @@
+﻿@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+ @model IEnumerable<AphidBytes.Accounts.Contracts.Model.LinkShareHistory>
+ 
+ 
+ 
+<script type="text/javascript">
+$(document).ready(function(e) {
+    
+	$("#abc").mouseover(function(){
+	$("#pop-up-over-m").css('display','block');
+		})
+		$("#abc").mouseleave(function(){
+			$("#pop-up-over-m").css('display','none');
+			});
+
+});
+</script>
+
+
+<script type="text/javascript" language="javascript">
+
+    function checklist(ctrl)
+    {
+	$("#creditt-menu li").removeClass("credit-menu-bgli");
+	$("#one").removeClass("one123");
+        var list = document.getElementById("creditt-menu").getElementsByTagName('li');
+       
+        for(i=0; i<list.length; i++)
+        {
+
+          // list[i].style.background = '#ffffff';
+		
+        }
+	
+        //ctrl.style.background = '#000';
+        $("#"+ctrl).addClass("credit-menu-bgli");
+    }
+
+
+</script>
+
+ 
+
+<div class="aphidtise_wrap">
+
+    <div class="header_aphidtise">
+        <div class="menunav">
+            <ul>
+                <li><a href="~/Accounts/Services" class="sect_l">Services</a></li>
+                <li><a href="~/Accounts/LoginUser">Login</a></li>
+                <li><a href="#">The Gall</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="~/Accounts/AboutUsPage">About Us</a></li>
+                <li><a href="~/Accounts/Support">Support</a></li>
+            </ul>
+        </div>
+        <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a> </div>
+    </div>
+</div>
+
+
+<div class="@*aphidtise_wrap*@">
+
+<div class="logid">
+
+<div class="logid_out">
+<ul>
+<li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+  <li><a href="~/Accounts/Logout">Logout</a></li>
+</ul>
+
+<div class="profilebg">
+<div class="migprofile">   <img src="@Url.Action("Overview", "Basic")" height="100px" /></div>
+ <div class="profiletext-ct-info">
+            <img src="/images/clone-pa.png">
+            Basic Account
+        </div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div id="confmBox" class="confirm_send_mail_div sendme_con" style="display:none;">
+    
+    <div>
+        <h5 class="sendme_con_h5">
+         Confirmation:<img onclick="close_confmBox_popup()" class="cancel_delete-link" style="cursor: pointer; float: right; margin-top: 7px;" src="/Images/close.png">
+        </h5>
+        <p style="margin-top:8%;">
+         <strong>Are you Sure want to Upgrade ?</strong> <span id="Ncontacts">
+</span>
+        </p>
+       
+
+        <div class="btn-group sendme_con_groupbtn">
+         <button id="confrm_yes"  class="btn add  sendme_con_yes" onclick="UpgradeTOPremium()">Yes</button>
+         <div class="btn cancel sendme_con_no" onclick="close_confmBox_popup()" style="cursor: pointer;">No</div>
+        </div>
+
+       </div>
+      </div>
+<div id="yesno" style="display:none;">
+<div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+<div class="bg_yes_no">
+<div><p>Are you sure to Upgrade?</p></div>
+<div><p id="yes"><a href="#">Yes</a></p><p id="no"><a href="#">No</a></p></div>
+    </div>
+</div>
+</div>
+
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Error Occured Try Again
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" /></div>
+
+</div>
+
+<div style="display:none;" id="upgradebox">
+<div class="bg_othr_box">
+<div class="bg_othr_box_1">
+<P>Account Upgraded Successfully Completed</P>
+<p></p>
+<p style="margin-top: 22px; margin-left: 137px;"><img src="~/Images/right-icone.png"></p>
+
+<P style="margin-top: 88px;"><a href="~/Accounts/Logout">OK</a></P>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="header_aphidtise">
+</div>
+<div class="creditt-head-wrap">
+<div class="creditt-left-box">
+<p class="info-p">Byte Tracker</p>
+</div>
+
+<div class="byter-hederfind">
+
+<div class="sort-byter">
+<p>Sort Title&nbsp;&nbsp; <samp id ="" class="order"><a href="#">A to Z</a></samp></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<samp>Z to A</samp></p>
+</div >
+<div  style="margin-left:130px;"><input type="text" class="credit-search-m3"> <a href="#"><img src="/images/credits-bgsearch.png"></a>
+
+</div>
+<div> <a href="#"><img src="/images/byter-videob.png"></a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<div class="headertab_aphidtise" style="margin-top:-130px; margin-left:65px;">
+<div class="aphidbyteleft">
+
+    <ul class="aphidbytelist-tq">
+        <li><a href="BasicAccountInfo">Account Info</a></li>
+        <li></li>
+        <li><a href="Uploadmedia">Upload</a></li>
+        <li></li>
+        <li><a href="Message">Messages</a></li>
+      @*  @if (Model.NewCount != 0)
+        {
+            <p class="in_c_text_4">@Model.NewCount</p>
+        }*@
+        <li></li>
+        <li><a href="bytetracker">Byte Tracker</a></li>
+        <li></li>
+        <li><a href="History" class="basicselects">History</a></li>
+        <li><img class="rltop_s" @*src="/images/right_line.png" height="2"*@></li>
+        <li><a href="Playlist">Playlists</a></li>
+        <li></li>
+        <li><a href="Dataplan">Data Plan</a></li>
+        <li></li>
+    </ul>
+
+
+
+    <div class="dsbox">
+        <samp><img src="../images/widegts_img.png"></samp>
+    </div>
+
+<div class="info-footer-social">
+<div style="margin: 11px 0 0 50px; height:80px;">
+<p></p>
+<p class="byter-pt" style="width:50%;margin-left:15px;"></p>
+<p class="byter-pt" style="width:50%; margin-left:15px; margin-top:20px;"></p>
+</div>
+
+
+</div>
+@*<div class="aphidbyteleftright-info"></div>*@
+</div>
+
+
+
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="height:400px; margin-top:40px; width:70%;">
+<div class="massage_index">
+<div style="width:100%; height:400px; margin:auto;">
+<br/>
+<!-- Table goes in the document BODY -->
+<table align="center" class="gradienttablebyter" style="width:100%; margin-left:20px;">
+<tr>
+	<th style="width:15%;"><p>Item</p></th>
+    <th style="width:15%;"><p>Purchase #</p></th>
+    <th style="width:15%;"><p>Date</p></th>
+    <th style="width:15%;"><p>Status</p></th>
+    <th style="width:15%;"><p>Amount ($)</p></th>
+    <th style="width:5%; background:none;"></th>
+   
+    
+
+</tr>
+
+
+
+    @foreach (var item in Model)
+    {
+       <tr class="gradient-trbyter2">
+      <td><p>@item.Title</p></td>
+      <td align="center" ><p></p></td>
+      <td align="center" ><p>@item.DateShow&nbsp;</p></td>
+      <td><p>&nbsp;</p></td>
+      <td><p>&nbsp;</p></td>
+      <td style="background:none;"><div class="grandit-3box"><a href="#"><img src="/images/sear-mcredit-i.png"></a></div></td>
+     </tr>
+    }
+
+   
+
+
+@*<tr class="gradient-trbyter">
+    <td><p>Shirt</p></td>
+    <td align="center" ><p>2</p></td>
+    <td align="center" ><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+    <td style="background:none;"><div class="grandit-3box"><a href="#"><img src="/images/sear-mcredit-i.png"></a></div></td>
+    </td>
+</tr>
+
+<tr class="gradient-trbyter2">
+    <td><p>Bag</p></td>
+    <td align="center" ><p>3</p></td>
+    <td align="center" ><p>&nbsp;</p></td>
+    <td><p>Completed</p></td>
+    <td><p>&nbsp;</p></td>
+    <td style="background:none;"><div class="grandit-3box"><a href="#"><img src="/images/sear-mcredit-i.png"></a></div></td>
+    </td>
+</tr>
+
+<tr class="gradient-trbyter">
+    <td><p>&nbsp;</p></td>
+    <td align="center" ><p>4</p></td>
+    <td align="center" ><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+    <td style="background:none;"><div class="grandit-3box"><a href="#"><img src="/images/sear-mcredit-i.png"></a></div></td>
+    </td>
+</tr>
+
+<tr class="gradient-trbyter2">
+    <td><p>&nbsp;</p></td>
+    <td align="center" ><p>5</p></td>
+    <td align="center" ><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+    <td style="background:none;"><div class="grandit-3box"><a href="#"><img src="/images/sear-mcredit-i.png"></a></div></td>
+    </td>
+</tr>
+
+<tr class="gradient-trbyter">
+    <td><p>&nbsp;</p></td>
+    <td align="center" ><p>6</p></td>
+    <td align="center" ><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+    <td><p>&nbsp;</p></td>
+    <td style="background:none; border:none;"><div class="grandit-3box"><a href="#"><img src="/images/sear-mcredit-i.png"></a></div></td>
+    </td>
+</tr>*@
+
+
+
+
+</table>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+
+<script>
+    $(document).ready(function () {
+        $('#upgradePremium').click(function () {
+            $("#yesno").attr('style', 'display:block');
+        });
+
+        $("#yes").click(function () {
+            $("#yesno").attr('style', 'display:none');
+            $.post('/Basic/UpgardeToPremium', {}, function (data) {
+                if (data == "Success") {
+
+                    $("#upgradebox").attr('style', 'display:block');
+                } else { $("#button-bg3").attr('style', 'display:block'); }
+
+            });
+
+        });
+        $("#no").click(function () {
+            $("#yesno").attr("style", "display:none");
+        });
+
+
+
+
+    $("#content").find("[id^='tab']").hide(); // Hide all content
+    $("#tabs li:first").attr("id","current"); // Activate the first tab
+    $("#content #tab1").fadeIn(); // Show first tab's content
+    
+    $('#tabs a').click(function(e) {
+        e.preventDefault();
+        if ($(this).closest("li").attr("id") == "current"){ //detection for current tab
+         return;       
+        }
+        else{             
+          $("#content").find("[id^='tab']").hide(); // Hide all content
+          $("#tabs li").attr("id",""); //Reset id's
+          $(this).parent().attr("id","current"); // Activate this
+          $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+        }
+    });
+});
+</script>
+
+<script type="text/jscript">
+function divClicked() {
+    var divHtml = [];
+
+    $("#mydiv div").each(function(){
+    divHtml.push($(this).html());
+     var editableText = $("<input type='text' />");
+    editableText.val($(this).html());
+    $(this).replaceWith(editableText);
+     editableText.blur(editableTextBlurred);
+    });
+    editableText.focus();
+    // setup the blur event for this new textarea
+   
+}
+
+function editableTextBlurred() {
+    var html = $(this).val();
+    var viewableText = $("<div>");
+    viewableText.html(html);
+    $(this).replaceWith(viewableText);
+    // setup the click event for this new div
+  //  viewableText.click(divClicked);
+}
+
+$(document).ready(function() {
+    $("#buttonclick").click(divClicked);
+});
+
+</script>
+
+
+<script type="text/javascript">
+        $(document).ready(function() {
+
+            $("#basicbyter").click(function() {
+                $("#byterclick").toggle();
+            });
+                        
+            $("#byterclick li a").click(function() {
+                var text = $(this).html();
+                $("#basicbyter span").html(text);
+                $("#byterclick").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick").hide();
+            });
+			
+
+			 $("#basicbyterone").click(function() {
+                $("#byterclick2").toggle();
+            });
+                        
+            $("#byterclick2 li a").click(function() {
+                var text = $(this).html();
+                $("#basicbyterone span").html(text);
+                $("#byterclick2").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick2").hide();
+            });
+			
+			
+			
+          $("#basicbytertwo").click(function() {
+                $("#byterclick3").toggle();
+            });
+                        
+            $("#byterclick3 li a").click(function() {
+                var text = $(this).html();
+                $("#basicbytertwo span").html(text);
+                $("#byterclick3").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick3").hide();
+            });
+			
+			
+			$("#basicbyterfour").click(function() {
+                $("#byterclick4").toggle();
+            });
+                        
+            $("#byterclick4 li a").click(function() {
+                var text = $(this).html();
+                $("#basicbyterfour span").html(text);
+                $("#byterclick4").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick4").hide();
+            });
+		   	
+			
+
+        });
+    </script>
+
+ 
+

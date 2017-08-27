@@ -1,0 +1,1466 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+<script type="text/javascript">
+    function deniedclick() {
+        $("#pop_wrapper").attr('style', 'display:none');
+        $("#denied").attr('style', 'display:none');        
+    }
+    $(document).ready(function () {
+       
+        $('#sub').hide();
+        $("#content_1").show();
+        $("#one").attr("class", "one123");
+        $("#content_2").hide();
+        $("#content_3").hide();
+        $("#content_4").hide();
+
+        $('#one').click(function () {
+            $("#content_1").show();
+            $("#one").attr("class", "one123");
+            $("#two").removeAttr("class", "one123");
+            $("#three").removeAttr("class", "one123");
+            $("#four").removeAttr("class", "one123");
+            $('#sub').hide();
+            $("#content_2").hide();
+            //$("#massage_index1").show();
+            $("#content_4").hide();
+            $("#content_3").hide();
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Credit Summary' ? 'Credit Tracker > Posts Queue' : 'Credit Tracker > Credit Summary');
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Credit Summary' ? 'Credit Tracker > Links To PostM' : 'Credit Tracker > Credit Summary');
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Credit Summary' ? 'Credit Tracker > Ad Credit Summary' : 'Credit Tracker > Credit Summary');
+            //$("#massage_index4").hide();
+        });
+        $('#two').click(function () {
+            $("#content_1").hide();
+            $("#content_2").show();
+            $('#sub').hide();
+            $("#four").removeAttr("class", "one123");
+            $("#three").removeAttr("class", "one123");
+            $("#one").removeAttr("class", "one123");
+            $("#two").attr("class", "one123");
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Posts Queue' ? 'Credit Tracker > Credit Summary' : 'Credit Tracker > Posts Queue');
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Posts Queue' ? 'Credit Tracker > Links To PostM' : 'Credit Tracker > Posts Queue');
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Posts Queue' ? 'Credit Tracker > Ad Credit Summary' : 'Credit Tracker > Posts Queue');
+            $("#content_3").hide();
+            $("#content_4").hide();
+            //$("#massage_index4").hide();
+        });
+        $('#three').click(function () {
+            $("#content_1").hide();
+            $("#content_2").hide();
+            $("#content_3").show();
+            $('#sub').show();
+            $("#one").removeAttr("class", "one123");
+            $("#two").removeAttr("class", "one123");
+            $("#four").removeAttr("class", "one123");
+            $("#three").attr("class", "one123");
+            $("#content_4").hide();
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Links To PostM' ? 'Credit Tracker > Credit Summary' : 'Credit Tracker > Links To PostM');
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Links To PostM' ? 'Credit Tracker > Posts Queue' : 'Credit Tracker > Links To PostM');
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Links To PostM' ? 'Credit Tracker > Ad Credit Summary' : 'Credit Tracker > Links To PostM');
+
+        });
+        $('#four').click(function () {
+            $("#content_1").hide();
+            $("#content_2").hide();
+            $("#content_3").hide();
+            $("#content_4").show();
+            $('#sub').hide();
+            $("#four").attr("class", "one123");
+            $("#one").removeAttr("class", "one123");
+            $("#two").removeAttr("class", "one123");
+            $("#three").removeAttr("class", "one123");
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Ad Credit Summary' ? 'Credit Tracker > Credit Summary' : 'Credit Tracker > Ad Credit Summary');
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Ad Credit Summary' ? 'Credit Tracker > Links To PostM' : 'Credit Tracker > Ad Credit Summary');
+            $("p.info-p").text($("p.info-p").text() == 'Credit Tracker > Ad Credit Summary' ? 'Credit Tracker > Posts Queue' : 'Credit Tracker > Ad Credit Summary');
+        });
+
+        $('#submit').click(function ()
+        {
+            var names = [];
+            $('#PostMdata input:checked').each(function ()
+            {
+                var val1 = this.value.split(',')[0];
+                names.push(val1);
+
+            });
+            var i = 0;
+            if (names.length > 0) {
+                while (i < names.length) {
+                    var track = names[i];
+                    i = i + 1;
+                    while (names[i].length < 7) {
+                        var j = names[i];
+                        if (j == 1) {
+                            fb_posting(track);
+                        }
+                        if (j == 2) {
+                            link_posting(track);
+                        }
+                        if (j == 3) {
+                            Soundcloud_Posting(track);
+                        }
+                        if (j == 4) {
+                            YouTube_Posting(track);
+                        }
+                        if (j == 5) { Flicker_Posting(track); }
+                        if (j == 6) { Twitter_Posting(track); }
+                        if (j == 7) { DailyMotion_Posting(track); }
+                        if (j == 8) { Scribd_Posting(track); }
+                        i++;
+                    }
+                }
+            }
+            else
+            {
+                document.getElementById("pop_wrapper").style.display = "block";
+                document.getElementById("denied").style.display = "block";
+            }
+        });
+
+
+        $('#delete').click(function () {
+            var name = [];
+            $('#PostMdata input:checked').each(function () {
+                var val = this.value.split(',')[0];
+                name.push(val);
+                var str = name.toString();
+                $.post('/Byter/GetLink', { Data: str }, function (data) {
+                    if (data == true) {
+                        location.reload();
+                    }
+
+                });
+            });
+
+        });
+
+
+
+    });
+    //posting code
+    function link_posting(track) {
+        $.post('@Url.Action("Linkedinpost", "Byter")', { Track: track }, function () {
+        }).done(function (data) {
+            if (data.contains("Successfully")) {
+                $('.black_screen').show();
+                $('#buttn-suc').show();
+                //$('#buttn-suc').dialog("open");
+                //document.getElementById('buttn-suc').style.display = "block";
+                $('#socialname1').text(data);
+                setTimeout(function () {
+                    $('.black_screen').hide();
+                    $('#buttn-suc').hide();
+                }, 5000);
+            }
+            else {
+                $('#button-bg1').dialog("open");
+                $('#socialname').text(data);
+                setTimeout(function () {
+                    $('#button-bg1').dialog("close");
+                }, 5000);
+            }
+        });
+
+    }
+
+    function fb_posting(track) {
+        $.post('@Url.Action("Facebookpost", "Byter")', { Track: track }, function () {
+
+        }).done(function (data) {
+            if (data.contains("Successfully")) {
+                $('.black_screen').show();
+                $('#buttn-suc').show();
+                //$('#buttn-suc').dialog("open");
+                //document.getElementById('buttn-suc').style.display = "block";
+                $('#socialname1').text(data);
+                setTimeout(function () {
+                    $('.black_screen').hide();
+                    $('#buttn-suc').hide();
+                }, 5000);
+            }
+            else {
+                $('#button-bg1').dialog("open");
+                $('#socialname').text(data);
+                setTimeout(function () {
+                    $('#button-bg1').dialog("close");
+                }, 5000);
+            }
+        });
+
+    }
+
+    function closedata() {
+
+    }
+    function Twitter_Posting(track) {
+        $.post('@Url.Action("Twitterpost", "Byter")', { Track: track }, function () {
+        }).done(function (data) {
+            if (data.contains("Successfully")) {
+                $('.black_screen').show();
+                $('#buttn-suc').show();
+                //$('#buttn-suc').dialog("open");
+                //document.getElementById('buttn-suc').style.display = "block";
+                $('#socialname1').text(data);
+                setTimeout(function () {
+                    $('.black_screen').hide();
+                    $('#buttn-suc').hide();
+                }, 5000);
+            }
+            else {
+                $('#button-bg1').dialog("open");
+                $('#socialname').text(data);
+                setTimeout(function () {
+                    $('#button-bg1').dialog("close");
+                }, 5000);
+            }
+        });
+
+    }
+    function YouTube_Posting(track) {
+        $.post('@Url.Action("YouTubepost", "Byter")', { Track: track }, function () {
+        }).done(function (data) {
+            if (data.contains("Successfully")) {
+                $('.black_screen').show();
+                $('#buttn-suc').show();
+                //$('#buttn-suc').dialog("open");
+                //document.getElementById('buttn-suc').style.display = "block";
+                $('#socialname1').text(data);
+                setTimeout(function () {
+                    $('.black_screen').hide();
+                    $('#buttn-suc').hide();
+                }, 5000);
+            }
+            else {
+                $('#button-bg1').dialog("open");
+                $('#socialname').text(data);
+                setTimeout(function () {
+                    $('#button-bg1').dialog("close");
+                }, 5000);
+            }
+        });
+    }
+    function Soundcloud_Posting(track) {
+        $.post('@Url.Action("Soundcloudpost", "Byter")', { Track: track }, function () {
+        }).done(function (data) {
+            if (data.contains("Successfully")) {
+                $('.black_screen').show();
+                $('#buttn-suc').show();
+                //$('#buttn-suc').dialog("open");
+                //document.getElementById('buttn-suc').style.display = "block";
+                $('#socialname1').text(data);
+                setTimeout(function () {
+                    $('.black_screen').hide();
+                    $('#buttn-suc').hide();
+                }, 5000);
+            }
+            else {
+                $('#button-bg1').dialog("open");
+                $('#socialname').text(data);
+                setTimeout(function () {
+                    $('#button-bg1').dialog("close");
+                }, 5000);
+            }
+        });
+    }
+    function Scribd_Posting(track) {
+        $.post('@Url.Action("Scribdpost", "Byter")', { Track: track }, function () {
+        }).done(function (data) {
+            if (data.contains("Successfully")) {
+                $('.black_screen').show();
+                $('#buttn-suc').show();
+                //$('#buttn-suc').dialog("open");
+                //document.getElementById('buttn-suc').style.display = "block";
+                $('#socialname1').text(data);
+                setTimeout(function () {
+                    $('.black_screen').hide();
+                    $('#buttn-suc').hide();
+                }, 5000);
+            }
+            else {
+                $('#button-bg1').dialog("open");
+                $('#socialname').text(data);
+                setTimeout(function () {
+                    $('#button-bg1').dialog("close");
+                }, 5000);
+            }
+        });
+    }
+    function DailyMotion_Posting(track) {
+        $.post('@Url.Action("DailyMotionpost", "Byter")', { Track: track }, function () {
+        }).done(function (data) {
+            if (data.contains("Successfully")) {
+                $('.black_screen').show();
+                $('#buttn-suc').show();
+                //$('#buttn-suc').dialog("open");
+                //document.getElementById('buttn-suc').style.display = "block";
+                $('#socialname1').text(data);
+                setTimeout(function () {
+                    $('.black_screen').hide();
+                    $('#buttn-suc').hide();
+                }, 5000);
+            }
+            else {
+                $('#button-bg1').dialog("open");
+                $('#socialname').text(data);
+                setTimeout(function () {
+                    $('#button-bg1').dialog("close");
+                }, 5000);
+            }
+        });
+    }
+    function Flicker_Posting(track) {
+        $.post('@Url.Action("Flickerpost", "Byter")', { Track: track }, function () {
+        }).done(function (data) {
+            if (data.contains("Successfully")) {
+                $('.black_screen').show();
+                $('#buttn-suc').show();
+                //$('#buttn-suc').dialog("open");
+                //document.getElementById('buttn-suc').style.display = "block";
+                $('#socialname1').text(data);
+                setTimeout(function () {
+                    $('.black_screen').hide();
+                    $('#buttn-suc').hide();
+                }, 5000);
+            }
+            else {
+                $('#button-bg1').dialog("open");
+                $('#socialname').text(data);
+                setTimeout(function () {
+                    $('#button-bg1').dialog("close");
+                }, 5000);
+            }
+        });
+    }
+
+    function PlusClick(track) {
+
+        $.post('/Byter/UpdatePostQueue', { TrackNo: track }, function (data) {
+            if (data == "True") {
+
+                $(".gradient-tr1").remove();
+                location.reload();
+
+
+            } else { }
+        });
+    }
+
+    function SelectedNetwork() {
+        var valu = $(".check-1").val();
+
+    }
+
+
+    function CheckBoxClick(classname) {
+
+
+        var clas = classname;
+        var arr = [];
+        arr = clas.split("");
+        for (var i = 0; i < arr.length; i++) {
+            if ($.isNumeric(arr[i])) {
+                break;
+            }
+        }
+        var dat = classname.substring(i, arr.length);
+        if ($("#" + dat).is(':checked')) {
+
+            var clas = classname;
+            var selected = $("#" + dat).val();
+
+            $.post('/Byter/ShowNetwork', { Selected: selected }, function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $("#" + clas).append("<div class='ImgSel" + i + "'><img id='imgid" + i + "' onclick='ChooseItem(" + i + ")' src=" + data[i].Path + " width='20px' height='20px'></img><input type='checkbox' name='genre' id='check-1' value=" + data[i].Id + " onclick=" + "SelectedNetwork(); /></div>");
+
+                }
+            });
+
+        }
+        else {
+            document.getElementById(clas).innerHTML = '';
+        }
+    }
+
+    function categorychange(key) {
+        if (key == 'Music') return 0;
+        if (key == 'Video') return 1;
+        if (key == 'Photos') return 2;
+        if (key == 'Pdf') return 3;
+        if (key == 'Files') return 4;
+
+    }
+
+    function checklist(id) {
+        $("#searchbtn").attr('class', id);
+        var type;
+        var body = "";
+        var postedbody = "";
+
+        if (id == "one") {
+            $('#sub').show();
+            $(".posteddatatable").remove();
+            $(".postedfetchdata").remove();
+            $.post('/Byter/GetPostedDataResult', {}, function (data) {
+                if (data != null) {
+
+                    for (var i = 0; i < data.length; i++) {
+                        posteddata = null;
+                        postedbody = "<tr class='posteddatatable'>";
+
+                        postedbody += " <td><p>" + data[i].Title + "</p></td>";
+                        postedbody += "<td align='center'><p>" + data[i].Category + "</p></td>";
+                        postedbody += " <td align='center'><p>" + data[i].Credit + "</p></td></td>";
+                        postedbody += "<td><p>" + data[i].Composer + "</p></td>";
+                        postedbody += " <td><p>" + data[i].TrackingId + "</p></td>";
+                        postedbody += "</tr>";
+                        $(".postedfetchdata").remove();
+                        $("#posteddata").append(postedbody);
+                    }
+
+                }
+
+            });
+        }
+
+
+
+        if (id == "two") {
+            $('#sub').hide();
+            $.post('/Byter/GetPostQueueData', {}, function (data) {
+                $(".newData").remove();
+                for (var i = 0; i < data.length; i++) {
+
+                    if (i % 2 == 0) {
+
+                        body = "<tr class='newData'>";
+                        body += "<td class='gradient-tr1'><p>" + data[i].Composer + "</p></td>";
+                        body += "<td align='center' class='gradient-tr1'><p>" + data[i].Title + "</p></td>";
+                        body += "<td align='center' class='gradient-tr1'><p>" + data[i].Category + "</p></td>";
+                        body += "<td class='gradient-tr1'><p>" + data[i].Credit + "</p></td>";
+                        body += "<td style='background:none;'>";
+                        body += "<div class='grandit-3box'>";
+                        body += " <a href='#'><img src='/images/plus-m-i.png' class='newData' onclick='PlusClick(" + data[i].TrackingId + ");'></a>";
+                        body += "<a href='#'><img src='/images/close-m-i.png' onclick='Deleteitem("+data[i].TrackingId+")'></a>";
+                        body += "<a href='#'><img src='/images/sear-mcredit-i.png' onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></a>";
+                        body += "</div>";
+                        body += "</td>";
+                        body += "</tr>";
+                        $("#postQueue").append(body);
+
+                    }
+                    else {
+                        body = "<tr class='newData'>";
+                        body += "<td class='gradient-tr2'><p>" + data[i].Composer + "</p></td>";
+                        body += "<td align='center' class='gradient-tr2'><p>" + data[i].Title + "</p></td>";
+                        body += "<td align='center' class='gradient-tr2'><p>" + data[i].Category + "</p></td>";
+                        body += "<td class='gradient-tr2'><p>" + data[i].Credit + "</p></td>";
+                        body += "<td style='background:none;'>";
+                        body += "<div class='grandit-3box'>";
+                        body += " <a href='#'><img src='/images/plus-m-i.png' onclick='PlusClick(" + data[i].TrackingId + ");'></a>";
+                        body += "<a href='#'><img src='/images/close-m-i.png' onclick='Deleteitem("+data[i].TrackingId+")'></a>";
+                        body += "<a href='#'><img src='/images/sear-mcredit-i.png' onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></a>";
+                        body += "</div>";
+                        body += "</td>";
+                        body += "</tr>";
+                        $("#postQueue").append(body);
+                    }
+                }
+            });
+        }
+        else if (id == "three") {
+            var bodyM = "";
+            $(".Mdata").remove();
+            $('#sub').show();
+            $.post('/Byter/GetLinkToPostM', {}, function (data) {
+
+                for (var i = 0; i < data.length; i++) {
+
+                    if (i % 2 == 0) {
+                        bodyM = "<tr class='Mdata'>";
+                        bodyM += "<td class='table-tha'><input type='checkbox' name='genre' class='check-1' id=" + i + " value=" + data[i].TrackingId + ',' + data[i].Category + " onclick=" + "CheckBoxClick('Social" + i + "'); />";
+                        bodyM += " <label for='check-1'></label>";
+                        bodyM += " </td>";
+                        bodyM += "<td class='table-trb3'><p>" + data[i].Composer + "</p></td>";
+                        bodyM += "<td class='table-trb3'><p>" + data[i].Title + "</p></td>";
+                        bodyM += "<td class='table-trb3' align='center'><p>" + data[i].Category + "</p></td>";
+                        bodyM += "<td class='table-trb3' align='center'><p>" + data[i].Credit + "</p></td>";
+                        bodyM += "<td class='table-trb3' align='center'><p><img src='/images/sear-mcredit-i.png'onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></p></td>";
+                        bodyM += "<td class='table-trb3' id='Social" + i + "' >&nbsp;</td>";
+                        bodyM += "<td class='table-trb4'  style='display:none;'>" + data[i].TrackingId + "</td>";
+                        bodyM += "</tr>";
+
+                    } else {
+                        bodyM = "<tr class='Mdata'>";
+                        bodyM += "<td class='table-tha'><input type='checkbox' name='genre' class='check-1' id=" + i + " value=" + data[i].TrackingId + ',' + data[i].Category + " onclick=" + "CheckBoxClick('Social" + i + "'); />";
+                        bodyM += " <label for='check-1'></label>";
+                        bodyM += " </td>";
+                        bodyM += "<td class='table-trb4'><p>" + data[i].Composer + "</p></td>";
+                        bodyM += "<td class='table-trb4'><p>" + data[i].Title + "</p></td>";
+                        bodyM += "<td class='table-trb4' align='center'><p>" + data[i].Category + "</p></td>";
+                        bodyM += "<td class='table-trb4' align='center'><p>" + data[i].Credit + "</p></td>";
+                        //bodyM += "<a href='#'><img src='/images/sear-mcredit-i.png' onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></a>";
+                        bodyM += "<td class='table-trb4' align='center'><p><img src='/images/sear-mcredit-i.png'onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></p></td>";
+                        bodyM += "<td class='table-trb4' id='Social" + i + "'>&nbsp;</td>";
+                        bodyM += "<td class='table-trb4'  style='display:none;'>" + data[i].TrackingId + "</td>";
+                        bodyM += "</tr>";
+
+                    }
+                    $("#PostMdata").append(bodyM);
+                }
+            });
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+
+        $("#abc").mouseover(function () {
+            $("#pop-up-over-m").css('display', 'block');
+        })
+        $("#abc").mouseleave(function () {
+            $("#pop-up-over-m").css('display', 'none');
+        });
+
+    });
+    var category = "";
+    function fileprivew(trackingnumber, cat) {
+
+        $.post('/Byter/filePrivew1', { Trackingnumber: trackingnumber, Category: cat }, function (data) {
+            window.location = data;
+        });
+    }
+    function Deleteitem(trck)
+    {
+        $.post('/Byter/DeleteRecords', {Track:trck}, function (data) {
+            if (data == true)
+            {
+                location.reload();
+            }
+        });
+    }
+
+</script>
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="@Url.Action("Overview", "Byter")" height="100px" />
+                </div>
+                <div class="info-logo">
+                    <img src="/images/acinfo_logo.png">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="header_aphidtise">
+    <div id="logo">
+       <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+    </div>
+</div>
+<div class="creditt-head-wrap">
+    <div class="creditt-left-box">
+        <p class="info-p">Credit Tracker > Credit Summary</p>
+        <div class="creditt-menu">
+            <ul id="creditt-menu">
+                <li onclick="checklist(this.id);" id="one" style="color: white; cursor: pointer">Credit Summary</li>
+                <li onclick="checklist(this.id);" id="two" style="color: white; cursor: pointer">Posts Queue</li>
+                <li onclick="checklist(this.id);" id="three" style="color: white; cursor: pointer">Links to PostM</></li>
+                <li onclick="checklist(this.id);" id="four" style="color: white; cursor: pointer">Ad Credit Summary</></li>
+            </ul>
+        </div>
+
+        <div class="credit-head2-menu" style="margin-top: 20px;">
+            <p><a href="#">Sort Composers</a></p>
+            <p><a href="#" style="color: #e46c0a;" onclick="Sorting('AtoZ')">A to Z</a></p>
+        </div>
+
+        <div class="credit-head2-menu">
+            <p><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+            <p><a href="#" style="color: #e46c0a; width: 361px;" onclick="Sorting('ZtoA')">Z to A</a></p>
+        </div>
+    </div>
+    <div class="creditt-right-box">
+        <div class="creditt-i-icon">
+            <a href="#">
+                <img src="/images/symbol-i.png"></a>
+        </div>
+        <img src="/images/credits-bg.png">
+        <p>
+            @ViewBag.Count Credits
+        </p>
+    </div>
+
+    <div class="credit-search-m1">
+        <div class="credit-search-m2">
+            <div class="credit-search-m3">
+                <input class="creditsummm" name="" type="text">
+            </div>
+            <a href="#">
+                <img id="searchbtn" class="" src="/images/credits-bgsearch.png" onclick="search();"></a>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="headertab_aphidtise" style="margin-top: -60px;">
+    <div class="left-info" style="margin-top: -20px;">
+
+        <ul class="infolist-menu">
+            <li><a href="ByterAccountInfo">Account Info</a></li>
+            <li></li>
+            <li><a href="Message">Messages</a>
+                 @if(ViewBag.MegCount!=0)
+                {
+                <div class="in_c_text_2">@ViewBag.MegCount</div>
+                }
+            </li>
+            <li></li>
+            <li><a href="History">History</a></li>
+            <li></li>
+            <li><a href="Playlists">Playlists</a></li>
+            <li></li>
+            <li><a href="ByterCreditSummary" class="basicselects">Credit Tracker</a></li>
+            <li>
+                @*<img src="/images/right_line.png"></li>*@
+            <li><a href="CreditSubscription" style=" height: 31px; line-height: 17px; padding-bottom: 7px; padding-top: 7px; width: 103px;">Credit
+                <br />
+                Subscriptions</a>
+            </li>
+        </ul>
+
+        <div class="info-right"></div>
+        <div class="info-footer-social"></div>
+
+    </div>
+
+    <div class="aphidbytecenter content scrollWidth" id="content_1" style="height: 5000px; margin-top: 15px;">
+        <div class="massage_index1">
+            <div style="width: 100%; height: 5000px; margin: auto;">
+                <br />
+                <!-- Table goes in the document BODY -->
+                <table align="center" class="gradienttable" id="posteddata">
+                    <tr>
+                        <th>
+                            <p>Title</p>
+                        </th>
+                        <th>
+                            <p>Channel</p>
+                        </th>
+                        <th>
+                            <p>Credits</p>
+                        </th>
+                        <th>
+                            <p>Composer</p>
+                        </th>
+                        <th>
+                            <p>Tracking #</p>
+                        </th>
+
+                    </tr>
+                    @if(ViewBag.PostData!=null)
+                    {
+                      foreach (var item in ViewBag.PostData)
+                    {
+                    
+                        <tr class="postedfetchdata">
+                            <td>
+                                <p>@item.Title</p>
+                            </td>
+                            <td align="center">
+                                <p>@item.Category</p>
+                            </td>
+                            <td align="center">
+                                <p>@item.Credit</p>
+                            </td>
+                            <td>
+                                <p>@item.Composer</p>
+                            </td>
+                            <td>
+                                <p>@item.TrackingId</p>
+                            </td>
+
+                        </tr>
+                     
+                    }
+                    }
+                    else
+                    {
+                        
+                    }
+                    @*<tr>
+                        <td>
+                            <p>file2</p>
+                        </td>
+                        <td align="center">
+                            <p>LimeLinx</p>
+                        </td>
+                        <td align="center">
+                            <p>8</p>
+                        </td>
+                        <td>
+                            <p>Artisan Home</p>
+                        </td>
+                        <td>
+                            <p>325467546</p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Starships</p>
+                        </td>
+                        <td align="center">
+                            <p>Twitter</p>
+                        </td>
+                        <td align="center">
+                            <p>5</p>
+                        </td>
+                        <td>
+                            <p>Nicki Minaj</p>
+                        </td>
+                        <td>
+                            <p>095467546</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Flashing Lights</p>
+                        </td>
+                        <td align="center">
+                            <p>LinkedIn</p>
+                        </td>
+                        <td align="center">
+                            <p>9</p>
+                        </td>
+                        <td>
+                            <p>Kanye West</p>
+                        </td>
+                        <td>
+                            <p>654546</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Make it rain</p>
+                        </td>
+                        <td align="center">
+                            <p>Facebook</p>
+                        </td>
+                        <td align="center">
+                            <p>11</p>
+                        </td>
+                        <td>
+                            <p>Fat Joe</p>
+                        </td>
+                        <td>
+                            <p>989876546</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Batman</p>
+                        </td>
+                        <td align="center">
+                            <p>PinInterest</p>
+                        </td>
+                        <td align="center">
+                            <p>14</p>
+                        </td>
+                        <td>
+                            <p>Universal Movies</p>
+                        </td>
+                        <td>
+                            <p>757677223</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Blow</p>
+                        </td>
+                        <td align="center">
+                            <p>Google Plus</p>
+                        </td>
+                        <td align="center">
+                            <p>16</p>
+                        </td>
+                        <td>
+                            <p>Johnny Depp</p>
+                        </td>
+                        <td>
+                            <p>122343454</p>
+                        </td>
+                    </tr>*@
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="aphidbytecenter content scrollWidth" id="content_2" style="height: 5000px; margin-top: 15px;">
+
+        <div class="massage_index2">
+            <div style="width: 100%; height: 5000px; margin: auto;">
+                <br />
+
+
+                <!-- Table goes in the document BODY -->
+                <table align="center" class="gradienttable2" id="postQueue" style="width: 100%; margin-left: 20px;">
+                    <tr>
+                        <th style="width: 15%;">
+                            <p>Composer</p>
+                        </th>
+                        <th style="width: 15%;">
+                            <p>Title</p>
+                        </th>
+                        <th style="width: 15%;">
+                            <p>Category</p>
+                        </th>
+                        <th style="width: 15%;">
+                            <p>Credits for Upload/Post</p>
+                        </th>
+                        <th style="width: 15%; background: none;">&nbsp;</th>
+
+
+                    </tr>
+                    @*<tr>
+	<td class="gradient-tr1"><p>Lil Wayne</p></td>
+    <td align="center" class="gradient-tr1"><p>Lollipop</p></td>
+    <td align="center" class="gradient-tr1"><p>Videos</p></td>
+    <td class="gradient-tr1"><p>3</p></td>
+    <td style="background:none;">
+    <div class="grandit-3box">
+    <a href="#"><img src="/images/plus-m-i.png"></a>
+    <a href="#"><img src="/images/close-m-i.png"></a>
+    <a href="#"><img src="/images/sear-mcredit-i.png"></a>
+    </div>
+    </td>
+</tr>*@
+                    @*<tr>
+	<td  class="gradient-tr2"><p>Nicki Minaj</p></td>
+    <td align="center" class="gradient-tr2"><p>Moment for Life</p></td>
+    <td align="center" class="gradient-tr2"><p>Videos</p></td>
+    <td class="gradient-tr2"><p>1</p></td>
+    <td style="background:none;">
+     <div class="grandit-3box">
+    <a href="#"><img src="/images/plus-m-i.png"></a>
+    <a href="#"><img src="/images/close-m-i.png"></a>
+    <a href="#"><img src="/images/sear-mcredit-i.png"></a>
+    </div>
+    </td>
+   
+  
+</tr>*@
+                    @*<tr>
+    <td class="gradient-tr1"><p>Artisan Home</p></td>
+    <td align="center" class="gradient-tr1"><p>file2</p></td>
+    <td align="center" class="gradient-tr1"><p>Videos</p></td>
+    <td class="gradient-tr1"><p>2</p></td>
+    <td style="background:none;">
+     <div class="grandit-3box">
+    <a href="#"><img src="/images/plus-m-i.png"></a>
+    <a href="#"><img src="/images/close-m-i.png"></a>
+    <a href="#"><img src="/images/sear-mcredit-i.png"></a>
+    </div>
+    </td>
+   
+  
+</tr>*@
+                    @*<tr>
+  <td class="gradient-tr2"><p>Nicki Minaj</p></td>
+  <td align="center" class="gradient-tr2"><p>Starships</p></td>
+  <td align="center" class="gradient-tr2"><p>Ebook</p></td>
+  <td class="gradient-tr2"><p>3</p></td>
+  <td style="background:none;">
+   <div class="grandit-3box">
+    <a href="#"><img src="/images/plus-m-i.png"></a>
+    <a href="#"><img src="/images/close-m-i.png"></a>
+    <a href="#"><img src="/images/sear-mcredit-i.png"></a>
+    </div>
+  </td>
+ 
+</tr>*@
+                    @*<tr>
+  <td class="gradient-tr1"><p>Kanye West</p></td>
+  <td align="center" class="gradient-tr1"><p>Flashing Lights</p></td>
+  <td align="center" class="gradient-tr1"><p>Music</p></td>
+  <td class="gradient-tr1"><p>3</p></td>
+  <td style="background:none;">
+   <div class="grandit-3box">
+    <a href="#"><img src="/images/plus-m-i.png"></a>
+    <a href="#"><img src="/images/close-m-i.png"></a>
+    <a href="#"><img src="/images/sear-mcredit-i.png"></a>
+    </div>
+  </td>
+ 
+</tr>*@
+
+                    @*<tr>
+  <td class="gradient-tr2"><p>Fat Joe</p></td>
+  <td align="center" class="gradient-tr2"><p>Make it rain</p></td>
+  <td align="center" class="gradient-tr2"><p>Videos</p></td>
+  <td class="gradient-tr2"><p>2</p></td>
+  <td style="background:none;">
+   <div class="grandit-3box">
+    <a href="#"><img src="/images/plus-m-i.png"></a>
+    <a href="#"><img src="/images/close-m-i.png"></a>
+    <a href="#"><img src="/images/sear-mcredit-i.png"></a>
+    </div>
+  </td>
+
+</tr>*@
+                    @*<tr>
+  <td class="gradient-tr1"><p>Universal Movies</p></td>
+  <td align="center" class="gradient-tr1"><p>Batman</p></td>
+  <td align="center" class="gradient-tr1"><p>Music</p></td>
+  <td class="gradient-tr1"><p>1</p></td>
+  <td style="background:none;">
+   <div class="grandit-3box">
+    <a href="#"><img src="/images/plus-m-i.png"></a>
+    <a href="#"><img src="/images/close-m-i.png"></a>
+    <a href="#"><img src="/images/sear-mcredit-i.png"></a>
+    </div>
+  </td>
+ 
+</tr>*@
+                    @*<tr>
+  <td class="gradient-tr2"><p>Johnny Depp</p></td>
+  <td align="center" class="gradient-tr2"><p>Blow</p></td>
+  <td align="center" class="gradient-tr2"><p>Zip File</p></td>
+  <td class="gradient-tr2"><p>2</p></td>
+  <td style="background:none;">
+   <div class="grandit-3box">
+ <a href="#"><img src="/images/plus-m-i.png"></a>
+ <a href="#"><img src="/images/close-m-i.png"></a>
+ <a href="#"><img src="/images/sear-mcredit-i.png"></a>
+    </div>
+  </td>
+ 
+</tr>*@
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="aphidbytecenter content scrollWidth" id="content_3" style="height: auto; margin-top: 15px;">
+        <div class="massage_index3">
+            <div style="width: 100%; height: auto; margin: auto;">
+                <br />
+                <!-- Table goes in the document BODY -->
+                <table align="center" id="PostMdata" class="gradienttable3">
+                    <tr>
+                        <th style="width: 5%;" class="table-tha"></th>
+                        <th style="width: 10%;" class="tableth-1">
+                            <p>Composer</p>
+                        </th>
+                        <th style="width: 10%;" class="tableth-1">
+                            <p>Title</p>
+                        </th>
+                        <th style="width: 10%;" class="tableth-1">
+                            <p>Category</p>
+                        </th>
+                        <th style="width: 5%;" class="tableth-1">
+                            <p>Credits</p>
+                        </th>
+                        <th style="width: 5%;" class="tableth-1">
+                            <p>Action</p>
+                        </th>
+                        <th style="width: 15%;" class="tableth-1">
+                            <p>Post to your Networks</p>
+                        </th>
+
+                    </tr>
+                    @*  <tr>
+    <td class="table-tha"><input type="checkbox" name="genre" id="check-1" value="action" />
+	                      <label for="check-1"></label>
+                          </td>
+    <td class="table-trb3"><p>Lil Wayne</p></td>
+    <td class="table-trb3"><p>Lollipop</p></td>
+    <td class="table-trb3" align="center"><p>Videos</p></td>
+    <td class="table-trb3" align="center"><p>3</p></td>
+    <td class="table-trb3" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb3">&nbsp;</td>
+  </tr>*@
+                    @*  <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb4"><p>Nicki Minaj</p></td>
+    <td class="table-trb4"><p>Moment for Life </td>
+    <td class="table-trb4" align="center"><p>Videos</p></td>
+    <td class="table-trb4" align="center"><p>3</p></td>
+    <td class="table-trb4" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb4">&nbsp;</td>
+  </tr>*@
+                    @*  <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb3"><p>Madonna</p></td>
+    <td class="table-trb3"><p>file2</p></td>
+    <td class="table-trb3" align="center"><p>Music</p></td>
+    <td class="table-trb3" align="center"><p>1</p></td>
+    <td class="table-trb3" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb3">
+    <div class="check-box1">
+     <p><input type="checkbox" name="genre" id="check-2" value="action" />
+	    <label for="check-2" ></label></p>
+    
+    <p>d</p>
+    <p>d</p>
+    <p>d</p> 
+    </div>	
+    </td>
+  </tr>*@
+                    @*  <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb4"><p>Nicki Minaj</p></td>
+    <td class="table-trb4"><p>Starships</p></td>
+    <td class="table-trb4" align="center"><p>Ebook</p></td>
+    <td class="table-trb4" align="center"><p>1</p></td>
+    <td class="table-trb4" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb4">&nbsp;</td>
+  </tr>*@
+                    @* <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb3"><p>Kanye</p> </td>
+    <td class="table-trb3"><p>Flashing Lights</p></td>
+    <td class="table-trb3" align="center"><p>Music</p></td>
+    <td class="table-trb3" align="center"><p>3</p></td>
+    <td class="table-trb3" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb3">&nbsp;</td>
+  </tr>
+   <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb4"><p>Fat Joe</p></td>
+    <td class="table-trb4"><p>Make it rain</p></td>
+    <td class="table-trb4" align="center"><p>Videos</p></td>
+    <td class="table-trb4" align="center"><p>2</p></td>
+    <td class="table-trb4" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb4">&nbsp;</td>
+  </tr>
+   <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb3"><p>Universal Movies</p></td>
+    <td class="table-trb3"><p>Batman</p></td>
+    <td class="table-trb3" align="center"><p>Videos</p></td>
+    <td class="table-trb3" align="center"><p>1</p></td>
+    <td class="table-trb3" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb3">&nbsp;</td>
+  </tr>
+   <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb4"><p>Johnny Depp</p></td>
+    <td class="table-trb4"><p>Blow</p></td>
+    <td class="table-trb4" align="center"><p>Zip File</p></td>
+    <td class="table-trb4" align="center"><p>2</p></td>
+    <td class="table-trb4" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb4">&nbsp;</td>
+  </tr>*@
+                </table>
+
+
+
+                <!-- Table goes in the document BODY -->
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="aphidbytecenter content scrollWidth" id="content_4" style="height: 5000px; margin-top: 15px;">
+        <div class="massage_index4">
+            <div style="width: 100%; height: 5000px; margin: auto;">
+                <br />
+                <!-- Table goes in the document BODY -->
+                <table align="center" class="gradienttable" id="last">
+                    <tr>
+                        <th>
+                            <p>Title</p>
+                        </th>
+                        <th>
+                            <p>Type</p>
+                        </th>
+                        <th>
+                            <p>Credits</p>
+                        </th>
+                        <th>
+                            <p>Composer</p>
+                        </th>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Lollipop</p>
+                        </td>
+                        <td align="center">
+                            <p>Purchase</p>
+                        </td>
+                        <td align="center">
+                            <p>3</p>
+                        </td>
+                        <td>
+                            <p>Lil Wayne</p>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Moment for Life</p>
+                        </td>
+                        <td align="center">
+                            <p>Purchase</p>
+                        </td>
+                        <td align="center">
+                            <p>23</p>
+                        </td>
+                        <td>
+                            <p>Nicki Minaj</p>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>file2</p>
+                        </td>
+                        <td align="center">
+                            <p>Survey</p>
+                        </td>
+                        <td align="center">
+                            <p>8</p>
+                        </td>
+                        <td>
+                            <p>Artisan Home</p>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Starships</p>
+                        </td>
+                        <td align="center">
+                            <p>Watched</p>
+                        </td>
+                        <td align="center">
+                            <p>5</p>
+                        </td>
+                        <td>
+                            <p>Nicki Minaj</p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Flashing Lights</p>
+                        </td>
+                        <td align="center">
+                            <p>Purchase</p>
+                        </td>
+                        <td align="center">
+                            <p>9</p>
+                        </td>
+                        <td>
+                            <p>Kanye West</p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Make it rain</p>
+                        </td>
+                        <td align="center">
+                            <p>Watched</p>
+                        </td>
+                        <td align="center">
+                            <p>11</p>
+                        </td>
+                        <td>
+                            <p>Fat Joe</p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Batman</p>
+                        </td>
+                        <td align="center">
+                            <p>Purchased Movie Ticket</p>
+                        </td>
+                        <td align="center">
+                            <p>14</p>
+                        </td>
+                        <td>
+                            <p>Universal Movies</p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Blow</p>
+                        </td>
+                        <td align="center">
+                            <p>Purchased Movie Ticket</p>
+                        </td>
+                        <td align="center">
+                            <p>16</p>
+                        </td>
+                        <td>
+                            <p>Johnny Depp</p>
+                        </td>
+
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="massage-footer-m" id="sub" style="padding-left: 14%; padding-top: 3%;">
+        <div></div>
+        <input type="button" id="delete" style="color: white; border-color: red; background-color: red; margin-left: 60%; width: 16%; height: 92%;" value="Delete" />
+        <input type="button" id="submit" style="color: black; border-color: green; background-color: green; margin-left: 0%; width: 16%; height: 92%;" value="Submit" />
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="jquery.mCustomScrollbar.js"></script>
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+
+<script>
+    
+    function Sorting(val) {
+        var clsname = $("#searchbtn").attr('class');
+
+        $.post('/Byter/Order', { Sort: val, Class: clsname }, function (data) {
+            $('.posteddatatable').remove();
+            $('.newData').remove();
+            if (data != null) {
+                if (clsname == "one") {
+
+                    for (var i = 0; i < data.length; i++) {
+                        posteddata = null;
+                        postedbody = "<tr class='posteddatatable'>";
+
+                        postedbody += " <td><p>" + data[i].Title + "</p></td>";
+                        postedbody += "<td align='center'><p>" + data[i].Category + "</p></td>";
+                        postedbody += " <td align='center'><p>" + data[i].Credit + "</p></td></td>";
+                        postedbody += "<td><p>" + data[i].Composer + "</p></td>";
+                        postedbody += " <td><p>" + data[i].TrackingId + "</p></td>";
+                        postedbody += "</tr>";
+                        $(".postedfetchdata").remove();
+                        $("#posteddata").append(postedbody);
+                    }
+                }
+                else {
+                    for (var i = 0; i < data.length; i++) {
+
+                        if (i % 2 == 0) {
+
+                            body = "<tr class='newData'>";
+                            body += "<td class='gradient-tr1'><p>" + data[i].Composer + "</p></td>";
+                            body += "<td align='center' class='gradient-tr1'><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center' class='gradient-tr1'><p>" + data[i].Category + "</p></td>";
+                            body += "<td class='gradient-tr1'><p>" + data[i].Credit + "</p></td>";
+                            if (clsname == "three") {
+                                body += "<td class='table-trb3' align='center'><p><img src='/images/sear-mcredit-i.png'onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></p></td>";
+                                body += "<td class='table-trb3' id='Social" + i + "' >&nbsp;</td>";
+                            }
+                            body += "<td style='background:none;'>";
+                            body += "<div class='grandit-3box'>";
+                            body += " <a href='#'><img src='/images/plus-m-i.png' class='newData' onclick='PlusClick(" + data[i].TrackingId + ");'></a>";
+                            body += "<a href='#'><img src='/images/close-m-i.png' onclick='DeleteItem("+data[i].TrackingId+")'></a>";
+                            body += "<a href='#'><img src='/images/sear-mcredit-i.png' onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></a>";
+                            body += "</div>";
+                            body += "</td>";
+                            body += "</tr>";
+                            $("#postQueue").append(body);
+
+                        }
+                        else {
+                            body = "<tr class='newData'>";
+                            body += "<td class='gradient-tr2'><p>" + data[i].Composer + "</p></td>";
+                            body += "<td align='center' class='gradient-tr2'><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center' class='gradient-tr2'><p>" + data[i].Category + "</p></td>";
+                            body += "<td class='gradient-tr2'><p>" + data[i].Credit + "</p></td>";
+                            body += "<td style='background:none;'>";
+                            body += "<div class='grandit-3box'>";
+                            body += " <a href='#'><img src='/images/plus-m-i.png' onclick='PlusClick(" + data[i].TrackingId + ");'></a>";
+                            body += "<a href='#'><img src='/images/close-m-i.png'></a>";
+                            body += "<a href='#'><img src='/images/sear-mcredit-i.png' onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></a>";
+                            body += "</div>";
+                            body += "</td>";
+                            body += "</tr>";
+                            $("#postQueue").append(body);
+                        }
+                    }
+                }
+            }
+
+
+        });
+
+    }
+
+
+    function search()
+    {
+        var value = $('.creditsummm').val();
+        var clsname = $("#searchbtn").attr('class');
+
+        $.post('/Byter/Searching', { Text: value, Class: clsname }, function (data) {
+            $('.posteddatatable').remove();
+            $('.newData').remove();
+            if (data != null) {
+                if (clsname == "one") {
+
+                    for (var i = 0; i < data.length; i++) {
+                        posteddata = null;
+                        postedbody = "<tr class='posteddatatable'>";
+
+                        postedbody += " <td><p>" + data[i].Title + "</p></td>";
+                        postedbody += "<td align='center'><p>" + data[i].Category + "</p></td>";
+                        postedbody += " <td align='center'><p>" + data[i].Credit + "</p></td></td>";
+                        postedbody += "<td><p>" + data[i].Composer + "</p></td>";
+                        postedbody += " <td><p>" + data[i].TrackingId + "</p></td>";
+                        postedbody += "</tr>";
+                        $(".postedfetchdata").remove();
+                        $("#posteddata").append(postedbody);
+                    }
+                }
+                else {
+                    for (var i = 0; i < data.length; i++) {
+
+                        if (i % 2 == 0) {
+
+                            body = "<tr class='newData'>";
+                            body += "<td class='gradient-tr1'><p>" + data[i].Composer + "</p></td>";
+                            body += "<td align='center' class='gradient-tr1'><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center' class='gradient-tr1'><p>" + data[i].Category + "</p></td>";
+                            body += "<td class='gradient-tr1'><p>" + data[i].Credit + "</p></td>";
+                            if (clsname == "three") {
+                                body += "<td class='table-trb3' align='center'><p><img src='/images/sear-mcredit-i.png'onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></p></td>";
+                                body += "<td class='table-trb3' id='Social" + i + "' >&nbsp;</td>";
+                            }
+                            body += "<td style='background:none;'>";
+                            body += "<div class='grandit-3box'>";
+                            body += " <a href='#'><img src='/images/plus-m-i.png' class='newData' onclick='PlusClick(" + data[i].TrackingId + ");'></a>";
+                            body += "<a href='#'><img src='/images/close-m-i.png'></a>";
+                            body += "<a href='#'><img src='/images/sear-mcredit-i.png' onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></a>";
+                            body += "</div>";
+                            body += "</td>";
+                            body += "</tr>";
+                            $("#postQueue").append(body);
+
+                        }
+                        else {
+                            body = "<tr class='newData'>";
+                            body += "<td class='gradient-tr2'><p>" + data[i].Composer + "</p></td>";
+                            body += "<td align='center' class='gradient-tr2'><p>" + data[i].Title + "</p></td>";
+                            body += "<td align='center' class='gradient-tr2'><p>" + data[i].Category + "</p></td>";
+                            body += "<td class='gradient-tr2'><p>" + data[i].Credit + "</p></td>";
+                            body += "<td style='background:none;'>";
+                            body += "<div class='grandit-3box'>";
+                            body += " <a href='#'><img src='/images/plus-m-i.png' onclick='PlusClick(" + data[i].TrackingId + ");'></a>";
+                            body += "<a href='#'><img src='/images/close-m-i.png'></a>";
+                            body += "<a href='#'><img src='/images/sear-mcredit-i.png' onclick='fileprivew(" + data[i].TrackingId + "," + categorychange(data[i].Category) + ")'></a>";
+                            body += "</div>";
+                            body += "</td>";
+                            body += "</tr>";
+                            $("#postQueue").append(body);
+                        }
+                    }
+                }
+            }
+        });
+    }
+    $(document).ready(function () {
+
+        $("#searchbtn").attr('class', 'one');
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    })(jQuery);
+    
+</script>
+
+<div id="button-bg1" style="display: none;">
+
+    <div class="errormsg">
+        <p id="socialname"></p>
+    </div>
+</div>
+
+
+<div class="black_screen" id="pop_wrapper" style="opacity: 0.2; z-index: 800; display: none"></div>
+<div id="buttn-suc"
+    style="margin-left: 34%; margin-top: -47%; position: absolute; display: none;">
+    <img src="/Images/othre_popup_bg.png" width="47%" />
+    <a style="position: absolute; margin-left: -45%; margin-top: 2%;">
+        <img src="~/Images/right-icone.png" width="98%" />
+    </a>
+    <div id="socialname1" style="color: white; height: 85px; margin-left: 15%; margin-top: -13%; overflow: hidden; width: 30%; word-wrap: break-word;">
+    </div>
+</div>
+
+<div style="display:none; margin-left: 25%; margin-top: -69%; position: fixed; z-index:999;" id="denied" >
+    <img src="/Images/selectaccordingly.png" style="width:50%;" id="deniedimage"  onclick="deniedclick()" />
+</div>

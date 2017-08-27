@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+    var filename = ViewBag.FileName ?? "";
+}
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/clones")
+    @Styles.Render("~/Content/themes/base/css")
+}
+@section scripts{
+    @Scripts.Render("~/js/home/clones.js")
+}
+<div class="container-fluid">
+    <div class="row">
+        @Html.Partial("~/Views/Basic/Shared/_BasicAccountNav.cshtml")
+        <div class="col-md-9">
+           
+            <div class="row">
+                <div class="col-sm-12">
+                    <div style="text-align:center">
+                        <img src="~/Images/UploadConfirmation.png" style="width: 137px; height: 137px;">
+                        <p>
+                            Your file @filename  was successfully uploaded
+                        <br />
+                        www.aphidbyte.com/key
+                    </p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

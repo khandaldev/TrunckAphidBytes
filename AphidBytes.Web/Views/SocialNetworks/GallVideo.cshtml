@@ -1,0 +1,131 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+<div class="socialsetupwrap" style="width:100%;">
+<div style="width:20%;float:left;margin: 30px 25px 0;">
+<div class="logosocila"><img src="/img/bphidbyte_sicon2.png"></div>
+<div class="tophedboxa"><a href="#">Back</a></div>
+</div>
+
+<div class="socialhead-view">
+<div class="matrix-viewbox3">
+<div class="mviewboxa">
+<div class="mview-pic"><img src="/img/Jay-Z-pic.png"></div>
+<div class="mview-rightbox">
+<p>PittBull<br>
+Jenifer Lopez<br>
+Get On The Floor<br>
+www.aphidbyte.com/PittBull</p>
+<p  style="color:#e46c0a; margin-top:10px;">Tracking #: 0003232</p>
+<div class="view-channel"><img src="/img/view-channel.png"></div>
+</div>
+
+<div class="aphid-c"><img src="/img/aphid-teclogo.png">
+<p>Return to The Gall</p>
+</div>
+</div>
+
+
+<div class="mviewboxb">
+<p><a href="#">Videos</a></p>
+<samp id="greenbu"><a href="#"><img src="/img/plusgreen.png"></a></samp>
+<div class="video-mpc"><img src="/img/videobgp.png" class="video-mp"></div>
+<div id="play-p"><img src="/img/play-pic.png"></div>
+
+
+</div>
+
+<div class="mviewboxc">
+<img src="/img/amazone-p.png">
+<p>$0.87</p>
+<img src="/img/itunes.png">
+<p>$1.29</p>
+<img src="/img/googleplay.png">
+<p>$0.99</p>
+
+<img src="/img/dwonloadbw.png" style="width:25%; margin-top:40px; height:auto;">
+<img src="/img/favopiv.png" style="width:22%; height:auto; margin-top:55px;">
+
+
+
+
+</div>
+</div>
+
+
+</div>xx
+
+
+<div class="mview-footer">
+<samp>People who viewed this also viwed</samp>
+<div class="fram-m">
+<div id='prev' class="mecnext_s" style="width:10%; float:left; "><img src="/img/prev_s.png"></div>
+<div  id="slider1" style="width:80%; float:left; height:90px;">
+
+<div class="slli-main">
+<div class="fram-s"><img src="/img/framepic1.png" class="fram-sf"></div>
+<div class="fram-s"><img src="/img/framepic2.png" class="fram-sf"></div>
+<div class="fram-s"><img src="/img/framepic3.png" class="fram-sf"></div>
+</div>
+
+<div class="slli-main">
+<div class="fram-s"><img src="/img/Jay-Z-pic.png" class="fram-sf"></div>
+<div class="fram-s"><img src="/img/framepic2.png" class="fram-sf"></div>
+<div class="fram-s"><img src="/img/framepic2.png" class="fram-sf"></div>
+</div>
+
+<div class="slli-main">
+<div class="fram-s"><img src="/img/Jay-Z-pic.png" class="fram-sf"></div>
+<div class="fram-s"><img src="/img/framepic2.png" class="fram-sf"></div>
+<div class="fram-s"><img src="/img/framepic2.png" class="fram-sf"></div>
+</div>
+
+
+</div>
+<div id='next' class="mecnext_s" style="width:10%; float:left;"><img src="/img/next_s.png"></div>
+</div>
+
+
+</div>
+</div>
+
+
+<div class="m-footer">
+
+				<ul class="navlinksm_b">
+				<li><a href="#">Advertise</a></li>
+				<li><a href="#">Store</a></li>
+				<li><a href="#">Terms</a></li>
+				<li><a href="#">Privacy Policy  </a></li>
+                <li><a href="#">Sponsoring</a></li>
+				</ul>
+
+
+</div>
+
+
+
+<script language="javascript">
+    $(document).ready(function () {
+
+        $('#slider1').cycle({
+            fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+            speed: 'slow',
+            timeout: 0,
+            next: '#next',
+            prev: '#prev',
+            pager: '#thumb',
+
+            pagerAnchorBuilder: function (idx, slide) {
+                return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+            }
+        });
+
+
+
+    });
+</script> 
+ 
+ 
+
+

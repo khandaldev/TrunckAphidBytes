@@ -1,0 +1,875 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.AphidTiseGenerateAds
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section LogOut
+{
+    <ul>
+
+        <li><a href="#"style="color:#DCA806">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+        <li><a href="~/Accounts/Logout">Logout</a></li>
+    </ul>
+
+    <div class="profilebg">
+        <div class="migprofile">
+            @* <img src="/images/profilebg.png">*@
+            <img src="@Url.Action("Overview", "AphidTise")" height="100px" />
+        </div>
+        <div class="profiletext txt1">AphidTise Account</div>
+        <div class="logo txtL">
+            <img src="/images/logobg.png">
+        </div>
+    </div>
+
+}
+
+@*YesNo PopUP*@
+<div id="show_pop" style="display:none;">
+<div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+<div class="bg_yes_no">
+<div><p>Upload in Progress..</p></div>
+</div>
+</div>
+</div>
+@*YesNo PopUP*@
+<div id="button-bg1" class="hidden" style="display: none;margin-top:13%;margin-left:38%;">
+
+    <div class="errormsg">
+        Invalid File
+    </div>
+    <div id="button-c1">
+        <img src="/img/button_bgw.png" onclick="Hide();" />
+    </div>
+
+</div>
+<div id="button-bg2" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        please select Video
+    </div>
+    <div id="button-c2">
+        <img src="/img/button_bgw.png" onclick="HideVid();" />
+    </div>
+
+</div>
+
+
+
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true); 
+ 
+    <div style="width:55%; height:30px; margin:auto; text-align:center;">
+    <div class="processingbyterleft">
+                    <p id="progresstext"></p>
+                    <p class="progressbar" role="progressbar" style="width: 0%" />
+                </div>
+    </div> 
+    
+    
+    <div class="headertab_aphidtise">
+        <p class="toptext2nd" style="cursor:pointer;"><span id="AccInfo">Account Info</span>  > Generate Ads<span></span></p>
+        <div class="aphidbyteleft aphdl">
+
+            <ul class="aphidbytelistA aphdc">
+                <li><a href="~/AphidTise/AphidTiseAccountInfo">Account Info</a></li>
+                <li></li>
+                <li><a href="AphidTiseGenrateAds">Generate Ads</a></li>
+                <li>
+                    <img src="/images/right_line.png" height="2">
+                </li>
+                <li><a href="AphidtiseMessage">Messages</a></li>
+                <li></li>
+                <li><a href="AphidtiseByteTracker">Byte Tracker</a></li>
+                <li></li>
+                <li><a href="AphidtiseHistory">History</a></li>
+                <li></li>
+            </ul>
+
+            @*<div class="aphidbyteleftright-info-a"></div>*@
+        </div>
+
+        <div class="aphidbytecenter content scrollWidth" id="content_1">
+            <div class="from_aphid">
+                <ul>
+                    <li>
+                        <label for="Company Logo">Company Logo :</label>
+                        @* <input type="file" id="fineinput" />*@
+                        @Html.TextBoxFor(model => model.CompanyLogo, new { type = "file", accept = "image/*", form = "file name" })
+                        @Html.ValidationMessageFor(model => model.CompanyLogo, null, new { @class = "ctext" })
+                    </li>
+                    <li>
+                        <label for="Company Name">Title:</label>
+                        @*  <input type="text" name="email" id="email" size="30" />*@
+                        @Html.EditorFor(model => model.Title)
+                    </li>
+
+                    <li>
+                        <label for="psw">Ad Information:</label>
+                        @* <textarea name="psw" cols="30" id="psw"></textarea>*@
+                        @Html.TextAreaFor(model => model.AdInformation, new { @maxlength = 250 })
+                        <samp class="righttext1">250 Characters Max.</samp>
+                        <samp class="righttext2">(Still Image Only)</samp>
+                    </li>
+
+                    <li>
+                        <label for="Ad Type">Ad Type:</label>
+                        <select id="openPopUp" onclick="openpopup();">
+                            <option id="selectedoption" style="cursor:pointer;">Select</option>
+                        </select>
+
+                    </li>
+                    
+                    <li id="lblcyclefr">
+                        <label for="Ad Cycle">Ad Cycle From:</label>
+                        @* <input name="email" type="text" id="date" value="March 7 (2pm EST ) – March 9 (9pm EST)" size="30" />*@
+                        @Html.EditorFor(model => model.AdCycleFromDate)
+                    </li>
+                    <li id="lblcycleto">
+                        <label for="Ad Cycle">Ad Cycle To:</label>
+                        @* <input name="email" type="text" id="date" value="March 7 (2pm EST ) – March 9 (9pm EST)" size="30" />*@
+                        @Html.EditorFor(model => model.AdCycleToDate)
+                    </li>
+
+                    <li id="lblpic">
+                        <label for="Ad Picture">Ad Picture:</label>
+                        @*     <input type="file" id="fineinput" />*@
+                        @Html.TextBoxFor(model => model.AdPicture, new { type = "file", form = "file name"  })
+                        <samp class="righttext_change">
+                            Dimensions(480 X 384) 
+                        <br />
+                            <samp class="righttextcolor">(If not video)</samp></samp>
+                    </li>
+
+                    <li  id="lblvid">
+                        <label for="Ad Video">Ad Video:</label>
+                        @*<input type="file" id="fineinput" />*@
+                        @Html.TextBoxFor(model => model.AdVideo, new { type = "file",form = "file name"  })
+                        <samp class="righttext_change">
+                            (If Applicable) 
+                        <br />
+                            <samp class="righttextcolor">(If not Ad Picture) </samp>
+                        </samp>
+                    </li>
+
+                    <li>
+                        <label for="ad url">Ad Hyperlink URL:</label>
+                        @* <input name="email" type="text" id="email" value="http://" size="30" />*@
+                        @Html.EditorFor(model => model.AdHyperLinkUrl)
+                        <samp class="righttext_change">(If Applicable) </samp>
+                    </li>
+
+                    <li>
+                        <label for="price">Price you want displayed:</label>
+                        @* <input name="email" type="text" id="email" value="$35.00" size="30" />*@
+                        @Html.EditorFor(model => model.PriceToDisplay)
+                        <samp class="righttext_change">(If Applicable) </samp>
+                    </li>
+
+
+                    <li>
+                        <label for="credit">Credit Worth:</label>
+
+                        @Html.DropDownListFor(model => model.CreditsID, new SelectList(ViewBag.CityList, "id", "Value"), "Select Credit")
+
+
+                    </li>
+                </ul>
+
+                <div class="from_aphid_ul" style=" margin-left:150px !important;">
+                    <ul>
+                        <li style="padding-left: 40px !important;padding-top: 20px !important;">
+                            @* <input name="email" type="text" id="email" value="" placeholder="Question Here" />
+                            <input name="email" type="text" id="email" value="" placeholder="Option 1 Here" />
+                            <input name="email" type="text" id="email" value="" placeholder="Option 2 Here" />
+                            <input name="email" type="text" id="email" value="" placeholder="Option 3 Here" />
+                            <input name="email" type="text" id="email" value="" placeholder="Option 4 Here" />
+                            <input name="email" type="text" id="email" value="" placeholder="Option 5 Here" />
+                            <input name="email" type="text" id="email" value="" placeholder="Option 6 Here" />
+                            <input name="email" type="text" id="email" value="" placeholder="Option 7 Here" />
+                            <input name="email" type="text" id="email" value="" placeholder="Option 8 Here" />*@
+                            @Html.EditorFor(model => model.Question)
+                            @Html.EditorFor(model => model.Option1)
+                            @Html.EditorFor(model => model.Option2)
+                            @Html.EditorFor(model => model.Option3)
+                            @Html.EditorFor(model => model.Option4)
+                            @Html.EditorFor(model => model.Option5)
+                            @Html.EditorFor(model => model.Option6)
+                            @Html.EditorFor(model => model.Option7)
+                           
+                        </li>
+                    </ul>
+
+                </div>
+
+                    <div class="bytet-mfm">
+                        @Html.CheckBoxFor(model => model.IsValid)
+                        @*<input name="" type="checkbox" value="" class="info-p">*@
+                        <label for="Company Logo" class="info-p"><a href="#" id="trigger">Accept Terms & Conditions:</a></label>
+                    </div>
+
+
+
+                <div class="bytet-mfm" style="margin-left:330px !important;">
+                    <div>
+                        <p>@*<a href="#">*@<img src="/images/sear-mcredi-byter.png" id="previeww">@*</a>*@</p>
+                        <p class="infof-p">Preview</p>
+                    </div>
+
+                    <div>
+                        <input type="submit" id="submitbutton" style="background: url(/images/aphid_logo-byter.png); height: 78px; width: 85px; border: none;" />
+                        <p class="info-p">Generate</p>
+                    </div>
+
+
+                </div>
+                @* <ul class="update">
+                    <input type="submit" value="Update"id="privew" />
+                      <li><a href="#">Update</a></li>
+                </ul>*@
+
+            </div>
+
+        </div>
+
+
+    </div>}
+@*PopUp 3D*@
+<div style="margin-left: 200px; margin-top: -220px;" id="ImgClose">
+    @*<a id="popup-close" href="" class="button"><img src="~/Images/closebotton.png" onclick="CloseThis();" /> </a>*@
+</div>
+<div id="popup1" style="display: none; overflow-y: scroll; height: 90%; margin-left: -43%; margin-top: -13%; background: url(/img/aphidtisebg.png)">
+
+    @*<a id="popup-close" href="" class="button">*@<img src="~/Images/closebotton.png" id="popup1-close" style="margin-left: 1101px;" />
+    @*</a>*@
+    <p>
+        @* <img src="~/TempBasicImages/Lighthouse.jpg" id="image-placeholder" width="200px" height="200px"  />*@
+        <div class="socialsetupwrap">
+            <div>
+                <div class="container" style="width: 90%; margin: auto;">
+                    <div class="slider-head3d">
+                        <p>
+                            <img src="~/img/bphidbyte_sicon.png">
+                        </p>
+                        <p><a href="#">Back</a></p>
+                        <p class="sliderthead3d">Select Type of Advertisement</p>
+                    </div>
+                    <!-- Top Navigation -->
+                    <div class="wrapper">
+                        <ul class="stage clearfix">
+
+                            <li class="scene" id="abc" onclick="newClick()">
+                                <div class="movie" onclick="return true">
+                                    <div class="poster" id="new">
+                                        <img src="~/img/3d-images1.png" style="width: 100%;" onclick="Advertise1();">
+                                    </div>
+                                    <div class="info">
+                                        <img src="~/img/3d-images1.png" style="width: 100%; height: auto;" onclick="Advertise1();">
+                                    </div>
+
+                                </div>
+                                <div class="3dimagefooter" style="margin-left: 35px; margin-top: -38px; position: absolute; z-index: 99; width: 20%;">
+                                    <p style="width: 75%;">
+                                        <a href="#">
+                                            <img src="~/img/3dview.png" style="float: right; margin-top: -55px; width: 12%;"></a>
+                                    </p>
+                                    <p id="text1" style="font-family: 'MyWebFont2'; font-size: 18px; color: #FFF; text-align: center;">Entering Matrix Ad</p>
+                                    <p style="font-family: 'MyWebFont2'; font-size: 11px; color: #f3b801; text-align: center;">Video or Image</p>
+                                </div>
+
+                            </li>
+                            <li class="scene" id="abc1" onclick="newClick1()">
+                                <div class="movie" onclick="return true">
+                                    <div class="poster" id="new1">
+                                        <img src="~/img/3d-images2.png" style="width: 100%;" onclick="Advertise2();">
+                                    </div>
+                                    <div class="info">
+                                        <img src="~/img/3d-images2.png" style="width: 100%; height: auto;" onclick="Advertise2();">
+                                    </div>
+                                </div>
+                                <div class="3dimagefooter" style="margin-left: 15px; margin-top: -60px; position: absolute; z-index: 99;">
+                                    <p style="width: 100%;">
+                                        <a href="#">
+                                            <img src="~/img/3dview.png" style="float: right; margin-top: -45px; width: 11%;"></a>
+                                    </p>
+                                    <p id="text2" style="font-family: 'MyWebFont2'; font-size: 18px; color: #FFF; text-align: center;">Search Engine Ad</p>
+                                    <p style="font-family: 'MyWebFont2'; font-size: 11px; color: #f3b801; text-align: center;">Image must be borderless in psd.</br> Or .png format Image Only</p>
+
+                                </div>
+                            </li>
+
+                            <li class="scene" id="abc2" onclick="newClick2()">
+                                <div class="movie" onclick="return true">
+                                    <div class="poster" id="new2">
+                                        <img src="~/img/3d-images3.png" style="width: 100%;" onclick="Advertise3();">
+                                    </div>
+                                    <div class="info">
+                                        <img src="~/img/3d-images3.png" style="width: 100%; height: auto;" onclick="Advertise3();">
+                                    </div>
+                                </div>
+                                <div class="3dimagefooter" style="margin-left: 65px; margin-top: -100px; position: absolute; z-index: 99;">
+                                    <p style="width: 100%;">
+                                        <a href="#">
+                                            <img src="~/img/3dview.png" style="float: right; margin-top: -40px; width: 14%;"></a>
+                                    </p>
+                                    <p id="text3" style="font-family: 'MyWebFont2'; font-size: 18px; color: #FFF; text-align: center;">Before Play Ad</p>
+                                    <p style="font-family: 'MyWebFont2'; font-size: 11px; color: #f3b801; text-align: center;">Video Only</p>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /wrapper -->
+
+                </div>
+                <!-- /container -->
+
+
+                <div class="sliderthead3df2" style="">
+                    <ul class="stage clearfix">
+                        <li class="scene" id="abc3" onclick="newClick3()">
+                            <div class="movie" onclick="return true">
+                                <div class="poster" id="new3">
+                                    <img src="~/img/3d-images4.png" style="width: 100%;" onclick="Advertise4();">
+                                </div>
+                                <div class="info">
+                                    <img src="~/img/3d-images4.png" style="width: 100%; height: auto;" onclick="Advertise4();">
+                                </div>
+                            </div>
+                            <div class="3dimagefooter" style="margin-left: 0px; margin-top: -135px; position: absolute; z-index: 99;">
+                                <p style="width: 70%;">
+                                    <a href="#">
+                                        <img src="~/img/3dview.png" style="float: right; margin-top: -45px; width: 10%;"></a>
+                                </p>
+                                <p id="text4" style="font-family: 'MyWebFont2'; font-size: 18px; color: #FFF; text-align: center;">Inside Matrix Search Engine Ad</p>
+                                <p style="font-family: 'MyWebFont2'; font-size: 11px; color: #f3b801; text-align: center;">Video or Image</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sliderthead3df1">
+                    <p id="sliderthead3df11">Selected: Inside Matrix Search Engine Ad</p>
+                    <p><a href="#" id="continue">Continue</a></p>
+                </div>
+            </div>
+        </div>
+</div>
+@*PopUp 3D*@
+@*privewpopup1*@
+<div id="toPopup"class="1" style="left: 4% !important;margin: auto !important;width:90%; top:10%; background:#000 !important; border:none;opacity:0.9"> 
+        <div style="position:absolute; width:20%;"><img src="/img/bphidbyte_sicon2.png" /></div>
+        <div class="close"></div>
+        <samp class="out_close"><p>Close to go back to previous screen</p></samp>
+
+       	<span class="ecs_tooltip"></span></span>
+        
+		<div id="popup_content">
+        <div class="matrix_xadn1">
+       
+        
+        <div style="margin-top:3%!important;">
+        <div class="mix_vframe_a"><img src="/Images/3d-images4_c.png"/></div>
+        <div class="mix_vftext01">
+        <p>$35.00</p>
+        <p><img src="/Images/cr_d_img.png"/>3 credits</p>
+        </div>
+        
+        </div>
+       
+        <div >
+        <div class="mix_vframe_atext">
+        <h2>Johnny Cupcakes Shirts</h2>
+        <p>The extraordinary story of Steve Jobs, the original innovator and ground-breaking entrepreneur who let nothing stand in the way of greatness. The film tells the epic and turbulent story of Jobs as he blazed a trail that changed technology.</p>
+        </div>
+        
+        
+        
+        </div>
+        
+        <div>
+        <div class="view_st_max_c" style="width:100%; margin-top:50%;">
+        <p><a href="#">View Site</a></p>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        </div> 
+        <!--your content end-->
+    
+     </div>
+@*privewpoup1*@
+@*privewpopup2*@
+<div id="toPopup"class="2" style="left: 4% !important;margin: auto !important;width:90%; top:10%; background:#000 !important; border:none;opacity:0.9">
+     
+        <div class="close"id="popup2close"></div>
+        <samp class="out_close"><p>Close to go back to previous screen</p></samp>
+
+       	<span class="ecs_tooltip"></span></span>
+        
+		<div id="popup_content">
+        <div class="matrix_xadn1">
+       
+       <div class="matrix_per_za">
+       <h2>Preview </h2>
+       <p>When a user clicks the zoom on icon of an ad type, the preview will show the location of where the ad will be placed on the site. See next slides</p>
+       <div><img src="/Images/3d-images_8_c.png"/>   <samp class="p_plus_click"> <a href="#"><img src="/Images/plus_b.png"/id="privewinprivew"></a></samp> </div>
+       </div>
+        
+        
+        </div>
+        
+        </div> 
+        <!--your content end-->
+    
+     </div>
+@*privewpoup2*@
+@*privewopup3*@
+<div id="toPopup" class="3" style="left: 2% !important; margin: auto !important; width: 96%; top: 7%; border: none; z-index: 999; opacity: 0.9; bottom: 4%;background-color:black;">
+    <div style="position: absolute; width: 20%;">
+        <img src="/img/hphidbytelogo.png" /></div>
+    
+    <div class="close"id="popup3close"></div>
+    <samp class="out_close" style="margin-top: -2%;">Close to go back to previous screen</samp>
+
+    <span class="ecs_tooltip"></span>
+  
+
+        <div id="popup_content"> <!--your content start-->
+        
+        <div class="main_wrapper" style="width:98% !important; margin-top:13%;">
+         <samp style="height:20px; width:500px; margin:auto; "><img src="/img/line_searchbox_top.png"/></samp>
+        <div class="logo"></div>
+        <input type="text" class="searchmain_popup" placeholder="Enter Title or Tracking Number"id="popsearch" /> <input type="button" value="SEARCH" id="searchbtnpop" class="searchbtn" />
+        <ul class="navlinks">
+                <li id="SearchMusic">MUSIC</li>
+                <li id="SeachVideo">VIDEOS</li>
+                <li id="SearchPhotography">PHOTOGRAPHY/ART</li>
+                <li id="SearchEbook">EBOOK</li>
+                <li id="SearchFiles">FILES</li>
+        </ul>
+ 
+        </div>
+
+        <div class="p1_click">
+            <div>
+                <video id="ad_video_tag" autoplay="true" src="" style="border-radius: 0; margin-left: 4%; margin-top: 6%;">
+                    <source src="video.webm" type='video/webm; codecs="vorbis,vp8"'>
+                    <source src="video.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                    <source src="video.ogv" type='video/ogg; codecs="theora, vorbis"'>
+                    <!-- embed Flash here -->
+
+                    <p>Your browser does not support video; download the <a href="video.webm">WebM</a>, <a href="video.mp4">mp4</a> or <a href="video.ogg">Ogg</a> video for off-line viewing.</p>
+                </video>
+            </div>
+            <div style="margin-left: 6%; margin-top: 4%; width: 20%;">
+                <p style="text-align: left;">
+                    <samp id="ad_title" ></samp></p>
+                <p id="ad_desc" style="text-align: left;" ></p>
+            </div>
+
+            <div style="margin-top: 5%; width: 40%;">
+                <p><a href="" id="ad_website">View SIte</a></p>
+                <p id="ad_creadits" style="padding-top: 10px;"></p>
+                <p style="color: #ffc000;">
+                    Take survey or Visit site to redeem credits
+                </p>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--your content end-->
+
+</div>
+@*privewpoup3*@
+@*privewpopuo4*@
+
+@*privewpopup4*@
+<script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+<script>
+   
+    
+   
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+
+
+
+    var text1;
+    $("#AdVideo").change(function () {
+        var val = $("#AdVideo").val();
+        if (!val.match(/(?:avi|mp4|mpeg|mov|flv|wmv)$/)) {
+            $("#button-bg2").attr('style', 'display:block');
+            $("#AdVideo").val("");
+        }
+    });
+
+    var Isvalid = 0;
+    $("#IsValid").change(function () {
+        if ($("#IsValid").attr('checked')) {
+            isvalid = 1;
+            $("#submitbutton").removeAttr('disabled');
+           
+           
+        } else {
+            alert("Accept Terms and Conditions");
+            //isValid = 0;
+            $("#submitbutton").attr('disabled', 'disabled');
+        }
+    });
+
+
+    $("#AdPicture").change(function () {
+        var na = $("#AdPicture").val();
+        //na = na.split('.');
+        if (!na.match(/(?:gif|jpg|png|bmp)$/)) {
+            // inputted file path is not an image of one of the above types
+            $("#button-bg1").attr('style','display:block');
+            //alert("Use Image File Only!");
+            $("#AdPicture").val("");
+        }
+        else {
+            var img = document.getElementById('AdPicture');
+            //or however you get a handle to the IMG
+            var width = img.clientWidth;
+            var height = img.clientHeight;
+            if ((width == 480) && (height == 384)) {
+                alert("Use 480x384 Dimention Image Only");
+                $("#AdPicture").val("");
+
+            }
+        }
+
+    });
+
+    $("#CompanyLogo").change(function () {
+        var na = $("#CompanyLogo").val();
+        //na = na.split('.');
+        if (!na.match(/(?:gif|jpg|png|bmp)$/)) {
+            // inputted file path is not an image of one of the above types
+            $("#button-bg1").attr('style', 'display:block');
+            //alert("Use Image File Only!");
+            $("#CompanyLogo").val("");
+        }
+    });
+     
+    var prog = 0;
+    $('#CompanyLogo').fileupload({
+        dataType: 'json',
+        url: '/AphidTise/logotodb',
+        autoUpload: true,
+        done: function (e, data) {
+            // alert(data);
+            $('.progressbar').css('width', 0 + '%');
+            document.getElementById('progresstext').innerHTML = '';
+            $("#show_pop").hide();
+            $('#AdVideo').removeAttr('disabled', 'disabled');
+            $('#AdPicture').removeAttr('disabled', 'disabled');
+            prog = 0;
+        }
+    }).on('fileuploadprogressall', function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('.progressbar').css('width', progress + '%');
+        document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+        $("#show_pop").attr('style', 'display:block');
+        $("#AdVideo").attr('disabled', 'disabled');
+        $("#AdPicture").attr('disabled', 'disabled');
+        prog = 1;
+        //$("#Audio").attr('disabled', 'disabled');
+    });
+
+    $('#AdPicture').fileupload({
+        dataType: 'json',
+        url: '/AphidTise/imgtodb',
+        autoUpload: true,
+        done: function (e, data) {
+            $('.progressbar').css('width', 0 + '%');
+            document.getElementById('progresstext').innerHTML = '';
+            $("#show_pop").hide();
+            $('#AdVideo').removeAttr('disabled', 'disabled');
+            $('#CompanyLogo').removeAttr('disabled', 'disabled');
+            prog = 0;
+        }
+    }).on('fileuploadprogressall', function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('.progressbar').css('width', progress + '%');
+        document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+        $("#show_pop").attr('style', 'display:block');
+        prog = 1;
+        $("#AdVideo").attr('disabled', 'disabled');
+        $("#CompanyLogo").attr('disabled', 'disabled');
+    });
+
+    $('#AdVideo').fileupload({
+        dataType: 'json',
+        url: '/AphidTise/vidtodb',
+        autoUpload: true,
+        done: function (e, data) {
+            $('.progressbar').css('width', 0 + '%');
+            document.getElementById('progresstext').innerHTML = '';
+            $("#show_pop").hide();
+            prog = 0;
+            $('#AdPicture').removeAttr('disabled', 'disabled');
+            $('#CompanyLogo').removeAttr('disabled', 'disabled');
+        }
+    }).on('fileuploadprogressall', function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('.progressbar').css('width', progress + '%');
+        document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+        $("#show_pop").attr('style', 'display:block');
+        prog = 1;
+        $("#AdPicture").attr('disabled', 'disabled');
+        $("#CompanyLogo").attr('disabled', 'disabled');
+    });
+    function Hide()
+    {
+        $("#button-bg1").attr('style', 'display:none');
+    }
+    function HideVid()
+    {
+        $("#button-bg2").attr('style', 'display:none');
+    }
+
+
+    function openpopup() {
+        $("#popup1:visible").hide(); //hide popup if it is open
+        //  e.preventDefault(); // don't follow link
+        $("#image-placeholder").attr("src", $(this).attr("href")); // replace image src with href from the link that was clicked
+        $("#popup1").fadeIn("fast"); //show popup
+
+        $("#popup1-close").click(function (e) {
+            //  e.preventDefault();
+            $("#popup1").fadeOut("fast");
+        });
+    }
+
+    function Advertise1() {
+        //alert("Ad 1 Called");
+        // text = "Entering Matrix Ad";
+        text1 = $("#text1").text();
+        $('#sliderthead3df11').text("Selected: Entering Matrix Ad");
+        
+    }
+    function Advertise2() {
+        //alert("Ad 2 Called");
+        text1 = "Search Engine Ad";
+        $('#sliderthead3df11').text("Selected: Search Engine Ad");
+    }
+    function Advertise3() {
+        // alert("Ad 3 Called");
+        text1 = "Before Play Ad";
+        $('#sliderthead3df11').text("Selected: Before Play Ad");
+       
+    }
+    function Advertise4() {
+        // alert("Ad 4 Called");
+        text1 = "Inside Matrix Search Engine Ad";
+        $('#sliderthead3df11').text("Selected: Inside Matrix Search Engine Ad");
+
+    }
+
+    var arrDisabledDates = {};
+  
+    $("#continue").click(function () {
+       
+        //alert("Continue Called");
+        $("#popup1").fadeOut("fast");
+        $("#openPopUp").text("");
+        $("#openPopUp").append("<option>" + text1 + "</option>");
+      
+        $.post('/AphidTise/AphidTiseAdID',
+                       { key: "AdTypeId", value: text1 }, function () {
+                          
+
+                       }).done(function (data) {
+                           
+                           
+                       });
+        $.post('/AphidTise/Fetchbookdate', { ad_type_no: text1 }, function () {
+
+        }).done(function (data) {
+            if (text1 == "Search Engine Ad") {
+                $("#lblvid").attr('style', 'display:none');
+                $("#lblpic").show();
+            }
+            if (text1 == "Before Play Ad") {
+                $("#lblpic").attr('style', 'display:none');
+                $("#lblvid").show();
+            }
+            if (text1 == "Inside Matrix Search Engine Ad") {
+                $("#lblpic").show();
+                $("#lblvid").show();
+            }
+            if (text1 == "Entering Matrix Ad") {
+                $("#lblpic").show();
+                $("#lblvid").show();
+            }
+           // var array1 = data.split(',');
+            for (var i = 0; i < data.length - 1; i++) {
+                arrDisabledDates[new Date(data[i])] = new Date(data[i]);
+            }
+           
+            $('#lblcyclefr').show();
+            $('#lblcycleto').show();
+        });
+    });
+ 
+    $("#previeww").click(function () {
+       var Addtype=text1;
+        //$.post('/AphidTise/Addprivew', { Addtype: text1 }, function (data) {
+        //    window.location = data;
+       if (Addtype == "Before Play Ad") {
+           $(".1").show();
+
+            }
+            if (Addtype == "Inside Matrix Search Engine Ad") {
+                $(".3").show();
+
+            }
+            if (Addtype == "Search Engine Ad") {
+                $(".").show();
+
+            }
+            if (Addtype == "Entering Matrix Ad") {
+                $(".2").show();
+
+            }
+        })
+        
+    $("#closeicon").show();
+    $(".close").click(function (event) {
+        event.preventDefault();
+        $(toPopup).hide();
+    });
+    $("#popup2close").click(function () {
+        $(".2").fadeOut("fast");
+    })
+    $("#popup3close").click(function () {
+        $(".3").fadeOut("fast");
+    })
+    $(document).ready(function () {
+        $("#CompanyLogo").val("");
+        $("#AdPicture").val("");
+        $("#AdVideo").val("");
+        $("#IsValid").removeAttr('checked',false);
+        $("#AccInfo").click(function () {
+            window.location.href = "/AphidTise/AphidTiseAccountInfo";
+        });
+        $('#lblcyclefr').hide();
+        $('#lblcycleto').hide();
+        
+    });
+    //  var arrayb = arrays;
+    
+
+    
+    
+    $('#AdCycleFromDate').datepicker({
+        beforeShowDay: function (dt) {
+            var bDisable = arrDisabledDates[dt];
+            if (bDisable)
+                return [false, '', ''];
+            else
+                return [true, '', ''];
+        }
+    });
+    $('#AdCycleToDate').datepicker({
+        beforeShowDay: function (dt) {
+            var bDisable = arrDisabledDates[dt];
+            if (bDisable)
+                return [false, '', ''];
+            else
+                return [true, '', ''];
+        }
+    });
+
+ 
+</script>
+
+<style type="text/css">
+    body {
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+    }
+</style>
+
+<script type="text/javascript">
+    function newClick() {
+
+        $(".scene").html();
+        $("#new").css('display', 'none');
+        $("#new1").css('display', 'block');
+        $("#new2").css('display', 'block');
+        $("#new3").css('display', 'block');
+        $("#abc1 div.movie").css('transform', '');
+        $("#abc2 div.movie").css('transform', '');
+        $("#abc3 div.movie").css('transform', '');
+        $("#abc div.movie").css('transform', 'rotateY(-78deg) translateZ(20px)');
+    }
+    function newClick1() {
+
+        $(".scene").html();
+        $("#new1").css('display', 'none');
+        $("#new2").css('display', 'block');
+        $("#new3").css('display', 'block');
+        $("#new").css('display', 'block');
+        $("#abc div.movie").css('transform', '');
+        $("#abc2 div.movie").css('transform', '');
+        $("#abc3 div.movie").css('transform', '');
+        $("#abc1 div.movie").css('transform', 'rotateY(-78deg) translateZ(20px)');
+    }
+    function newClick2() {
+
+        $(".scene").html();
+        $("#new2").css('display', 'none');
+        $("#new1").css('display', 'block');
+        $("#new3").css('display', 'block');
+        $("#new").css('display', 'block');
+        $("#abc div.movie").css('transform', '');
+        $("#abc1 div.movie").css('transform', '');
+        $("#abc3 div.movie").css('transform', '');
+        $("#abc2 div.movie").css('transform', 'rotateY(-78deg) translateZ(20px)');
+    }
+    function newClick3() {
+
+        $(".scene").html();
+        $("#new3").css('display', 'none');
+        $("#new1").css('display', 'block');
+        $("#new").css('display', 'block');
+        $("#abc div.movie").css('transform', '');
+        $("#abc1 div.movie").css('transform', '');
+        $("#abc3 div.movie").css('transform', 'rotateY(-78deg) translateZ(20px)');
+    }
+    $(".scene").hover(function () {
+
+    });
+ 
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

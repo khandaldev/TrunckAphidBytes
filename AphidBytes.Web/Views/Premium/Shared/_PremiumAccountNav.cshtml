@@ -1,0 +1,75 @@
+﻿<div class="col-md-3 side-navigation">
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("PremiumAccountInfo")" class="btn btn-selects premium @(ViewBag.SelectedPage == "acctinfo" ? "selected" : "")">
+                Account Info
+                <img src="~/img/info/accountinfo.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("UploadMediaPremium")" class="btn btn-selects premium @(ViewBag.SelectedPage == "upload" ? "selected" : "")">
+                Upload
+                <img src="~/img/info/upload.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("PremiumMessage")" class="btn btn-selects premium @(ViewBag.SelectedPage == "message" ? "selected" : "")">
+                Messages <span class="message-count">@Model.NewCount</span>
+                <img src="~/img/info/messages.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("Premiumbytetracker")" class="btn btn-selects premium @(ViewBag.SelectedPage == "bytetracker" ? "selected" : "")">
+                Byte Tracker
+                <img src="~/img/info/bytetracker.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("PremiumDataplan")" class="btn btn-selects premium @(ViewBag.SelectedPage == "dataplan" ? "selected" : "")">
+                Data Plan
+                <img src="~/img/info/dataplan.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("PremiumChannel")" class="btn btn-selects premium channel @(ViewBag.SelectedPage == "channel" ? "selected" : "")">
+                Channel
+                <img src="~/img/info/channel.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("PremiumPlaylist")" class="btn btn-selects premium @(ViewBag.SelectedPage == "playlist" ? "selected" : "")">
+                Playlists
+                <img src="~/img/info/playlists.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="#" class="btn btn-selects aphidlab">
+                Widgets
+                <img src="~/img/support/widgets.png">
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("PremiumHistory")" class="btn btn-selects premium @(ViewBag.SelectedPage == "history" ? "selected" : "")">
+                History
+                <img src="~/img/info/history.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    
+</div>

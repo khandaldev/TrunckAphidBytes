@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/support")
+}
+
+@section scripts {
+    @Scripts.Render("~/js/home/support.js")
+}
+
+
+<div class="container-fluid">
+    <div class="row row-offset-small">
+        <div class="col-md-3 header-img img-small txt-center">
+            <img src="~/img/services/file-cloning-relay.png" alt="file cloning relay" />
+            <h3>File Cloning Relay</h3>
+            <p>Displays location of your file on multiple websites across the internet</p>
+        </div>
+        <div class="col-md-3 header-img img-small txt-center">
+            <img src="~/img/services/uploading.png" alt="uploading" />
+            <h3>Uploading</h3>
+            <p>Upload music, videos, eBooks, photography, art, documents, and software. Upload trailers and teasers for upcoming films, shorts, plays, etc.</p>
+        </div>
+        <div class="col-md-3 header-img img-small txt-center">
+            <img src="~/img/services/the-gall.png" alt="gall" />
+            <h3>Gall</h3>
+            <ul class="inside-bullets">
+                <li>Video Streaming</li>
+                <li>Music Streaming</li>
+                <li>A Matrix Gallery of your favorite eBooks, Art, Photography, Documents, & Software</li>
+                <li>Find Freelancers for technological needs</li>
+            </ul>
+        </div>
+        <div class="col-md-3 header-img img-small txt-center">
+            <img src="~/img/services/marketing-advertising.png" alt="marketing and advertising platform" />
+            <h3>Marketing and Advertising Platform</h3>
+            <p>Advertise your brand on our site with a variation of areas to promote. Advertisers can can upload video or image ads</p>
+        </div>
+    </div>
+
+    <div class="row row-offset-small">
+        <div class="col-md-3 header-img img-small txt-center">
+            <img src="~/img/services/analytics.png" alt="analytics" />
+            <h3>Analytics</h3>
+            <p>Track analytic data on your files on entire Internet from our Matrix portal. See how many views, downloads, impressions, etc. your files have from our Byte Tracker portal</p>
+        </div>
+        <div class="col-md-3 header-img img-small txt-center">
+            <img src="~/img/services/data-plan.png" alt="data plan" />
+            <h3>Data Plan</h3>
+            <p>Manage what you upload by selecting your cloud data storage size for AphidByte files only</p>
+        </div>
+    </div>
+</div>

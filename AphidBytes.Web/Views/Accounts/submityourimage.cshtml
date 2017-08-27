@@ -1,0 +1,82 @@
+﻿@{
+}
+
+
+<div class="about_headtext2"><a href="AboutUsPage">About Us ></a><a href="Culture">Culture ></a><a href="submityourimage">Submit Your Image</a></div>
+<div class="about_headbg">
+    <div class="about_headbutton abt_h2">
+        <p class="submityourimage"><img src="~/Images/headerpic.png" /></p>
+        <p class="submityourimage">Choose Image</p>
+    </div>
+
+    <div class="submityourimagebutton">
+
+    <a href="javascript:void(0)" class="dgaprofilepic" >
+        <input id="clickimage" type="image" src="~/Images/plusadd.png" onchange="readURL(this)"/>                                      
+       <input type="file" id="imgInp" style="display: none;" />
+    </a>
+   
+        </div>
+
+    <div class="submitform" id="submitform">
+        <form  class="submitimgfrom">
+            <label>Composer Name:</label>
+            <input id="cmpNameTxt" type="text" name="firstname" value=""><br />
+            <label>Caption:</label>
+            <input id="captionTxt" type="text" name="lastname" value=""><br />
+            <label>AphidByte Channel:</label>
+            <input id="channelTxt" type="text" name="lastname" value=""><br />
+</form>
+    </div>
+
+    <div class="subtbutton">
+        <input type="submit" value="Sent" id="sendBtn">
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<script>
+    $("#sendBtn").click(function () {
+ 
+        var cmpName = $("#cmpNameTxt").val();
+        var caption = $("#captionTxt").val();
+        var channel = $("#channelTxt").val();
+        var imgSrc = $('#clickimage').attr('src');
+
+        $.ajax({
+            type: "POST",
+            data: { Name: cmpName, Caption: caption, Channel: channel, Image: imgSrc },
+            url: "@Url.Action("SendMail", "Accounts")",
+            success: function (data) {
+                if (data == "True") {
+                alert('Mail has been sent successfully');
+                }
+            }
+
+        });
+
+    });
+
+    $("#imgInp").on('change', function () {
+        readURL(this);
+    });
+
+    $("input[type='image']").click(function () {
+        $("input[id='imgInp']").focus().click();
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#clickimage').attr('src', e.target.result);
+                $('#clickimage').css('height', '150px');
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+</script>

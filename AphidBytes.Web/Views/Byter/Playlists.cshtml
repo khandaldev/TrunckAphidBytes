@@ -1,0 +1,473 @@
+﻿@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+
+        $("#abc").mouseover(function () {
+            $("#pop-up-over-m").css('display', 'block');
+        })
+        $("#abc").mouseleave(function () {
+            $("#pop-up-over-m").css('display', 'none');
+        });
+
+    });
+
+</script>
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#abc").show();
+        $("#cde").show();
+        $("#ghj").show();
+        $("#klm").show();
+        $("#mmn").show();
+        $(".add-playlist-da").hide();
+        $("#buttonclick").show();
+
+
+        $('#abc').click(function () {
+            var len = $("#vvvv > span").length;
+            var htmlAudio = '';
+            htmlAudio += ' > PlayList1';
+
+            var t = $("#vvvv1").text();
+            if (t == "") {
+                $("#vvvv1").append(htmlAudio);
+            }
+
+            //if ($("#newadd").length>1) {
+            //    $("#vvvv1").hide();
+            //}
+            //else
+            //{
+
+            //    $("#vvvv1").show();
+            //    $("#vvvv1").attr("id", "changeid");
+            //    $("#newadd").show('> PlayList1');
+
+            //    //$("#newadd").show();
+            //}
+
+
+
+            $("#abc").hide();
+            $("#cde").hide();
+            $("#ghj").hide();
+            $("#klm").hide();
+            $("#mmn").hide();
+            $("#buttonclick").hide();
+            $(".add-playlist-da").show();
+            //$("#content_1").attr("class", "tab2-boxtext-2z");
+        });
+        $('#cde').click(function () {
+            var play2 = $("#vvvv1").text();
+            $("#vvvv1").empty();
+            var htmlAudio = '';
+            htmlAudio += ' > PlayList2';
+            $("#vvvv1").append(htmlAudio);
+
+            //if ($("#add").length > 1) {
+            //    $("#changeid").hide();
+            //}
+
+
+            //else
+            //{
+
+
+            //  $("#changeid").show();
+            //  $("#changeid").attr("id", "#changeid2");
+            //   $("#add").show('> PlayList2');
+
+            //}
+
+            $("#abc").hide();
+            $("#cde").hide();
+            $("#ghj").hide();
+            $("#klm").hide();
+            $("#mmn").hide();
+            $("#buttonclick").hide();
+
+
+        });
+        $('#ghj').click(function () {
+            var play3 = $("#vvvv1").text();
+            $("#vvvv1").empty();
+            var htmlAudio = '';
+            htmlAudio += ' > PlayList3';
+            $("#vvvv1").append(htmlAudio);
+            $("#abc").hide();
+            $("#klm").hide();
+            $("#ghj").hide();
+            $("#cde").hide();
+            $("#mmn").hide();
+            $("#buttonclick").hide();
+            // $("#vvvv").append("> Playlist 3");
+            //$("p.info-p").text($("p.info-p").text() == 'Playlists > My Playlists' ? 'Playlists > My Playlists >Playlist3' : 'Playlists > My Playlists');
+
+        });
+        $('#klm').click(function () {
+            var play4 = $("#vvvv1").text();
+            $("#vvvv1").empty();
+            var htmlAudio = '';
+            htmlAudio += ' > PlayList4';
+            $("#vvvv1").append(htmlAudio);
+            $("#abc").hide();
+            $("#cde").hide();
+            $("#ghj").hide();
+            $("#klm").hide();
+            $("#mmn").hide();
+            $("#buttonclick").hide();
+            //  $("#vvvv").append("> Playlist 4");
+            //$("p.info-p").text($("p.info-p").text() == 'Playlists > My Playlists' ? 'Playlists > My Playlists >Playlist4' : 'Playlists > My Playlists');
+
+        });
+        $('#mmn').click(function () {
+            var play5 = $("#vvvv1").text();
+            $("#vvvv1").empty();
+            var htmlAudio = '';
+            htmlAudio += ' > PlayList5';
+            $("#vvvv1").append(htmlAudio);
+            $("#abc").hide();
+            $("#mmn").hide();
+            $("#ghj").hide();
+            $("#klm").hide();
+            $("#cde").hide();
+            $("#buttonclick").hide();
+            //$("#vvvv").append("> Playlist 5");
+            //$("p.info-p").text($("p.info-p").text() == 'Playlists > My Playlists' ? 'Playlists > My Playlists >Playlist5' : 'Playlists > My Playlists');
+
+        });
+
+    });
+</script>*@
+
+<script>
+    function submitdata() {
+        var dataString = "";
+        alert(dataString);
+        $.ajax({
+            type: "POST",
+            data: dataString,
+            url: '/Byter/Playlist2',
+        });
+
+        //alert("hiii");
+    }
+    function submit() {
+        alert("Hello");
+    }
+</script>
+
+@*<script>
+    function hidediv() {
+        $("#ff").hide();
+
+    }
+    function hide() {
+        $("#fff").hide();
+    }
+
+
+    $(document).ready(function () {
+
+
+        $('#plusimg').click(function (event) {
+            $('#Dialog').dialog()
+            setTimeout(function () {
+                // upload completes
+                $('#errMsg')
+                    //html("<input type=\'button\>")
+                    .click(function () {
+                        $('#Dialog').dialog('close');
+                    });
+            }, 1500);
+        });
+    });
+    $(document).ready(function () {
+        $('#plusimg2').click(function (event) {
+            $('#Dialog1').dialog()
+            setTimeout(function () {
+                // upload completes
+                $('#errMsg')
+                    //.html("<input type=\'button\' value=\'Use this pic\'>")
+                    .click(function () {
+                        $('#Dialog1').dialog('close');
+                    });
+            }, 1500);
+        });
+    });
+</script>*@
+
+
+
+
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="@Url.Action("Overview", "Byter")" height="100px" />
+                </div>
+                <div class="info-logo">
+                    <img src="/images/acinfo_logo.png">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="header_aphidtise">
+    <div id="logo">
+        <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+    </div>
+
+    <div class="zplay-list1">
+        <div class="zplay-main1">
+            <div class="zplay_grid1">
+                <p class="info-p" style="cursor:pointer;">Playlists </p>
+                <p class="info-p" id="HomePlaylist" style="cursor: pointer" onclick="BackToMainPlaylist()">> My Playlists</p>
+                <div class="info-p" id="newPlayListName"></div>
+            </div>
+            <div class="zplay_grid1">
+                <div class="zplay_grid01">
+                    <img src="/images/playlist-bgz01.png">
+                </div>
+                <div class="zplay_grid02">
+                    <img src="/images/playlist-bgz02.png"><div style="margin: -53px 0 0 38px; width: 100%; text-align: center;" class="zplay_gridp" id="zplay_gridpid">MY Playlists</div>
+                </div>
+
+            </div>
+            <div class="zplay_grid-1">
+                <p>
+                    <a href="#">
+                        <img id="redirectToFav" src="/images/favorites_ms.png"></a>
+                </p>
+                <p>Favorites</p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="headertab_aphidtise">
+    <div class="left-info">
+
+        <ul class="infolist-menu">
+            <li><a href="ByterAccountInfo">Account Info</a></li>
+            <li></li>
+           <li><a href="Message">Messages</a>
+                 @if(ViewBag.MegCount!=0)
+                {
+                <div class="in_c_text_2">@ViewBag.MegCount</div>
+                }
+            </li>
+            <li></li>
+            <li><a href="History">History</a></li>
+            <li></li>
+            <li><a href="Playlists" class="basicselects">Playlists</a></li>
+            <li>
+                @*<img src="/images/right_line.png"></li>*@
+            <li><a href="ByterCreditSummary">Credit Tracker</a></li>
+            <li></li>
+            <li><a href="CreditSubscription" style=" height: 31px; line-height: 17px; padding-bottom: 7px; padding-top: 7px; width: 103px;">Credit
+                <br />
+                Subscriptions</a>
+            </li>
+        </ul>
+
+        <div class="info-right"></div>
+        <div class="info-footer-social"></div>
+
+    </div>
+
+
+    <div class="aphidbytecenter content scrollWidth" id="content_1" style="height: 600px; margin-top: 85px;">
+        <div class="massage_index">
+
+            <div class="play-wrap-main" id="mydiv">
+                <a id="buttonclick">EDIT</a>
+                <div style="margin-left: 0%; margin-top: 0%;" class="play-wrap-main" id="playlistdiv">
+
+                    @if (ViewBag.PostdataPlaylist != null)
+                    {
+                        foreach (var item in ViewBag.PostdataPlaylist)
+                        {
+                        <div id="@item.ToString()" class="fetchallsongs" style="cursor:pointer;">@item.ToString()</div> 
+                        }
+                    }
+                    else
+                    {
+                        <div>Sorry Currently No Playlists</div> 
+                    }
+                </div>
+                <div id="songlistdiv" class="add-playlist-da">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="massage-footer-m">
+    <div class="limitplaylist">Limit is 15 playlists. 20 files per playlist.</div>
+
+</div>
+
+<div class="black_screen" style="display: none;"></div>
+<div id="closeboxa" style="display: none;">
+    <img class="cl_h11_img" src="/img/overboxbg.png">
+    <div class="closetext">
+        <a href="#" id="closebta">
+            <img src="/img/close.png" onclick="DialogCloseFunction()"></a>
+        <div class="texmpi-c">
+            <img src="/img/mixbotton.png">
+        </div>
+        <ul id="addpl" class="texmpi-ct">
+        </ul>
+        <div class="effectpic">
+            <img src="/img/effectsbg.png">
+        </div>
+
+    </div>
+</div>
+<script src="jquery.mCustomScrollbar.js"></script>
+<script>
+    function DialogCloseFunction()
+    {
+        
+        $("#closeboxa").hide();
+        $(".black_screen").hide();
+    }
+
+    $('#redirectToFav').click(function () {
+        location.href = "/Byter/Favorites";
+    });
+
+    function BackToMainPlaylist() {
+        location.href = "/Byter/Playlists";
+    }
+    $('#playlistdiv').on('click', '.fetchallsongs', function () {
+        var playName = ($(this).attr('id')).toString();
+        $("#zplay_gridpid").text(playName);
+        $("#newPlayListName").text(' > ' + playName);
+        $("#playlistdiv").hide();
+        $.post('/Byter/GetSongList', { PlaylistName: playName }, function (data) {
+
+            var i = 0;
+            while (data[i].TrackingID != null) {
+                var htmlcontent = '';
+                htmlcontent += '<div class="tab2-boxtext-2z"><ul><li id="' + data[i].TrackingID + '" class="A_Song" style="cursor:pointer;"><p>' + data[i].FileName + '</p></li>';
+                htmlcontent += '<li><a href="#" style="margin-left: 200px;"><img src="/images/plus-m-i.png" class="plusimageadd" id="' + data[i].TrackingID + '"></a></li>';
+                htmlcontent += '<li><a href="#" style="margin-left: 240px;"><img class="DelFromPlay" id="' + data[i].TrackingID + '" src="/images/close-m-i.png" onclick="hidediv();"></a></li></ul></div>';
+                $("#songlistdiv").append(htmlcontent);
+                i++;
+            }
+
+        });
+        //for add_to_play
+        $('#songlistdiv').on('click', '.plusimageadd', function () {
+            var playName_a = $('#zplay_gridpid').text();
+            var songtrackid = $(this).attr('id');
+            //alert(songtrackid);
+            $.post('/Byter/GetPlayList', { TrackingID: songtrackid }, function (dataa) {
+                var htmldialogcontent = '';
+                var i = 0;
+                while (i < dataa.length) {
+                    if (dataa[i] != playName_a) {
+                        htmldialogcontent += '<li class="playname_dialogbox" id="' + dataa[i].toString() + '">' + dataa[i].toString() + '</li>';
+                    }
+                    i++;
+                }
+                $("#addpl").empty();
+                $("#addpl").append(htmldialogcontent);
+            });
+
+            $(".black_screen").show();
+            $("#closeboxa").show();
+            $("#addpl").on('click', '.playname_dialogbox', function () {
+                var NewPlayName = $(this).attr('id');
+                $.post('/Byter/AddSongToPlaylist', { PlaylistName: NewPlayName, TrackingID: songtrackid }, function (result_fetched) {
+                    if (result_fetched == true) {
+                        alert("Song Added..");
+                        $("#closeboxa").hide();
+                        $(".black_screen").hide();
+                    }
+                    else {
+                        alert("Error Adding Song to Playlist..");
+                        $("#closeboxa").hide();
+                        $(".black_screen").hide();
+                    }
+
+                });
+            });
+
+        });
+        //for delete
+        $('#songlistdiv').on('click', '.DelFromPlay', function () {
+            var id = $(this).attr('id');
+            var playname = $('#zplay_gridpid').text();
+            $.post('/Basic/DelSongFromPlay', { PlaylistName: playname, TrackingID: id }, function () { });
+            alert("removed from playlist");
+            $("#songlistdiv").empty();
+            $.post('/Basic/GetSongList', { PlaylistName: playName }, function (data) {
+                var i = 0;
+                while (data[i].TrackingID != null) {
+                    var htmlcontent = '';
+                    htmlcontent += '<div class="tab2-boxtext-2z"><ul><li><p>' + data[i].FileName + '</p></li>';
+                    htmlcontent += '<li><a href="#" style="margin-left: 200px;"><img src="/images/plus-m-i.png" class="plusimageadd" id="' + data[i].TrackingID + '"></a></li>';
+                    htmlcontent += '<li><a href="#" style="margin-left: 240px;"><img class="DelFromPlay" id="' + data[i].TrackingID + '" src="/images/close-m-i.png" onclick="hidediv();"></a></li></ul></div>';
+                    $("#songlistdiv").append(htmlcontent);
+                    i++;
+                }
+
+            });
+        });
+
+    });
+
+    $('#songlistdiv').on('click', '.A_Song', function () {
+        var playlist_name = $('#zplay_gridpid').text();
+        var id = $(this).attr('id');
+        $.post('/Byter/Before_PlaylistPrivew', { Trackingnumber: id, Playlist_Name: playlist_name }, function (data) {
+            window.location = data;
+        });
+
+    });
+
+
+
+    (function ($) {
+    
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+
+    
+</script>
+

@@ -1,0 +1,762 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.SponsoredModel
+
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+        var moveLeft = 20;
+        var moveDown = -50;
+
+        $('a#trigger').hover(function (e) {
+            $('div#i-pop-up').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up').hide();
+        });
+
+        $('a#trigger').mousemove(function (e) {
+            $("div#i-pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+</script>
+
+
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+
+        <div class="profilebg">
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="header_aphidtise">
+    <div class="menunav" style="width: 80%;">
+        <ul>
+            <li><a href="Services">Services</a></li>
+            <li><a href="UserLogin">Login</a></li>
+            <li><a href="#">The Gall</a></li>
+            <li><a href="#">Store</a></li>
+            <li><a href="AboutUsPage">About Us</a></li>
+            <li><a href="Support">Support</a></li>
+        </ul>
+    </div>
+    <div id="logo">
+     <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+    </div>
+    <div class="processingbyter" style="margin-top: 10px;">
+        <div class="processingbyter-head">
+            <div class="processingbyterleft">
+                <p id="progresstext"></p>
+                <p class="progressbar" role="progressbar" style="width: 0%;"></p>
+                <div class="sponso_logo">
+                    <img src="/images/sponsored_user_logo.png"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="button-bg1" class="hidden" style="display: none">
+
+        <div class="errormsg">
+            Invalid File
+        </div>
+        <div id="button-c1">
+            <img src="/img/button_bgw.png" />
+        </div>
+
+    </div>
+    <div id="button-bg2" class="hidden" style="display: none">
+
+        <div class="errormsg">
+            please select Video
+        </div>
+        <div id="button-c2">
+            <img src="/img/button_bgw.png" />
+        </div>
+
+    </div>
+    <div id="button-bg3" class="hidden" style="display: none">
+
+        <div class="errormsg">
+            Captcha Do no match
+        </div>
+        <div id="button-c3">
+            <img src="/img/button_bgw.png" />
+        </div>
+
+    </div>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="headertab_aphidtise" style="margin-top: 85px;">
+            <div class="aphidbyteleft" style="margin-top: 6px;">
+
+                <ul class="sponsored_menu">
+                    <li></li>
+                    <li></li>
+                    <li><a href="#">Upload</a></li>
+                    <li>
+                        <img src="/images/right_line.png" height="2" width="96"></li>
+                </ul>
+                <div class="tophedboxa">
+                    <p onclick="goBack()" style="color: #FFC000; margin-top: -221px; margin-left: -73px; cursor: pointer">Back</p>
+                </div>
+
+
+
+
+                <div class="info-footer-social"></div>
+                <div class="sponsored_rightline"></div>
+            </div>
+            <p class="info-p">Byte Your Video</p>
+            <div class="aphidbytecenter content scrollWidth" id="content_1" style="height: 600px; margin-top: 20px;">
+                <div style="height: 600px; width: 100%;">
+                    <div class="from_aphid">
+                        <ul>
+                            <li>
+                                <label for="Company Logo">Title: </label>
+                                @Html.TextBoxFor(model => model.Title)
+
+                                @*<input type="text" name="email" id="email" size="30" />*@
+                            </li>
+                            <li>
+                                <label for="psw">Tags: </label>
+                                @Html.TextBoxFor(model => model.Tag)
+                                @*<input type="text" name="psw" id="psw" size="30" />*@
+                                <label for="Tags">(Automatically Populates)</label>
+
+                            </li>
+
+                            <li>
+                                <label for="Confirm Password">Artist Name:</label>
+                                @Html.TextBoxFor(model => model.ArtistName)
+                                @*<input name="email" type="text" id="email" value="Creator Name cannot be modified" size="30" />*@
+
+                            </li>
+
+                            <li>
+                                <label for="First Name">Album Title:</label>
+                                @Html.TextBoxFor(model => model.AlbumTitle)
+                                @*<input type="text" name="email" id="email" size="30" />*@
+                            </li>
+
+                            <li>
+                                <label for="Last Name">Upload File:</label>
+
+                                @*<input type="file" form="file name">*@
+                                @Html.TextBoxFor(model => model.VideoFilePath, new { type = "file", form = "file name" })
+                                <label for="Tags">( .avi, .mp4, .mpeg, .mov, .flv. Or .wmv Files only )</label>
+                            </li>
+
+                            <li>
+                                <label for="Email Address">Upload Matrix Image:</label>
+                                @Html.TextBoxFor(model => model.WaterMarkMatrixImagePath, new { type = "file", accept = "image/*", form = "file name" })
+
+                                @*<input type="file" form="file name">*@
+                                <label for="Tags">( .jpg or .png files only )</label>
+                            </li>
+
+                            <li>
+                                <label for="Date of Birth">Composers:</label>
+                                @Html.TextBoxFor(model => model.ComposerName)
+                                @*<input type="text" name="email" id="email" size="30" />*@
+                            </li>
+
+                            <li>
+                                <label for="Phone Number">Producers:</label>
+                                @Html.TextBoxFor(model => model.Producer)
+                                @*<input type="text" name="email" id="email" size="30" />*@
+                            </li>
+                            <li>
+                                <label for="Company Logo">Publisher:</label>
+                                @Html.TextBoxFor(model => model.Publisher)
+                                @*<input type="text" name="email" id="email" size="30" />*@
+
+
+                            </li>
+
+                            <li>
+                                <label for="Company Logo">Select Interruption File:</label>
+                            </li>
+                            @Html.DropDownListFor(model => model.SelectedInteruptionFile, new List<SelectListItem>{
+    new SelectListItem{Text="No Interruption"},
+    new SelectListItem{Text="Default AphidByte"}
+    
+})
+                            @*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbyter"><span>No Interruption</span></a></dt>
+        <dd>
+            <ul id="byterclick">
+                <li><a>No Interruption</a></li>
+                <li><a>Default AphidByte Audio Interruption</a></li>
+                <li><a>Custom Audio Interruption</a></li>
+            </ul>
+        </dd>
+    </dl>*@
+                            <li>
+
+                                <label for="Company Logo">Interruption Style:</label>
+                            </li>
+                            @Html.DropDownListFor(model => model.InteruptionStyle, new List<SelectListItem>{
+    new SelectListItem{Text="Default Randomized Entry"},
+    new SelectListItem{Text="Producer Tag Sequence"},
+    new SelectListItem{Text="Beginning of File"},
+    new SelectListItem{Text="Ending of File"}
+})
+                            @*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbyterone"><span>Constant Banner Display</span></a></dt>
+        <dd>
+            <ul id="byterclick2">
+                <li><a>Default Randomized Entry</a></li>
+                <li><a>Producer Tag Sequence</a></li>
+                <li><a>Beginning of File</a></li>
+                <li><a>Ending of File</a></li>
+            </ul>
+        </dd>
+    </dl>*@
+                            <li>
+                                <label for="Company Logo">Available for Download:</label>
+                            </li>
+                            @Html.DropDownListFor(model => model.AvailableForDownload, new List<SelectListItem> { 
+    new SelectListItem{Text="Yes"},
+    new SelectListItem{Text="No"}
+})
+                            @*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbytertwo"><span>Yes</span></a></dt>
+        <dd>
+            <ul id="byterclick3">
+                <li><a>Yes</a></li>
+                <li><a>No</a></li>
+               </ul>
+        </dd>
+    </dl>*@
+                            <li>
+                                <label for="Company Logo">Explicit Content?:</label>
+                            </li>
+                            @Html.DropDownListFor(model => model.ExplicitContent, new List<SelectListItem>{
+    new SelectListItem{Text="Yes"},
+    new SelectListItem{Text="No"}
+})
+                            @*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbyterfour"><span>No</span></a></dt>
+        <dd>
+            <ul id="byterclick4">
+               <li><a>Yes</a></li>
+               <li><a>No</a></li>
+            </ul>
+        </dd>
+    </dl>*@
+
+                            <li>
+                                <label for="Company Logo">Enter Captcha Code:</label>
+                                <p class="captcha">
+                                    @Html.EditorFor(model => model.Captcha)
+                                    <img src="/UserSponsored/ShowCaptchaImage">
+                                </p>
+                                @*<input type="text" name="email" id="email" size="30" /> <p class="captcha"><img src="/images/captcha-code.png"></p>*@
+                            </li>
+
+
+                        </ul>
+
+
+
+                    </div>
+                </div>
+
+                <div class="basicfooter-byter">
+                    <div class="basicfooter-bytermain">
+                        <div class="bytet-mfm">
+                            @Html.CheckBoxFor(model => model.Isvalid)
+                            @*<input name="" type="checkbox" value="" class="info-p">*@
+                            <label for="Company Logo" class="info-p"><a href="#" id="trigger">Accept Terms & Conditions:</a></label>
+                        </div>
+                        <div class="bytet-mfm">
+                            <div>
+                                <p><a href="#">
+                                    <img id="preview" src="/images/sear-mcredi-byter.png"></a></p>
+                                <p class="infof-p">Preview</p>
+                            </div>
+
+                            <div>
+                                <p>
+                                    <input type="submit" id="submitbutton" value="" disabled="disabled" style="background: url(/images/aphid_logo-byter.png); height: 78px; width: 85px; border: none;" />
+
+                                </p>
+                                @*<p><a href="#"><img src="/images/aphid_logo-byter.png"></a></p>*@
+                                <p class="info-p">Generate</p>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
+
+
+
+
+        <div id="popup" style="display: none; background-image: url(/Images/aphidtisebg.png); margin-left: -409px; margin-top: -143px; width: 830px; height: 443px">
+            <div style="margin-left: 200px; margin-top: -20px;" id="ImgClose">
+                <a id="popup-close" href="" class="button" style="margin-left: -217px;">
+                    <img src="/Images/closebotton.png" onclick="CloseThis();" />
+                </a>
+            </div>
+            <div id="Progressbar">
+                <img src="~/Images/ajax-loader-11.gif" />
+            </div>
+            <div id="loading"></div>
+            <div class="popbyter-mianz">
+                <div class="popbyter-miansub">
+                    <div class="popbyter-subleft">
+                        <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/bphidbyte_sicon.png"></a><br />
+                        <p><a href="#">Back</a></p>
+
+                    </div>
+                    <div class="popbyter-subright">
+                    </div>
+
+
+                    <div class="popbyter-sub1">
+                        <div class="popbyter-sub1left">
+                            @* <video id="videoplayer" width="320" height="240" src="" controls autoplay>
+                        </video>*@
+                            @* <iframe id="videoplayer" width="560" 
+                height="315" 
+                src="" 
+                frameborder="0" 
+                allowfullscreen></iframe>*@
+                            <video width="320" height="240" id="videoplayer" controls autoplay="autoplay">
+                                <source src="" type="video/mp4">
+                            </video>
+                            <img src="" id="img" width="320" height="240" style="margin-top: -255px;" />
+                        </div>
+                        <div class="popbyter-sub1right">
+                            <div class="byter-play-stop">
+                                @*<div class="byter-p-s"><img src="/images/play-bt.png"></div>
+<div class="byter-p-s"><img src="/images/stop-bt.png"></div>*@
+                            </div>
+                            <p>Interruption File:</p>
+
+                            <dl id="samplebyter" class="dropdownbyter" style="margin: 5px 0 5px 5px; width: 210px;">
+
+                                <dt><a id="basicbyter"><span>Default AphidByte</span></a></dt>
+                                <dd>
+                                    <ul id="byterclick">
+                                        <li class="BasicVideo"><a>Default AphidByte</a></li>
+                                        @*  @foreach (var item in ViewBag.CityList)
+                                    {
+                                        <li><a>@item.Text</a></li>  
+                                    }*@
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="popbyter-footer1left">
+                        @*<p class="byter-preview"><a href="#">Preview</a></p>*@
+                        <p class="byter-continue"><a href="#">Continue</a></p>
+                    </div>
+                    <div class="popbyter-footer1">
+                        <div class="popbyter-footer1left">
+                            @*<p style="font-size:35px; text-align:center; padding:30px;">“Song A”</p>
+<p style="float: left;width: 10px;"><img src="/images/indicates-bg.png"></p>
+<p style=" margin: 12px 12px 7px 34px;">Indicates Interruption Portion</p>*@
+                        </div>
+                        <div class="popbyter-footer1left">
+                        </div>
+                        <div class="popbyter-footer1left">
+                            @*<p class="byter-preview"><a href="#">Preview</a></p>
+<p class="byter-continue"><a href="#">Continue</a></p>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>
+                <img src="" id="image-placeholder" width="700px" height="300px" />
+            </p>
+        </div>
+
+        <div id="i-pop-up">
+            <p>
+            </p>
+        </div>
+    }
+
+    <script src="jquery.mCustomScrollbar.js"></script>
+    <script>
+        (function ($) {
+
+            $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+            $(".browseInput").each(function (index) {
+                if (index > 3)
+                    $(this).remove();
+            });
+            $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+            $(window).load(function () {
+                $(".content").mCustomScrollbar();
+            });
+        })(jQuery);
+    </script>
+
+    <script type="text/javascript">
+        function goBack() {
+            window.history.back();
+        }
+        var matrixImageName;
+        var video;
+        var audioName;
+        var imgname;
+        var videoPauseTime = "";
+        var vid_duration;
+        var starttime = 1;
+        function CloseThis() {
+            $("#ImgClose").hide();
+
+        }
+
+        function abc() {
+            videoPauseTime = '';
+        }
+        function PLayVideo(Style, File) {
+            alert("fchc");
+            video = document.getElementById("videoplayer");
+            if (File == "No Interruption") {
+                video.play();
+            }
+            else
+                if (Style == "Default Randomized Entry") {
+                    video.play();
+                    setTimeout(function () { video.pause(); }, 1000);
+                    setTimeout(function () { $("#img").fadeIn(1500); }, 1000);
+                    setTimeout(function () {
+                        $("#img").fadeOut(1500);
+                        video.play();
+                    }, 15000);
+
+                }
+            if (Style == "Producer Tag Sequence") {
+                video.play();
+                setTimeout(function () { video.pause(); }, 8000);
+                setTimeout(function () { $("img").fadeIn(1500); }, 8000);
+                setTimeout(function () {
+                    $("img").fadeOut(1500);
+                    video.play();
+                }, 12000);
+
+            }
+            if (Style == "Beginning of File") {
+                video.play();
+                setTimeout(function () {
+                    video.pause();
+                }, 1000);
+                setTimeout(function () {
+                    $("#img").fadeIn(1500);
+                }, 1000);
+                setTimeout(function () {
+                    $("#img").fadeOut(1500);
+                    video.play();
+                }, 5000);
+
+            }
+            if (Style == "Ending of File") {
+
+                var vd = video.duration * 1000;
+                video.play();
+                setTimeout(function () {
+                    video.pause();
+                }, vd);
+                setTimeout(function () {
+                    $("#img").fadeIn(1500);
+                }, vd);
+                setTimeout(function () {
+                    $("#img").fadeOut(1500);
+                }, vd * 1000);
+
+            }
+        }
+        function RemoveImage() {
+            document.getElementById('img').src = "";
+            video.play();
+        }
+        function openpopup() {
+            $("#ImgClose").show();
+            $("#popup:visible").hide();
+            $("#popup").fadeIn("fast");
+        }
+        function showPopup() {
+            var div = document.createElement('div');
+
+            div.className += 'popup';
+            div.innerHTML = 'This is a pop up dialog';
+            document.body.appendChild(div);
+        }
+        $(function () {
+            $('#preview').click(function () {
+
+                if ($("#Video").val() == '') {
+                    $("#button-bg2").dialog("open");
+
+                }
+
+            });
+        });
+        $(document).on('click', '.BasicVideo', function (e) {
+
+            $('.popbyter-subright').html('<img src="/Images/ajax-loader-11.gif"> loading...');
+            var dd = $(this).text();
+
+            var cat = $("#VideoCategory").val();
+            var intStyle = $("#InteruptionStyle").val();
+            var intFile = $("#SelectedInteruptionFile").val();
+            var tit = $("#Title").val();
+            $.post('/UserSponsored/InterruptVideo',
+                      { IntS: intStyle, IntF: dd, FileName: audioName, Title: tit }, function (data) {
+                          setTimeout(function () {
+                              $('.popbyter-subright').remove();
+                          }, 2000);
+
+                          imgname = data;
+
+                          $("#videoplayer").attr('src', audioName);
+                          document.getElementById('img').src = "/TempBasicImages/" + imgname;
+
+                      });
+            PLayVideo(cat, intStyle, dd);
+        });
+        $(".byter-continue").click(function () {
+            videoplayer.pause();
+            $("#videoplayer").attr('src', '');
+            $("#popup").fadeOut("fast");
+        });
+
+        $(document).ready(function () {
+            $("#Title").val("");
+            $("#Tags").val("");
+            $("#AlbumTitle").val("");
+            $("#Composer").val("");
+            $("#Producer").val("");
+            $("#Publisher").val("");
+            $("#Captcha").val("");
+            $("#ArtistName").val("");
+            $("#img").hide();
+            var captchaFlag = 0, isValid = 0;
+            $("#submitbutton").attr('disabled', 'disabled');
+            $("#Isvalid").change(function () {
+                if ($("#Isvalid").attr('checked')) {
+                    isValid = 1;
+                    if (captchaFlag == 1) {
+                        $("#submitbutton").removeAttr('disabled');
+                    }
+                    else { }
+                } else {
+                    alert("Accept Terms and Conditions");
+                    isValid = 0;
+                    $("#submitbutton").attr('disabled', 'disabled');
+                }
+            });
+            $("#preview").click(function () {
+                var intStyle;
+                var intFile;
+                if ($("#SelectedInteruptionFile").val() == "No Interruption") {
+                    $("#Video").attr('src', audioName);
+                    alert(audioName);
+                    $("#popup").show();
+                }
+                else {
+                    $("#Progressbar").html('<img src="~/Images/ajax-loader-11.gif"/>');
+                    if ($("#Video").val() != '') {
+
+                        intStyle = $("#InteruptionStyle").val();
+                        intFile = $("#SelectedInteruptionFile").val();
+                        var tit = $("#Title").val();
+                        $.post('/UserSponsored/InterruptVideo',
+                                   { IntS: intStyle, IntF: intFile, FileName: audioName, Title: tit }, function (data) {
+                                       imgname = data;
+
+                                       $("#videoplayer").attr('src', audioName);
+
+                                       document.getElementById('img').src = imgname;
+                                       $("#Progressbar").remove();
+                                       openpopup();
+
+
+                                   });
+                        PLayVideo(intStyle, intFile);
+                    }
+
+                }
+            });
+
+
+
+            $("#Captcha").change(function () {
+                $.post("/UserSponsored/GetCaptcha", function (retObject) {
+                    var bb = $("#Captcha").val();
+                    if (retObject != bb) {
+                        $("#button-bg3").dialog("open");
+                        captchaFlag = 0;
+                        $("#submitbutton").attr('disabled', 'disabled');
+                    }
+                    else {
+                        captchaFlag = 1;
+                        if (isValid == 1) {
+                            $("#submitbutton").removeAttr('disabled');
+                        }
+                    }
+                });
+            });
+            $("#WaterMarkMatrixImagePath").fileupload({
+                dataType: 'json',
+                url: '/UserSponsored/VideoMatrixImage',
+                autoUpload: true,
+                done: function (e, data) {
+                    $('.progressbar').css('width', 0 + '%');
+                    document.getElementById('progresstext').innerHTML = '';
+                    matrixImageName = data.result.name;
+                }
+            }).on('fileuploadprogressall', function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('.progressbar').css('width', progress + '%');
+                document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+            });
+
+
+
+            $('#VideoFilePath').fileupload({
+                dataType: 'json',
+                url: '/UserSponsored/UploadVideo',
+                autoUpload: true,
+                done: function (e, data) {
+                    $('.progressbar').css('width', 0 + '%');
+                    document.getElementById('progresstext').innerHTML = '';
+                    audioName = data.result.name;
+                    $("#videoplayer").attr('src', audioName);
+                    //alert(audioName);
+                }
+            }).on('fileuploadprogressall', function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('.progressbar').css('width', progress + '%');
+                document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+            });
+
+            $("#popup-close").click(function (e) {
+                e.preventDefault();
+                $("#popup").fadeOut("fast");
+                video.pause();
+            });
+            $("#WaterMarkMatrixImagePath").change(function () {
+                var img = $(this).val();
+                var split = img.split('.');
+                if (split[1] == "jpg" || split[1] == "JPG" || split[1] == "png" || split[1] == "PNG") {
+
+                }
+                else {
+                    $("#button-bg1").dialog("open");
+                    $("#WaterMarkMatrixImagePath").val("");
+                }
+            });
+            $("#VideoFilePath").change(function () {
+                var vid = $(this).val();
+                var split = vid.split('.');
+                if (split[1] == "avi" || split[1] == "AVI" || split[1] == "mp4" || split[1] == "MP4" || split[1] == "mpeg" || split[1] == "MPEG" || split[1] == "mov" || split[1] == "MOV" || split[1] == "flv" || split[1] == "FLV" || split[1] == "wmv" || split[1] == "WMV") {
+
+                }
+                else {
+                    $("#button-bg1").dialog("open");
+                    $("#VideoFilePath").val("");
+                }
+            });
+
+
+            $("#basicbyter").click(function () {
+                $("#byterclick").toggle();
+            });
+
+            $("#byterclick li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyter span").html(text);
+                $("#byterclick").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick").hide();
+            });
+
+
+            $("#basicbyterone").click(function () {
+                $("#byterclick2").toggle();
+            });
+
+            $("#byterclick2 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyterone span").html(text);
+                $("#byterclick2").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick2").hide();
+            });
+
+
+
+            $("#basicbytertwo").click(function () {
+                $("#byterclick3").toggle();
+            });
+
+            $("#byterclick3 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbytertwo span").html(text);
+                $("#byterclick3").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick3").hide();
+            });
+
+
+            $("#basicbyterfour").click(function () {
+                $("#byterclick4").toggle();
+            });
+
+            $("#byterclick4 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyterfour span").html(text);
+                $("#byterclick4").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick4").hide();
+            });
+
+
+
+        });
+    </script>

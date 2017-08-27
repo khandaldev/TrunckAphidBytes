@@ -1,0 +1,221 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPlain.cshtml";
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/learn")
+    @Scripts.Render("~/Scripts/jquery.vide.js")
+    @Scripts.Render("~/Scripts/parallax.min.js")
+}
+
+@section Scripts {
+    @Scripts.Render("~/js/home/learn.js")
+}
+
+<div class="parallax-window">
+    <div class="parallax-slider">
+        <div class="background-video">
+        </div>
+    </div>
+    <div class="parallax-overlay">
+        <div class="header">
+            <img src="~/img/glossy-aphidbyte.png" alt="logo" />
+            <p class="subtext">Expand Your Genius</p>
+        </div>
+        <div class="subheader">
+            <p class="fancy">Create. Tell Your Story. Inspire.</p>
+            <p class="copyright">The videos are copyrighted and composed by the creators themselves not by AphidByte.</p>
+            <a href="#" class="btn btn-primary">Explore</a>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="acontainer">
+        <div class="snippet cf">
+            <h2>Are you a Creator?</h2>
+            <p>Share your story. Upload your profile of works for the world to see. Welcome to the realm of Music Artists, Photographers, Developers, Actors, Writers, Painters, & more.</p>
+            <img src="~/img/learn/microphone.jpg" alt="creators" />
+        </div>
+
+        <div class="snippet cf">
+            <h2>Are you a Fan?</h2>
+            <p>Receive the latest news in Film, Music, Tech, Photography/Art, and Literature. Subscribe to your favorite creators’ channels.</p>
+            <img src="~/img/learn/ipad.jpg" alt="fans" />
+        </div>
+    </div>
+</section>
+
+<div class="parallax-window">
+    <div class="parallax-slider">
+        <div class="music-background">
+        </div>
+    </div>
+    <div class="parallax-overlay">
+        <h2>Music</h2>
+        <div class="banner">
+            <ul class="criteria">
+                <li>Music Artist</li>
+                <li>Producer</li>
+                <li>Songwriter</li>
+                <li>Musician</li>
+                <li>Publisher & more</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+<div class="parallax-window">
+    <div class="parallax-slider">
+        <div class="visualarts-background">
+        </div>
+    </div>
+    <div class="parallax-overlay">
+        <h2>Visual Arts</h2>
+        <div class="banner">
+            <ul class="criteria">
+                <li>Sign Up</li>
+                <li>Photographer</li>
+                <li>Filmmaker</li>
+                <li>Actor/Actress</li>
+                <li>Director</li>
+                <li>Fashion Designer</li>
+                <li>Model</li>
+                <li>Ceramics</li>
+                <li>Drawing</li>
+                <li>Painting</li>
+                <li>Sculpture</li>
+                <li>Printmaking</li>
+                <li>Crafts</li>
+                <li>Architecture & more</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+<div class="parallax-window">
+    <div class="parallax-slider">
+        <div class="developerdesigner-background">
+        </div>
+    </div>
+    <div class="parallax-overlay">
+        <h2>Developers + Design</h2>
+        <div class="banner">
+            <ul class="criteria">
+                <li>Software Engineer</li>
+                <li>Programmer</li>
+                <li>Coder</li>
+                <li>Hacker</li>
+                <li>Developer</li>
+                <li>UX/UI Professional</li>
+                <li>Web Designer</li>
+                <li>Logo Designer</li>
+                <li>Graphic Designer</li>
+                <li>Consultant & more</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+<div class="parallax-window">
+    <div class="parallax-slider">
+        <div class="literature-background">
+        </div>
+    </div>
+    <div class="parallax-overlay">
+        <h2>Literature</h2>
+        <div class="banner">
+            <ul class="criteria">
+                <li>Sign Up</li>
+                <li>Author</li>
+                <li>Editor</li>
+                <li>Ghostwriter</li>
+                <li>Publisher & more</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+<div class="parallax-window">
+    <div class="parallax-slider">
+        <div class="fan-background">
+        </div>
+    </div>
+    <div class="parallax-overlay">
+        <h2>Fan</h2>
+        <div class="banner">
+            <ul class="criteria">
+                <li>Receive updates from the latest Films, Music, Technology, Books, Photography, Art, Articles, etc.</li>
+                <li>Subscribe to your favorite creators</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+<div class="parallax-window">
+    <div class="parallax-slider">
+        <div class="community-background">
+        </div>
+    </div>
+    <div class="parallax-overlay">
+        <h2>
+            <img src="~/img/learn/home-logo.png" class="community-logo" alt="logo" />
+            Community
+        </h2>
+        <div class="banner">
+            <div class="user-profile">
+                <img src="~/img/learn/guy2.png" class="pic-left profile-pic-1" alt="mike mcniel" />
+                <img src="~/img/learn/treeline.png" class="pic-right" alt="tree line" />
+                <p>Mike McNeil</p>
+            </div>
+            <div class="user-profile">
+                <img src="~/img/learn/guy1.png" class="pic-left profile-pic-2" alt="Robert Hatcher" />
+                <img src="~/img/learn/soundcollide.png" class="pic-right" alt="tree line" />
+                <p>Robert Hatcher</p>
+            </div>
+            <ul class="criteria">
+                <li>Join the community of creators</li>
+                <li>Collaborate on tasks to finish projects</li>
+                <li>P2P Messaging</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div class="acontainer">
+        <h2>Need more details? Contact us</h2>
+        <h3>We are here to assist. Contact us by phone, or email.</h3>
+    </div>
+    <a href="#" class="btn btn-primary">Contact Us</a>
+</section>
+
+<section>
+    <ul class="bottom-navigation">
+        <li><a href="#" class="">About</a></li>
+        <li><a href="#" class="">How It Works</a></li>
+        <li><a href="#" class="">Terms of Service</a></li>
+        <li><a href="#" class="">Press</a></li>
+        <li><a href="#" class="">Support</a></li>
+        <li><a href="#" class="">Contact</a></li>
+    </ul>
+    <ul class="app-navigation">
+        <li><a href="#" class="">
+            Download Mobile App on iOS
+            <img src="~/img/learn/apple.png" alt="iOS app" />
+        </a></li>
+        <li><a href="#" class="">
+            Download Mobile App on Android
+            <img src="~/img/learn/android.png" alt="android app" />
+        </a></li>
+    </ul>
+    <p class="copyright">© 2017 AphidByte LLC. All Rights Reserved.</p>
+</section>
+
+<ul class="section-scroller">
+</ul>

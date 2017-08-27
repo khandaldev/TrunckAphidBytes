@@ -1,0 +1,38 @@
+
+.main_content {
+	.right_content {
+		padding-left: 0px;
+	}
+}
+.activity_listing {
+	padding-left: 0px;
+	h4 {
+		font-size: 16px;
+		display: block;
+		text-align: center;
+		padding: 40px 0px 80px;
+	}
+	.activity_box {
+		background: rgba(198, 221, 117, 0.85);
+		border: 1px solid #000;
+		margin-bottom: 60px;
+		min-height: 190px;
+		padding: 40px 20px;
+		position: relative;
+		.top_icon {
+			position: absolute;
+			top: -21px;
+			left: 50%;
+			margin-left: -24px;
+			img {
+				width: 48px;
+			}
+		}
+		.activity-details {
+			margin-bottom: 5px;
+			span {
+				font-size: 14px;
+			}
+		}
+	}
+}

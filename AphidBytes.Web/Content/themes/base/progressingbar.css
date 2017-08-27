@@ -1,0 +1,12 @@
+.progress {
+    
+  height: 20px;
+  background: #ebebeb;
+  border-radius: 2px;
+  
+}
+.progressbar {
+   
+  height: 20px;
+  background:url("../Images/ajax-loader-11.gif") no-repeat;
+}

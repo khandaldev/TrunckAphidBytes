@@ -1,0 +1,180 @@
+//colors
+$black: #000;
+$color_romance_approx: #fffefe;
+$color_masala_approx: #3e3e3e;
+$white: #fff;
+$color_chicago_approx: #605e5e;
+$color_midnight_blue_approx: #002e5d;
+$color_mine_shaft_approx: #2f2e2e;
+
+.upload_mobile_info_page {
+	.upload_music_head_left {
+		text-align: center;
+		padding-left: 70px;
+		span {
+			color: $black;
+			font-size: 11px;
+			display: block;
+			padding-bottom: 30px;
+		}
+		ul li {
+			display: inline-block;
+			color: $color_romance_approx;
+			margin-right: 10px;
+			a {
+				font-size: 12px;
+			}
+			span {
+				color: $color_masala_approx;
+				font-size: 12px;
+			}
+		}
+	}
+	.upload_music_head_right {
+		padding: 110px 20px;
+		.checkbox {
+			input {
+				float: left;
+				width: 20px;
+				margin-top: 15px;
+				height: 20px;
+				margin-right: 10px;
+			}
+			span {
+				float: left;
+				width: 100%;
+				margin-left: -30px;
+				padding-left: 30px;
+				font-size: 11px;
+			}
+		}
+	}
+	.upload_music_form {
+		padding-left: 70px;
+		.form-group {
+			label {
+				color: $black;
+				font-size: 11px;
+				display: block;
+				text-align: center;
+			}
+			textarea.form-control {
+				height: 150px;
+			}
+		}
+		.contributors_block {
+			border: 1px solid $black;
+			padding: 6px;
+			font-size: 14px;
+			background: $white;
+			ul li {
+				display: inline-block;
+				margin-right: 5px;
+				img {
+					width: 20px;
+					margin-left: 5px;
+				}
+				span {
+					font-size: 11px;
+				}
+			}
+		}
+		.artwork_image {
+			text-align: center;
+		}
+		.checkbox {
+			padding: 40px;
+			span {
+				float: left;
+				width: 100%;
+				margin-left: -30px;
+				padding-left: 30px;
+				font-size: 11px;
+			}
+			input.form-control {
+				float: left;
+				width: 20px;
+				margin-top: 15px;
+				height: 20px;
+				margin-right: 10px;
+			}
+		}
+		.screenshot_listing {
+			text-align: center;
+			h5 {
+				font-size: 11px;
+				padding-bottom: 30px;
+			}
+			ul li {
+				border: 1px solid $color_mine_shaft_approx;
+				background-color: $white;
+				//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+				border-radius: 5px;
+				display: inline-block;
+				width: 80px;
+				height: 80px;
+				line-height: 80px;
+				margin-right: 20px;
+				vertical-align: top;
+				img {
+					width: 100%;
+				}
+				span {
+					font-size: 51px;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.bottom_content {
+		padding-top: 50px;
+		font-size: 11px;
+		text-align: center;
+		p {
+			font-size: 11px;
+			color: $color_chicago_approx;
+		}
+	}
+	.question_mark_block {
+		span {
+			width: 30px;
+			float: left;
+		}
+		p {
+			padding-left: 40px;
+			width: 100%;
+			margin-left: -30px;
+			float: left;
+		}
+	}
+	.buttons_group ul li {
+		margin: 0 10px;
+		a {
+			font-size: 11px;
+			color: $color_midnight_blue_approx;
+			text-decoration: none;
+			background-color: $white;
+			border: solid $color_midnight_blue_approx 2px;
+			cursor: pointer !important;
+			display: block;
+			padding: 20px;
+			width: 180px;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 30px;
+			text-align: center;
+			height: 63px;
+			margin-bottom: 20px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		span {
+			font-size: 11px;
+			display: block;
+			text-align: center;
+		}
+	}
+}
+.main_content .right_content {
+	padding-left: 0;
+}
+/*# sourceMappingURL=uploadmobileappinfo.css.map */

@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model  AphidBytes.Accounts.Contracts.Model.RegisterAdmin
+<h2>AddNewAdmin</h2>
+ @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+ {
+    <div>Username</div>
+      <div>  @Html.EditorFor(model => model.UserName)</div>
+      <div>Password</div>
+      <div>  @Html.EditorFor(model => model.Password)</div>
+      <div>Confirm Password</div>
+     <div>  @Html.EditorFor(model => model.ConfirmPassword)</div>
+      <div><input type="submit" value="Submit" /> </div>
+     <input type="file" />
+ }
+
+@using (Html.BeginForm("FileUpload","AddAdmin", FormMethod.Post, new {Area="Admin", enctype = "multipart/form-data" }))
+ {
+    <input type="file" name="file" />
+      <div><input type="submit" value="Submit" /> </div>
+    
+ }

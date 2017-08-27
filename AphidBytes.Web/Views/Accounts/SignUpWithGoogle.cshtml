@@ -1,0 +1,1108 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.FacebookAccountViewModel
+ @{
+    Layout = "~/Views/Shared/_LayoutReg.cshtml";
+}
+<script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+@{
+    List<SelectListItem> listMonth = new List<SelectListItem>();
+
+    for (int i = 1; i < 13; i++)
+    {
+        if (i == 1)
+        {
+            listMonth.Add(new SelectListItem
+            {
+
+                Text = "Month",
+                Value = string.Empty
+            });
+        }
+        listMonth.Add(new SelectListItem
+        {
+
+            Text = i.ToString(),
+            Value = i.ToString()
+        });
+    }
+    
+    List<SelectListItem> listYear = new List<SelectListItem>();
+
+    int currentYear = DateTime.Now.Year;
+
+    for (int i = currentYear; i < currentYear + 50; i++)
+    {
+        if (i == currentYear)
+        {
+            listYear.Add(new SelectListItem
+            {
+                Text = "Year",
+                Value = string.Empty
+            });
+        }
+        listYear.Add(new SelectListItem
+        {
+            Text = i.ToString(),
+            Value = i.ToString()
+        });
+    }
+   
+}
+
+
+<div class="headertab_aphidtisec">
+    <div class="tophedboxa">
+        <p style="color: #FFC000; cursor: pointer" onclick="goBack()">Back</p>
+
+    </div>
+    <div id="LogOut" class="" style="width: 250px; float: right; margin-right: 2%;">
+        <span style="position: absolute; margin-top: -35px; text-align: center; width: 250px; color: #fff; font-family: MyWebFont; font-size: 14px; line-height: 30px; "><span style="width: 9px; color: red;">* </span>Required</span>
+        <img id="fbpic" style="width: 100px; height:auto; border-radius: 50%;" src="@Model.Ppicture" >
+        @*<img id="prfimg" style="border-radius:50px; height:100px ;"src="@Model.Ppicture" />*@
+        @*<a href="#"><img style="margin-left: -30px;" src="/Images/btfca_picgp.png" /></a>*@
+        <a href="#"><img style="margin-left: -30px;" src="/Img/gicone.png" /></a>
+        <ul style="float: right; list-style: outside none none; padding:0px; text-align: center; ">
+            <li style="line-height: 35px;"><a href="#" style="color: #ff6600;">@Model.FirstName @Model.LastName</a></li>
+            <li><a href="/Accounts/Logout">Logout</a></li>
+        </ul>
+    </div>
+
+    <p class="toptext2nd">Register @* &gt; Basic Account*@  &gt; Sign Up with Google</p>
+
+    <div class="aphidbyteleft">
+        <ul class="aphidbytelist">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+             @if(@Model.AccountType=="1"){
+            <li>
+               
+                <img src="/images/acinfo_logo.png" id="imgshow"></li>
+                }
+             else if (@Model.AccountType == "2")
+             {
+            <li><img src="/images/basicaccountbg.png" id="basic"></li>
+             }
+            else if (@Model.AccountType == "3")
+             {
+            <li><img src="/images/aphidtise_account_bg.png" id="tise"></li>
+             }
+            else if (@Model.AccountType == "4")
+             {
+            <li><img src="/Images/aphidlaplogi_P.png" id="lab"></li>
+             }
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+    <div id="content_1" class="aphidbytecenter content scrollWidth mCustomScrollbar _mCS_1">
+         @using (Html.BeginForm("SignUpWithGoogle", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+        <div style="position:relative; height:100%; overflow:hidden; max-width:100%;" id="mCSB_1" class="mCustomScrollBox mCS-light">
+            <div style="position: relative; top: 0px;" class="mCSB_container">
+                @*<form method="post" id="frmIdeaMaster" enctype="multipart/form-data" action="/Accounts/BasicRegister" novalidate="novalidate">*@
+                    <div class="from_aphid">
+                        <ul>
+                            <li>
+                                 <div class="editor-label">
+                                      @Html.LabelFor(model => model.UserName, "Composer Name to be Displayed:")
+                                </div>
+                                <div class="editor-field ">
+                                    <span class="google_plusicon"><img src="/Img/gicone.png" /></span>
+                                     @Html.TextBoxFor(model => model.UserName, new { @onChange = "Myfunction();" })
+                                    <label id="label1" style="width: 9px; color: red;">*</label>
+                                    @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "ctext" })
+                                    
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                                     @Html.LabelFor(model => model.Password)
+                                </div>
+                                <div class="editor-field">
+                                    <span class="google_plusicon"><img src="/Img/gicone.png" /></span>
+                                    @Html.PasswordFor(model => model.Password, new { @onChange = "password_Change()" })<label id="pass" style="width: 8px;"><span style="color: red;" id="">*</span></label>
+                                    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "ctext" })
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.ConfirmPassword)
+                                </div>
+                                <div class="editor-field">
+                                    <span class="google_plusicon"><img src="/Img/gicone.png" /></span>
+                                    @Html.PasswordFor(model => model.ConfirmPassword, new { @onChange = "cnfrm_password()" })
+                                    <label id="cpass" style="width: 8px; color: red;">*</label>
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "ctext" })
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.FirstName  ,"First Name")
+                                </div>
+                                <div class="editor-field">
+                                    <span class="google_plusicon"><img src="/Img/gicone.png" /></span>
+                                    @Html.TextBoxFor(model => model.FirstName )
+                                    <label id="lblname" style="width: 8px; color: red;">*</label>
+                            @*@Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "ctext" })*@
+                            @*, new { @onChange = "firstname()" }*@
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.LastName, "Last Name:")
+                                </div>
+                                <div class="editor-field">
+                                    <span class="google_plusicon"><img src="/Img/gicone.png" /></span>
+                                     @Html.TextBoxFor(model => model.LastName, new { @onChange = "lastname()" })<label id="lblLname" style="color: red; width: 11px;">*</label>
+                                     @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "ctext" })
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                                   @Html.LabelFor(model => model.EmailAddress)
+                                </div>
+                                <div class="editor-field">
+                                    <span class="google_plusicon"><img src="/Img/gicone.png" /></span>
+                                   @Html.TextBoxFor(model => model.EmailAddress, new { @onChange = "MyFunc()" })
+                                     <label id="label2" style="width: 9px; color: red;">*</label>
+                                    @Html.ValidationMessageFor(model => model.EmailAddress, null, new { @class = "ctext" })
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                            @Html.LabelFor(model => model.DOB)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.DOB, new { @onChange = "dbchange()" })<label id="dbpick" style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.DOB, null, new { @class = "ctext" })
+                        </div>
+                            </li> 
+                            <li>
+                                <div class="editor-label"> 
+                                     @Html.LabelFor(model => model.Phone, "Phone Number:")
+                                </div>
+                                <div class="editor-field">
+                                     @Html.TextBoxFor(model => model.Phone, new { @onChange = "phone_change()" })
+                                    <label id="phn" style="width: 8px; color: red;">*</label>
+                                    @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "ctext" })
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                                     @Html.LabelFor(model => model.ProfilePicture, "Profile Picture:")
+                                </div>
+                                <div class="editor-field">
+                                    <span class="google_plusicon"><img src="/Img/gicone.png" /></span>
+                                    @Html.TextBoxFor(model => model.ProfilePicture, new { type = "file", onChange = "profilechange()" })
+                            <label id="picture" style="width: 9px; color: red; margin-top: -50px; margin-left: 370px;">*</label>
+                            @*<input type="file" id="ProfilePicture" name="uploadFile" accept="jpg/*" data-val="true" data-val-required="File is required"/>*@
+                            @Html.ValidationMessageFor(model => model.ProfilePicture, null, new { @class = "ctext" })
+                                </div>
+                                 @Html.HiddenFor(model => model.Ppicture)
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.WebSiteUrl, "Website URL:")
+                                </div>
+                                <div class="editor-field">
+                                     @Html.TextBoxFor(model => model.WebSiteUrl, new { @onChange = "website()" })
+                                    <label id="website" style="width: 8px; color: red;">*</label>
+                                    @Html.ValidationMessageFor(model => model.WebSiteUrl, null, new { @class = "ctext" })
+                                </div>
+                            </li>
+                            @*<li>
+                                <div class="editor-label">
+                                    <label for="WebSiteUrl">Desired channel URL:</label>
+                                </div>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model =>model)
+                                    <input type="text" value="" onchange="website()" name="WebSiteUrl" id="WebSiteUrl">
+                                    <label style="width: 8px; color: red;" id="website">*</label>
+                                    <span data-valmsg-replace="true" data-valmsg-for="WebSiteUrl" class="field-validation-valid ctext"></span>
+                                </div>
+                            </li>*@
+
+                            <li style="padding-bottom: 22px;">
+                            <p style="color: #fff; font-family: MyWebFont; font-size: 12px; line-height: 30px;">Select Type:</p> 
+                                <a href="#"><img style="height: auto; width: 60px;" src="/Images/master_card.png" /></a>
+                                <a href="#"><img style="height: auto; width: 60px;" src="/Images/visa_card.png" /></a>
+                                <a href="#"><img style="height: auto; width: 60px;" src="/Images/americansepress.png" /></a>
+                                <a href="#"><img style="height: auto; width: 60px;" src="/Images/discover_card.png" /></a>
+
+                            </li>
+
+                            <li>
+                                <div class="editor-label">
+                                      @Html.LabelFor(model => model.CardNumber, "Card Number:")
+                                </div>
+
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.CardNumber, new { @onChange = "Cardchange()" })<label id="card" style="width: 49px; color: red; margin-top: -50px; margin-left: 370px;">*</label>
+                            
+                                </div>
+                            </li>
+                            <div style="float: right; position: absolute; text-align: right; width: 600px; max-width: 100%;">
+                                
+                                <a href="#"><span style="color: #fff; font-family: MyWebFont; font-size: 12px; line-height: 30px;">Or</span><img style="height: auto; width:auto;" src="/Images/i_paypal.png"></a>
+
+                            </div>
+                            <li>
+                                 <div class="exp select">
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.ExpiryMonth, "exp")
+                            </div>
+                            <div class="editor-field">
+                                @Html.DropDownListFor(model => model.ExpiryMonth, listMonth, new { @onChange = "f2()" })
+                                @Html.DropDownListFor(model => model.ExpiryYear, listYear, new { @onChange = "f2()" })
+                                <label id="expiry" style="width: 11px; color: red; position: absolute; margin-left: 1%">*</label>
+                            </div>
+
+                        </div>
+                                @*<div class="exp select">
+                                    <div class="editor-label">
+                                        <label for="ExpiryMonth">exp</label>
+                                    </div>
+                                    <div class="editor-field">
+                                        <select onchange="f2()" name="ExpiryMonth" id="ExpiryMonth" data-val-number="The field ExpiryMonth must be a number." data-val="true">
+                                            <option value="">Month</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+                                        <select onchange="f2()" name="ExpiryYear" id="ExpiryYear" data-val-number="The field ExpiryYear must be a number." data-val="true">
+                                            <option value="">Year</option>
+                                            <option value="2015">2015</option>
+                                            <option value="2016">2016</option>
+                                            <option value="2017">2017</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2029">2029</option>
+                                            <option value="2030">2030</option>
+                                            <option value="2031">2031</option>
+                                            <option value="2032">2032</option>
+                                            <option value="2033">2033</option>
+                                            <option value="2034">2034</option>
+                                            <option value="2035">2035</option>
+                                            <option value="2036">2036</option>
+                                            <option value="2037">2037</option>
+                                            <option value="2038">2038</option>
+                                            <option value="2039">2039</option>
+                                            <option value="2040">2040</option>
+                                            <option value="2041">2041</option>
+                                            <option value="2042">2042</option>
+                                            <option value="2043">2043</option>
+                                            <option value="2044">2044</option>
+                                            <option value="2045">2045</option>
+                                            <option value="2046">2046</option>
+                                            <option value="2047">2047</option>
+                                            <option value="2048">2048</option>
+                                            <option value="2049">2049</option>
+                                            <option value="2050">2050</option>
+                                            <option value="2051">2051</option>
+                                            <option value="2052">2052</option>
+                                            <option value="2053">2053</option>
+                                            <option value="2054">2054</option>
+                                            <option value="2055">2055</option>
+                                            <option value="2056">2056</option>
+                                            <option value="2057">2057</option>
+                                            <option value="2058">2058</option>
+                                            <option value="2059">2059</option>
+                                            <option value="2060">2060</option>
+                                            <option value="2061">2061</option>
+                                            <option value="2062">2062</option>
+                                            <option value="2063">2063</option>
+                                            <option value="2064">2064</option>
+                                        </select>
+                                        <label style="width: 11px; color: red; position: absolute; margin-left: 1%" id="expiry">*</label>
+                                    </div>
+
+                                </div>*@
+                            </li>
+
+                            <li>
+                                <div class="editor-label">
+                                   @Html.LabelFor(model => model.CSV)
+                                </div>
+                                <div class="editor-field">
+                                    @Html.PasswordFor(model => model.CSV, new { @onChange = "CSVchange()" })
+                                    <label id="cvv" style="width: 16px; color: red;">*</label>
+                                    @Html.ValidationMessageFor(model => model.CSV, null, new { @class = "ctext" })
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                                     @Html.LabelFor(model => model.NameOnCard, "Name On Card:")
+                                </div>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.NameOnCard, new { @onChange = "Card_change()" })<label id="ncard" style="width: 8px; color: red;">*</label>
+                                     @Html.ValidationMessageFor(model => model.NameOnCard, null, new { @class = "ctext" })
+                                </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                            @Html.LabelFor(model => model.AddressLine1, "Billing Address:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.AddressLine1, new { @onChange = "addresschange()" })<label style="width: 8px;" id="addr1"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.AddressLine1, null, new { @class = "ctext" })
+                        </div>
+                                <samp class="bold">
+                                    <img src="/images/boldbg.png">
+                                </samp>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                            @Html.LabelFor(model => model.AddressLine2)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.AddressLine2, new { @onChange = "address2change()" })<label style="width: 8px;" id="addr2"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.AddressLine2, null, new { @class = "ctext" })
+                        </div>
+
+                            </li>
+                            <li>
+                                 <div class="editor-label">
+                            @Html.LabelFor(model => model.City, "City/Town:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.City, new { @onChange = "city1()" })<label id="city1" style="width: 8px; color: red;">*</label>
+                            @Html.ValidationMessageFor(model => model.City, null, new { @class = "ctext" })
+                        </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                            @Html.LabelFor(model => model.Region, "State/Province/Region:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Region, new { @onChange = "region1()" })<label id="region1" style="width: 8px; color: red;">*</label>
+                            @Html.ValidationMessageFor(model => model.Region, null, new { @class = "ctext" })
+                        </div>
+                            </li>
+                            <li>
+                                <div class="editor-label">
+                            @Html.LabelFor(model => model.PostalCode, "Postal Code:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.PostalCode, new { @onChange = "postalchange()" })<label style="width: 8px;" id="postalcode"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.PostalCode, null, new { @class = "ctext" })
+                        </div>
+
+                            </li>
+
+
+                            <p class="head1" style="clear: both;">Security Questions</p>
+                            <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.SecurityQuestion1, "Question 1:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.SecurityQuestion1, new { @onChange = "Question1()" })
+                            <label style="width: 8px;" id="sq1"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.SecurityQuestion1)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Answer1, "Answer")
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Answer1, new { @onChange = "Answr1()" })
+                            <label style="width: 8px;" id="ans1"><span style="color: red;"></span></label>
+                            @Html.ValidationMessageFor(model => model.Answer1)
+                        </div>
+                        <samp class="bold">
+                            <p class="righttextbold" style="padding-top: 20px; padding-left: 30px;">$299.99</p>
+                        </samp>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.SecurityQuestion2, "Question 2:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.SecurityQuestion2, new { @onChange = "Question2()" })
+                            <label style="width: 8px;" id="sq2"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.SecurityQuestion2)
+                        </div>
+
+                    </li>
+                    <li>
+                        <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Answer2)
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.Answer2, new { @onChange = "Answr2()" })
+                            <label id="ans2" style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.Answer2)
+                        </div>
+                    </li>
+                                <div style="display:none" id="lbl">
+                                   @Html.TextBoxFor(model =>model.AccountType) 
+                                </div>
+                                <div>
+                                    @*<input type="submit" onclick="return modeldata()" value="UPDATE AND REGISTER" class="submitBtn" id="sub">*@
+                                     <button style="cursor: pointer; background: #b73734 none repeat scroll 0 0; border: 1px solid #be4b48; border-radius: 5px; color: #fff; padding: 10px;" id="sub" onclick=" return modeldata();" value="">
+                                            UPDATE AND REGISTER
+                                        </button>
+                                </div>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                @*</form>*@
+            </div><div style="position: absolute; display: block;" class="mCSB_scrollTools">
+               
+            </div>
+        </div>
+         }
+    </div>
+
+
+</div>
+
+<script>
+
+    (function ($) {
+        var date = new Date();
+
+        var currentMonth = date.getMonth();
+        var currentDate = date.getDate();
+        var currentYear = date.getFullYear() - 13;
+        $('#DOB').datepicker
+            ({
+                changeMonth: true,
+                changeYear: true,
+                maxDate: new Date(currentYear, 12, 31),
+                minDate: new Date(1857, 1, 1)
+            });
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+
+    $(document).ready(function () {
+        debugger
+        $('#FirstName').val(@Model.FirstName);
+        //$("#FirstName").val("");
+        $("#LastName").val("");
+        $("#ProfilePicture").val("");
+        $("#DOB").val("");
+        $("#UserName").val("");
+        $("#EmailAddress").val("");
+        $("#CSV").val("");
+        $("#CardNumber").val("");
+    });
+
+    function goBack() {
+        window.history.back();
+    }
+    function profilechange() {
+        var name = $('#ProfilePicture').val();
+        var profile = $('#fbpic').attr('src');
+        //alert(profile);
+        if (name != '')
+        {
+           
+            var split = name.split('.');
+            if (split[1] == "jpg" || split[1] == "JPG" || split[1] == "png" || split[1] == "PNG") {
+                $('#picture').text(" ");
+            }
+            else {
+
+                $("#picture").show();
+                $('#picture').attr('style', 'color:#ffc000; width: 87px;');
+                $('#picture').text("Invalid Image");
+                $("#ProfilePicture").val(" ");
+            }
+        }
+        else if (profile != '')
+        {
+            //$("#fbpic").attr('src');
+        }
+        else {
+            $('#picture').attr('style', 'color:#ffc000;width:158px;');
+            $('#picture').text('Required');
+        }
+
+    }
+    //});
+    function Cardchange() {
+        var ame_regex = /^(?:3[47][0-9]{13})$/;
+        var visa_regex = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+        var master_regex = /^(?:5[1-5][0-9]{14})$/;
+        var cardno = $('#CardNumber').val();
+        if (cardno != "") {
+            if (cardno.match(ame_regex)) {
+                res = "American Express";
+                //$('#card').attr('style', 'color:red;width:8px;');
+                $('#card').text(" ");
+            }
+            else if (cardno.match(visa_regex)) {
+                res = "Visa";
+                //$('#card').attr('style', 'color:red;width:8px;');
+                $('#card').text(" ");
+            }
+            else if (cardno.match(master_regex)) {
+                res = "Master card";
+                // $('#card').attr('style', 'color:red;width:8px;');
+                $('#card').text(" ");
+            }
+            else {
+                res = " ";
+                $('#card').attr('style', 'color:#ffc000;width:157px;');
+                $('#card').text("Enter valid card number");
+
+            }
+        }
+        if (cardno == "") {
+            $('#card').attr('style', 'color:#ffc000;width:158px;');
+            $('#card').text("Card Number Required");
+        }
+    }
+
+
+
+    function f2() {
+        var exp_mnth = $('#ExpiryMonth').val();
+        var exp_year = $('#ExpiryYear').val();
+        if ((exp_mnth != "") || (exp_year != "")) {
+            if (res == " ") {
+                $('#expiry').attr('style', 'color: rgb(255, 192, 0);position: absolute; width: 149px; margin-left: 1%;');
+                $('#expiry').text("Card Number Required");
+
+            }
+            else {
+                var dt = new Date().getMonth();
+                var dy = new Date().getFullYear();
+                if (exp_year != dy) {
+                    $('#expiry').attr('style', 'color:red');
+                    $('#expiry').text(" ");
+                }
+
+                else {
+                    if (exp_mnth >= dt) {
+                        $('#expiry').attr('style', 'color:red');
+                        $('#expiry').text(" ");
+                    }
+                    else {
+                        $('#expiry').attr('style', 'color: rgb(255, 192, 0);position: absolute; width: 167px; margin-left: 1%;');
+                        $('#expiry').text("Enter the valid expiry detail");
+                    }
+                }
+            }
+        }
+
+        else {
+
+            $('#expiry').attr('style', 'color: rgb(255, 192, 0);position: absolute; width: 149px; margin-left: 1%;');
+            $('#expiry').text("Required");
+        }
+
+
+    }
+    function dbchange() {
+        var db = $('#DOB').val();
+        if (db != "") {
+            if (db != new Date()) {
+                $('#dbpick').text(" ");
+            }
+            else {
+                $('#dbpick').attr('style', 'color:#ffc000;width:149px');
+                $('#dbpick').text('Enter the Valid DOB');
+            }
+        }
+        else {
+            $('#dbpick').attr('style', 'color:#ffc000;width:149px');
+            $('#dbpick').text('Required');
+        }
+
+    }
+
+    function CSVchange() {
+
+        var dig = $('#CSV').val().trim();
+        //if (dig == "") {
+        //    $('#cvv').attr('style', 'color:#ffc000', 'width:12px');
+        //    $('#cvv').text("Required");
+        //}
+        if (dig != "") {
+            if (res != " ") {
+                if ((dig.match(/^\d+$/))) {
+
+                    if (res == "American Express") {
+                        if (dig.length == 4) {
+                            $('#cvv').attr('style', 'color:red;width:16px;')
+                            $('#cvv').text(" ");
+                        }
+                        else {
+                            $('#cvv').attr('style', 'color:#ffc000;width:127px;')
+                            $('#cvv').text("Enter the Valid CVV");
+                        }
+
+                    }
+                    else if ((res == "Visa") || (res == "Master card")) {
+
+                        if (dig.length == 3) {
+                            $('#cvv').text(" ");
+                        }
+
+                        else {
+                            $('#cvv').attr('style', 'color:#ffc000;width:127px;');
+                            $('#cvv').text("Enter the Valid CVV");
+                        }
+                    }
+                }
+                else {
+                    $('#cvv').attr('style', 'color:#ffc000;width:147px;');
+                    $('#cvv').text("Only DigitorCard Number");
+                }
+            }
+            else {
+                $('#cvv').attr('style', 'color:#ffc000;width:138px;');
+                $('#cvv').text("Card number required");
+            }
+
+        }
+        else {
+            $('#cvv').attr('style', 'color:#ffc000;width:149px');
+            $('#cvv').text('Required');
+        }
+
+
+    }
+    function Myfunction() {
+        var username = $("#UserName").val();
+        var type = 1;
+        if (username != "") {
+            var ar = [];
+            //ar = username.trim().split(' ');
+           
+                $.post('/Accounts/BasicAccInfo', { user: username, type: 1 }, function () {
+
+                }).done(function (data) {
+
+                    if (data) {
+                        $('#label1').attr('style', 'color:#ffc000;width:161px');
+                        $("#label1").text(data);
+
+                    }
+                    else {
+
+                        $('#label1').attr('style', 'color:red;width:9px');
+                        $("#label1").text(" ");
+
+                    }
+                });
+           
+        }
+        else {
+            $('#label1').attr('style', 'color:#ffc000;width:149px');
+            $("#label1").text("Required");
+        }
+
+    }
+    function MyFunc() {
+        var email = $("#EmailAddress").val();
+        if (email != "") {
+            $.post('/Accounts/BasicAccInfo', { user: email, type: 2 }, function () {
+
+            }).done(function (data) {
+                if (data == "Email Already Exist") {
+                    $("#label2").attr('style', 'color:#ffc000;width:114px');
+                    $("#label2").text(data);
+                }
+                else {
+                    $("#label2").text(" ");
+                    // $('#label2').attr('style', 'color:red;width:9px');
+
+                }
+
+            });
+
+        }
+        else {
+            $('#label2').attr('style', 'color:#ffc000;width:149px');
+            $("#label2").text("Required");
+        }
+    }
+
+
+
+    function goBack() {
+        window.history.back();
+    }
+
+    function addresschange() {
+        var addr1 = $('#AddressLine1').val().trim();
+        if (addr1 == "") {
+            $('#addr1').attr('style', 'color:#ffc000;width:149px');
+            $('#addr1').text('Required');
+        }
+        else {
+            $('#addr1').attr('style', 'color:#ffc000;width:149px');
+            $('#addr1').text(" ");
+        }
+    }
+    function address2change() {
+        var addr2 = $('#AddressLine2').val().trim();
+        if (addr2 == "") {
+            $('#addr2').attr('style', 'color:#ffc000;width:149px');
+            $('#addr2').text('Required');
+        }
+        else {
+            $('#addr2').text(" ");
+        }
+    }
+    function password_Change() {
+        var pass = $('#Password').val().trim();
+        var pass1 = $('#pass').text();
+        if (pass == "") {
+            $('#pass').attr('style', 'color:#ffc000;width:149px');
+            $('#pass').text('Required');
+        }
+        else {
+            var count = pass.length;
+            if (count < 8) {
+                $('#pass').attr('style', 'color:#ffc000;width:149px');
+                $('#pass').text('Atleast 8 characters');
+            }
+            else {
+                $('#pass').text(" ");
+            }
+        }
+    }
+    function cnfrm_password() {
+        var pass = $('#Password').val().trim();
+        var cpass = $('#ConfirmPassword').val().trim();
+        //var cpass1 = $('#cpass').text();
+       
+        if (cpass == "") {
+            $('#cpass').attr('style', 'color:#ffc000;width:149px');
+            $('#cpass').text('Required');
+        }
+        else {
+            if (pass == cpass) {
+                $('#cpass').attr('style', 'color:#ffc000;width:149px');
+                $('#cpass').text(" ");
+            }
+            else {
+                $('#cpass').attr('style', 'color:#ffc000;width:149px');
+                $('#cpass').text('Password not match');
+            }
+        }
+
+    }
+    function firstname() {
+        var fname = $('#FirstName').val().trim();
+        // var fname1 = $('#lblname').text().trim();
+        if (fname == "") {
+            $('#lblname').attr('style', 'color:#ffc000;width:149px');
+            $('#lblname').text('Required');
+        }
+        else {
+            var regex = /^([A-z]+$)/;
+            if (fname.match(regex)) {
+                $('#lblname').text(" ");
+            }
+            else {
+
+                $('#lblname').attr('style', 'color:#ffc000;width:149px');
+                $('#lblname').text('Invalid Firstname');
+            }
+        }
+    }
+    function lastname() {
+        var lname = $('#LastName').val().trim();;
+        var lname1 = $('#lblLname').text().trim();
+        if (lname == "") {
+            $('#lblLname').attr('style', 'color:#ffc000;width:149px');
+            $('#lblLname').text('Required');
+        }
+        else {
+            var reg = /^([A-z]+$)/;
+            if (!(lname.match(reg))) {
+                $('#lblLname').attr('style', 'color:#ffc000;width:149px');
+                $('#lblLname').text('Invalid LastName');
+            }
+            else {
+                $('#lblLname').attr('style', 'color:#ffc000;width:149px');
+                $('#lblLname').text(" ");
+            }
+        }
+
+    }
+    function phone_change() {
+        var phone = $('#Phone').val().trim();
+        if (phone == "") {
+            $('#phn').attr('style', 'color:#ffc000;width:149px');
+            $('#phn').text('Required');
+        }
+        else {
+            var regex1 = /^(\+?[\d+]{3,10})$/;
+            if (phone.match(regex1)) {
+                $('#phn').text(" ");
+            }
+            else {
+                $('#phn').attr('style', 'color:#ffc000;width:149px');
+                $('#phn').text('Invalid Phone number');
+            }
+        }
+    }
+    function IsNumberExist() {
+        var phone = $("#Phone").val();
+        if (phone != "") {
+            $.post('/Accounts/BasicAccInfo', { user: phone, type: 3 }, function () {
+
+            }).done(function (data) {
+                if (data == "Phone Number Already Exist") {
+                    $("#phn").attr('style', 'color:#ffc000;width:114px');
+                    $("#phn").text(data);
+
+                }
+                else {
+                    $("#phn").text(" ");
+                    // $('#label2').attr('style', 'color:red;width:9px');
+
+                }
+
+            });
+
+        }
+        else {
+            $('#phn').attr('style', 'color:#ffc000;width:149px');
+            $("#phn").text("Required");
+        }
+    }
+    function website() {
+        var url = $('#WebSiteUrl').val().trim();
+        //var url1 = $('#website').text().trim();
+        if (url == "") {
+            $('#website').attr('style', 'color:#ffc000;width:149px');
+            $('#website').text('Required');
+        }
+        else {
+            var reg = /([a-zA-Z0-9]\.[a-zA-Z0-9])/;
+            if (url.match(reg)) {
+                $('#website').text(" ");
+            }
+            else {
+                $('#website').attr('style', 'color:#ffc000;width:117px');
+                $('#website').text('Invalid WebsiteUrl');
+            }
+        }
+    }
+    function Answr2() {
+        var ans2 = $('#Answer2').val().trim();
+        var ans21 = $('#ans2').text().trim();
+        if (ans2 == "") {
+            $('#ans2').attr('style', 'color:#ffc000;width:149px');
+            $('#ans2').text('Required');
+        }
+        else {
+            $('#ans2').text(" ");
+        }
+    }
+    function Question2() {
+        var sq2 = $('#SecurityQuestion2').val().trim();
+        if (sq2 == '') {
+            $('#sq2').attr('style', 'color:#ffc000;width:149px');
+            $('#sq2').text('Required');
+        }
+        else {
+            $('#sq2').text(" ");
+        }
+    }
+    function Answr1() {
+        var ans1 = $('#Answer1').val().trim();
+        if (ans1 == "") {
+            $('#ans1').attr('style', 'color:#ffc000;width:149px');
+            $('#ans1').text('Required');
+        }
+        else {
+            $('#ans1').attr('style', 'color:#ffc000;width:149px');
+            $('#ans1').text(" ");
+        }
+    }
+
+    function Question1() {
+        var sq1 = $('#SecurityQuestion1').val().trim();
+        //var sq11 = $('#sq1').text().trim();
+        if (sq1 == "") {
+            $('#sq1').attr('style', 'color:#ffc000;width:149px');
+            $('#sq1').text('Required');
+        }
+        else {
+            $('#sq1').text(" ");
+        }
+    }
+    function region1() {
+        var region = $('#Region').val().trim();
+        // var reg1 = $('#region').text().trim();
+        if (region == "") {
+            $('#region1').attr('style', 'color:#ffc000;width:149px');
+            $('#region1').text('Required');
+        }
+        else {
+            $('#region1').text(" ");
+        }
+    }
+    function city1() {
+        var city = $('#City').val().trim();
+        //var city1 = $('#city').text();
+        if (city == "") {
+            $('#city1').attr('style', 'color:#ffc000;width:149px');
+            $('#city1').text('Required');
+        }
+        else {
+            $('#city1').text(" ");
+        }
+    }
+    function postalchange() {
+        var postalcode = $('#PostalCode').val().trim();
+        var postd = $('#postalcode').text().trim();
+        if (postalcode == "") {
+            $('#postalcode').attr('style', 'color:#ffc000;width:149px');
+            $('#postalcode').text('Required');
+        }
+        else {
+            var reg = /[a-zA-Z0-9]/;
+            if (postalcode.match(reg)) {
+                if ((postalcode.length > 0) && (postalcode.length < 11)) {
+                    $('#postalcode').text(" ");
+                }
+                else {
+                    $('#postalcode').attr('style', 'color:#ffc000;width:149px');
+                    $('#postalcode').text('Unvalid PostalCode');
+                }
+            }
+            else {
+                $('#postalcode').attr('style', 'color:#ffc000;width:149px');
+                $('#postalcode').text('Unvalid PostalCode');
+            }
+        }
+    }
+
+    function Card_change() {
+        var data = $('#NameOnCard').val().trim();
+        if (data == "") {
+            $('#ncard').attr('style', 'color:#ffc000;width:149px');
+            $('#ncard').text('Required');
+        }
+        else {
+            var regex = /^([A-z]+$)/;
+            if (data.match(regex)) {
+                $('#ncard').text(" ");
+            }
+            else {
+
+                $('#ncard').attr('style', 'color:#ffc000;width:149px');
+                $('#ncard').text('Invalid Cardname');
+            }
+        }
+
+    }
+
+
+
+    function goBack() {
+        window.history.back();
+    }
+
+    var res = " ";
+
+
+    function modeldata() {
+        var uname = $('#label1').text();
+        var email = $('#label2').text();
+
+        var pcode = $('#cvv').text();
+        var db = $('#dbpick').text();
+        var pass = $('#pass').text();
+        var cnfm = $('#cpass').text();
+        var fname = $('#lblname').text();
+        var name = $('#ProfilePicture').val();
+        var profile = $('#fbpic').attr('src');
+        var profile = $("#picture").text();
+        if (name =="" ) {
+            profile = $('#fbpic').attr('src');;
+        }
+        //alert(profile);
+        var lname = $('#lblLname').text();
+        var phone = $('#phn').text();
+        var url = $('#website').text();
+        var expm = $('#expiry').text();
+        var ans2 = $('#ans2').text();
+        var sq2 = $('#sq1').text();
+        var ans1 = $('#ans1').text();
+        var sq1 = $('#sq2').text();
+        var region = $('#region1').text();
+        var city = $('#city1').text();
+        var addr1 = $('#addr1').text();
+        var addr2 = $('#addr2').text();
+        var ncard = $('#ncard').text();
+        var postalcode = $('#postalcode').text();
+        if ((uname == " ") && (email == " ") && (profile == " ") && (postalcode == " ") && (ncard == " ") && (addr2 == " ") && (addr1 == " ") && (city == " ") && (region == " ") & (sq1 == " ") && (db == " ") & (pcode == " ") && (pass == " ") && (cnfm == " ") && (fname == " ") && (lname == " ") && (phone == " ") && (url == " ") && (expm == " ") && (ans2 == " ") && (sq2 == " ") && (ans1 == " ") && (sq1 == " ") && (region == " ") && (city == " ") && (addr1 == " ") && (addr2 == " ") && (ncard == " ")) {
+            return true;
+        }
+        else {
+            region1();
+            city1();
+            Myfunction();
+            MyFunc();
+            IsNumberExist();
+            Cardchange();
+            dbchange();
+            CSVchange();
+            profilechange();
+            addresschange();
+            address2change();
+            f2();
+            postalchange();
+            password_Change();
+            Answr2();
+            Question2();
+            Answr1();
+            Question1();
+            cnfrm_password();
+            firstname();
+            lastname();
+            phone_change();
+            website();
+            return false;
+        }
+
+    }
+</script>

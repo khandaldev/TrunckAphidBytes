@@ -1,0 +1,210 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.MessageModel
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+
+        $("#abc").mouseover(function () {
+            $("#pop-up-over-m").css('display', 'block');
+        })
+        $("#abc").mouseleave(function () {
+            $("#pop-up-over-m").css('display', 'none');
+        });
+
+    });
+</script>
+
+
+
+
+<div class="aphidtise_wrap">
+
+<div class="logid">
+
+<div class="logid_out">
+<ul>
+<li><a href="#" style="color:#ffc000;">AdamLevl</a></li>
+<li><a href="#">Logout</a></li>
+</ul>
+
+<div class="profilebg">
+<div class="migprofile"> <img src="/Images/profilebg.png"> </div>
+<div class="premi-info-box"><img src="/Images/premiumaccount_star_bg.png" style="width:100%;"><p class="preum-p-text">Premium Account</p></div>
+<div class="premi-info-box"> <a href="@Url.Action("EditChannelPage","Premium")"> <img src="/Images/grid14bg.png" style="margin: 10px 0 0 10px;"></a></div>
+ 
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="header_aphidtise">
+<div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/Images/hphidbytelogo.png"></a> </div>
+
+<div class="zplay-list1">
+<div class="zplay-main1">
+<div class="zplay_grid1"><p class="info-p">Playlists > My Playlists > Playlist 1</p></div>
+<div class="zplay_grid1">
+<div class="zplay_grid01"><img src="/Images/playlist-bgz01.png" id="buttonclick2"></div>
+<div class="zplay_grid02"><img src="/Images/playlist-bgz02.png"></a><div style="margin:-53px 0 0 38px; width:100%; text-align:center;" class="zplay_gridp" id="mydiv"> <div>Playlist 1</div></div></div>
+
+</div>
+<div class="zplay_grid-1">
+<p><a href="#"><img src="/Images/favorites_ms.png"></a></p>
+<p>Favorites</p>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="headertab_aphidtise">
+<div class="aphidbyteleft" style="margin-left: 70px;margin-top: 6px;">
+
+<ul class="aphidbytelist-preum">
+<li><a href="#">Account Info</a></li><li></li>
+<li><a href="#">Generate Clones</a></li><li></li>
+<li><a href="#">Messages</a></li>
+    @if (Model.NewCount!=0)
+            {
+                 <div style="position: absolute; background-color: red; color: white; margin-top: -56px; margin-left: 97px; padding: 5px; border-radius: 67px;">@Model.NewCount</div>
+            }
+<li></li>
+<li><a href="#">Byte Tracker</a></li><li></li>
+<li><a href="#">History</a></li><li></li>
+<li><a href="#">Data Plan</a></li><li></li>
+<li><a href="#">Playlists</a></li><li><img src="/Images/right_line.png" height="2" width="103"></li>
+
+</ul>
+
+
+<div class="prebox" ><p>Dashboard<img src="/Images/premium_account_bg.png" class="pre-boxp"></p></div>
+
+<div class="mremium-tools"> <a href="PremiumTools"><img src="~/images/premium-tools.png" ></a></div>
+
+<div class="info-footer-social"></div>
+<div class="premium_rightline"></div>
+</div>
+
+
+
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="height:600px; margin-top:85px;">
+<div class="massage_index">
+
+<div class="add-playlist-da">
+<div class="tab2-boxtext-2z">
+    <ul>
+    <li><p>Wiz Khalifa – “Black & Yellow"</p></li>
+    <li><a href="#"><img src="/Images/plus-m-i.png"></a></li>
+    <li><a href="#"><img src="/Images/close-m-i.png"></a></li>
+    </ul>
+    </div>
+
+<div class="tab2-boxtext-2z">
+    <ul>
+    <li><p>Adam Levine - “Mick Jagger”"</p></li>
+    <li><a href="#"><img src="/Images/plus-m-i.png"></a></li>
+    <li><a href="#"><img src="/Images/close-m-i.png"></a></li>
+    </ul>
+    </div>
+
+</div>
+
+<div id="pop-up-over-m" style="margin-top:10px;">
+<img src="/Images/symbol-i.png" class="i-pop-abhid">
+
+<div class="pop-up-ov">
+
+</div>
+</div>
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="massage-footer-m">
+<div class="play-save-cb">
+<a href="#"><img src="/Images/savech-play.png"></a>
+</div>
+
+</div>
+</div>
+
+
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+
+<script>
+    $(document).ready(function () {
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+</script>
+
+<script type="text/jscript">
+    function divClicked() {
+        var divHtml = [];
+
+        $("#mydiv div").each(function () {
+            divHtml.push($(this).html());
+            var editableText = $("<input type='text' />");
+            editableText.val($(this).html());
+            $(this).replaceWith(editableText);
+            editableText.blur(editableTextBlurred);
+        });
+        editableText.focus();
+        // setup the blur event for this new textarea
+
+    }
+
+    function editableTextBlurred() {
+        var html = $(this).val();
+        var viewableText = $("<div>");
+        viewableText.html(html);
+        $(this).replaceWith(viewableText);
+        // setup the click event for this new div
+        //  viewableText.click(divClicked);
+    }
+
+    $(document).ready(function () {
+        $("#buttonclick2").click(divClicked);
+    });
+
+</script>
+

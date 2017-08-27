@@ -1,0 +1,27 @@
+$color_1: #000000;
+
+.right_content {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.store_listing {
+	padding: 5em 8em;
+	.store_heading {
+		text-align: center;
+		padding-bottom: 7em;
+		img {
+			max-width: 100%;
+		}
+	}
+	.store_product_info {
+		text-align: center;
+		img {
+			padding-bottom: 20px;
+			max-width: 100%;
+		}
+		h4 {
+			color: $color_1;
+			font-size: 16px;
+		}
+	}
+}

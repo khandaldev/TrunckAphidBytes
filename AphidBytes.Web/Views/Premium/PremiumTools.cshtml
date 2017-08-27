@@ -1,0 +1,159 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.ToolsModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@* <!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AphidTise</title>
+<link rel="stylesheet" href="stylecss.css" type="text/css">
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery.cycle.all.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>*@
+
+
+
+
+<div class="tools_pagewrap">
+    <div class="tools_pagewrap_subhead">
+        <p>
+            <img src="/images/premium-tools.png"></p>
+        <p>
+            <input type="text"></p>
+        <p><a href="#">
+            <img src="/Images/searcclick.png"></a></p>
+
+        <div class="tools_box4">
+
+           <ul>
+              <li><a href="#" class="beforeClick">&#8226; All Tools</a></li>
+                @*<li><a href="#"  class="beforeClick" id="toolsAdded">&#8226; Tools I’ve Added</a></li>*@
+              <li><a href="WritersPad" id="tools Added" class="beforeClick">@Html.ActionLink("Tools I’ve Added", "ShowUserTools", "Premium")</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="tools_two_fram" id="showmodule">
+
+        <div>
+            <div class="ad_module" id="Credit_Module" style="float: none; width: 70%;">
+                <p>
+                    <img id="credits" src="/Images/credits-bg.png" style="margin-top: -25px;"></p>
+                <p>Ad Module for Desktop</p>
+
+
+                <p>
+                    <img id="rightimg" src="/Images/singpic.png" style="width: 8%; float: right; margin-top: -35px;"></p>
+
+
+                <p><a href="#">
+                    <img id="1" class="addtools" src="/Images/green.png" style="width: 8%; float: right; margin-top: -35px;"></a></p>
+                <div class="flash_lightcinnera1">
+                    <br />
+                    <br />
+                    <p style="font-weight: bold;">Earn credits for watching ads, taking surveys, etc. This module provides a  desktop toolbar shortcut.</p>
+                    <p style="color: #dadb01; margin-top: 10px;">Free</p>
+                    /Images/greate_text.png
+                </div>
+            </div>
+           
+
+        </div>
+        <div>
+           
+              @*  <div id="admod" class="ad_module" style="float: none; width: 70%;">
+               
+               
+                    <p>
+                        <img id="Writers" src="/DefaultFiles/writers-bg.png" style="margin-top:-25px;"></p>
+                    <p id="tooltext">WriterPad</p>
+                   
+                    <p><a href="#" ><img id="1" class="addtools" src="/Images/green.png" style="width:8%; float:right; margin-top:-35px;"></a></p>           
+                    
+                    
+                    <div class="flash_lightcinnera1">
+                        <br />
+                        <br />
+                        <p style="font-weight: bold;"></p>
+                        <p style="color: #dadb01; margin-top: 10px;">Free</p>
+                    </div>
+            </div>
+            *@
+           
+                  <div id="admodule" class="ad_module" style="float: none; width: 70%;">
+                @{
+                List<int> usertools = new List<int>();
+                foreach (var userT in Model.UserTools)
+                {
+                    usertools.Add(userT.ToolId);
+                }
+                    }
+
+                @foreach (var item in Model.AllToolsInfo)
+                {
+                    
+                    <p>
+                        <img id="Writers" src="@item.ImagePath" style="margin-top:-25px;"></p>
+                    <p id="tooltext">@item.ToolName</p>
+                    if (usertools.Contains(item.ToolId))
+                    {
+                    <p><img id="@item.ToolId" src="/Images/singpic.png" style="width:8%; float:right; margin-top:-35px;"></p>  
+                    }
+                  
+                    else
+                    {
+                    <p><a href="#" ><img id="@item.ToolId" class="addtools" src="/Images/green.png" style="width:8%; float:right; margin-top:-35px;"></a></p>           
+                    }
+                   
+                 
+                    <div class="flash_lightcinnera1">
+                        <br />
+                        <br />
+                        <p style="font-weight: bold;">@item.ToolINfo</p>
+                        <p style="color: #dadb01; margin-top: 10px;">Free</p>
+                    </div>}
+            </div>
+            
+          
+            <div style="height: 100px;"></div>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.addtools').click(function () {
+                var id;
+                var id1 = this.id;
+                if (id != this.id) {
+                    var txttool = $("#tooltext").text();
+                    $.post('/Premium/PremiumTools', {ID: id1, Text: txttool},function(data)
+                {
+                        alert("succcesfully Added");
+                        location.reload();
+                    //window.location = "PremiumTools";
+                });
+
+                }
+                else {
+                    $('.addtools').hide();
+                    $("#rightimg").show();
+
+                }
+
+            });
+           
+            $('.beforeClick').click(function () {
+                $('.beforeClick').css('color', "#fff");
+                $(this).css('color', "#6f9a49");
+
+
+            });
+        });
+    </script>

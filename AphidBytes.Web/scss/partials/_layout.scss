@@ -1,0 +1,43 @@
+﻿@import "bootstrap"; 
+@import "variables"; 
+@import "mixins";
+@import "helpers"; 
+@import "forms"; 
+@import "buttons";
+@import "responsive";
+
+ .error-section { 
+    background: rgba(255, 0, 0, .2);
+    border-left: 2px solid rgba(255, 0, 0, .6);
+    border-radius: 3px;
+    
+    p { 
+        line-height: 2em;
+        vertical-align: middle;
+        padding: .25em;
+    }
+ }
+
+ .informational-section { 
+    background: rgba(0, 0, 255, .2);
+    border-left: 2px solid rgba(0, 0, 255, .6);
+    border-radius: 3px;
+
+    p { 
+        line-height: 2em;
+        vertical-align: middle;
+        padding: .25em;
+    }
+ }
+
+.warning-section { 
+    background: rgba(255, 204,0,.2);
+    border-left: 2px solid rgba(255, 204, 0, .6);
+    border-radius: 3px;
+
+    p { 
+        line-height: 2em;
+        vertical-align: middle;
+        padding: .25em;
+    }
+ }

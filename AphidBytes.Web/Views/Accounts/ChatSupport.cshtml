@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/support")
+}
+
+@section scripts {
+    @Scripts.Render("~/js/home/support.js")
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 txt-center header-img row-offset-lrg">
+            <img src="~/img/support/live-chat.png" alt="live chat" class="table-center" />
+            Live Chat Support
+        </div>
+        <div class="col-md-8">
+            <div class="chat-window">
+                <div class="chat-history">
+                </div>
+                <div class="chat-sender">
+                    <input type="text" />
+                    <a href="#" class="btn btn-primary">Send</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

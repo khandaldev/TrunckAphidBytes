@@ -1,0 +1,332 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+<body>
+
+    <style>
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+
+        .modal-content {
+            position: relative;
+            /*background-color: #fefefe;*/
+            margin: auto;
+            padding: 0;
+            /*border: 1px solid #888;*/
+            width: 80%;
+            /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+           -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s;*/
+            max-width:470px;
+            width: 100%;
+            background: rgb(213,234,249);
+        }
+
+
+
+
+
+
+        .close {
+            background: rgb(229, 0, 0) none repeat scroll 0 0;
+            border: 1px solid #fff;
+            border-radius: 25px;
+            color: white;
+            float: right;
+            font-family: arial;
+            font-size: 21px;
+            font-weight: normal;
+            height: 30px;
+            margin: -18px;
+            position: relative;
+            text-align: center;
+            width: 30px;
+            z-index: 32;
+        }
+
+            .close:hover,
+            .close:focus {
+                color:#fff;
+                text-decoration: none;
+                cursor: pointer;
+                background:#333;
+            }
+
+        .modal-header {
+            padding: 0px 0px;
+           width:100%;
+            color: red;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            padding: 0px 0px;
+            background-color: rgb(214,235,249);
+             color: white;
+            width: 100%;
+            margin: auto;
+            text-align: right;
+        }
+
+        .intro {
+        background-image :url(../img/signn.png) ;
+        background-repeat:no-repeat;
+        }
+
+        .tweetbutton {
+            background: red none repeat scroll 0 0;
+            border-radius: 3px;
+            line-height: 50px;
+            padding: 10px 25px;
+        }
+        #tweetsText {
+            border: 8px solid rgb(190, 217, 233);
+            border-radius: 5px;
+            font-size: 16px;
+            height: 80px;
+            max-width: 405px;
+            width: 100%;
+            padding:10px;
+            sty
+        }
+        .modal-header img{ width:100%;}
+        .mybtn {
+            background: rgb(215, 215, 215) none repeat scroll 0 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 15px;
+            padding: 10px 21px;
+        }
+
+        .postnumber {
+            color: rgb(154, 153, 153);
+            float: right;
+            font-family: "MyWebFont";
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 38px;
+            position: absolute;
+            width:325px;
+        }
+
+        .twitterheder {
+            margin: auto;
+            max-width: 600px;
+            text-align: center;
+            width: 100%;
+        }
+            .twitterheder img {
+                width: 100px;
+                height: auto;
+                
+            }
+    </style>
+
+    <script>
+        var id;
+       
+        $(document).ready(function () {
+            
+
+            $("#clk").click(function () {
+                $("#clk").removeClass("sho");
+                $("#clk").addClass("intro");
+                $("#clk1").removeClass("intro");
+                $("#clk1").addClass("sho ");
+                $("#clk2").removeClass("intro");
+                $("#clk2").addClass("sho ");
+                $("#continue").attr("href", "#");
+               
+                id = 1;
+               
+            });
+        });
+
+        $(document).ready(function () {
+           
+
+            $("#clk1").click(function () {
+                $("#clk1").removeClass("sho ");
+                $("#clk1").addClass("intro");
+                $("#clk").removeClass("intro ");
+                $("#clk").addClass("sho ");
+                $("#clk2").removeClass("intro");
+                $("#clk2").addClass("sho ");
+                id = "2";
+               
+                $("#continue").attr("href", " ");
+                $("#continue").attr("href", "/SocialNetworks/Continuebtn?id="+id);
+            });
+        });
+
+        $(document).ready(function () {
+          
+
+            $("#clk2").click(function () {
+                $("#clk2").removeClass("sho ");
+                $("#clk2").addClass("intro");
+                $("#clk").removeClass("intro ");
+                $("#clk").addClass("sho ");
+                $("#clk1").removeClass("intro ");
+                $("#clk1").addClass("sho ");
+                id = "3";
+                $("#continue").attr("href", "#");
+               
+            });
+        });
+
+</script>  
+ 
+
+    <div class="wrap_main admin_v">
+        <div style="margin-top:110px;">      
+              <div style="width: 90%;margin-top:-100px; text-align: right;"> <a href="~/Accounts/Skip"><button style="padding: 10px 20px; cursor: pointer; border-radius: 5px; background: transparent none repeat scroll 0% 0%; border: medium none; font-size: 22px; letter-spacing: 1px; color: rgb(146, 197, 212);">SKIP</button></a></div>
+            </div>
+
+        <div style="text-align:center;"><a style="cursor:pointer;" href="#"> <img src="/images/shortcutlogo.png" style="width:150px;"></a> </div>
+        @*<div class="tophedboxa" style="width:100%;"><p style="color: rgb(255, 255, 255); cursor: pointer; width: 250px; text-align: left;" onclick="goBack()"></p></div>*@
+        
+        <aside class="admin-view-box adpln">
+            <div style="width:30%;float:left;">
+               <img src="/images/tpicop1.png" class="sho smcls" id="clk" style="width:55%;"/>
+                @*<a href="~/SocialNetworks/Twitterposting?id=1"> <img src="/images/tpicop1.png" style="width:55%;"/></a>*@
+            </div>
+
+            <div style="width:30%;float:left;">
+                @*<a href="~/SocialNetworks/Fbposting?id=2"><img src="/images/fpicop2.png"  style="width:55%;" /></a>*@
+                <img src="/images/fpicop2.png" class="sho smcls" id="clk1" style="width:55%;" />
+            </div>
+            <div style="width:30%;float:left;">
+                @*<a href="~/SocialNetworks/GooglePlusposting?id=3"><img src="/images/gpicop3.png"  style="width:55%;"/></a>*@
+                <img src="/images/gpicop3.png" class="sho smcls" id="clk2" style="width:55%;" />
+            </div>
+
+            <div style="clear: both; color: rgb(255, 255, 255); font-family: arial; padding-top:10px; font-size: 17px;">
+                <p>Tell your friends you’ve  just joined AphidByte!</p>
+                <p>Click on the network(s) you want to share to.</p>
+            </div>
+
+        </aside>
+        <div style="width: 90%; text-align: right;" ><a id="continue" @*href="/SocialNetworks/Continuebtn?=id&faebookHits=*@"> <button id=" continue" class="mybtn" onclick="contuinueBtnClick()" style="background: rgb(123, 161, 43) none repeat scroll 0% 0%;  border: 0px none; padding: 10px 20px; color: rgb(255, 255, 255); border-radius: 5px;cursor:pointer;">Continue</button></a></div>
+
+       
+        
+    </div>
+
+    @*<div id="selected" style="display:none;">
+       dhskjdhskajdhs
+
+    </div>*@
+    <div id="myModal" class="modal">
+        <div class="twitterheder"><img src="../images/twitter_logo.png" /></div>
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">x</span>
+              <img src="../images/headtwitter.png" />
+            </div>
+            <div class="modal-body">
+                <textarea id="tweetsText" maxlength="140"> </textarea>
+                @*<p>Some other text...</p>*@
+            </div>
+            <div class="modal-footer">
+             <div style="width: 99%; text-align: right;">
+                <p class="postnumber">140</p>
+                <a id="tweetAnctor" @*href=" ~ />SocialNetworks/Continuebtn?=id&tweeterText="*@> <button id="tweetBtn" class="mybtn" onclick="tweetsBtnClick()">Tweet</button>
+                </a>
+               </div>
+            </div>
+        </div>
+        @*<div>
+
+            <a href="https://plus.google.com/share?url=http://www.c-sharpcorner.com">Share on Google+</a>
+
+        </div>*@
+    </div>
+
+    <script>
+
+        var modal = document.getElementById('myModal');
+
+
+        var btn = document.getElementsByClassName("mybtn");
+
+
+        var span = document.getElementsByClassName("close")[0];
+
+
+        function contuinueBtnClick()
+        {
+            if (id==1) {
+
+               
+                $("#myModal").show();
+            }
+            else if(id==3) {
+                //window.open('http://google.com');
+               // $(this).parent("close");
+                window.open('https://plus.google.com/share?url=http://aph500.trainingncr.com/', "PopupWindow", 'width=400px,height=400px,top=150,left=250');
+                //window.open(https://plus.google.com/share?url=http://www.c-sharpcorner.com);
+               // $("#continue").attr("href", "https://plus.google.com/share?url=http://www.c-sharpcorner.com");
+                //$("#continue").attr("target","#")
+            }
+            
+
+
+            
+        }
+
+        function tweetsBtnClick()
+        {
+
+            var tweeterText = tweetsText.value.toString().trim();
+           
+            if (tweeterText != "" && tweeterText != null) {
+              
+                $("#tweetAnctor").attr("href", "/SocialNetworks/Continuebtn?id="+id+"&tweeterText=" + tweeterText);
+                $(myModal).hide();
+            }
+            else {
+                alert("Please Enter Tweet");
+            }
+      
+           
+        }
+
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>   
+     

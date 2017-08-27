@@ -1,0 +1,41 @@
+﻿@import "partials/mixins";
+@import "partials/variables";
+
+.parallax-window {
+    min-height: 628px;
+    background: transparent;
+}
+
+.acontainer { 
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-175px);
+}
+
+.background-video { 
+    width: 100%;
+    height: 628px;
+}
+
+.snippet { 
+    width: 300px; 
+
+    h2 {
+        font-size: 20px; 
+        font-weight: bold;
+        text-align: center;
+    }
+
+    p { 
+        font-size: 17px;
+        text-align:center;
+    }
+
+    img { 
+        height: 230px;
+        float: right;
+        margin-top: -90px;
+        margin-right: -465px;
+    }
+}

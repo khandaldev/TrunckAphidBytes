@@ -1,0 +1,102 @@
+﻿@using AphidBytes.Core.PaymentServices
+@model AphidBytes.Accounts.Contracts.Model.DataPlanDetail
+@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+    ViewBag.PlanUrl = "/Basic/ChangeDataPlan";
+    ViewBag.SelectedPlan = Model.PlanId;
+    ViewBag.SelectedPage = "dataplan";
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/register")
+}
+
+@section scripts{
+    @Scripts.Render("~/js/home/register.js")
+}
+
+<div class="container-fluid">
+    <div class="row">
+
+        @Html.Partial("~/Views/Basic/Shared/_BasicAccountNav.cshtml")
+
+        <div class="col-md-9">
+            @if (Model.Validation.HasCta)
+            {
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Partial("~/Views/Shared/_ValidationErrors.cshtml", Model.Validation)
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-sm-12 header-img img-small txt-center">
+                    <img src="~/img/services/data-plan.png" alt="data plan" />
+                    <h3>Data Storage Plans</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 txt-center">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>Yearly</h4>
+                        </div>
+                    </div>
+
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb2Free)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb10Yearly)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb50Yearly)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb100Yearly)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb200Yearly)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb500Yearly)
+                </div>
+                <div class="col-sm-6 txt-center">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>Monthly</h4>
+                        </div>
+                    </div>
+
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb2Free)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb10Monthly)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb50Monthly)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb100Monthly)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb200Monthly)
+                    @Html.Partial("~/Views/Premium/Shared/_DataPlanRow.cshtml", StripePackages.DataPlans.Gb500Monthly)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 txt-center">
+                    <div class="data-plan-check table-center">
+                        <p>
+                            Current Plan:@Model.PlanDescription @*10GB*@
+                            <samp class="posttext2">@Model.Expires</samp>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 txt-center">
+                    <div class="byter-girt-gt cf">
+                        <div class="used-space">
+                            <p>@*4.8GB*@  @Model.UsedShow Used </p>
+                        </div>
+                        <div class="free-space">
+                            <p>@*5.2GB*@  @Model.FreeShow Free </p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="smalltext">(Modify Your Storage in “Byte Tracker”)</p>
+                    </div>
+                    <p class="byetr-footer2ndtext">@*5GB*@ @Model.FreeShow Free of @Model.PlanDescription @*10GB*@</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

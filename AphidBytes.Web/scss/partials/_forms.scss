@@ -1,0 +1,30 @@
+﻿.radio-list { 
+    padding: 0; 
+
+    li { 
+        list-style-type: none; 
+        display: inline-block;
+        margin-left: 5px; 
+        width: 20%;
+
+        &:first-child { 
+            margin-left: 0px;
+        } 
+    }
+}
+ 
+.required-field { 
+    position: absolute;
+    right: 0;
+    top: 10%;
+    color: red;
+}
+
+.search-box-gall { 
+    width: 360px; 
+    display: inline-block;
+}
+
+.gall-nav-links { 
+        transform: translateX(-50px);
+    }

@@ -1,0 +1,206 @@
+﻿@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@*<link rel="stylesheet" href="stylecss.css" type="text/css">
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="jquery-1.7.2.min.js"></script>
+<script src="jquery.min.js"></script>*@
+<script type="text/javascript">
+$(document).ready(function(e) {
+    
+	$("#abc").mouseover(function(){
+	$("#pop-up-over-m").css('display','block');
+		})
+		$("#abc").mouseleave(function(){
+			$("#pop-up-over-m").css('display','none');
+			});
+
+});
+</script>
+<div class="aphidtise_wrap">
+
+<div class="logid">
+
+<div class="logid_out">
+<ul>
+<li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+  <li><a href="~/Accounts/Logout">Logout</a></li>
+</ul>
+
+<div class="profilebg">
+<div class="migprofile">   <img src="@Url.Action("Overview", "Byter")" height="100px" /> </div>
+<div class="info-logo"> <img src="/images/acinfo_logo.png"> </div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<div class="header_aphidtise">
+<div id="logo"> <a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a> </div>
+</div>
+<div class="headertab_aphidtise">
+<div class="left-info">
+
+
+<ul class="infolist-menu">
+<li><a href="ByterAccountInfo">Account Info</a></li><li></li>
+<li><a href="Message">Messages</a>
+                 @if(ViewBag.MegCount!=0)
+                {
+                <div class="in_c_text_2">@ViewBag.MegCount</div>
+                }
+            </li><li></li>
+<li><a href="History" class="basicselects">History</a></li><li>@*<img src="/images/right_line.png"></li>*@
+<li><a href="Playlists">Playlists</a></li><li></li>
+<li><a href="ByterCreditSummary">Credit Tracker</a></li><li></li>
+<li><a href="CreditSubscription" style=" height: 31px; line-height: 17px;padding-bottom: 7px; padding-top: 7px; width: 103px;">Credit <br/> Subscriptions</a>
+</li>
+</ul>
+
+<div class="info-right"></div>
+<div class="info-footer-social"></div>
+
+</div>
+<p class="info-p">History</p>
+
+
+
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="height:600px;">
+<div class="massage_index">
+
+<div id="pop-up-over-m" style="margin-top:10px;">
+<img src="/imagess-message/symbol-i.png" class="i-pop-abhid">
+<div class="pop-up-ov">
+<ul>
+<li><img src="/imagess-message/sear-m-i.png"></li>
+<li><p>Preview the link to Music, Video, EBook, Photography and Art files<p/></li>
+</ul>
+</div>
+<div class="pop-up-ov">
+<ul>
+<li><img src="/imagess-message/plus-m-i.png"></li>
+<li><p>Preview the link to Music, Video, EBook, Photography and Art files<p/></li>
+</ul>
+</div>
+<div class="pop-up-ov">
+<ul>
+<li><img src="/imagess-message/close-m-i.png"></li>
+<li><p>Preview the link to Music, Video, EBook, Photography and Art files<p/></li>
+</ul>
+</div>
+
+</div>
+
+
+<ul id="tabs">
+    <li id=""><a href="#" name="tab1">History</a></li>
+</ul>
+
+<div id="content"> 
+<div class="content-bodym">
+    <div id="tab1" style="display: none;" class="tab1tex">
+        <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>  
+        <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p> 
+        <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p> 
+        <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p> 
+        <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p> 
+        <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p> 
+        <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p> 
+  </div>      
+    <div id="tab2" style="display: none;" class="tab1tex">
+    <div class="tab2-boxtext">
+    <ul>
+    <li><img src="/imagess-message/massage-g1pic.png"></li>
+    <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+    <li><img src="/imagess-message/sear-m-i.png"></li>
+    <li><img src="/imagess-message/plus-m-i.png"></li>
+    <li><img src="/imagess-message/close-m-i.png"></li>
+    </ul>
+    </div><br/>
+     <div class="tab2-boxtext">
+    <ul>
+    <li><img src="/imagess-message/massage-g1pic.png"></li>
+    <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+    <li><img src="/imagess-message/sear-m-i.png"></li>
+    <li><img src="/imagess-message/plus-m-i.png"></li>
+    <li><img src="/imagess-message/close-m-i.png"></li>
+    </ul>
+    </div><br/>
+   <div class="tab2-boxtext">
+    <ul>
+    <li><img src="/imagess-message/massage-g2pic.png"></li>
+    <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+    <li><img src="/imagess-message/sear-m-i.png"></li>
+    <li><img src="/imagess-message/plus-m-i.png"></li>
+    <li><img src="/imagess-message/close-m-i.png"></li>
+    </ul>
+    </div><br/>
+     <div class="tab2-boxtext" style="border-bottom:none;">
+    <ul>
+    <li><img src="/imagess-message/massage-g3pic.png"></li>
+    <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+    <li><img src="/imagess-message/sear-m-i.png"></li>
+    <li><img src="/imagess-message/plus-m-i.png"></li>
+    <li><img src="/imagess-message/close-m-i.png"></li>
+    </ul>
+    </div><br/>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="massage-footer-m">
+
+</div>
+</div>
+
+
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+    </script> 
+
+<script>
+    $(document).ready(function () {
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+</script>

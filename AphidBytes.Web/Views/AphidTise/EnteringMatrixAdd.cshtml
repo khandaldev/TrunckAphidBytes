@@ -1,0 +1,213 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.AdvertisementModel 
+@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+
+<div class="aphidtise_wrap">
+</div>
+<div class="header_aphidtise">
+    <div id="logo">
+    <a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a>
+    </div>
+</div>
+<div class="about_headtext">
+    <p><a href="#">Back</a></p>
+</div>
+<div class="per_vad">
+    <samp><a href="#" id="EnteringPrivew">Preview Ad</a></samp>
+</div>
+
+<div class="about_headbg" style="background: none !important;">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "postform", enctype = "multipart/form-data" }))
+{
+    <div class="w_main_imax">
+
+
+        <div>
+            <p id="uplo" style="cursor: pointer;">Upload</p>
+            @Html.TextBoxFor(model => model.AdVideo, new { type = "file", form = "file name", id = "fileup", style = "display:none;" })
+            <p>
+                <video id="vi_d" style="border-radius: 0;" autoplay="autoplay"></video>
+            </p>
+            <p>Enter Price (If Applicable): $ @Model.PriceToDisplay </p>
+            <p>
+                <samp>
+                    <img src="/Images/cr_d_img.png" /></samp>@Model.CreditsID credits</p>
+            <p style="color: #F3B801;">Video or Image</p>
+        </div>
+
+        <div>
+            <p id="titleinfo" style="cursor: pointer;">Edit</p>
+            <samp class="imax_tital"></samp>
+            <p id="tital">@Model.Title</p>
+            @Html.TextBoxFor(model => model.Title, new { id = "htm_tital", style = "display:none;", onChange = "F2()" })
+            <br />
+            <p id="info">@Model.AdInformation</p>
+            @Html.TextAreaFor(model => model.AdInformation, new { id = "htm_info", style = "display:none;", onChange = "F3()" })
+            <p>
+                <samp>250 Characters</samp></p>
+        </div>
+
+        <div>
+
+            <p>Entering Matrix Ad</p>
+            <p>
+                <img src="/Images/3d-images_5.png" /></p>
+
+            <div class="imax_hand">
+                <p id="pay" style="cursor: pointer;"><a>Proceed to payment and scheduling configuration</a></p>
+                <input id="sub" type="submit" style="display: none;" />
+            </div>
+            <div class="view_st_max" style="width: 33%;">
+                <p><a id="ad_website">View Site</a></p>
+                <p style="height: 15px;"></p>
+                <p id="hlink">@Model.AdHyperLinkUrl</p>
+                @Html.TextBoxFor(model => model.AdHyperLinkUrl, new { id = "htm_hlink", style = "display:none;", onChange = "F1()" })
+                <p id="edit_hlink" style="cursor: pointer;">Edit</p>
+
+                @Html.TextBoxFor(model => model.TrackingNumber, new { style = "display:none;" })
+
+            </div>
+        </div>
+    </div>
+    }
+    <div class="menunav_footer2">
+        <ul style="background: none !important; clear: both;">
+            <li><a href="#">Navigation  </a></li>
+            <li><a href="#">Menu    </a></li>
+            <li><a href="#">Advertise   </a></li>
+            <li><a href="#">Store     </a></li>
+            <li><a href="#">Terms    </a></li>
+            <li><a href="#">Privacy Policy </a></li>
+            <li><a href="#">Sponsoring</a></li>
+        </ul>
+    </div>
+</div>
+
+
+@*<a href="#" class="topopup">Click Here Trigger</a>*@
+<div id="toPopup" style="left: 4% !important; margin: auto !important; width: 90%; top: 10%; background: #000 !important; border: none; opacity: 0.9">
+    <div class="close"></div>
+    <samp class="out_close">
+        <p>Close to go back to previous screen</p>
+    </samp>
+
+    <span class="ecs_tooltip"></span></span>
+        
+		<div id="popup_content">
+            <div class="matrix_xadn1">
+
+                <div class="matrix_per_za">
+                    <h2>Preview </h2>
+                    <p>When a user clicks the zoom on icon of an ad type, the preview will show the location of where the ad will be placed on the site. See next slides</p>
+                    <div>
+                        <img src="/Images/3d-images_8_c.png" />
+                        <samp class="p_plus_click"><a href="#">
+                            <img src="/Images/plus_b.png" id="privewinprivew"></a></samp>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    <!--your content end-->
+
+</div>
+<!--toPopup end-->
+
+<div id="backgroundPopup"></div>
+
+<script>
+    $('#uplo').click(function () {
+        document.getElementById('fileup').click();
+    });
+
+    $('#titleinfo').click(function () {
+        $('#tital').hide();
+        $('#info').hide();
+        $('#titleinfo').hide();
+        $('#htm_tital').show();
+        $('#htm_info').show();
+    });
+    function F2() {
+        $('#tital').text($('#htm_tital').val());
+        $('#tital').show();
+        $('#htm_tital').hide();
+    }
+    function F3() {
+        $('#info').text($('#htm_info').val());
+        $('#info').show();
+        $('#titleinfo').show();
+        $('#htm_info').hide();
+    }
+
+    $('#fileup').fileupload({
+        dataType: 'json',
+        url: '/AphidTise/vidtodb',
+        autoUpload: true,
+        done: function (e, data) {
+            vidpath = data.result.name;
+            var video_pl = document.getElementById("vi_d");
+            video_pl.setAttribute("src", vidpath);
+            video_pl.addEventListener("load", function () {
+            }, true);
+            video_pl.play();
+
+
+        }
+
+    });
+
+    $('#edit_hlink').click(function () {
+        $('#hlink').hide();
+        $('#edit_hlink').hide();
+        $('#htm_hlink').show();
+
+    });
+    function F1() {
+        $('#hlink').text($('#htm_hlink').val());
+        var link = document.getElementById("ad_website");
+        link.href = "http://" + $('#htm_hlink').val();
+        $('#hlink').show();
+        $('#edit_hlink').show();
+        $('#htm_hlink').hide();
+    }
+
+    $(document).ready(function () {
+        vidpath = '@Model.AdVideo';
+        var video_pl = document.getElementById("vi_d");
+        video_pl.setAttribute("src", vidpath);
+        video_pl.addEventListener("load", function () {
+        }, true);
+        video_pl.play();
+        var link = document.getElementById("ad_website");
+        link.href = "http://" + '@Model.AdHyperLinkUrl';
+
+        $('#pay').click(function () {
+            document.forms["postform"].submit();
+            //$('#postform').submit();
+        });
+
+    });
+
+    $("#closeicon").show();
+    $(".close").click(function (event) {
+        event.preventDefault();
+        $("#toPopup").hide();
+        var videopr = document.getElementById("prev_vid");
+        videopr.pause();
+    });
+    $("#EnteringPrivew").click(function () {
+        $("#toPopup").show();
+    })
+    $("#privewinprivew").click(function () {
+        $("#toPopup1").show();
+    })
+</script>
+
+
+
+

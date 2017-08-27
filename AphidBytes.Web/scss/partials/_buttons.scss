@@ -1,0 +1,191 @@
+﻿@import "variables"; 
+@import "mixins"; 
+
+.btn {
+    @include border-radius(20px); 
+
+    background-color: $darkest-gray;
+	border:1px solid rgba(255, 255, 255, .3);
+	display:inline-block;
+	cursor:pointer;
+	color: white;
+	padding:6px 24px;
+	text-decoration:none;
+    box-shadow: none;
+
+    &:active { 
+        box-shadow: none;
+	    color: white;
+    }
+
+    &:hover, &:focus, &.selected { 
+	    background-color: $dark-gray;
+	    color: white;
+    }
+}
+
+.btn-plans { 
+    @include border-radius(5px); 
+
+    background-color: #fafafa;
+	border: 1px solid $dark-gray;
+    font-weight: bold; 
+    color: $black; 
+
+    &.selected, &:hover, &:focus, &.selected { 
+        background-color: #fafafa;
+        color: $dark-green; 
+    } 
+}
+
+.btn-primary { 
+    background-color: $dark-green;
+    
+    &:hover, &:focus, &.selected { 
+	    background-color: $dark-gray;
+    }
+}
+
+.btn-selects { 
+    @include border-radius(0px);
+
+    max-width: 250px; 
+    min-width: 200px;
+    display: table; 
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 20px;
+    color: $black;
+    font-weight: bold;  
+    background-color: transparent; 
+    border: none;
+    text-align: right;
+
+    img { 
+        max-height: 40px;
+        margin-left: 10px;
+    }
+ 
+    &.selected, &:hover, &:focus, &.selected { 
+        background-color: transparent; 
+        color: $dark-green; 
+    } 
+}
+
+.btn-signup { 
+    @include border-radius(30px); 
+    padding: 18px 48px;
+}
+
+.btn-radio { 
+    @include border-radius(0px); 
+    background: transparent; 
+    color: $black;
+	padding:6px 10px;
+    border: 1px solid transparent; 
+    border-bottom: 3px solid $dark-gray; 
+
+     &:hover, &:focus, &.selected { 
+	    background-color: transparent;
+        color: $blue; 
+        border-bottom: 3px solid $blue; 
+    }
+}
+
+.navbar-btn { 
+    @include border-radius(4px);
+
+    padding: 6px 12px;
+    background-color: transparent;
+    border: none;
+    
+     &:hover, &:focus, &.expanded { 
+	    background-color: transparent;
+        border: none;
+    }
+}
+
+.btn-margin-right { 
+    margin-right: 22px;
+}
+
+.navigate-left, 
+.navigate-right { 
+    img { 
+        max-height: 40px;
+    }
+}
+
+.social-group { 
+    margin-top: 40px;
+    margin-left: 15px; 
+    margin-right: 15px;
+    display: inline-block;
+
+    img { 
+        max-height: 50px;
+    }
+
+
+    .btn-social { 
+        font-size: 14px;
+        position: relative;
+        padding: 18px 12px;
+        text-align: left;   
+        background-color: transparent; 
+        border: none;
+    }
+
+
+}
+
+.btn-facebook { 
+    color: $facebook-blue;
+    &:hover, &:focus, &.selected { 
+        color: $facebook-blue;
+    }
+}
+
+.btn-googleplus { 
+    color: $googleplus-red;
+    &:hover, &:focus, &.selected { 
+        color: $googleplus-red;
+    }
+}
+
+.btn-email { 
+    color: $dark-green;
+    &:hover, &:focus, &.selected { 
+        color: $dark-green;
+    }
+}
+
+.btn-login { 
+    background: transparent;
+    border: transparent;
+    color: $black;
+    padding: 0;
+    margin: 0;
+    font-size: 1.2em;
+
+     &:active, &:hover, &:focus, &.selected { 
+	    background: transparent;
+        border: transparent;
+        color: $black;
+    }
+} 
+
+.btn-support { 
+    color: $black;
+    text-decoration: none;
+    
+    img { 
+        max-height: 64px;
+    }
+
+    &:active, &:hover, &:focus, &.selected { 
+        color: $black;
+        text-decoration: none;
+    }
+}

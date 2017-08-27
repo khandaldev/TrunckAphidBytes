@@ -1,0 +1,328 @@
+﻿@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model IEnumerable<AphidBytes.Accounts.Contracts.Model.ChannelModel>
+<header>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    
+	$("#abc").mouseover(function(){
+	$("#pop-up-over-m").css('display','block');
+		})
+		$("#abc").mouseleave(function(){
+			$("#pop-up-over-m").css('display','none');
+			});
+
+});
+</script>
+<script type="text/javascript" language="javascript">
+
+    function checklist(ctrl)
+    {
+	$("#creditt-menu li").removeClass("credit-menu-bgli");
+	$("#one").removeClass("one123");
+        var list = document.getElementById("creditt-menu").getElementsByTagName('li');
+       
+        for(i=0; i<list.length; i++)
+        {
+
+          // list[i].style.background = '#ffffff';
+		
+        }
+	
+        //ctrl.style.background = '#000';
+        $("#"+ctrl).addClass("credit-menu-bgli");
+    }
+
+
+</script>
+   </header>       
+  <div class="aphidtise_wrap">
+
+<div class="logid">
+
+<div class="logid_out">
+<ul>
+<li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+  <li><a href="~/Accounts/Logout">Logout</a></li>
+</ul>
+
+<div class="profilebg">
+<div class="migprofile">   <img src="@Url.Action("Overview", "Byter")" height="100px" /></div>
+<div class="info-logo"> <img src="/images/acinfo_logo.png"> </div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="header_aphidtise">
+<div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a> </div>
+</div>
+<div class="creditt-head-wrap">
+<div class="creditt-left-box">
+<p class="info-p">Credit Subscription</p>
+
+
+<div class="credit-head2-menu" style="margin-top:20px;">
+<p><a href="#">Sort Composers</a></p>
+<p><a href="#" style="color:#e46c0a;">A to Z</a></p>
+</div>
+
+<div class="credit-head2-menu">
+<p><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+<p><a href="#" style="color:#e46c0a;">Z to A</a></p>
+</div>
+</div>
+<div class="creditt-right-box">
+<div class="creditt-i-icon"><a href="#"><img src="/images/symbol-i.png"></a></div>
+<img src="/images/credits-bg.png">
+<p>@ViewBag.Count Credits</p>
+</div>
+
+<div class="credit-search-m1">
+<div class="credit-search-m2">
+<div class="credit-search-m3">
+<input name="" type="text">
+</div>
+<a href="#"><img src="/images/credits-bgsearch.png"></a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="headertab_aphidtise" style="margin-top:-60px;">
+<div class="left-info" style="margin-top:-20px;">
+
+<ul class="infolist-menu">
+<li><a href="ByterAccountInfo">Account Info</a></li><li></li>
+<li><a href="Message">Messages</a>
+                 @if(ViewBag.MegCount!=0)
+                {
+                <div class="in_c_text_2">@ViewBag.MegCount</div>
+                }
+            </li><li></li>
+<li><a href="History">History</a></li><li></li>
+<li><a href="Playlists">Playlists</a></li><li></li>
+<li><a href="ByterCreditSummary">Credit Tracker</a></li><li>
+<li><a href="CreditSubscription" style="height: 31px; line-height: 17px;padding-bottom: 7px; padding-top: 7px; width: 103px;" class="basicselects">Credit <br /> Subscriptions</a>@*<li><img src="/images/right_line.png"></li>*@
+
+</ul>
+
+<div class="info-right"></div>
+<div class="info-footer-social"></div>
+
+</div>
+
+
+
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="height:400px; margin-top:15px;">
+<div class="massage_index">
+<div style="width:100%; height:400px; margin:auto;">
+<br/>
+<!-- Table goes in the document BODY -->
+<table border="0" class="tablecredit-grid3">
+   @foreach (var item in Model)
+   {
+       <tr class="grida3">
+    <td class="gridb3">
+    <table class="tablecredit-iner" border="0">
+      <tr>
+        <td class="grid-profiletext"><p>@item.UserName </p></td>
+        <td rowspan="2" class="grid-profile"><div><img src="@item.ImagePath"  style="height: 96px;"></div></td>
+        </tr>
+      <tr>
+        <td></td>
+        </tr>
+    </table>
+    </td>
+    <td class="gridc3"><div><p><a href="/Byter/ShowChannel?UserID=@item.premiumUserId&PremiumID=@AphidSession.Current.AuthenticatedUser?.Identity?.UserId .ToString()&From=CreditPage" style="color:white;">Channel</a> </p></div></td>
+
+    <td class="gridd3"><div><a href="" class="topopup"><img src="/images/close-grid.png" id="@item.ChannelId" onclick="AddChannelId('@item.ChannelId')"></a></div></td>
+  </tr>
+       
+   }  
+  
+  @*<tr>
+    <td class="grid2nd2">
+    <table class="tablecredit-iner" border="0">
+      <tr>
+        <td class="grid-profiletext"><p>Nicki Minaj</p></td>
+        <td rowspan="2" class="grid-profile"><div><img src="/images/nickiminajprofile.png"></div></td>
+        </tr>
+      <tr>
+        <td></td>
+        </tr>
+    </table>
+    </td>
+    <td class="gridc3"><div><p>Channel</p></div></td>
+    <td class="gridd3"><div><a href="#"><img src="/images/close-grid.png"></a></div></td>
+  </tr>
+  <tr>
+    <td class="grid2nd3">
+     <table class="tablecredit-iner" border="0">
+      <tr>
+        <td class="grid-profiletext"><p>Artisan Home</p></td>
+        <td rowspan="2" class="grid-profile"><div><img src="/images/gridp-rofile.png"></div></td>
+        </tr>
+      <tr>
+        <td></td>
+        </tr>
+    </table>
+    </td>
+    <td class="gridc3"><div><p>Channel</p></div></td>
+    <td class="gridd3"><div><a href="#"><img src="/images/close-grid.png"></a></div></td>
+  </tr>
+  <tr>
+    <td class="grid2nd2">
+     <table class="tablecredit-iner" border="0">
+      <tr>
+        <td class="grid-profiletext"><p>Justin Bieber</p></td>
+        <td rowspan="2" class="grid-profile"><div><img src="/images/gridp-rofile.png"></div></td>
+        </tr>
+      <tr>
+        <td></td>
+        </tr>
+    </table>
+    </td>
+    <td class="gridc3"><div><p>Channel</p></div></td>
+    <td class="gridd3"><div><a href="#"><img src="/images/close-grid.png"></a></div></td>
+  </tr>
+  <tr>
+    <td class="grid2nd3">
+     <table class="tablecredit-iner" border="0">
+      <tr>
+        <td class="grid-profiletext"><p>Kanye West</p></td>
+        <td rowspan="2" class="grid-profile"><div><img src="/images/gridp-rofile.png"></div></td>
+        </tr>
+      <tr>
+        <td></td>
+        </tr>
+    </table>
+    </td>
+    <td class="gridc3"><div><p>Channel</p></div></td>
+    <td class="gridd3"><div><a href="#"><img src="/images/close-grid.png"></a></div></td>
+  </tr>*@
+</table>
+
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+<div class="massage-footer-m" style="padding-top: 35px;">
+<div class="massage-footer-m1"><img src="/images/light-b-m.png"></div>
+<div class="massage-footer-m2"><p>These are the pending links of Composers you are subscribed to. You can post their links to yours social networks and receive credits for doing so.</p></div> 
+</div>
+
+</div>
+
+  <div id="toPopup" style="margin-top:22%;">
+	        <div class="close"></div>
+	        <div id="popup_content"> <!--your content start-->
+	            <p>ARE YOU SURE YOU WANT TO<br/> UNSUBSCRIBE<br/>
+                FROM THIS COMPOSER?
+                    <a href="#" id="unsub">OK</a>
+                </p>
+             </div>
+	  
+                </div>
+	       
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+
+<script>
+    $(document).ready(function () {
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+</script>
+
+<script type="text/jscript">
+    function divClicked() {
+        var divHtml = [];
+
+        $("#mydiv div").each(function () {
+            divHtml.push($(this).html());
+            var editableText = $("<input type='text' />");
+            editableText.val($(this).html());
+            $(this).replaceWith(editableText);
+            editableText.blur(editableTextBlurred);
+        });
+        editableText.focus();
+        // setup the blur event for this new textarea
+
+    }
+
+    function AddChannelId(channelid)
+    {
+        $("#unsub").attr('onclick', 'UnSubChannel("' + channelid + '")');
+    }
+
+    function UnSubChannel(channelId)
+    {
+        $.post('/Byter/UnSubChannel', { ChannelID: channelId }, function (data)
+        {
+            if (data == "True") {
+                location.reload();
+            } else {
+                alert("something went wrong");
+            }
+        });
+    }
+
+    function editableTextBlurred() {
+        var html = $(this).val();
+        var viewableText = $("<div>");
+        viewableText.html(html);
+        $(this).replaceWith(viewableText);
+        // setup the click event for this new div
+        //  viewableText.click(divClicked);
+    }
+
+    $(document).ready(function () {
+        $("#buttonclick").click(divClicked);
+    });
+
+</script>
+
+
+
+

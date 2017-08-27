@@ -1,0 +1,58 @@
+$color_1: #BADA55;
+$color_2: #FFFFFF;
+
+.bg_black {
+	background: #000;
+}
+section {
+	padding: 8px 0px 40px;
+}
+.company_top_info {
+	.left_image {
+		img {
+			display: block;
+			text-align: right;
+			padding: 0px 0px 50px;
+			float: right;
+		}
+		h3 {
+			color: $color_1;
+			font-weight: bold;
+			display: block;
+			text-align: center;
+			padding: 30px;
+			font-size: 21px;
+		}
+	}
+	.right_details {
+		img {
+			display: block;
+			text-align: right;
+			padding: 50px 0px;
+			float: right;
+		}
+		p {
+			color: $color_2;
+			font-size: 16px;
+			clear: both;
+			padding: 40px;
+			text-align: center;
+		}
+	}
+}
+.listing {
+	.sub_heading {
+		text-align: center;
+		padding-bottom: 60px;
+		h4 {
+			color: $color_1;
+			font-size: 16px;
+		}
+	}
+	.companies_info {
+		text-align: center;
+	}
+	.product_info {
+		text-align: center;
+	}
+}

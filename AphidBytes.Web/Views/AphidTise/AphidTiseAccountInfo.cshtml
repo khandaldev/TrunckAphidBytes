@@ -1,0 +1,599 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.AphidTiseAccountViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<SelectListItem> listMonth = new List<SelectListItem>();
+
+    for (int i = 1; i < 13; i++)
+    {
+        if (i == 1)
+        {
+            listMonth.Add(new SelectListItem
+            {
+
+                Text = "Month",
+                Value = string.Empty
+            });
+        }
+        listMonth.Add(new SelectListItem
+        {
+
+            Text = i.ToString(),
+            Value = i.ToString()
+        });
+    }
+
+    List<SelectListItem> listYear = new List<SelectListItem>();
+
+    int currentYear = DateTime.Now.Year;
+
+    for (int i = currentYear; i < currentYear + 50; i++)
+    {
+        if (i == currentYear)
+        {
+            listYear.Add(new SelectListItem
+            {
+                Text = "Year",
+                Value = string.Empty
+            });
+        }
+        listYear.Add(new SelectListItem
+        {
+            Text = i.ToString(),
+            Value = i.ToString()
+        });
+    }
+   
+}
+@section LogOut
+{
+     <ul>
+                    <li><a href="#" style="color:#DCA806;">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                    <li><a href="~/Accounts/Logout">Logout</a></li>
+                </ul>
+
+                <div class="profilebg">
+                    <div class="migprofile">
+                       @* <img src="/images/profilebg.png">*@
+                         <img src="@Url.Action("Overview", "AphidTise")" height="100px" />
+                    </div>
+                    <div class="profiletext txt1">AphidTise Account</div>
+                    <div class="logo txtL">
+                        <img src="/images/logobg.png">
+                    </div>
+                </div>
+
+}
+
+<div id="button-bg1"  class="hidden" style="display:none">
+ 
+    <div class="errormsg">
+Invalid File</div>
+    <div id="button-c1"><img src="/img/button_bgw.png" /></div>
+
+</div>
+<div id="show_pop" style="display:none;">
+<div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+<div class="bg_yes_no">
+<div><p>Upload in Progress..</p></div>
+</div>
+</div>
+</div>
+ @*<div class="logid_out" id="LogOut">*@
+@*     </div>*@
+<div class="headertab_aphidtise">
+    <p class="toptext2nd"><span id="AccInfo"> Account Info</span></p> 
+    <div class="aphidbyteleft aphdl">    
+
+        <ul class="aphidbytelistA aphdc">
+            <li><a href="AphidtiseAccountInfo">Account Info</a></li>
+            <li>
+                <img src="/images/right_line.png">
+            </li>
+            @*<li><a href="~/AphidTise/AphidTiseGenrateAds">Genrate Ads</a></li>*@
+            <li><a href="AphidTiseGenrateAds">Genrate Ads</a></li>
+            <li>
+
+            <li><a href="AphidtiseMessage">Messages</a></li>
+            <li>
+
+            <li><a href="AphidtiseByteTracker">Byte Tracker</a></li>
+            <li>
+
+            <li><a href="AphidtiseHistory">History</a></li>
+            <li>
+            </li>
+        </ul>
+
+        @*<div class="aphidbyteleftright-info-a"></div>*@
+    </div>
+
+    <div class="aphidbytecenter content scrollWidth" id="content_1">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+     <div style="width:55%; height:30px; margin:auto; text-align:center;">
+    <div class="processingbyterleft">
+                    <p id="progresstext"></p>
+                    <p class="progressbar" role="progressbar" style="width: 0%" />
+                </div>
+    </div> 
+            @Html.ValidationSummary(true)
+            <div class="from_aphid">
+                <ul>
+                    <li>
+                        <div class="editor-label">
+                          
+
+                            @Html.LabelFor(model => model.CompanyLogo, "Company Logo:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextBoxFor(model => model.CompanyLogo, new { type = "file", accept = "image/*",form="file name" })
+                            @* <input type="file" id="CompangLogo" name="uploadFile" accept="jpg/*" data-val="true" data-val-required="File is required"/>*@
+                            @Html.ValidationMessageFor(model => model.CompanyLogo, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.UserName)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.UserName)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                   @* <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Password)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Password)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.Password, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.ConfirmPassword)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.ConfirmPassword)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "ctext" })
+                        </div>
+                    </li>*@
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Informations, "Information:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.TextAreaFor(model => model.Informations, new { @maxlength=250})<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.Informations, null, new { @class = "ctext" })
+                        </div>
+                        <samp class="bold">
+                            <p class="righttextlight_c">250 Characters Max.</p>
+                        </samp>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.FirstName)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.FirstName)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.LastName)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.LastName)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.EmailAddress)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.EmailAddress)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.EmailAddress, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.DOB)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.DOB)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.DOB, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Informations)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Informations)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.Informations, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Website)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Website)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.Website, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Phone)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Phone)
+                            @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.ProductService, "Product/Services:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.ProductService)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.ProductService, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.CardNumber, "Card Number:")
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.CardNumber)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.CardNumber, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="exp select">
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.ExpiryMonth, "exp")
+                            </div>
+                            <div class="editor-field">
+                                @Html.DropDownListFor(model => model.ExpiryMonth, listMonth)
+
+                                @Html.DropDownListFor(model => model.ExpiryYear, listYear)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                                @Html.ValidationMessageFor(model => model.ExpiryMonth, null, new { @class = "ctext" })
+                                @Html.ValidationMessageFor(model => model.ExpiryYear, null, new { @class = "ctext" })
+                            </div>
+                        </div>
+                    </li>
+                    @* <li>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExpiryYear)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExpiryYear)<label  style="width:8px;"><span style="color: red;">*</span></label>
+            @Html.ValidationMessageFor(model => model.ExpiryYear, null, new { @class = "ctext" })
+        </div>
+  </li>*@
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.CSV)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.CSV)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.CSV, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.NameOnCard)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.NameOnCard)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.NameOnCard, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.AddressLine1)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.AddressLine1)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.AddressLine1, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.AddressLine2)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.AddressLine2)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.AddressLine2, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.City)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.City)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.City, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            <a href="~/Views/Basic/">~/Views/Basic/</a>
+                            @Html.LabelFor(model => model.Region)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Region)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.Region, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.PostalCode)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.PostalCode)<label style="width: 8px;"><span style="color: red;">*</span></label>
+                            @Html.ValidationMessageFor(model => model.PostalCode, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.SecurityQuestion1)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.SecurityQuestion1)
+                            @Html.ValidationMessageFor(model => model.SecurityQuestion1, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.SecurityQuestion2)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.SecurityQuestion2)
+                            @Html.ValidationMessageFor(model => model.SecurityQuestion2, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Answer1)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Answer1)
+                            @Html.ValidationMessageFor(model => model.Answer1, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Answer2)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Answer2)
+                            @Html.ValidationMessageFor(model => model.Answer2, null, new { @class = "ctext" })
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <input type="submit" class="submitBtn" value="">
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        }
+    </div>
+
+    @*<div class="aphidbytecenter content scrollWidth" id="content_1">
+        <div class="from_aphid">
+            <ul>
+                <li>
+                    <label for="Company Logo">Company Logo :</label>
+                    <input type="file" id="fineinput" />
+
+                </li>
+                <li>
+                    <label for="Company Name">Company Name :</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="psw">Password :</label>
+                    <input type="password" name="psw" id="psw" size="30" />
+                </li>
+
+                <li>
+                    <label for="Confirm Password">Confirm Password :</label>
+                    <input type="password" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="First Name">First Name :</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="Last Name">Last Name :</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="Email Address">Email Address :</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="Date of Birth">Date of Birth:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="Phone Number">Phone Number:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <br />
+                <br />
+                <br />
+
+                <li>
+                    <label for="Card Number">Card Number:</label>
+                    <input name="email" type="text" id="email" value="****-****-****-3257" size="30" />
+                </li>
+
+                <li>
+                    <label for="exp:">exp:</samp></label>
+                    <input name="email" type="text" class="exp" id="email" style="width: 72px; background: url(/images/expbg.png) no-repeat;" value="02/2014" size="" />
+                    <label for="exp:" style="width: 52px;">&nbsp;&nbsp;&nbsp;csv:</label>
+                    <input name="email" type="text" class="csv" id="email" style="width: 72px; background: url(/images/expbg.png) no-repeat;" value="***" size="" />
+                </li>
+                <br />
+                <br />
+                <br />
+                <li>
+                    <label for="Name on Card">Name on Card:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="Billing Address">Billing Address:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                    <samp class="bold">
+                        <img src="/images/boldbg.png">
+                    </samp>
+                </li>
+
+                <li>
+                    <label for="Address Line 2">Address Line 2:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="City/Town">City/Town:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="State">State/Province/Region:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="Postal Code">Postal Code:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+                <br />
+                <br />
+                <br />
+                <p class="head1">Security Questions</p>
+
+                <li>
+                    <label for="Question 1">Question 1:</label>
+                    <input name="email" type="text" id="email" value="In what city were you born?" size="30" />
+                </li>
+
+                <li>
+                    <label for="Question 1">Question 1:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="Question 2">Question 2:</label>
+                    <input name="email" type="text" id="email" value="What is your favorite car?" size="30" />
+                </li>
+
+                <li>
+                    <label for="Answer 2">Answer 2:</label>
+                    <input type="text" name="email" id="email" size="30" />
+                </li>
+
+                <li>
+                    <label for="Recovery Email">Recovery Email: </label>
+                    <input type="text" name="email" id="email" size="30" />
+                    <samp class="bold">
+                        <img src="/images/boldbg.png">
+                    </samp>
+
+                </li>
+
+
+
+
+            </ul>
+
+
+            <ul class="update">
+                <li><a href="#">Update</a></li>
+            </ul>
+
+        </div>
+
+    </div>*@
+
+
+</div>
+<script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+<script>
+    function Hide() {
+        $("#button-bg1").attr('style', 'display:none');
+    }
+    $(document).ready(function () {
+        $("#CompanyLogo").change(function () {
+            var na = $("#CompanyLogo").val();
+            //na = na.split('.');
+            if (!na.match(/(?:gif|jpg|png|bmp)$/)) {
+                // inputted file path is not an image of one of the above types
+                $("#button-bg1").attr('style', 'display:block');
+                //alert("Use Image File Only!");
+                $("#CompanyLogo").val("");
+            }
+        });
+
+        var prog = 0;
+        $('#CompanyLogo').fileupload({
+            dataType: 'json',
+            url: '/AphidTise/logotodb',
+            autoUpload: true,
+            done: function (e, data) {
+                // alert(data);
+                $('.progressbar').css('width', 0 + '%');
+                document.getElementById('progresstext').innerHTML = '';
+                $("#show_pop").hide();
+              
+                prog = 0;
+            }
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.progressbar').css('width', progress + '%');
+            document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+            $("#show_pop").attr('style', 'display:block');
+            prog = 1;
+            //$("#Audio").attr('disabled', 'disabled');
+        });
+
+    });
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

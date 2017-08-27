@@ -1,0 +1,97 @@
+﻿.g_wrap_main{ width:50%; margin:auto; height:200px;}
+.g_title{
+	font-size: 36px;
+    font-weight: 100;
+    line-height: 40px;
+    margin: 30px 40px;
+	color: #444444;
+    font-family: Sofia Pro,sans-serif;
+	}
+.g_content{
+	border-top: 1px solid #DDDDDD;
+    padding-bottom: 20px;
+    padding-top: 20px;
+	
+	}
+	
+.g_content_2{
+	margin: auto;
+    width: 90%;
+	}
+	
+.scribd_fb_button{
+background-color: #3B5998;
+    border-radius: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    width: 230px;	
+    line-height: 45px !important;
+    font-family: Sofia Pro,sans-serif;
+	
+	
+}
+
+.ic_img{margin: -5px 0;
+    padding-top: 1px;}
+	
+	
+	
+.login_form {
+    display: block;
+}
+
+.g_log_f{  width:100%; height:auto;}.g_log_f div{  width:50%;  float:left;}
+
+.samp_text {
+    color: #666666;
+	 font-family: Sofia Pro,sans-serif;
+	 line-height:23px;
+}
+
+.g_log_f input{
+	    border: 1px solid #E1E1E1;
+    box-sizing: border-box;
+    color: #444444;
+    font-family: Sofia Pro,sans-serif;
+    font-size: 16px;
+    height: 45px;
+    line-height: 1.5;
+    outline: 0 none;
+    padding: 10px;
+}
+
+.button_container{margin-top: 30px;}
+
+.flat_btn {
+    background: none repeat scroll 0 0 #1A7BBA;
+    border: 0 none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Sofia Pro,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    height: 45px;
+    letter-spacing: 0.025em;
+    line-height: 45px;
+    min-width: 90px;
+    outline: medium none;
+    padding: 0 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background 0.1s ease-in-out 0s;
+	color:#fff;
+}
+
+
+.pseudoLink {
+    color: #1A7BBA;
+    cursor: pointer;
+    outline: medium none;
+    text-decoration: none;
+}

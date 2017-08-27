@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/support")
+}
+
+@section scripts {
+    @Scripts.Render("~/js/home/support.js")
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 txt-center header-img">
+            <img src="~/img/support/data-plan.png" alt="data plan" class="table-center"/>
+            Data Plan 
+        </div> 
+    </div>
+
+    <div class="row row-offset-small">
+         <div class="col-md-11 col-md-offset-1">
+             <ul class="list-margin-med">
+                 <li>2 GB free storage with an account</li>
+                 <li>Upgrade up to 500GB or more upon request</li>
+                 <li>The more you upload the more space is taken up</li>
+                 <li>You can delete existing files to get more storage back or upgrade for more storage</li>
+             </ul> 
+         </div>
+    </div>
+</div>

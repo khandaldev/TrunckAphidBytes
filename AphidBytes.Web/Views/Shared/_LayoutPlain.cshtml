@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+    <title>@(string.IsNullOrWhiteSpace(ViewBag.PageTitle) ? "AphidByte" : ViewBag.PageTitle)</title>
+    
+    @Styles.Render("~/bundles/css/layout-plain") 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery-migrate-1.4.1.min.js")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+
+    @RenderSection("HeadScripts", required: false)
+</head>
+<body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/core")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/script.js"></script>
+    <script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+    <title>@(string.IsNullOrWhiteSpace(ViewBag.PageTitle) ? "AphidByte" : ViewBag.PageTitle)</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/bundles/ImagePopUp")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/ImagePopUpScript")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryFileUpload")
+    @Styles.Render("~/bundles/3DPopUp")
+    @Scripts.Render("~/js/3dJS")
+
+    @RenderSection("HeadScripts", required: false)
+
+
+ @*   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>*@
+  
+</head>
+<body>
+    <div class="aphidtise_wrap">
+
+        <div class="header_aphidtise">
+            <div class="menunav">
+                <ul>
+                    <li><a href="/Accounts/Services">Services</a></></li>
+                    <li><a href="/Accounts/LoginUser" class="">Login</a></></li>
+                    <li><a href="#">The Gall</a></li>
+                    <li><a href="#">Store</a></li>
+                    <li><a href="/Accounts/AboutUsPage">About Us</a></></li>
+                    <li><a href="/Accounts/Support">Support</a></li>
+                </ul>
+            </div>
+            <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a> </div>
+        </div>
+    </div>
+
+
+
+            <div class="logid_out" id="LogOut">
+                @if( IsSectionDefined("LogOut")){
+                    @RenderSection("LogOut")
+                }
+                else{
+                <p>Default LogOut</p>
+                } 
+              @*  <ul>
+                    <li><a href="#">AdamLevl</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+
+                <div class="profilebg">
+                    <div class="migprofile">
+                        <img src="/images/profilebg.png">
+                    </div>
+                    <div class="profiletext">AphidTise Account</div>
+                    <div class="logo">
+                        <img src="/images/logobg.png">
+                    </div>
+                </div>*@
+
+            </div>
+   
+
+    @*<div class="header_aphidtise">
+        <div id="logo">
+            <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+            
+        </div>
+    </div>*@
+    <div> </div>
+        @RenderBody()
+        @*  @Scripts.Render("~/bundles/jquery")*@
+        @RenderSection("scripts", required: false)
+   
+</body>
+</html>
+

@@ -1,0 +1,192 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.PostingDataModel
+
+
+<div id="button-bg3"  class="hidden" style="display:none">
+ 
+    <div class="errormsg" >Already Send!!!!
+</div>
+    <div id="button-c2"><img src="/img/button_bgw.png" onclick="Remove();" /></div>
+
+</div>
+
+<div id="button-bg4"  class="hidden" style="display:none">
+ 
+    <div class="errormsg" >Maximum Zoom
+</div>
+    <div id="button-c2"><img src="/img/button_bgw.png" /></div>
+
+</div>
+<div id="button-bg5"  class="hidden" style="display:none">
+ 
+    <div class="errormsg" >Minimum Zoom
+</div>
+    <div id="button-c2"><img src="/img/button_bgw.png" /></div>
+
+</div>
+
+<div class="popbyter-mianz">
+<div class="popbyter-miansub">
+<div class="popbyter-subleft" style="width:60%;">
+ <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img id="Navigate" src="/Images/bphidbyte_sicon.png" style="width:20%;"></a><br/>
+<p style="width:100%; cursor:pointer;" id="genclone"><a>RETURN TO GENERATE CLONES</a></p>
+
+</div>
+<div class="popbyter-sub1">
+
+</div>
+
+<div class="popbyter-footer1">  
+<div class="return-popupc">
+<p>@Model.Title</p>
+<p><img src="/Images/return-line-bg.png"></p>
+
+</div>
+<div class="flash_lightc" style="margin-bottom:97px;">
+<div class="flash_lightcinner">
+@if(Model.Title!=null)
+{
+<p>Are you sure you want to send the link “@Model.Title” to your Marketing Team?</p>
+}
+<div class="flash_lightcinnera1">
+<br/>
+<p><a href="#" style="color:#00b050;" onclick="LinkSend('@Model.Original','@Model.Title','@Model.TrackingNumber','@Model.Category','@Model.ComposerName','@Model.Credits')">Yes</a></p>
+<p><a href="#" style="color:#d10804;" onclick="SendData()">No</a></p>
+<br/><br/><br/><br/><br/>
+<img src="/img/ebook-icone.png" style="float:left; margin-top:-45px;">
+    @if (Model.Path != null && Model.Title != null && Model.TrackingNumber != null)
+    {
+<p style="width:100%; height:50px;">@Model.ComposerName New Music “@Model.Title” Listen here<samp><a href="#" style="color:#0364a2; width:100%;">@Model.Path/@Model.Title</a></samp></p>
+    }
+</div>
+
+
+
+</div>
+</div>
+<div class="flash_lightc">
+<div class="flash_lightcinner">
+    @if(Model.MatrixImagePath!=null)
+    {
+<div class="flashwave" style="width:65%;"><img id="IMAGE" src="@Model.MatrixImagePath"></div>
+    }
+    else
+    {
+   <div class="flashwave" style="width:65%;"><img src="/Images/byteraudiopbg8.png"></div>
+        
+    }
+<div class="flash_wave">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</div>
+<div class="flash_searchs1">
+<p><a href="#"><img src="/Images/flashing_seracha1.png" onclick="zoomin();"></a></p>
+<p><a href="#"><img src="/Images/flashing_seracha2.png" onclick="zoomout();"></a></p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="b-preimum_2" style="margin-top:20px;"></div>
+<div class="flash_team">
+<p>“@Model.Title” has just been sent to your Marketing Team!</p>
+<p><img src="/img/flashing_flay.png"></p>
+</div>
+</div>
+<script type="text/javascript">
+    function Remove()
+    {
+        $("#button-bg3").hide();
+    }
+    $(document).ready(function () {
+        $("#genclone").click(function () {
+            window.location.href="/Premium/GenerateClones"
+        });
+        $('.flash_team').hide();
+        
+    });
+    function LinkSend(path, title, track, cat, composer,credit) {
+        //alert("dasd");
+        $.post('/Premium/SendtoSubscriber', { Path: path, Title: title, TrackingNo: track, CAT: cat, ComposerName: composer,Credits:credit }, function (data) {
+            //alert(data);
+            if (data == "Send Successful") {
+              
+                $('.flash_team').show();
+            }
+            else
+            {
+                $("#button-bg3").dialog("open");
+            }
+
+        });
+
+    }
+    function SendData() {
+        window.location.href = '/Premium/Premiumbytetracker';
+    }
+    var width = 450;
+    var height = 300;
+    function zoomin()
+    {
+        var new_width = width + 30 + "px";
+        var new_height = height + 30 + "px";
+        if (new_width <= "570px") {
+            //alert(new_width);
+            $("#IMAGE").css('width', new_width);
+            $("#IMAGE").css('height', new_height);
+            width = width + 30;
+            height = height + 30;
+        } else {
+            $("#button-bg4").dialog("open");
+            //alert("Maximun Zoom");
+        }
+
+    }
+    function zoomout()
+    {
+
+        if (width > 450) {
+            new_width = width;
+            new_height = height;
+            var less_width = new_width - 30 + "px";
+            var less_height = new_height - 30 + "px";
+            if (less_width >= "330px") {
+
+                $("#IMAGE").css('width', less_width);
+                $("#IMAGE").css('height', less_height);
+                width = width - 30;
+                height = height - 30;
+            }
+            else {
+                $("#button-bg5").dialog("open");
+               // alert("Minimum Zoom");
+            }
+        }
+
+        else {
+            width = 450;
+            height = 300;
+            var less_width = width - 30 + "px";
+            var less_height = height - 30 + "px";
+            if (less_width >= "330px") {
+
+                $("#imgpre").css('width', less_width);
+                $("#imgpre").css('height', less_height);
+                width = width - 30;
+                height = height - 30;
+            } else {
+                alert("Minium Width");
+            }
+        }
+
+    }
+
+
+
+</script>
+
+
+

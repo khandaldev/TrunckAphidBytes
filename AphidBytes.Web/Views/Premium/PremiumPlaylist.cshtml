@@ -1,0 +1,437 @@
+﻿@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+    ViewBag.SelectedPage = "playlist";
+}
+<div class="header_aphidtise">
+    <div class="menunav">
+        <ul>
+            <li><a href="Srevices" class="sect_l">Services</a></li>
+            <li><a href="LoginUser">Login</a></li>
+            <li><a href="#">The Gall</a></li>
+            <li><a href="#">Store</a></li>
+            <li><a href="AboutUsPage">About Us</a></li>
+            <li><a href="Support">Support</a></li>
+        </ul>
+    </div>
+    <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"> </a> </div>
+</div>
+
+@model AphidBytes.Accounts.Contracts.Model.MessageModel
+<script src="~/js/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out"style="margin-top: 80px;">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                   <img src="@Url.Action("Overview", "Premium")" height="100px" />
+                </div>
+                <div class="premi-info-box">
+                    <img src="/images/premiumaccount_star_bg.png" style="width: 100%;"><p class="preum-p-text">Premium Account</p>
+                </div>
+                <div class="premi-info-box">
+                 <a href="@Url.Action("EditChannelPage","Premium")">   <img src="/images/grid14bg.png" style="margin: 10px 0 0 10px;"></a></div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="header_aphidtise">
+    <div id="logo">
+      <a href="@Url.Action("Index","Home")" style="cursor:pointer;"></a>
+    </div>
+
+    <div class="zplay-list1">
+        <div class="zplay-main1">
+            <div class="zplay_grid1">
+                <p class="info-p">Playlists </p>
+                <p class="info-p" id="HomePlaylist" style="cursor:pointer" onclick="BackToMainPlaylist()"> > My Playlists</p>
+                <div class="info-p" id="newPlayListName"></div>
+            </div>
+            <div class="zplay_grid1">
+                <div class="zplay_grid01">
+                    <img src="/images/playlist-bgz01.png">
+                </div>
+                <div class="zplay_grid02">
+                    <img src="/images/playlist-bgz02.png"><div style="margin: -53px 0 0 38px; width: 100%; text-align: center;" class="zplay_gridp" id="zplay_gridpid">MY Playlists</div>
+                </div>
+
+            </div>
+            <div class="zplay_grid-1">
+                <p>
+                    <a href="#">
+                        <img id="redirectToFav" src="/images/favorites_ms.png"></a>
+                </p>
+                <p>Favorites</p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="headertab_aphidtise">
+    <div class="aphidbyteleft" style="margin-left: 20px; margin-top: 6px;">
+
+        <ul class="aphidbytelist-preum">
+            <li><a href="PremiumAccountInfo">Account Info</a></li>
+            <li></li>
+            <li><a href="UploadMediaPremium">Upload</a></li>
+            <li></li>
+            <li><a href="PremiumMessage">Messages</a></li>
+           
+            @if (Model.NewCount != 0)
+            {
+               <p class="in_c_text_3">@Model.NewCount</p> 
+            }
+            <li></li>
+            <li><a href="Premiumbytetracker">Byte Tracker</a></li>
+            <li></li>
+            <li><a href="PremiumHistory">History</a></li>
+            <li></li>
+            <li><a href="PremiumDataplan">Data Plan</a></li>
+            <li></li>
+            <li><a href="PremiumPlaylist" class="basicselects">Playlists</a></li>
+            <li>
+                <img src="/images/right_line.png" height="2" width="103"></li>
+
+        </ul>
+
+
+          <div class="prebox">
+          <a href="Dashboard">Dashboard<img src="~/images/premium_account_bg.png" class="pre-boxp" style="margin: -26px 19px auto;"></a>
+        </div>
+        <div class="mremium-tools"><a href="PremiumTools">
+            <img src="~/images/premium-tools.png"></a></div>
+
+        <div class="info-footer-social"></div>
+    </div>
+
+
+
+    <div class="aphidbytecenter content scrollWidth" id="content_1" style="height: 600px; margin-top: 100px;">
+        <div class="massage_index">
+
+            <div class="play-wrap-main" id="mydiv">
+                <a id="buttonclick">EDIT</a>
+                <div style="margin-left: 0%; margin-top: 0%;" class="play-wrap-main" id="playlistdiv">
+
+                    @if (ViewBag.PostdataPlaylist != null)
+                    {
+                        foreach (var item in ViewBag.PostdataPlaylist)
+                        {
+                        <div id="@item.ToString()" class="fetchallsongs" style="cursor:pointer;">@item.ToString()</div> 
+                        }
+                    }
+                    else
+                    {
+                        <div>Playlist List Currently Empty..</div> 
+                    }
+                </div>
+                <div id="editable_playlist" style="display:none;"></div>
+                <div id="songlistdiv" class="add-playlist-da">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div id="button-bg1" class="hidden popupyesorno" style="display: none">
+
+    <div class="errormsg">
+        Are you sure you want to delete Playlist?
+    </div>
+
+    <div style="text-align:right; width:100%;" class="yesornobutton">
+        <button>Yes</button>
+        <button>No</button>
+    </div>
+
+</div>
+<div id="yesnodel" style="display: none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div>
+                <p>Are you sure want to delete?</p>
+            </div>
+            <div>
+                <p id="yesdel"><a>Yes</a></p>
+                <p id="nodel"><a>No</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="massage-footer-m">
+    <div class="limitplaylist">Limit is 10 playlists. 20 files per playlist.</div>
+
+</div>
+
+<div class="black_screen" style="display: none;"></div>
+<div id="closeboxa" style="display: none;">
+    <img class="cl_h11_img" src="/img/overboxbg.png">
+    <div class="closetext">
+        <a href="#" id="closebta">
+            <img src="/img/close.png" onclick="DialogCloseFunction()"></a>
+        <div class="texmpi-c">
+            <img src="/img/mixbotton.png">
+        </div>
+        <ul id="addpl" class="texmpi-ct">
+        </ul>
+        <div class="effectpic">
+            <img src="/img/effectsbg.png">
+        </div>
+
+    </div>
+</div>
+
+
+<script src="jquery.mCustomScrollbar.js"></script>
+<script>
+
+    function hidediv() {
+        $("#yesnodel").attr('style', 'display:block');
+        //  $("#yesnodel").hide();
+        $('#nodel').click(function () {
+            $("#yesnodel").hide();
+        });
+
+    }
+    $('#redirectToFav').click(function () {
+        location.href = "/Premium/PremiumFavoritesList";
+    });
+    function BackToMainPlaylist() {
+        location.href = "/Premium/PremiumPlaylist";
+    }
+    $('#playlistdiv').on('click', '.fetchallsongs', function () {
+        var playName = ($(this).attr('id')).toString();
+        $("#zplay_gridpid").text(playName);
+        $("#newPlayListName").text(' > ' + playName);
+        $("#playlistdiv").hide();
+        $.post('/Premium/GetSongList', { PlaylistName: playName }, function (data) {
+            var i = 0;
+            while (data[i].TrackingID != null) {
+                var htmlcontent = '';
+                htmlcontent += '<div class="tab2-boxtext-2z"><ul><li id="' + data[i].TrackingID + '" class="A_Song" style="cursor:pointer;"><p>' + data[i].FileName + '</p></li>';
+                htmlcontent += '<li><a href="#" style="margin-left: 200px;"><img src="/images/plus-m-i.png" class="plusimageadd" id="' + data[i].TrackingID + '"></a></li>';
+                htmlcontent += '<li><a href="#" style="margin-left: 240px;"><img class="DelFromPlay" id="' + data[i].TrackingID + '" src="/images/close-m-i.png" onclick="hidediv();"></a></li></ul></div>';
+                $("#songlistdiv").append(htmlcontent);
+                i++;
+            }
+
+        });
+        //for add_to_play
+        $('#songlistdiv').on('click', '.plusimageadd', function () {
+            var playName_a = $('#zplay_gridpid').text();
+            var songtrackid = $(this).attr('id');
+            //alert(songtrackid);
+            $.post('/Premium/GetPlayList', { TrackingID: songtrackid }, function (dataa) {
+                var htmldialogcontent = '';
+                var i = 0;
+                while (i < dataa.length) {
+                    if (dataa[i] != playName_a) {
+                        htmldialogcontent += '<li class="playname_dialogbox" id="' + dataa[i].toString() + '">' + dataa[i].toString() + '</li>';
+                    }
+                    i++;
+                }
+                $("#addpl").empty();
+                $("#addpl").append(htmldialogcontent);
+            });
+
+            $(".black_screen").show();
+            $("#closeboxa").show();
+            $("#addpl").on('click', '.playname_dialogbox', function () {
+                var NewPlayName = $(this).attr('id');
+                $.post('/Premium/AddSongToPlaylist', { PlaylistName: NewPlayName, TrackingID: songtrackid }, function (result_fetched) {
+                    if (result_fetched == true) {
+                        alert("Song Added..");
+                        $("#closeboxa").hide();
+                        $(".black_screen").hide();
+                    }
+                    else {
+                        alert("Error Adding Song to Playlist..");
+                        $("#closeboxa").hide();
+                        $(".black_screen").hide();
+                    }
+
+                });
+            });
+
+        });
+
+        //for delete
+        $('#songlistdiv').on('click', '.DelFromPlay', function () {
+            var id = $(this).attr('id');
+            var playname = $('#zplay_gridpid').text();
+            $("#yesdel").click(function () {
+                $.post('/Premium/DelSongFromPlay', { PlaylistName: playname, TrackingID: id }, function (data) {
+                    if (data == true) {
+                        location.reload();
+                    }
+                });
+           
+            });
+            $("#songlistdiv").empty();
+            $.post('/Premium/GetSongList', { PlaylistName: playName }, function (data) {
+                var i = 0;
+                if (data[i].TrackingID != null) {
+                    while (data[i].TrackingID != null) {
+                        var htmlcontent = '';
+                        htmlcontent += '<div class="tab2-boxtext-2z"><ul><li><p>' + data[i].FileName + '</p></li>';
+                        htmlcontent += '<li><a href="#" style="margin-left: 200px;"><img src="/images/plus-m-i.png" class="plusimageadd" id="' + data[i].TrackingID + '"></a></li>';
+                        htmlcontent += '<li><a href="#" style="margin-left: 240px;"><img class="DelFromPlay" id="' + data[i].TrackingID + '" src="/images/close-m-i.png" onclick="hidediv();"></a></li></ul></div>';
+                        $("#songlistdiv").append(htmlcontent);
+                        i++;
+                    }
+                }
+                else
+                {
+                    var htmlcontent = '';
+                    htmlcontent += '<div class="tab2-boxtext-2z"><ul><li><p> Currently No Songs </p></li>';
+                    $("#songlistdiv").append(htmlcontent);
+                    
+                }
+            });
+        });
+
+
+    });
+
+
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+
+    $('#songlistdiv').on('click', '.A_Song', function () {
+        //var playlist_name = $('#zplay_gridpid').text();
+        //var id = $(this).attr('id');
+        //$.post('/Premium/Before_PlaylistPrivew', { Trackingnumber: id, Playlist_Name: playlist_name }, function (data) {
+        //    window.location = data;
+        //});
+        var aaa = $(this).attr('id');
+        $.post('/Premium/fetchcat', { trackno: aaa }, function (data) {
+            window.location = data;
+        });
+
+    });
+    function DialogCloseFunction() {
+        $("#closeboxa").hide();
+        $(".black_screen").hide();
+    }
+</script>
+
+<script type="text/jscript">
+    function divClicked() {
+        var divHtml = [];
+
+        $("#mydiv div").each(function () {
+            divHtml.push($(this).html());
+            
+            //editableText.val($(this).html());
+            //$(this).replaceWith(editableText);
+            //editableText.blur(editableTextBlurred);
+        });
+        //editableText.focus();
+        // setup the blur event for this new textarea
+
+    }
+    
+
+   
+
+
+    $("body").on('click', '#buttonclick', function () {
+        
+
+        if ($("#newPlayListName").text() != '') {
+        var editableText = $("#editable_playlist").html("<input type='text'  id='editplay' />").show();
+        $("#editplay").val($("#newPlayListName").text());
+
+            
+        $("#editplay").change(function () {
+                
+                var editableText = $("#editplay").val();
+                var id = $(".A_Song").attr('id');
+                $.ajax({
+                    url: 'EditPlaylist',
+                    method: 'post',
+                    data: {
+                        PlaylistName: editableText,
+                        TrackingID: id
+                    },
+                 
+                    success: function (result) {
+                        $("#editplay").html(result);
+                        $("#newPlayListName").html(editableText);
+                        $("#zplay_gridpid").html(editableText);
+                        $("#editplay").hide();
+                        alert("Your playlist name has been changed");
+
+                    },
+                    error: function (a,b,c) {
+                        alert(a);
+                    }
+                });
+            });
+
+        }
+    });
+
+    function editableTextBlurred() {
+        var html = $(this).val();
+        var viewableText = $("<div>");
+        viewableText.html(html);
+        $(this).replaceWith(viewableText);
+        // setup the click event for this new div
+        //  viewableText.click(divClicked);
+    }
+
+    $(document).ready(function () {
+        $("#buttonclick").click(divClicked);
+    });
+
+</script>
+

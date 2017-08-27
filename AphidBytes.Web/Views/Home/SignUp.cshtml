@@ -1,0 +1,185 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+
+<div class="black_screen" style="display:none;"></div>
+
+<div id="popdiv">
+<div > <img src="/images/closebotton.png" class="close_b"> </div>
+
+<div class="box_1">
+      
+     
+      <samp> <img src="/images/byterb.png" class="box_img"> </samp>
+
+      
+   <ul>
+      <li>Receive free news and updates on movies, music, ebooks, etc.</li>
+      <li>Create playlists from files within the Matrix</li>
+      <li>Registering enters you into our membership participation program to receive rewards</li>
+   </ul>
+      
+
+      <p class="basic_free">FREE</p>
+
+</div>
+
+<div class="box_1">
+
+      
+     
+      <samp> <img src="/images/basicaccountbg.png" class="box_img"> </samp>
+
+      
+   <ul>
+      <li>Receive free news and updates on movies, music, ebooks, etc.</li>
+      <li>Create playlists from files within the Matrix</li>
+      <li>Purchase and track your clones in the matrix and internet sites</li>
+      <li>Encrypt clones with piracy protection</li>
+      <li> View web analytics on your clones , and use tools to increase your marketing</li>
+   </ul>
+      
+
+      <p class="basic_free">$299.99</p>
+
+</div>
+
+<div class="box_1">
+
+      
+     
+      <samp> <img src="/images/premiumaccountbx_bg.png" class="box_img"> </samp>
+
+      
+   <ul>
+      <li>Receive free news and updates on movies, music, ebooks, etc.</li>
+      <li>Create playlists from files within the Matrix</li>
+      <li>Purchase and track your clones in the matrix and internet sites</li>
+      <li>Encrypt clones with piracy protection</li>
+      <li> View advanced data web analytics on your clones , and use tools to increase your marketing</li>
+      <li> Public User Channel</li>
+      <li> Marketing Teams</li>
+      <li>Use Premium Account “Tools” to increase marketing and select widgets of choice to maximize clientele experience</li>
+   </ul>
+      
+
+      <p class="basic_free">Consult</p>
+
+</div>
+
+<div class="box_1">
+
+      
+     
+      <samp> <img src="/images/aphidtiseaccountbg.png" class="box_img"> </samp>
+
+      
+   <ul>
+      <li>Receive free news and updates on movies, music, ebooks, etc.</li>
+      <li>Pay for your Ads and track your data analytics in the matrix and internet sites</li>
+      <li>Create teasers, trailers, and shorts</li>
+      <li>Allow your customers to receive credits and rewards for watching your Ads and taking your surveys.</li>
+     
+   </ul>
+      
+
+      <p class="basic_free">Consult</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="headertab_aphidtise">
+
+<p class="logtext">I have an account</p>
+
+    <p class="logtext" style="font-weight: bold;">Which type of account do you have?</p>
+
+</div>
+
+<div class="warp_mainbox">
+
+      <div class="box">
+<div class="box_bg"><samp class="box_tex">Byter Account</samp></div>
+      <samp><a href="~/Home/Register#byter"><img src="/images/byter_imgbg.png"></a></samp>
+      <p>Consumer</p>
+      
+     
+      
+      </div>
+     
+     
+      @*<div class="box">
+      <div class="box_bg">
+      <samp class="box_tex"> Merchant Account</samp>
+      </div>
+      
+      <samp><img src="images/merchant_account_bg.png"> </samp>
+      <p>E-Commerce</p>
+      <p>Sell your merchandise. Fashion, electronics, software, etc. Also create “Tools” widgets as a developer</p>
+      
+      
+      </div>*@
+      <div class="box">
+<div class="box_bg2"><samp class="box_tex">Basic Account</samp></div>
+      <samp><a href="~/Home/Register#aphidtise"><img src="/images/basic_account_bg.png"></a></samp>
+      <p>Composer</p>
+
+      </div>
+
+      <div class="box">
+<div class="box_bg3"><samp class="box_tex">Premium Account</samp></div>
+      <samp><a href="~/Home/Register#basic"><img src="/images/premium_ccountcompo.png"></a> </samp>
+      <p>Composer</p>
+      </div>
+
+      <div class="box">
+<div class="box_bg4"><samp class="box_tex">AphidLabs</samp></div>
+      <samp><a href="~/Home/Register#premium"><img src="/images/aphid_labsicon.png"></a> </samp>
+      <p>Technology Developer</p>
+      </div>
+
+    </div>
+
+
+
+
+
+
+<div class="menunav_footer2">
+<ul>
+<li><a href="#">Navigation  </a></li>
+<li><a href="#">Menu    </a></li>
+<li><a href="#">Advertise   </a></li>
+<li><a href="#">Store     </a></li>
+<li><a href="#">Terms    </a></li>
+<li><a href="#">Privacy Policy </a></li>
+<li><a href="#">Upload</a></li>
+</ul>
+</div>
+<script>
+    $.noConflict();
+    $(".footerp").click(function () {
+        $(".black_screen").css("display", "block");
+        $("#popdiv").css("display", "block");
+    });
+
+    $(".black_screen").click(function () {
+        $("#popdiv").css("display", "none");
+        $(".black_screen").css("display", "none");
+
+    });
+
+    $(".close_b").click(function () {
+        $("#popdiv").css("display", "none");
+        $(".black_screen").css("display", "none");
+
+    });
+</script>

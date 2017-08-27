@@ -1,0 +1,41 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.LoginUser
+@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderFooter = true;
+    ViewBag.RenderHeader = true;
+}
+
+ <div class="container-fluid">
+     <div class="row row-offset-lrg">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="social-group">
+                <img src="../img/fb-sq.png" alt="facebook" />
+                <a href="@Url.Action("LoginFacebook", "SocialNetworks", new { id = 1 })" class="btn btn-social btn-facebook">
+                    Log In with Facebook
+                </a>
+            </div>
+        </div>
+     </div>
+
+     <div class="row">
+         <div class="col-md-4 col-md-offset-4">
+             <div class="social-group">
+                 <img src="../img/gp-sq.png" alt="google plus" />
+                 <a href="@Url.Action("LoginGooglePlus", "SocialNetworks", new { id = 1 })" class="btn btn-social btn-googleplus">
+                     Log In with Google Plus
+                 </a>
+             </div>
+         </div>
+     </div>
+
+     <div class="row">
+         <div class="col-md-4 col-md-offset-4">
+             <div class="social-group">
+                 <img src="../img/email.png" class="email" alt="username or email">
+                 <a href="@Url.Action("LoginUser", "Accounts")" class="btn btn-social btn-email">
+                     Log in with Username or Email Address
+                 </a>
+             </div>
+         </div>
+     </div>
+</div>

@@ -1,0 +1,796 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.PremiumAccountViewModel
+@*@model AphidBytes.Accounts.Contracts.Model.BasicAccountViewModel*@
+<style>
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 999; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    }
+
+
+    .modal-content {
+        position: relative;
+        /*background-color: #fefefe;*/
+        margin: auto;
+        padding: 0;
+        /*border: 1px solid #888;*/
+        width: 80%;
+        /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+           -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s;*/
+        max-width: 470px;
+        width: 100%;
+        background: rgb(213,234,249);
+    }
+
+
+
+
+
+
+    .close {
+        background: rgb(229, 0, 0) none repeat scroll 0 0;
+        border: 1px solid #fff;
+        border-radius: 25px;
+        color: white;
+        float: right;
+        font-family: arial;
+        font-size: 21px;
+        font-weight: normal;
+        height: 30px;
+        margin: -18px;
+        position: relative;
+        text-align: center;
+        width: 30px;
+        z-index: 32;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            background: #333;
+        }
+
+    .modal-header {
+        padding: 0px 0px;
+        width: 100%;
+        color: red;
+    }
+
+    .modal-body {
+        padding: 2px 16px;
+    }
+
+    .modal-footer {
+        padding: 0px 0px;
+        background-color: rgb(214,235,249);
+        color: white;
+        width: 100%;
+        margin: auto;
+        text-align: right;
+    }
+
+    .intro {
+        background-image: url(../img/sign.png);
+        background-repeat: no-repeat;
+    }
+
+    .tweetbutton {
+        background: red none repeat scroll 0 0;
+        border-radius: 3px;
+        line-height: 50px;
+        padding: 10px 25px;
+    }
+
+    #tweetsText {
+        border: 8px solid rgb(190, 217, 233);
+        border-radius: 5px;
+        font-size: 16px;
+        height: 80px;
+        max-width: 405px;
+        width: 100%;
+        padding: 10px;
+        sty;
+    }
+
+    .modal-header img {
+        width: 100%;
+    }
+
+    .mybtn {
+        background: rgb(215, 215, 215) none repeat scroll 0 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #333;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 15px;
+        padding: 10px 21px;
+    }
+
+    .postnumber {
+        color: rgb(154, 153, 153);
+        float: right;
+        font-family: "MyWebFont";
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 38px;
+        position: absolute;
+        width: 325px;
+    }
+
+    .twitterheder {
+        margin: auto;
+        max-width: 600px;
+        text-align: center;
+        width: 100%;
+    }
+
+        .twitterheder img {
+            width: 100px;
+            height: auto;
+        }
+    /*button #rock {
+        background: url(/img/dots-close-byter.png) no-repeat;
+    }*/
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        var moveLeft = 20;
+        var moveDown = -50;
+
+        $('a#trigger').hover(function (e) {
+            $('div#i-pop-up').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up').hide();
+        });
+
+        $('a#trigger').mousemove(function (e) {
+            $("div#i-pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+    function PostUrl() {
+
+        var path = '@Session["MusicPath"]';
+
+        if ($('input:checkbox[name=chkTwitter]').is(':checked')) {
+            tweetsText.value = path;
+            $("#myModal").show();
+
+        }
+        if ($('input:checkbox[name=chkGooglePlus]').is(':checked')) {
+            window.open('https://plus.google.com/share?url=http://aph500.trainingncr.com/', "PopupWindow", 'width=400px,height=400px,top=150,left=250');
+
+        }
+        if ($('input:checkbox[name=chkFacebook]').is(':checked')) {
+
+            tweetsText.value = path;
+            $("#facebokModal").show();
+
+
+            // window.open('/SocialNetworks/FacebookPost', "PopupWindow", 'width=400px,height=400px,top=150,left=250');
+
+
+        }
+        if ($('input:checkbox[name=chklinkedin]').is(':checked')) {
+            window.open('http://www.linkedin.com/nhome?url=http://aph500.trainingncr.com/', "PopupWindow", 'width=400px,height=400px,top=150,left=250');
+        }
+    }
+    var id;
+
+    $(document).ready(function () {
+
+
+        $("#clk2").click(function () {
+
+            $("#post").attr("href", "#");
+            $('#post').attr('checked', true);
+            $('#post').attr('checked', false);
+            id = 1;
+
+        });
+    });
+
+    $(document).ready(function () {
+
+
+        $("#clk1").click(function () {
+
+            id = "2";
+
+            $("#post").attr("href", " ");
+            $('#post').attr('checked', true);
+            $('#post').attr('checked', false);
+            $("#post").attr("href", "/SocialNetworks/Continuebtn?id=" + id);
+        });
+    });
+
+    $(document).ready(function () {
+
+
+        $("#clk4").click(function () {
+
+            id = "3";
+            $("#post").attr("href", "#");
+            $('#post').attr('checked', true);
+            $('#post').attr('checked', false);
+        });
+    });
+
+</script>
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+        var moveLeft = -60;
+        var moveDown = -80;
+
+        $('a#trigger2').hover(function (e) {
+            $('div#i-pop-up2').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up2').hide();
+        });
+
+        $('a#trigger2').mousemove(function (e) {
+            $("div#i-pop-up2").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+</script>
+<div id="confmBox" class="confirm_send_mail_div sendme_con" style="display:none;">
+
+    <div>
+
+        <h5 class="sendme_con_h5">
+            Confirmation:<img onclick="close_confmBox_popup()" class="cancel_delete-link" style="cursor: pointer; float: right; margin-top: 7px;" src="/Images/close.png">
+        </h5>
+        <p style="margin-top:8%;">
+            <strong>Are you Sure want to Upgrade ?</strong> <span id="Ncontacts">
+            </span>
+        </p>
+
+
+        <div class="btn-group sendme_con_groupbtn">
+            <button id="confrm_yes" class="btn add  sendme_con_yes" onclick="UpgradeTOPremium()">Yes</button>
+            <div class="btn cancel sendme_con_no" onclick="close_confmBox_popup()" style="cursor: pointer;">No</div>
+        </div>
+
+    </div>
+</div>
+<div id="yesno" style="display:none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div><p>Are you sure to Upgrade?</p></div>
+            <div><p id="yes"><a href="#">Yes</a></p><p id="no"><a href="#">No</a></p></div>
+        </div>
+    </div>
+</div>
+
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Error Occured Try Again
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" />
+    </div>
+
+</div>
+
+<div style="display:none;" id="upgradebox">
+    <div class="bg_othr_box">
+        <div class="bg_othr_box_1">
+            <p>Account Upgraded Successfully Completed</p>
+            <p></p>
+            <p style="margin-top: 22px; margin-left: 137px;"><img src="~/Images/right-icone.png"></p>
+
+            <p style="margin-top: 88px;"><a href="~/Accounts/Logout">OK</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a style="color: #ffc000;" href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+                @*<li><a href="#">Logout</a></li>*@
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="@Url.Action("Overview", "Basic")" height="100px" />
+
+                </div>
+                <div class="profiletext-ct-info"> <img src="/images/clone-pa.png"> Basic Account</div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="header_aphidtise">
+    <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a> </div>
+    <div class="headertab_aphidtise" style="margin-top:0px !important;">
+        <div class="aphidbyteleft" style="margin-top:135px;">
+            <ul class="aphidbytelist-basic">
+                <li><a href="BasicAccountInfo">Account Info</a></li>
+                <li></li>
+                <li><a href="GenerateClones">Upload</a></li>
+                <li><img src="/images/right_line.png" height="2"></li>
+                <li><a href="Message">Messages</a></li>
+                <li></li>
+                <li><a href="bytetracker">Byte Tracker</a></li>
+                <li></li>
+                <li><a href="History">History</a></li>
+                <li></li>
+                <li><a href="Playlist">Playlists</a></li>
+                <li></li>
+                <li><a href="Dataplan">Data Plan</a></li>
+                <li></li>
+            </ul>
+
+            @*  <div class="dsbox-basic"><p>Dashboard<img src="/images/das-left.png"></p></div>*@
+            <p class="dstext-basic">UPGRADE to <samp id="upgradePremium" style="cursor:pointer;">Premium</samp></p>
+
+            <div class="info-footer-social"></div>
+            @*<div class="aphidbyteleftright-basic"></div>*@
+        </div>
+        <p class="info-p" style="margin-bottom:25px; cursor:pointer;"><span id="genclone"> Upload</span><span id="createlnk">> Create Link Posts > Select From Byte Tracker</span><span id="selectchannel">  > Select Channel(s) to Flood to  </span></p>
+        <div style="height:600px; width:100%;">
+            <div class="byter-header-caemrapic" style="margin-bottom:0px!important;">
+                <div class="byter-caemrapicpic">
+                    <p><img src="/images/create-byterbg.png" style="width:4%;margin: -5px 3px 4px 38px;"></p>
+                    <p id="PostLink">Create Link Posts</p>
+                </div>
+                <p class="byter-iinfo"><a href="#" id="trigger"><img src="/images/boldbg.png"></a></p>
+            </div>
+
+            <div class="genra_bgt1" style="background:none!important;">
+
+
+                <p>Selected Link:</p>
+                <h5>@Session["MusicPath"]</h5>
+                @*<h5>@Session["VideoPath"]</h5>*@
+                @*<p><a href="#">@Session["LinkTitle"].ToString()</a></p>
+                    <p>@Session["LinkPath"].ToString()</p>
+                    <p></p>*@
+
+
+            </div>
+
+
+            <div id="content_1" class="aphidbytecenter content scrollWidth mCustomScrollbar _mCS_1" style="margin: 5px 0 0 95px;">
+                <div style="position:relative; height:100%; overflow:hidden; max-width:100%;" id="mCSB_1" class="mCustomScrollBox mCS-light">
+                    <div style="position:relative; top:0;" class="mCSB_container">
+                        <div class="mecscroll">
+                            <div id="slider1" style="position: relative; width: 473px; height: 600px; overflow: hidden;">
+                                <p class="info-p">Select Channel(s) to Flood to</p>
+
+                                <div style="width: 100%; height: 600px; margin: auto; overflow: hidden; position: absolute; margin-top:0px; left: 0px; display: block; z-index: 5; opacity: 1;">
+
+                                    <div class="social-nav">
+                                        <ul>
+                                            <div class="byter-right-li"><img src="/images/linedwonp.png"></div>
+                                            <li><div class="byter-sing-b"><input id="chkFacebookId" name="chkFacebook" type="checkbox" value=""></div><div id="sociallipic"> <img src="/Images/ficone.png" /> </div><a href="#">facebook</a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+                                            <div>
+                                                <li><div class="byter-sing-b"><input id="chkTwitterID" name="chkTwitter" type="checkbox" value=""></div><div id="sociallipic"> <img src="/Images/ticone.png" /> </div><a href=" #">Twitter@*<button id="twitterId" onclick="GoToTwitter()">Twitter</button>*@ </a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+
+                                                <li><div class="byter-sing-b"><input id="chklinkediniD" name="chklinkedin" type="checkbox" value=""></div><div id="sociallipic"> <img src="/Images/linkdicone.png" /> </div><a href="#">Linkdin</a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+                                                <li><div class="byter-sing-b"><input id="chkGooglePlusId" name="chkGooglePlus" type="checkbox" value=""></div><div id="sociallipic"> <img src="/Images/googleplus.jpg " /> </div><a href="#">Google+</a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+                                                @*<li><div class="byter-sing-b"><input name="" type="checkbox" value=""></div><div id="sociallipic">  </div><a href="#"></a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+
+                                                    <li><div class="byter-sing-b"><input name="" type="checkbox" value=""></div><div id="sociallipic">   </div><a href="#"> </a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+                                                    <li><div class="byter-sing-b"><input name="" type="checkbox" value=""></div><div id="sociallipic">   </div><a href="#"> </a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>*@
+                                            </div>
+
+                                            <div class="byter-postb" onclick="PostUrl()"><a href="#" style="cursor:pointer;"></a></div>
+                                            <div class="byter-postb2" onclick="PostUrl()"><p>Post</p></></div>
+                                            @*<div class="byter-postb3"></div>*@
+
+                                        </ul>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div id="mec-footer">
+    @*<div class="mec-footer-box">
+            <div class="mecbox-l"><img src="/img/icone.png"></div>
+            <div class="mecbox-r"><samp class="mectext-t">Add more sites from our database to your Channel Group</samp></div>
+            <div class="mecbox-l" style="clear:left;"><img src="/img/w-icone.png"></div>
+            <div class="mecbox-r"><samp class="mectext-t">Modify Existing Channels</samp></div>
+            <div class="mecbox-l" style="clear:left;"><img src="/img/toplogo.png" style="width:55%;"></div>
+            <div class="mecbox-rec"><samp class="mectext-t" style="margin-top:5px;">Request another site</samp></div>
+            <div class="mecbox-l" style="clear:left;"><img src="/img/csocialnetwork.png"></div>
+            <div class="mecbox-r"><samp class="mectext-t">Connect Your Social Networks</samp></div>
+        </div>*@
+    @*<div class="byter-waring"><p>Warning: File should have Interruption added prior to this flood.</p></div>*@
+
+    @*<div id="i-pop-up">
+            <p>
+                Channels change when Category is changed. For example. If “Byte Your Music” is selected, Reverbnation, Myspace, Soundclick, etc. is shown as the options to select. If Videos is selected, Youtube, Dailymotion, etc. are the options. Etc. Same for ebooks, art and photos
+
+            </p>
+        </div>*@
+
+    @*<div id="i-pop-up2">
+            <p>
+                Links to Post category does not upload a file. It can only select a pre-existing Clone of theirs, that is already in The Matrix.
+
+            </p>
+        </div>*@
+    <div id="myModal" class="modal">
+        <div class="twitterheder"><img src="../images/twitter_logo.png" /></div>
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">x</span>
+                <img src="../images/headtwitter.png" />
+            </div>
+            <div class="modal-body">
+                <textarea id="tweetsText" maxlength="140"> </textarea>
+                @*<p>Some other text...</p>*@
+            </div>
+            <div class="modal-footer">
+                <div style="width: 99%; text-align: right;">
+                    <p class="postnumber">140</p>
+                    <a id="tweetAnctor" @*href=" ~ />SocialNetworks/Continuebtn?=id&tweeterText="*@>
+                        <button id="tweetBtn" class="mybtn" onclick="tweetsBtnClick()">Tweet</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Facebbok-->
+    <div id="facebokModal" class="modal">
+        <div class="twitterheder"><img src="../images/fb_ni.png" /></div>
+
+        <!-- Modal content -->
+        <div class="modal-content" style="background: rgb(59, 90, 154) none repeat scroll 0% 0%; padding-bottom: 35px; border-radius:5px;">
+            <div class="modal-header">
+                <span class="close">x</span>
+            </div>
+            <div class="modal-body">
+                <textarea id="facebookText" style="height: 130px; width: 85%; margin: 31px 31px -2px; border: 1px solid rgb(204, 204, 204);" maxlength="140"> </textarea>
+                @*<p>Some other text...</p>*@
+            </div>
+            <div class="modal-footer" style="background: rgb(242, 242, 242) none repeat scroll 0% 0%; border-top: 0px solid rgb(204, 204, 204); height: 45px; width: 80%; margin-left: 47px;">
+                <div style="width: 99%; text-align: right;">
+                    <a id="facebookAnctor" @*href=" ~ />SocialNetworks/Continuebtn?=id&tweeterText="*@>
+                        <button id="tweetBtn" class="mybtn" style="background: rgb(94, 117, 171) none repeat scroll 0% 0%; color: rgb(255, 255, 255); font-size: 15px; border: 1px solid rgb(81, 103, 157); line-height: 10px; padding: 8px 10px; margin-top: 7px;" onclick="PostStatus()">Post</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Facebbok-->
+
+    <script>
+        $(".close").click(function () {
+            $(".modal").hide();
+        });
+
+    </script>
+
+    <script src="jquery.mCustomScrollbar.js"></script>
+    <script>
+
+
+    </script>
+    <script>
+
+        $(domcument).ready(function () {
+            $("#PostLink").val('@Session["MusicPath"]');
+
+        })
+       // alert('@Session["MusicPath"]');
+
+        (function ($) {
+
+            $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+            $(".browseInput").each(function (index) {
+                if (index > 3)
+                    $(this).remove();
+            });
+            $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+            $(window).load(function () {
+                $(".content").mCustomScrollbar();
+            });
+        })(jQuery);
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#chkTwitterID").change(function () {
+                $('#chkFacebookId').attr('checked', false); // Checks it
+                $('#chkGooglePlusId').attr('checked', false); // Unchecks it
+                $('#chklinkediniD').attr('checked', false); // Unchecks it
+            });
+
+            $("#chkFacebookId").change(function () {
+                $('#chkTwitterID').attr('checked', false); // Checks it
+                $('#chkGooglePlusId').attr('checked', false); // Unchecks it
+                $('#chklinkediniD').attr('checked', false); // Unchecks it
+            });
+
+            $("#chkGooglePlusId").change(function () {
+                $('#chkTwitterID').attr('checked', false); // Checks it
+                $('#chkFacebookId').attr('checked', false); // Unchecks it
+                $('#chklinkediniD').attr('checked', false); // Unchecks it
+            });
+
+            $("#chklinkediniD").change(function () {
+                $('#chkTwitterID').attr('checked', false); // Checks it
+                $('#chkFacebookId').attr('checked', false); // Unchecks it
+                $('#chkGooglePlusId').attr('checked', false); // Unchecks it
+            });
+
+            $('#upgradePremium').click(function () {
+                $("#yesno").attr('style', 'display:block');
+            });
+
+            $("#yes").click(function () {
+                $("#yesno").attr('style', 'display:none');
+                $.post('/Basic/UpgardeToPremium', {}, function (data) {
+                    if (data == "Success") {
+
+                        $("#upgradebox").attr('style', 'display:block');
+                    } else { $("#button-bg3").attr('style', 'display:block'); }
+
+                });
+
+            });
+            $("#no").click(function () {
+                $("#yesno").attr("style", "display:none");
+            });
+
+
+
+            $("#genclone").click(function () {
+                window.location.href = "/Basic/GenerateClones";
+            });
+            $("#createlnk").click(function () {
+                window.location.href = "/Basic/LinkPost";
+            });
+            $("#selectchannel").click(function () {
+                window.location.href = "/Basic/selectchanneltoflood";
+            });
+
+            $("#basicbyter").click(function () {
+                $("#byterclick").toggle();
+            });
+
+            $("#byterclick li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyter span").html(text);
+                $("#byterclick").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick").hide();
+            });
+
+
+            $("#basicbyterone").click(function () {
+                $("#byterclick2").toggle();
+            });
+
+            $("#byterclick2 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyterone span").html(text);
+                $("#byterclick2").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick2").hide();
+            });
+
+
+
+            $("#basicbytertwo").click(function () {
+                $("#byterclick3").toggle();
+            });
+
+            $("#byterclick3 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbytertwo span").html(text);
+                $("#byterclick3").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick3").hide();
+            });
+
+
+            $("#basicbyterfour").click(function () {
+                $("#byterclick4").toggle();
+            });
+
+            $("#byterclick4 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyterfour span").html(text);
+                $("#byterclick4").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick4").hide();
+            });
+
+
+
+            $("#basicbyter5").click(function () {
+                $("#byterclick5").toggle();
+            });
+
+            $("#byterclick5 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyter5 span").html(text);
+                $("#byterclick5").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick5").hide();
+            });
+
+
+
+        });
+        //Post TO Twitter
+        function GoToTwitter() {
+
+            @*var path = '@Session["MusicPath"]';*@
+            var path = '@Session["VideoPath"]';
+            //alert(sdfs);
+            tweetsText.value = path;
+            $("#myModal").show();
+        }
+        // Post To Google Plus
+        function GoToGooglePlus() {
+
+
+            // var path = '@Session["MusicPath"]';
+            //alert(sdfs);
+
+            window.open('https://plus.google.com/share?url=http://aph500.trainingncr.com/', "PopupWindow", 'width=400px,height=400px,top=150,left=250');
+        }
+        var modal = document.getElementById('myModal');
+
+
+        var btn = document.getElementsByClassName("mybtn");
+
+
+        var span = document.getElementsByClassName("close")[0];
+
+
+
+        function tweetsBtnClick() {
+
+
+            var tweeterText = tweetsText.value.toString().trim();
+            //alert(tweeterText);
+            if (tweeterText != "" && tweeterText != null) {
+                var id = 1;
+                $("#tweetAnctor").attr("href", "/SocialNetworks/Continuebtnpostingbasic?id=" + id + "&tweeterText=" + tweeterText);
+                $(myModal).hide();
+            }
+            else {
+                alert("Please Enter Tweet");
+            }
+
+        }
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        function PostStatus() {
+            var msg = $('#facebookText').val();
+
+            if (msg != '') {
+                // $("#facebookAnctor").attr("href", "/SocialNetworks/PostStatus");
+                $.ajax({
+                    url: '/SocialNetworks/PostStatus',
+                    type: 'POST',
+                    data: { msg: msg },
+                    success: function (authLink) {
+                        if (authLink != 'No') {
+                            window.open(authLink, 'title', 'width=660,height=500,status=no,scrollbars=yes,toolbar=0,menubar=no,resizable=yes,top=60,left=320');
+
+                        }
+                    }
+                });
+            }
+            else {
+                alert('please write your message.');
+            }
+
+        }
+
+    </script>
+
+
+
+
+
+

@@ -1,0 +1,193 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+  
+<div class="socialsetupwrap">
+<div style="width:20%;float:left;">
+<div class="logosocila"><img src="/img/bphidbyte_sicon2.png"></div>
+<div class="tophedboxa" style="width:100%;"><a href="Premiumbytetracker">BACK TO BYTE TRACKER</a></div>
+</div>
+
+<div class="mec-hed">
+<div class="mec-hed1" >
+<div class="mec-hed2" style="background:url(/images/byt_bgty.png) !important; width:70% !important; height:45px; border-right: 2px solid #595959; ">
+<div id="slider2" class="text-sllider" style="width:97%;">
+<p><img src="/images/audio-p.png" class="zty_text"><samp>Music</samp></p>
+<p><img src="/images/ebook-icone.png" class="zty_text"><samp>Ebook</samp></p>
+<p><img src="/images/video-icone.png" class="zty_text"><samp>Photography</samp></p>
+<p><img src="/images/video-icone.png" class="zty_text"><samp>Files</samp></p>
+</div>
+
+<div id='next' class="mecprev_s" style="margin-top:-40px !important; left: 80px !important; margin-left: -40px; margin-top: -35px;"><img src="/images/next_right.png"></div>
+</div>
+
+</div>
+<div id='prev' class="mecnext_s" style="margin-top:-40px !important; z-index:111; position:relative; left: 80px; width:43% !important; float:right; "><img src="/images/pev_right.png"></div>
+
+<div class="pendig_cs">
+<samp><img src="/images/pending-icone.png"/></samp>
+<p>Pending Clones</p>
+<p>34 of 150 <br/>Clones posted</p>
+
+
+
+
+</div>
+
+
+<div class="mec_b_line">
+<p>Flashing Lights</p>
+<samp><img src="/images/line_l_15.png"/></samp>
+</div>
+
+
+<div class="pen_redpic">
+<samp><img src="/images/red_x.png"/></samp>
+<p>Retract Links from Marketing Team</p>
+
+</div>
+
+<div class="pen_red_px">
+<samp><img src="/images/byter-videob.png"/></samp>
+</div>
+
+<samp style="float:right;"><img src="/images/symbol-i2_2.png"/></samp>
+
+<div id="mecsllider" style="margin-top:40px !important;">
+
+<div class="aphidbytecenter content scrollWidth" id="content_1"style="width:100%!important;text-align:center;">
+<div class="mecscroll">
+	<div id="slider1">
+	<div style="width:100% !important; height:600px; margin:auto; overflow:hidden;">
+   
+    <div class="social-nav" style="width:100% !important; ">
+
+	<!-- Table goes in the document BODY -->
+<table align="center" class="gradienttablepremium"style="text-align:center;">
+<tr>
+	<th style="width:13%;"><p>Title</p></th>
+    <th style="width:10%;"><p>User</p></th>
+    <th style="width:10%;"><p>Status</p></th>
+
+   
+    
+
+</tr>
+<tr class="gradient-trbyterr5" id="gt_to">
+    <td><p>Flashing Lights</p></td>
+    <td align="center"><p>USER1</p></td>
+    <td align="center" ><p>Accepted and Posted</p></td>
+</td>
+   
+   
+  
+</tr>
+<tr class="gradient-trbyterr5" id="gt_to">
+	<td><p>Flashing Lights</p></td>
+    <td align="center"><p>USER2</p></td>
+    <td align="center" ><p>Declined</p></td>
+
+   </td>
+    
+   
+  
+</tr>
+<tr class="gradient-trbyterr5" id="gt_to">
+    <td><p>Flashing Lights</p></td>
+    <td align="center"><p>USER3</p></td>
+    <td align="center" ><p>Accepted</p></td>
+
+   </td>
+   
+
+</tr>
+</table>
+	</div>	
+    
+    
+    
+    </div>
+    
+    <div style="width:100%;   height:345px; margin:auto;">test2</div>
+    <div style="width:100%;  height:345px; margin:auto;">test3</div>
+    <div style="width:100%;  height:345px; margin:auto;">test4</div>
+	</div>
+
+
+</div>
+</div>
+</div>
+
+<div id="mec-footer">
+<p class="mec-tp"><img src="/images/light-b-m.png"/> Retract Flood will remove links out of your subscribers’ “Pending Links to Post” and “Post Queue” tabs.</p>
+
+</div>
+
+<script language="javascript">
+$(document).ready(function(){
+
+	$('#slider1').cycle({
+		fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+		speed:  'slow', 
+   		timeout: 0,
+   		next:   '#next', 
+    	prev:   '#prev',
+    	pager:  '#thumb',
+    	 
+		pagerAnchorBuilder: function(idx, slide) { 
+        	return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>'; 
+    	}  
+	});
+	
+	$('#slider2').cycle({
+		fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+		speed:  'slow', 
+   		timeout: 0,
+   		next:   '#next', 
+    	prev:   '#prev',
+    	pager:  '#thumb',
+    	 
+		pagerAnchorBuilder: function(idx, slide) { 
+        	return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>'; 
+    	}  
+	});
+	
+	$('#slider3').cycle({
+		fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+		speed:  'slow', 
+   		timeout: 0,
+   		next:   '#next', 
+    	prev:   '#prev',
+    	pager:  '#thumb',
+    	 
+		pagerAnchorBuilder: function(idx, slide) { 
+        	return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>'; 
+    	}  
+	});
+
+
+});	
+</script> 
+ 
+ 
+ 
+  		 
+<script src="js/jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+ 
+

@@ -1,0 +1,43 @@
+$color_1: #000;
+$color_2: #3D9BE9;
+$color_3: #3588CC;
+
+.main_content {
+	.right_content {
+		padding-left: 0px;
+		padding-top: 0px;
+	}
+}
+.autodetectionalert {
+	.autodetectionalert_top_heading {
+		padding-bottom: 40px;
+		span {
+			font-size: 14px;
+			color: $color_1;
+			display: block;
+			padding-bottom: 20px;
+		}
+		a {
+			font-size: 14px;
+			color: $color_2;
+			display: block;
+			padding-bottom: 20px;
+		}
+		img {
+			width: 118px;
+			display: block;
+			margin: 0px auto 40px;
+		}
+		p {
+			font-size: 14px;
+			color: $color_1;
+		}
+	}
+	.autodetectionalert {
+		h4 {
+			font-size: 14px;
+			padding-bottom: 20px;
+			color: $color_3;
+		}
+	}
+}

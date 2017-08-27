@@ -1,0 +1,766 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+<div id="yesnope" style="display: none;" onclick="$(this).hide();">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div id="unamee" style="color: white; text-align: center; position: relative;"></div>
+        </div>
+    </div>
+</div>
+<div class="showadd" style="height: 70%; width: 50%; display: none;" id="logindiv_id">
+    <div class="black_screen"></div>
+    <img src="/Images/close.png" style="position: absolute; margin-left: 195%;cursor:pointer;" onclick="loginhide()" />
+    <div class="n_register_login">
+
+        <div class="n_register_log">
+            <ul>
+                <li>
+                    <label for="Company Logo">Username:</label>
+                    <input type="text" id="uname" size="30" />
+                </li>
+                <li>
+                    <label for="Company Name">Password:</label>
+                    <input type="password" id="pass" size="30" />
+                    <label id="labl" style="color:#ffc000; width:-21%; margin-left:21%; width: 50%;margin-top:-18px;"></label>
+                </li>
+            </ul>
+        </div>
+        <div class="n_log_pic">
+            <samp>
+                <img src="/images/log_frame.png">
+            </samp>
+            <samp class="log_arrow">
+                <img src="/images/s_icon.png">
+            </samp>
+            <samp class="log_arrow2">LOGIN </samp>
+        </div>
+        <div class="n_register2_login">
+            <p class="rg_right_2">@Html.ActionLink("Forgot Password?", "ForgetPassword", "Accounts")</p>
+            <div class="loe">
+                <input type="button" id="loginbtn" class="n_submitBtnLogin" value="">
+                <br />
+                <p class="rg_text">
+                    Don’t have an account?
+                    <samp class="rg_text_color">@Html.ActionLink("Sign Up/Register", "SignUp", "Home") </samp>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mainContent-c">
+  <aside class="middle-grid" id="msb">
+					  @foreach (var item in ViewBag.PostData)
+                    {
+                 
+                        <div style="height: 70px; width: 100%; margin-top: 10px;">
+                            <div class="gridboxa">
+                                <img src="@item.MatrixImagePath" onclick="filePrivew(@item.TrackingNumber,@item.category)" />
+                            </div>
+                            <div class="gridboxb" style="line-height: 45px;">
+                                <p id="@item.category">@item.Title</p>
+                            </div>
+                            <div class="gridboxc"></div>
+
+                        </div>
+                    }
+                   @* 
+                    <div class="mbox1" ><img src="/img/grid2bg.png"> <p class="grid-pica "> <img src="/img/glogo1.png"> </p></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne The Drought is Over 2</p></div>
+                    
+                    <div class="mbox1" ><img src="/img/grid3bg.png"> <p class="grid-pica "> <img src="/img/glogo2.png"> </p></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne The Dedication 4</p></div>*@
+                    
+  </aside>				
+				<aside class="middle-grid" id="msb">
+					@*<div class="mbox1" ><img src="/img/grid4bg.png"><p class="grid-pica "> <img src="/img/glogo3.png"> </p></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne Lights Out Biznite</p></div>
+                    
+                    <div class="mbox1" ><img src="/img/grid5bg.png"> <p class="grid-pica "> <img src="/img/glogo2.png"> </p></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne Tha Carter Cash Money Millionaires
+</p></div>
+                    
+                    <div class="mbox1" ><img src="/img/grid6bg.png"> <p class="grid-pica2 "> <img src="/img/glogo4.png"> </p></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne Rebirth Prom Queen</p></div>
+                    *@
+				</aside>
+                <aside class="middle-grid" id="msb">
+					<div class="wrap-nav" style="margin-top:8px;">
+                    <p class="grid-textm"><a href="IndexSearch"style="color:white;">Matrix View</a></p>
+                    <p class="grid-textm"> <img src="/img/newr_icon.png"> Mobile View </p>
+                    <p class="grid-textm"><a href="SearchListView"style="color:white;">List View</a></p>
+                <ul class="wrap-navlinks">
+                <li onclick="inersorting('Music')" id="listmusic">MUSIC</li>
+                <li onclick="inersorting('Videos')" id="listvideo">VIDEOS</li>
+                <div class="grid-c-logo">
+                    <a href="#" class="topopup">
+                        <img src="/img/bphidbyte_sicon.png"></a>
+                </div>
+                <li onclick="inersorting('Photography')" id="listphoto">PHOTOGRAPHY/ART</li>
+                <li onclick="inersorting('Ebook')" id="listEbook">EBOOK</li>
+                <li onclick="inersorting('Files')" id="listFiles">FILES</li>
+            </ul>
+                
+                </div> 
+                <p class="grid-text" style="margin-top:18px;">Speed</p>
+                
+                  <div id="play-d">
+            <div id="play-d1">
+                <img src="/Images/pluseblist.png" />
+            </div>
+            <div id="play-d2">
+                <img src="/img/pauseb.png">
+            </div>
+            <div id="play-d3">
+                <img src="/img/-buttonb.png">
+            </div>
+        </div>
+                
+                <div id="play-d">
+            <div id="play-d1" style="margin-left: 15px;">
+                <p class="grid-text-c"><a href="#">LOGOUT</a></p>
+            </div>
+            <div id="play-d3" style="margin-left: 12px;">
+               <img src="/img/logout.png" id="Sessionnull">
+            </div>
+        </div>
+                
+				</aside>				
+				  <aside class="middle-grid" id="msb">
+					@* <div class="mbox1" ><img src="/img/grid7bg.png"> <p class="grid-pica "> <img src="/img/glogo5.png"> </p></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne The Drought Is Over 2</p></div>
+                    
+                     <div class="mbox1" ><img src="/img/grid8bg.png"> <p class="grid-pica "> <img src="/img/glogo6.png"> </p></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne The Drought is Over 4</p></div>
+                    
+                     <div class="mbox1" ><img src="/img/grid9bg.png"></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne Tha Carter IV So Special </p></div>*@
+                    
+				</aside>	
+ 				<aside class="middle-grid" id="msb">
+					@* <div class="mbox1" ><img src="/img/grid10bg.png"></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne The Drought is Over 3 </p></div>
+                    
+                     <div class="mbox1" ><img src="/img/grid11bg.png"> <p class="grid-pica "> <img src="/img/glogo7.png"> </p></div>
+                    <div class="overbox"><p class="grid-text">Lil Wayne Tha Carter II Feel Me</p></div>
+                    
+                     <div class="mbox1" ><img src="/img/grid12bg.png"> <p class="grid-pica "> <img src="/img/glogo8.png"> </p></div>
+                    <div class="overbox"><p clas*@@*s="grid-text">Lil Wayne I Am Not a Human Being Single </p></div>*@
+                    
+				</aside>	
+			   <aside class="middle-grid" id="msb">
+               <p class="gtext-1">Search Results</p>
+				<div class="mbox1" ><img src="/img/grid13bg.png"></div>
+                <p class="gtext-1">Lil Wayne</p>
+                <div class="mbox1c" ><img src="/img/grid14bg.png"> </div>
+                    
+       
+                    	
+  </aside>
+                      
+              @*  <div id="maincont"><img src="/img/bgmainpaly.png"></div>  *@
+    
+				</div>
+     <div class="play_lista_control" id="musicplay" style="display: block; width: 47%; margin-left: 27%; margin-top: 3%;">
+
+    <div class="apb_progressbar" style="margin-top: -8%;">
+
+        <div class="apb_player_ticker">
+             <img id="tick_img" src="/img/apb_player_ticker.png">
+        </div>
+
+        <div id="cur_time" class="apb_player_time_control">
+            <span id="duration_pl" style="float: left;">0.00</span>
+        </div>
+        <div class="apb_player_volume_control">
+            <img src="/img/apb_control_volume.png">
+        </div>
+        <div id="tot_time" class="apb_player_volume_text_control">
+            <span id="duration_p" style="float: left;">0.00</span>
+        </div>
+        <div class="apb_progress_wrapper">
+            <img src="/img/aphd_progressbar.png">
+        </div>
+    </div>
+    <div class="apb_controls">
+        <img src="/img/controls_bg.png">
+    </div>
+    <div class="apb_player_btns">
+
+        <ul>
+            <li style="width: 7%">
+                <img id="Play_Muzic" src="/img/coltrol_play.png" onclick="audioElement.play();"></li>
+            <li style="width: 7%">
+                <img id="Pause_Muzic" src="/img/control_pause.png" onclick="audioElement.pause();"></li>
+            <li style="width: 7%">
+                <img id="Stop_Muzic" src="/img/control_stop.png" onclick="audioElement.pause(); audioElement.currentTime = 0;"></li>
+            <li style="width: 7%">
+                <img class="Chanel_Muzicn" src="/Images/grid14bg.png" /></li>
+            <li style="width: 7%; margin-left: 61%;">
+                <img onclick="loginfun()" src="/Images/green.png"></li>
+        </ul>
+    </div>
+
+    @*<p><img src="/img/play-pic.png" >
+            <img id="Play_Muzic" src="~/Images/play-bt.png" style="height: 7.8%;margin-left : -88%; margin-top: 7.25%; position: absolute; width: auto; z-index: 990;"/> 
+           <img id="Pause_Muzic" src="~/img/pauseb.png" style=" height: 3%; margin-left: -35%; margin-top: -5.9%; position: absolute; width: 4%; z-index: 999;"/>
+        </p>*@
+    <audio id="audio_tag" autoplay="autoplay" preload="metadata" onended="funend()" ></audio>
+</div>
+@*<footer class="mainFooter" >
+		
+         <div class="search-nav"style="margin-top:1%;">
+           <ul class="navlinks_b">
+				
+				<li><a href="#">Advertise</a></li>
+				<li><a href="#">Store</a></li>
+				<li><a href="#">Terms</a></li>
+				<li><a href="#">Privacy Policy  </a></li>
+                <li><a href="#">Sponsoring</a></li>
+				</ul>
+                </div> 
+				
+	</footer>*@
+<div id="toPopup" style="left: 2% !important; margin: auto !important; width: 96%; top: 7%; border: none; z-index: 999; opacity: 0.9; bottom: 4%; background-color: black">
+    <div style="position: absolute; width: 20%;">
+        <img src="/img/hphidbytelogo.png" />
+    </div>
+    <div class="close"></div>
+    <samp class="out_close" style="margin-top: -2%;">Close to go back to previous screen</samp>
+
+
+    <span class="ecs_tooltip"></span>
+
+    <div id="popup_content">
+        <!--your content start-->
+
+        <div class="main_wrapper" style="width: 98% !important; margin-top: 13%;">
+            <samp style="height: 20px; width: 500px; margin: auto;">
+                <img src="/img/line_searchbox_top.png" /></samp>
+            <div class="logo"></div>
+            <input type="text" class="searchmain_popup" placeholder="Enter Title or Tracking Number" id="popsearch" />
+            <input type="button" value="SEARCH" id="searchbtnpop" class="searchbtn" />
+            <ul class="navlinks">
+                <li id="SearchMusic">MUSIC</li>
+                <li id="SeachVideo">VIDEOS</li>
+                <li id="SearchPhotography">PHOTOGRAPHY/ART</li>
+                <li id="SearchEbook">EBOOK</li>
+                <li id="SearchFiles">FILES</li>
+            </ul>
+
+        </div>
+
+        <div class="p1_click">
+            <div>
+                <video id="ad_video_tag" autoplay="true" src="" style="border-radius: 0; margin-left: 4%; margin-top: 6%;">
+                    <source src="video.webm" type='video/webm; codecs="vorbis,vp8"'>
+                    <source src="video.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                    <source src="video.ogv" type='video/ogg; codecs="theora, vorbis"'>
+                    <!-- embed Flash here -->
+
+                    <p>Your browser does not support video; download the <a href="video.webm">WebM</a>, <a href="video.mp4">mp4</a> or <a href="video.ogg">Ogg</a> video for off-line viewing.</p>
+                </video>
+            </div>
+            <div style="margin-left: 6%; margin-top: 4%; width: 20%;">
+                <p style="text-align: left;">
+                    <samp id="ad_title"></samp>
+                </p>
+                <p id="ad_desc" style="text-align: left;"></p>
+            </div>
+
+            <div style="margin-top: 5%; width: 40%;">
+                <p><a id="ad_website">View SIte</a></p>
+                <p id="ad_creadits" style="padding-top: 10px;"></p>
+                <p style="color: #ffc000; " id="takesurvey"> 
+                   <samp style="color:yellow;cursor: pointer;font-size:13px"id="survey" placeholder="" > Take survey</samp> or <samp style="font-size:13px;">Visit site to redeem credits</samp></p> 
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--your content end-->
+
+</div>
+<script src="/Content/script.js"></script>
+<script>
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) { // ESC
+            $('#logindiv_id').hide();
+        }
+    });
+
+    function close_showadd() {
+        $('.showadd').hide();
+        var element = document.getElementById('ad_on_matrix');
+        element.pause();
+        $('.black_screen').hide();
+    }
+
+    function open_showadd() {
+        $('.black_screen').show();
+        $('.showadd').show();
+    }
+    //function ValidityUser()
+    //{
+    //    var user = $("#uname1").val();
+    //    var password = $("#pass1").val();
+    //    $.post('/Home/ValidateUser', {User:user,Pwd:password}, function (data) {
+
+    //    });
+
+    //}
+
+    $(document).ready(function () {
+
+        $.post('/Home/Fetch_Ad_Video_Data', { ad_type_id: 3 }, function (data) {
+            if (data != null) {
+                var ad_html_content = '';
+                var vid_url = data.AdVideo; ///Basic Audio Files/4.mp4';  //1.mp4  2.MPG  3.wmv  4.mpg
+                var vid_description = data.AdInformation; //"place content here for description...";
+                var img_url = data.AdPicture;
+                var ad_type_id = data.AdTypeID;
+                if (ad_type_id == 3) {
+                    //for video
+                    if (vid_url != null) {
+                        ad_html_content += '<video id="ad_on_matrix" style=" border-radius:0px; height: 100%; width: 100%;" autoplay="autoplay" onended="close_showadd()" src="' + vid_url + '">';
+                        ad_html_content += 'Your browser does not support the video tag.</video>';
+                        ad_html_content += '<img src="/img/close.png" onclick="close_showadd()" style=" position: absolute; margin-top: -15px; margin-left: -14px;" >';
+                        ad_html_content += '<div id="ad_description" style="height:10%; width:100%; color:white;">' + vid_description + '</div>';
+                        $('#ad_content').append(ad_html_content);
+                        open_showadd();
+                    } else {
+                        if (img_url != null) {
+                            ad_html_content += '<img id="ad_image" src="' + img_url + '" style="height:60%; width:70%;"/>';
+                            ad_html_content += '<img src="/img/close.png" onclick="close_showadd()" style=" position: absolute; margin-top: -15px; margin-left: -14px;" >';
+                            ad_html_content += '<div id="ad_description" style="height:10%; width:100%; color:white;">' + vid_description + '</div>';
+                            $('#ad_content').append(ad_html_content);
+                            open_showadd();
+                            setTimeout(close_showadd, 5000);
+                        }
+
+                    }
+
+
+                }
+                //end video
+
+            } else {
+                close_showadd();
+
+            }
+        });
+    });
+    function inersorting(category) {
+        //$("#listmusic").click(function () {
+        var cat = category;
+        $.post('/Home/searchsort', { Category: cat }, function (data) {
+            var html = "";
+            html += '<aside class="middle-grid2nd" style="width:100%;"id="msb1">';
+            for (var i = 0; i < data.length; i++) {
+
+
+                //html += '<div class="left_imex_P" style="width:100%!important;">';
+                html += '<aside class="middle-grid2nd" style="width:100%;"id="msb1">';
+                html += '<div style="height:70px; width:100%; margin-top:10px;">';
+                html += '<div class="gridboxa"><img src="' + data[i].MatrixImagePath + '" onclick="filePrivew(' + data[i].TrackingNumber + ',' + data[i].category + ');" /></div>';
+                html += '<div class="gridboxb" style="line-height:45px;"><p>' + data[i].Title + '</p></div>';
+                html += '<div class="gridboxc"></div>';
+                html += ' </div>';
+                html += '</aside>';
+                //html += '</div>';
+                $(".middle-grid2nd").remove();
+                $(".left_imex_P").append(html);
+
+            };
+        });
+    };
+    $("#searchbtnpop").click(function () {
+        var text = $("#popsearch").val();
+        var cat = $("#searchbtnpop").val();
+        $.post('/Home/Searching', { Texttosearch: '%' + text + '%', category: cat, tracking: text }, function (data) {
+            window.location = data;
+        })
+    })
+    $("#SearchMusic").click(function () { $("#searchbtnpop").attr("value", "MUSIC"); });
+    $("#SeachVideo").click(function () { $("#searchbtnpop").attr("value", "VIDEOS"); });
+    $("#SearchPhotography").click(function () { $("#searchbtnpop").attr("value", "Photography"); });
+    $("#SearchEbook").click(function () { $("#searchbtnpop").attr("value", "EBOOK"); });
+    $("#SearchFiles").click(function () { $("#searchbtnpop").attr("value", "FILES"); });
+    $("#SearchMusic").click(function () {
+
+        $("#SeachVideo").removeClass("select_bg_s1");
+        $("#SearchPhotography").removeClass("select_bg_s1");
+        $("#SearchEbook").removeClass("select_bg_s1");
+        $("#SearchFiles").removeClass("select_bg_s1");
+        $("#SearchMusic").addClass("select_bg_s1");
+    });
+    $("#SeachVideo").click(function () {
+
+        $("#SearchMusic").removeClass("select_bg_s1");
+        $("#SearchPhotography").removeClass("select_bg_s1");
+        $("#SearchEbook").removeClass("select_bg_s1");
+        $("#SearchFiles").removeClass("select_bg_s1");
+        $("#SeachVideo").addClass("select_bg_s1");
+    });
+    $("#SearchPhotography").click(function () {
+
+        $("#SearchMusic").removeClass("select_bg_s1");
+        $("#SeachVideo").removeClass("select_bg_s1");
+        $("#SearchEbook").removeClass("select_bg_s1");
+        $("#SearchFiles").removeClass("select_bg_s1");
+        $("#SearchPhotography").addClass("select_bg_s1");
+    });
+    $("#SearchEbook").click(function () {
+
+        $("#SearchMusic").removeClass("select_bg_s1");
+        $("#SeachVideo").removeClass("select_bg_s1");
+        $("#SearchPhotography").removeClass("select_bg_s1");
+        $("#SearchFiles").removeClass("select_bg_s1");
+        $("#SearchEbook").addClass("select_bg_s1");
+    });
+    $("#SearchFiles").click(function () {
+
+        $("#SearchMusic").removeClass("select_bg_s1");
+        $("#SeachVideo").removeClass("select_bg_s1");
+        $("#SearchPhotography").removeClass("select_bg_s1");
+        $("#SearchEbook").removeClass("select_bg_s1");
+        $("#SearchFiles").addClass("select_bg_s1");
+    });
+    @{ 
+        var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username;
+        var userid = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.UserId;
+    }
+
+    function loginfun() {
+        $('#labl').text("");
+        $('#pass').val("");
+        $('#uname').val("");
+        $.post('/Home/CheckSession').done(function (data) {
+            if (data == 'NotExists') {
+                $('#logindiv_id').show();
+            }
+            else {
+                var a = '@username';
+                var b = '@userid';
+                $('#unamee').text("Logged in as : " + a + " ?");
+                $('#yesnope').show();
+                plalist_show();
+            }
+        });
+    }
+    function loginhide() {
+        $('#logindiv_id').hide();
+    }
+    function plalist_show() {
+        var plCount = 0;
+        $.post('/Basic/totalplaylist').done(function (count) {
+            plCount = count;
+        });
+        var htmldialogcontent = '';
+        $.post('/Basic/GetPlayList', { TrackingID: track }, function () {
+        }).done(function (dataa) {
+            if (dataa.length > 0) {
+                htmldialogcontent = '';
+                var i = 0;
+                while (i < dataa.length) {
+
+                    htmldialogcontent += '<li class="playname_dialogbox" id="' + dataa[i].toString() + '">' + dataa[i].toString() + '</li>';
+
+                    i++;
+                }
+                if (plCount < 15) {
+                    htmldialogcontent += '<p id="editable_name"> Create Playlist</p>';
+                }
+            } else {
+                htmldialogcontent = '';
+                if (plCount < 15) {
+                    htmldialogcontent += '<p id="editable_name"> Create Playlist</p>';
+                }
+                else {
+                    htmldialogcontent += '<p> playlist count full   </p>';
+                }
+
+            }
+            $("#addpl").empty();
+            $("#addpl").append(htmldialogcontent);
+            $(".black_screen").show();
+            $("#closeboxa").show();
+        });
+
+
+    }
+
+    $('#loginbtn').click(function () {
+        var u = $('#uname').val();
+        var p = $('#pass').val();
+
+        if (u == "" && p != "") {
+
+            $('#labl').text("Enter UserName");
+            // $('#loginbtn').attr('disabled', 'disabled');
+        }
+
+        if (u == "" && p == "") {
+
+            $('#labl').text("Enter UserName or Password");
+            // $('#loginbtn').attr('disabled', 'disabled');
+        }
+
+        if (u != "" && p == "") {
+
+            $('#labl').text("Enter Password");
+            // $('#loginbtn').attr('disabled', 'disabled');
+        }
+
+        if ((u != "") && (p != "")) {
+            loginhide();
+            var htmldialogcontent = '';
+            $.post('/Home/logmein', { uname: u, pass: p, trackid: track }, function () { }).done(function (dat) {
+                var a = dat;
+                if (a == true) {
+                    plalist_show();
+                }
+                else if (a == false) {
+                    $('#logindiv_id').show();
+
+                    $('#labl').text("UserName or Password InCorrect");
+
+                }
+                else {
+
+
+
+                }
+
+
+            });
+        }
+
+    });
+
+    function DialogCloseFunction() {
+        $("#closeboxa").hide();
+        $(".black_screen").hide();
+
+    }
+    $("#addpl").on('click', '.playname_dialogbox', function () {
+        var newPlayName = $(this).text();
+        var resultFetched = false;
+        $.post('/Basic/AddSongToPlaylist', { PlaylistName: newPlayName, TrackingID: track }, function (dat) {
+            resultFetched = dat;
+        }).done(function () {
+            if (resultFetched == true) {
+                $("#new_pop").show();
+                //alert("File added to playlist..");
+                $("#closeboxa").hide();
+                $(".black_screen").hide();
+            }
+            else {
+                $("#new_pop_d").show();
+                //alert("Error Adding to Playlist..");
+                $("#closeboxa").hide();
+                $(".black_screen").hide();
+            }
+        });
+
+    });
+    //for editableText content
+    $("#addpl").on('dblclick', '#editable_name', function () {
+        var ele = document.getElementById('editable_name');
+        var temp = ele.innerHTML;
+        var textBox = document.createElement('INPUT');
+        textBox.setAttribute('type', 'text');
+        textBox.value = ele.innerHTML;
+        textBox.onchange = function () {
+            var newValue = this.value;
+            this.parentNode.innerHTML = newValue;
+            alert("Your new value: \n\n" + newValue);
+            ele.innerHTML = temp;
+            var htmldialogcontent = '';
+            htmldialogcontent += '<li class="playname_dialogbox"> ' + newValue + '</li>';
+            $("#addpl").append(htmldialogcontent);
+        }
+
+        this.innerHTML = '';
+
+        this.appendChild(textBox);
+    });
+    var Trk = null;
+    var CreditsID = null;
+    var Logopath = null;
+    // end for editableText content
+    $("#survey").click(function () {
+        var id = $("#survey").attr('placeholder');
+        $.post('/Home/Survey', { suyveyid: id }, function (data) {
+            if (data != null) {
+                var Surveyquestion = data.Surveyquestion;
+                var option1 = data.option1;
+                var option2 = data.option2;
+                CreditsID = data.CreditsID;
+                var Title = data.Title;
+                Trk = data.TrackingNumber;
+                Logopath = data.Title;
+                $("#question").text(Surveyquestion);
+                $("#option1").text(option1);
+                $("#option2").text(option2);
+                $("#beforecredits").text(CreditsID + "Credits")
+                $("#aftercredits").text(CreditsID + "Credits")
+                $("#companylogo").attr('src', Title);
+
+                $("#toPopup").hide();
+                $(".surypop").show();
+            }
+
+
+
+        })
+
+    })
+
+    function funend() {
+        var aab = audioElement = document.getElementById('audio_tag');
+        aab.pause();
+        aab.currentTime = 0;
+    }
+</script>
+<div id="toPopup" class="surypop" style="left: 2% !important; margin: auto !important; width: 96%; top: 5%; background: black; border: none; display: none; z-index: 999;">
+    <div class="close1" id="close">
+        <img src="/img/close.png" id="closeimage" style="cursor: pointer; z-index: 999; margin-left: 99%;" />
+    </div>
+    <samp class="out_close">
+        <p>Close to go back to previous screen</p>
+    </samp>
+
+    <span class="ecs_tooltip"></span>
+
+    <div id="popup_content1">
+      
+      <div style="position:absolute;width:40%;margin-top:-2%;">  <img src=""id="companylogo"style="width:160px;height:auto;"></div>  
+        <div class="wra_pepsi">
+            <div>
+                <p>
+                    <img src="/images/pepsi_pis_logo.png" style="padding: 20px 10px 0 110px;" />
+                </p>
+                <br />
+                <br />
+                <br />
+                <p style="color: white;"id="question">Did you enjoy our video commercial?</p>
+                <br />
+                <br />
+                <br />
+                <p style="color: white;"id="option1">Yes</p>
+                <p style="color: white;"id="option2">No</p>
+                <br />
+                <br />
+                <br />
+                <p style="text-align: left; margin: auto; width: 75%; color: white;">Feedback</p>
+                <br />
+                <p>
+                    <textarea name="" cols="30" class="text_pepsi" id="feedback"> </textarea>
+                </p>
+                <p class="pepsi_t_button"><a href="#">| Send |</a></p>
+
+
+            </div>
+
+            <div id="BeforeSend" style="display:block;">
+                <p style="color: white;">Before selection and “send”</p>
+                <br />
+                <br />
+                <p>
+                    <img src="/images/credits-bg.png" />
+                </p>
+                <br />
+                <p style="color: white;"id="beforecredits">1 Credit</p>
+
+            </div>
+            <div id="DispCre" style="display:none;">
+                <p style="color: white;">After selection and “send”</p>
+                <br />
+                <br />
+                <p>
+                    <img src="/images/credits-bg_gray.png" />
+                </p>
+                <br />
+                <p style="color: white;"id="aftercredits">1 Credit Received</p>
+                <br />
+                <p>
+                    <img src="/images/postgreens.png" style="width: 15%; height: auto;">
+                </p>
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+    <span class="ecs_tooltip"></span>
+
+
+
+    <!--your content end-->
+
+</div>
+<script>
+    $(document).ready(function () {
+        $('#feedback').val("");
+    });
+    $("#closeimage").click(function () {
+        $(".surypop").hide();
+        $("#toPopup").show();
+    })
+   
+    $(".pepsi_t_button").click(function () {
+        //$(".surypop").hide();
+        var txt = $('#feedback').val();
+        var CreditValue = $("#beforecredits").text();
+        $.post('/Home/CheckSession').done(function (data) {
+            if (data == 'NotExists') {
+                $('#logindiv_id').show();
+            }
+            else {
+                var a = '@username';
+                var b = '@userid';
+                $('#unamee').text("Logged in as : " + a + " ?");
+                $('#yesnope').show();
+            }
+
+        });
+
+        $.post('/Home/SendData', { Feedbacktxt: txt, TrackId: Trk, Credits: CreditsID, Path: Logopath }, function () {
+
+        }).done(function (data) {
+            if (data == false) {
+
+                $('#DispCre').attr('style', 'display:block');
+                $('#BeforeSend').attr('style', 'display:none');
+            }
+
+        });
+    })
+
+    $("#Sessionnull").click(function () {
+        $.post('/Home/logout', {}, function (data) {
+            if (data == 'logedout') {
+                $('#unamee').text(" Sucessfully Logged out ");
+                $('#yesnope').show();
+            }
+            else {
+                $('#unamee').text("Not Logged In");
+                $('#yesnope').show();
+
+            }
+        })
+    })
+</script>

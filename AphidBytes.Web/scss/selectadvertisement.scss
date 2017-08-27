@@ -1,0 +1,68 @@
+$color_1: #557321;
+$color_2: #000;
+
+.wrapper {
+	padding: 20px;
+}
+.selectadvertisement_listing {
+	background: #fff;
+	border: 1px solid #000;
+	padding: 40px 80px;
+	.close_icon {
+		text-align: right;
+	}
+	.advertisment_top {
+		position: relative;
+		padding-bottom: 80px;
+		.advertisment_image {
+			text-align: center;
+		}
+		.right_box {
+			position: absolute;
+			right: 90px;
+			bottom: 10px;
+			input {
+				width: 100px;
+				padding: 6px;
+				float: left;
+				border: 1px solid #b31d00;
+			}
+			span {
+				float: left;
+				font-size: 12px;
+				margin-left: 10px;
+			}
+		}
+	}
+	.advertisement_box {
+		margin-bottom: 40px;
+		.thumbnail {
+			img {
+				width: 100%;
+			}
+		}
+		.advertisement_details {
+			text-align: center;
+			h4 {
+				color: $color_1;
+				font-size: 17px;
+				padding: 20px 0px;
+			}
+			span {
+				display: block;
+				padding-bottom: 20px;
+				font-size: 11px;
+				color: $color_2;
+			}
+			p {
+				font-size: 14px;
+				color: $color_2;
+			}
+			a.btn {
+				font-size: 11px;
+				padding: 20px 80px;
+				width: initial;
+			}
+		}
+	}
+}

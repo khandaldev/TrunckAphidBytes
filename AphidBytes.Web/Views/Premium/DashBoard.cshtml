@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+ 
+@*<meta charset="utf-8">
+<title>AphidTise</title>
+<link rel="stylesheet" href="stylecss.css" type="text/css">
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />*@
+
+<script type="text/javascript" src="~/js/jquery-1.10.2.js"></script>
+<script src="jquery-1.7.2.min.js"></script>
+<script src="jquery.min.js"></script>
+<script src="jquery.min.js"></script>
+
+ 
+
+
+
+<div class="header_aphidtise">
+<div id="logo" style="margin-top:7px; margin-left:35px;">
+ <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a> </div>
+</div>
+<div class="apb_menu">
+<ul>
+<li><a href="PremiumAccountInfo">BACKDOOR VIEW</a></li>
+<li><a href="#" class="apb_select">DASHBOARD VIEW</a></li>
+<li><a href="#"><img src="/images/apb_channel.png" style="width:50%;"></a></li>
+<li><div class="apb_lgout"><a href="#" class="apb_select_login">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="~/Accounts/Logout">Logout</a></div><img src="@Url.Action("Overview", "Premium")" style="width:40%;"></li>
+<li><div style="margin-top:10px;"><img src="/images/premiumaccount_star_bg.png" style="width:100%;"><p class="apb_prem">Premium Account</p></div></li>
+
+</ul>
+</div>
+
+<div class="apb_slide_wrapper">
+<div class="apb_tools"><img src="/images/apb_tools.png"></div>
+<div class="apb_move apb_left"><img src="/images/apb_left.png"></div>
+<div class="apb_move apb_right"><img src="/images/apb_right.png"></div>
+<div id="apb_slider_container">
+    <ul class="apb_slide_ul">
+     <li id="apb_box1" class="apb_slider_box current"><span><img src="/images/apb_slide_img1.png">&nbsp;&nbsp;<img src="/images/apb_slide_img2.png"> </span></li>
+      <li id="apb_box2" class="apb_slider_box"><span><img src="/images/apb_slide_img1.png">&nbsp;&nbsp;<img src="/images/apb_slide_img2.png"></span></li>
+                  <li id="apb_box3" class="apb_slider_box"><span><img src="/images/apb_slide_img1.png">&nbsp;&nbsp;<img src="images/apb_slide_img2.png"></span></li>
+            <li id="apb_box4" class="apb_slider_box"><span><img src="/images/apb_slide_img1.png">&nbsp;&nbsp;<img src="/images/apb_slide_img2.png"></span></li>
+            <li id="apb_box5" class="apb_slider_box"><span><img src="/images/apb_slide_img1.png">&nbsp;&nbsp;<img src="/images/apb_slide_img2.png"></span></li>
+            <li id="apb_box6" class="apb_slider_box"><span><img src="/images/apb_slide_img1.png">&nbsp;&nbsp;<img src="/images/apb_slide_img2.png"></span></li>
+            <li id="apb_box7" class="apb_slider_box"><span><img src="/images/apb_slide_img1.png">&nbsp;&nbsp;<img src="/images/apb_slide_img2.png"></span></li>
+            <li id="apb_box8" class="apb_slider_box"><span><img src="/images/apb_slide_img1.png">&nbsp;&nbsp;<img src="/images/apb_slide_img2.png"></span></li>
+           
+    </ul>
+ </div>
+
+
+</div>
+<div class="apb_content_wrapper">
+<ul>
+<li>
+<div><span>Generate Clones</span></div>
+<div><a href="UploadMediaPremium"><img src="/images/general_clones.png" style="width:60%; height:auto;"></a></div>
+</li>
+<li>
+<div><span>Byte Tracker</span></div>
+<div><a href="Premiumbytetracker"><img src="/images/b_tracker.png" style="width:100%; height:auto;"></a></div>
+</li>
+<li>
+<div><span>Messages</span></div>
+<div><a href="PremiumMessage"><img src="/images/b_message.png" style="width:60%; height:auto;"></a></div>
+</li>
+<li>
+<div><span>History</span></div>
+<div><a href="PremiumHistory"><img src="/images/history.png"  style="width:40%; height:auto;"></a></div>
+</li>
+
+</ul>
+</div>
+
+<div style="height:500px; width:100%;">
+</div>
+
+
+<script type="text/javascript">
+var i = 1;
+$('.apb_right').click(function () {
+    if (i < $("#apb_slider_container .apb_slide_ul li").length) {
+        $("#apb_box" + i).animate({
+            left: '-50%'
+        }, 400, function () {
+            var $this = $("#apb_box" + i);
+            $this.css('left', '150%')
+                .appendTo($('.apb_slider_container'));
+        });
+        $("#apb_box" + i).next().animate({
+            left: '50%'
+        }, 400);
+        i++;
+    }
+});
+$('.apb_left').click(function () {
+    if (i > 1) {
+        $("#apb_box" + i).animate({
+            left: '150%'
+        }, 400, function () {
+            var $this = $("#apb_box" + i);
+            $this.css('right', '-150%')
+                .appendTo($('.apb_slider_container'));
+        });
+        $("#apb_box" + i).prev().animate({
+            left: '50%'
+        }, 400);
+        i--;
+    }
+});
+</script>
+ 
+
+ 

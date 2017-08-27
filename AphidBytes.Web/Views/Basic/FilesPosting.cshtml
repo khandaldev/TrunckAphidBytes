@@ -1,0 +1,769 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.SocialNetworkModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        var moveLeft = 20;
+        var moveDown = -50;
+
+        $('a#trigger').hover(function (e) {
+            $('div#i-pop-up').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up').hide();
+        });
+
+        $('a#trigger').mousemove(function (e) {
+            $("di v#i-pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var moveLeft = -60;
+        var moveDown = -80;
+
+        $('a#trigger2').hover(function (e) {
+            $('div#i-pop-up2').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up2').hide();
+        });
+
+        $('a#trigger2').mousemove(function (e) {
+            $("div#i-pop-up2").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+</script>
+
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+        <div class="logid_out">
+            <ul>
+                <li><a href="#" style="color: #ffc000;">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="@Url.Action("Overview", "Basic")" height="100px" />
+                </div>
+                <div class="profiletext-ct-info">
+                    <img src="/images/clone-pa.png">
+                    Basic Account
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+<div id="confmBox" class="confirm_send_mail_div sendme_con" style="display: none;">
+
+    <div>
+        <h5 class="sendme_con_h5">Confirmation:<img onclick="close_confmBox_popup()" class="cancel_delete-link" style="cursor: pointer; float: right; margin-top: 7px;" src="/Images/close.png">
+        </h5>
+        <p style="margin-top: 8%;">
+            <strong>Are you Sure want to Upgrade ?</strong> <span id="Ncontacts"></span>
+        </p>
+
+
+        <div class="btn-group sendme_con_groupbtn">
+            <button id="confrm_yes" class="btn add  sendme_con_yes" onclick="UpgradeTOPremium()">Yes</button>
+            <div class="btn cancel sendme_con_no" onclick="close_confmBox_popup()" style="cursor: pointer;">No</div>
+        </div>
+
+    </div>
+</div>
+<div id="yesno" style="display: none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div>
+                <p>Are you sure to Upgrade?</p>
+            </div>
+            <div>
+                <p id="yes"><a href="#">Yes</a></p>
+                <p id="no"><a href="#">No</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Error Occured Try Again
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" />
+    </div>
+
+</div>
+
+<div style="display: none;" id="upgradebox">
+    <div class="bg_othr_box">
+        <div class="bg_othr_box_1">
+            <p>Account Upgraded Successfully Completed</p>
+            <p></p>
+            <p style="margin-top: 22px; margin-left: 137px;">
+                <img src="~/Images/right-icone.png"></p>
+
+            <p style="margin-top: 88px;"><a href="~/Accounts/Logout">OK</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="header_aphidtise">
+    <div id="logo">
+     <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+    </div>
+
+    <div class="headertab_aphidtise" style="margin-top: 0px !important;">
+        <div class="aphidbyteleft" style="margin-top: 135px;">
+            <ul class="aphidbytelist-basic">
+                <li><a href="BasicAccountInfo">Account Info</a></li>
+                <li></li>
+                <li><a href="Uploadmedia">Upload</a></li>
+                <li>
+                    <img src="/images/right_line.png" height="2"></li>
+                <li><a href="Message">Messages</a></li>
+                @if (Model.NewCount != "0")
+                {
+                    <p class="in_c_text_4">@Model.NewCount</p> 
+                }
+                <li></li>
+                <li><a href="bytetracker">Byte Tracker</a></li>
+                <li></li>
+                <li><a href="History">History</a></li>
+                <li></li>
+                <li><a href="Playlist">Playlists</a></li>
+                <li></li>
+                <li><a href="Dataplan">Data Plan</a></li>
+                <li></li>
+            </ul>
+
+            <div class="dsbox-basic">
+                <p>Dashboard<img src="/images/das-left.png"></p>
+            </div>
+            <p class="dstext-basic">
+                UPGRADE to
+                <samp id="upgradePremium" style="cursor: pointer;">Premium</samp>
+            </p>
+
+            <div class="info-footer-social"></div>
+            <div class="aphidbyteleftright-basic"></div>
+        </div>
+        <p class="info-p" style="margin-bottom: 25px; cursor: pointer;"><span id="genclone">Upload</span><span id="createlnks">> Create Link Posts > Select From Byte Tracker</span><span id="selectchannel">> Select Channel(s) to Flood to</span></p>
+        <div style="height: 600px; width: 100%;">
+            <div class="byter-header-caemrapic" style="margin-bottom: 0px!important;">
+                <div class="byter-caemrapicpic">
+                    <p>
+                        <img src="/images/create-byterbg.png" style="width: 4%; margin: -5px 3px 4px 38px;">
+                    </p>
+                    <p>Create Link Posts</p>
+                </div>
+                <p class="byter-iinfo">
+                    <a href="#" id="trigger">
+                        <img src="/images/boldbg.png"></a>
+                </p>
+            </div>
+
+            <div class="genra_bgt1">
+                <div><a>
+                    <img src="/images/s_iconta.png"onclick="Fileprivew(@Session["Trackid"])" style="cursor:pointer;"></a></div>
+                <div class="gen_ta">
+                    <p>Selected Link:</p>
+                    <p><a href="#">@Session["LinkTitle"].ToString()</a></p>
+                    <p>@Session["LinkPath"].ToString()</p>
+                    <p></p>
+
+                </div>
+
+            </div>
+            <div id="content_1" class="aphidbytecenter content scrollWidth mCustomScrollbar _mCS_1" style="margin: 5px 0 0 95px;">
+                <div style="position: relative; height: 100%; overflow: hidden; max-width: 100%;" id="mCSB_1" class="mCustomScrollBox mCS-light">
+                    <div style="position: relative; top: 0;" class="mCSB_container">
+                        <div class="mecscroll">
+
+                            <div id="slider1" style="position: relative; width: 473px; height: 600px; overflow: hidden;">
+                                <p class="info-p">Select Channel(s) to Flood to</p>
+
+                                <div style="width: 100%; height: 600px; margin: auto; overflow: hidden; position: absolute; margin-top: 0px; left: 0px; display: block; z-index: 5; opacity: 1;">
+
+                                    <div class="social-nav">
+                                        <ul>
+
+                                            <div class="byter-right-li">
+                                                <img src="/images/linedwonp.png">
+                                            </div>
+                                            <div>
+                                                @Html.Partial("Partial1", Model)
+
+                                            </div>
+
+                                            <div class="byter-postb">
+                                                <p>Byter</p>
+                                            </div>
+                                          @*  <div class="byter-postb2" id="post">
+                                                <input type="submit" name="Post" id="postsite" value="Post" />
+                                            </div>*@
+                                            <div class="byter-postb3" onclick="Post()" style="margin-left:80%;margin-top:91%" >
+                                           <div id="ActionPage" value="" style=" background-image: url(/Images/aphidtisebg.png);"></div>
+                                            </div>
+
+                                        </ul>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div id="mec-footer">
+    <div class="mec-footer-box">
+        <div class="mecbox-l">
+            <img src="/img/icone.png">
+        </div>
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/AddChannel" style="color: white; cursor: pointer">Add more sites from our database to your Channel Group</a></samp>
+        </div>
+        <div class="mecbox-l" style="clear: left;">
+            <img src="/img/toplogo.png" style="width: 55%;">
+        </div>
+
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/ModifyExistingNetworks" style="color: white; cursor: pointer">Modify Existing Channels</a></samp>
+        </div>
+        <div class="mecbox-l" style="clear: left;">
+            <img src="/img/w-icone.png">
+        </div>
+        <div class="mecbox-rec">
+            <samp class="mectext-t" style="margin-top: 5px;"><a href="/SocialNetworks/AddNetworkToDb" style="color: white; cursor: pointer">Request another site</a></samp>
+        </div>
+        <div class="mecbox-l" style="clear: left;">
+            <img src="/img/csocialnetwork.png">
+        </div>
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/Index" style="color: white; cursor: pointer">Connect Your Social Networks</a></samp>
+        </div>
+    </div>
+    <div class="byter-waring">
+        <p>Warning: File should have Interruption added prior to this flood.</p>
+    </div>
+
+    <div id="i-pop-up">
+        <p>
+            Channels change when Category is changed. For example. If “Byte Your Music” is selected, Reverbnation, Myspace, Soundclick, etc. is shown as the options to select. If Videos is selected, Youtube, Dailymotion, etc. are the options. Etc. Same for ebooks, art and photos
+
+        </p>
+    </div>
+
+    <div id="i-pop-up2">
+        <p>
+            Links to Post category does not upload a file. It can only select a pre-existing Clone of theirs, that is already in The Matrix.
+
+        </p>
+    </div>
+</div>
+<div class="black_screen" id="pop_wrapper" style="display: none; z-index: 500;"></div>
+<div id="content_2" class="aphidbytecenter content scrollWidth mCustomScrollbar _mCS_1 pop_content"
+    style="background-size: cover; height: 100%; position: fixed; top: 1%; width: 100%; z-index: 999; background-image: url('../img/aphidtisebg.png'); display: none;">
+    <div style="position: relative; height: 100%; overflow: hidden; max-width: 100%;" id="mCSB_2" class="mCustomScrollBox mCS-light">
+        <div style="position: relative; top: 0;" class="mCSB_container">
+            <div class="mecscroll">
+                <div class="popbyter-mianz">
+                    <div class="popbyter-miansub">
+                        <div class="popbyter-subleft">
+                          <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/bphidbyte_sicon.png"></a><br />
+
+
+                        </div>
+                        <div class="popbyter-sub1">
+                        </div>
+
+                        <div class="popbyter-footer1">
+                            <div class="return-popupc">
+                                <p>@Session["LinkTitle"]</p>
+                                <p>
+                                    <img src="/images/return-line-bg.png">
+                                </p>
+                                <p>
+                                </p>
+                                <p>
+                                    <samp>
+                                        <img src="" id="imgID"></samp>
+                                </p>
+                                <br />
+                                <br />
+                                <br />
+                                <p>
+                                    <samp>
+                                        Error Occurred.@Session["Trackid"]
+                                        <br />
+                                        Would You Like to Retry?</samp>
+                                </p>
+                                <br />
+
+                                <div class="byter-lefttext" id="div_status">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <input type="button" value="Yes" onclick="Yes_Button()" style="cursor: pointer; color: rgb(255, 255, 255); margin-left: -50px; background: none repeat scroll 0px 0px transparent; border: medium none;" />
+                                            </td>
+                                            <td>
+                                                <input type="button" id="N_o" value="No" onclick="No_Button()" style="cursor: pointer; color: rgb(255, 255, 255); margin-left: 40px; background: none repeat scroll 0px 0px transparent; border: medium none;" />
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                                <div class="b-yterfooterli"></div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script src="jquery.mCustomScrollbar.js"></script>
+<script>
+    function ok() {
+        $('socialdiv').hide();
+    }
+    (function ($) {
+
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#upgradePremium').click(function () {
+            $("#yesno").attr('style', 'display:block');
+        });
+
+        $("#yes").click(function () {
+            $("#yesno").attr('style', 'display:none');
+            $.post('/Basic/UpgardeToPremium', {}, function (data) {
+                if (data == "Success") {
+
+                    $("#upgradebox").attr('style', 'display:block');
+                } else { $("#button-bg3").attr('style', 'display:block'); }
+
+            });
+
+        });
+        $("#no").click(function () {
+            $("#yesno").attr("style", "display:none");
+        });
+
+
+
+        $("#genclone").click(function () {
+            window.location.href = "/Basic/GenerateClones";
+        });
+        $("#createlnks").click(function () {
+            window.location.href = "/Basic/LinkPost";
+        });
+        $("#selectchannel").click(function () {
+            window.location.href = "/Basic/selectchanneltoflood";
+        });
+
+        $("#basicbyter").click(function () {
+            $("#byterclick").toggle();
+        });
+
+        $("#byterclick li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyter span").html(text);
+            $("#byterclick").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick").hide();
+        });
+
+
+        $("#basicbyterone").click(function () {
+            $("#byterclick2").toggle();
+        });
+
+        $("#byterclick2 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyterone span").html(text);
+            $("#byterclick2").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick2").hide();
+        });
+
+
+
+        $("#basicbytertwo").click(function () {
+            $("#byterclick3").toggle();
+        });
+
+        $("#byterclick3 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbytertwo span").html(text);
+            $("#byterclick3").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick3").hide();
+        });
+
+
+        $("#basicbyterfour").click(function () {
+            $("#byterclick4").toggle();
+        });
+
+        $("#byterclick4 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyterfour span").html(text);
+            $("#byterclick4").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick4").hide();
+        });
+
+
+
+        $("#basicbyter5").click(function () {
+            $("#byterclick5").toggle();
+        });
+
+        $("#byterclick5 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyter5 span").html(text);
+            $("#byterclick5").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick5").hide();
+        });
+
+
+
+    });
+
+
+     function Post() {
+        i = 0;
+        var rsult = social();
+        if (rsult == "Facebook") {
+            fb_posting();
+        }
+        else if (rsult == "Linkedin") {
+            link_posting();
+        }
+        else if (rsult == "Twitter") {
+            tw_posting();
+        }
+   
+    }
+
+    function Yes_Button() {
+        var value = $('#imgID').attr('src');
+        if (value == "/Images/ficone.png") {
+            fb_posting();
+
+        }
+        if (value == "/Images/linkdicone.png") {
+            link_posting();
+        }
+        if (value == "/img/ticone.png") {
+            tw_posting();
+        }
+    }
+
+    function Fileprivew(trackingnumber) {
+        var ii = "Files";
+
+        $.post('/Basic/FilePrivew', { Trackingnumber: trackingnumber, Category: ii }, function (data) {
+            //alert("data");
+            window.location = data;
+        });
+    }
+    function No_Button() {
+        $("#pop_wrapper").hide();
+        $(".pop_content").hide();
+        var data = social();
+        if (data == "Facebook") {
+            fb_posting();
+        }
+        else if (data == "Linkedin") {
+            link_posting();
+        }
+        else if (data == "Twitter") {
+            tw_posting();
+        }
+        else {
+            $("#pop_wrapper").hide();
+            $(".pop_content").hide();
+          
+        }
+
+    }
+
+
+    function link_posting() {
+        //  IsPostingComplete = true;
+        $.post('@Url.Action("LinkedLinPost", "Basic")', { Type: "Files" }, function () {
+        }).done(function (data)
+        {
+            if (data == "LinkedLin") {
+                document.getElementById("buttonbg3").style.display = "block";
+                $('#socialname2').text("Already post on Linkedin");
+            }
+            if (data == "login error") {
+                location.href = "/Accounts/LoginUser";
+            }
+            if (data == "Linkpost") {
+                window.location = data;
+            }
+            else if (data == "Index") {
+                location.href = "/SocialNetworks/Index";
+            }
+            else if (data == "Successfull") {
+                document.getElementById("Popup1").style.display = "block";
+                $("#imgsocial").attr('src', '/Images/linkdicone.png');
+              
+            }
+            else if ((data != "Successfull") && (data != "LinkedLin")) {
+                $("#imgID").attr('src', '/Images/linkdicone.png');
+                $("#pop_wrapper").show();
+                $(".pop_content").show();
+
+            }
+        });
+    }
+
+    function fb_posting() {
+        $.post('@Url.Action("FacebookPost", "Basic")', { Type: "Files" }, function () {
+        }).done(function(data){
+            if(data == "Facebook") {
+                document.getElementById("buttonbg1").style.display = "block";
+                $('#socialname').text("Already post on Facebook");
+            }
+            if (data == "login error") {
+                location.href = "/Accounts/LoginUser";
+            }
+            if (data == "Linkpost") {
+                window.location = "LinkPost";
+            }
+            else if (data == "Index") {
+                location.href = "/SocialNetworks/Index";
+            }
+            else if (data == "Successfull") {
+                document.getElementById("Popup1").style.display = "block";
+                $("#imgsocial").attr('src', '/Images/ficone.png');
+               
+            }
+            else if ((data != "Successfull") && (data != "Facebook")) {
+                $("#imgID").attr('src', '/Images/ficone.png');
+                $("#pop_wrapper").show();
+                $(".pop_content").show();
+            }
+
+        });
+    }
+    function tw_posting() {
+        $.post('@Url.Action("TwitterPost", "Basic")', { Type: "Files" }, function () {
+        }).done(function (data)
+        {
+            if (data == "Twitter") {
+                document.getElementById("buttonbg2").style.display = "block";
+                $('#socialname1').text("Already post on Twitter");
+            }
+            if (data == "login error") {
+                location.href = "/Accounts/LoginUser";
+            }
+            if (data == "Linkpost") {
+                window.location = data;
+            }
+            else if (data == "Index") {
+                location.href = "/SocialNetworks/Index";
+            }
+            else if (data == "Successfull") {
+                document.getElementById("Popup1").style.display = "block";
+                $("#imgsocial").attr('src', '/img/ticone.png');
+              
+            }
+            else if ((data != "Successfull") && (data != "Twitter")) {
+                $("#imgID").attr('src', '/img/ticone.png');
+                $("#pop_wrapper").show();
+                $(".pop_content").show();
+
+            }
+        });
+    }
+    var i = 0;
+    function social() {
+
+        var socialarray = [];
+        if ($("#Facebook").is(':checked')) {
+            socialarray.push("Facebook");
+        }
+        if ($("#Linkedin").is(':checked')) {
+            socialarray.push("Linkedin");
+        }
+        if ($("#Twitter").is(':checked')) {
+            socialarray.push("Twitter");
+        }
+        if (i < socialarray.length) {
+            var val = socialarray[i];
+            i++;
+            return val;
+        }
+        return "";
+    }
+    function popup() {
+        $("#Popup1").hide();
+        $('#buttonbg1').attr('style', 'display:none');
+        var res1 = social();
+        if (res1 == "Linkedin") {
+            link_posting();
+        }
+        if (res1 == "Twitter") {
+            tw_posting();
+        }
+        
+    }
+    function popupTwitter() {
+        $("#Popup1").hide();
+        $('#buttonbg2').attr('style', 'display:none');
+        var res1 = social();
+        if (res1 == "Linkedin") {
+            link_posting();
+        }
+        if (res1 == "Facebook") {
+            fb_posting();
+        }
+
+    }
+    function popupLink()
+    {
+        $("#Popup1").hide();
+        $('#buttonbg3').attr('style', 'display:none');
+        var res1 = social();
+        if (res1 == "Facebook") {
+            fb_posting();
+        }
+        if (res1 == "Twitter") {
+            tw_posting();
+        }
+
+    }
+</script>
+
+
+
+<div id="Popup1" style="z-index: 999; margin-top: 5%; margin-left: 24%; width: 47%; height: 70%; display: none;">
+    <input type="button" style="background-image: url(/Images/closebotton.png); margin-left: 96%; background-color: black; border: medium none; width: 4%; height: 7%;" onclick="popup(); " />
+    <div class="socialboxas">
+        <img id="imgsocial" src="">
+    </div>
+    <div class="socialbox3s">
+        <img id="" src="/Images/apb_slide_img1.png" /><br />
+        <p>Credits</p>
+        <br />
+        <p>
+            &nbsp;&nbsp;2 Credit Received 
+            <img src="/img/right-icone.png" />
+        </p>
+    </div>
+</div>
+
+<div id="buttonbg1" style="display: none; background-image: url(/img/ErrorMSG.png); background-repeat: no-repeat; height: 15%; margin-left: 40%; position: absolute; margin-top: -38%; width: 400px; z-index: 999; height: 134px !important;">
+
+    <div class="errormsg">
+        <p id="socialname"></p>
+    </div>
+    <div id="button-c2">
+        <img src="/img/button_bgw.png" onclick="popup();" />
+    </div>
+</div>
+<div id="buttonbg2" style="display: none; background-image: url(/img/ErrorMSG.png); background-repeat: no-repeat; height: 15%; margin-left: 40%; position: absolute; margin-top: -38%; width: 400px; z-index: 999; height: 134px !important;">
+
+    <div class="errormsg">
+        <p id="socialname1"></p>
+    </div>
+    <div id="button-d2">
+        <img src="/img/button_bgw.png" onclick="popupTwitter();" style="width: 21%; margin-left: 47%; margin-bottom: -11%;" />
+    </div>
+</div>
+<div id="buttonbg3" style="display: none; background-image: url(/img/ErrorMSG.png); background-repeat: no-repeat; height: 15%; margin-left: 40%; position: absolute; margin-top: -38%; width: 400px; z-index: 999; height: 134px !important;">
+
+    <div class="errormsg">
+        <p id="socialname2"></p>
+    </div>
+    <div id="button-e2">
+        <img src="/img/button_bgw.png" onclick="popupLink();" style="width: 21%; margin-left: 47%; margin-bottom: -11%;" />
+    </div>
+</div>

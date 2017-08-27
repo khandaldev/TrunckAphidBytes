@@ -1,0 +1,10 @@
+﻿@import "partials/mixins";
+@import "partials/variables";
+
+.login-header { 
+    font-weight: bold; 
+    font-size: 1.3em;
+    img { 
+        max-height: 32px;
+    }
+}

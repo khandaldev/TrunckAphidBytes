@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/support")
+}
+
+@section scripts {
+    @Scripts.Render("~/js/home/support.js")
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 txt-center header-img">
+            <img src="~/img/support/contact-us.png" alt="contact us" class="table-center" />
+            Contact Us 
+        </div>
+    </div>
+
+    <div class="row row-offset-small">
+        <div class="col-md-12 txt-center">
+            <a href="mailto:Support@AphidByte.com">Support@AphidByte.com</a>
+        </div>
+    </div>
+</div>

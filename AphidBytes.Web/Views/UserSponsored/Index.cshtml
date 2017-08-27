@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+<div class="header_aphidtise">
+<div class="menunav" style="width:80%;">
+<ul>
+<li><a href="/Accounts/Services">Services</a></li>
+<li><a href="/Accounts/LoginUser">Login</a></li>
+<li><a href="#">The Gall</a></li>
+<li><a href="#">Store</a></li>
+<li><a href="/Accounts/AboutUsPage">About Us</a></li>
+<li><a href="/Accounts/Support">Support</a></li>
+</ul>
+</div>
+<div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a> </div>
+</div>
+<div class="about_headtext" style="height:10px;"></div>
+<div class="about_headbg" style="background:none !important;">
+    <br />
+<div class="user_sponsored">
+ <div><img src="/Images/user_sponsored_logo.png"></div>
+<div><p>You upload your file directly into the Matrix. File remains in the Matrix. Upload instantly!</p></div>
+<div><a href="UserSponsoredFileUploadAdminView">SELECT</a></div>
+
+<div><img src="/Images/sponsored_logo.png"></div>
+<div><p>Your file is placed in the Matrix for 90 days on the house. Sponsored individuals and companies are selected based on our random selection. Your file is uploaded directly into the Matrix by our staff under the AphidByte Sponsored Account.</p></div>
+
+
+
+</div>
+</div>
+
+<div class="menu_user">
+<ul>
+<li><a href="#">Navigation  </a></li>
+<li><a href="#">Menu    </a></li>
+<li><a href="#">Advertise   </a></li>
+<li><a href="#">Store     </a></li>
+<li><a href="#">Terms    </a></li>
+<li><a href="#">Privacy Policy </a></li>
+<li><a href="#" style="color:#ffc000;">Sponsoring</a></li>
+</ul>
+</div>
+<script language="javascript">
+$(document).ready(function(){
+
+	$('#about_slider_ab').cycle({
+		fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+		speed:  'slow', 
+   		timeout: 0,
+   		next:   '#next', 
+    	prev:   '#prev',
+    	pager:  '#thumb',
+    	 
+		pagerAnchorBuilder: function(idx, slide) { 
+        	return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>'; 
+    	}  
+	});
+	
+
+
+});	
+</script>
+ 
+

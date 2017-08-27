@@ -1,0 +1,328 @@
+﻿@model IEnumerable<AphidBytes.Accounts.Contracts.Model.GetPostData>
+@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+
+        $("#abc").mouseover(function () {
+            $("#pop-up-over-m").css('display', 'block');
+        })
+        $("#abc").mouseleave(function () {
+            $("#pop-up-over-m").css('display', 'none');
+        });
+
+    });
+
+   
+    var val;
+    function ShowPreview(track, cat) {
+
+        if (cat == 'Music')
+        {
+            val = 0;
+        }
+        if (cat == 'Video') { val= 1 };
+        if (cat == 'Photos') { val= 2 };
+        if (cat == 'Pdf') {val= 3};
+        if (cat == 'Files') {val= 4};
+
+        $.post('/Byter/filePrivew1', { Trackingnumber: track, category: val }, function (data)
+        {
+            window.location = data;
+        });
+    }
+    function AddToList(track) {
+        
+        $.post('/Byter/UpdateMessageData', { TrackingNo: track }, function (data) {
+            if (data == "True") {
+                location.reload();
+            } else {
+                alert("Already Added");
+            }
+        });
+    }
+    function categorychange(key) {
+       
+    }
+    function RemoveFromList(track) {
+        $.post('/Byter/DeleteMessageRecords', {Track:track}, function (data) {
+            if (data == true)
+            {
+                location.reload();
+            }
+        });
+    }
+
+    function ReduceCount(cou)
+    {
+       
+      
+        if (cou != 0) {
+            $.post('/Byter/ReduceMsgCount', {}, function (data) {
+                if (data == true) {
+                    var c = $("#pdfu").html();
+                 
+                    $("#pdfu").hide();
+                    var count = $("#MenuCount").html();
+                    
+                    var inner = parseInt(c);
+                    var outer = parseInt(count);
+                    var sub = outer - inner;
+                    
+                    $("#MenuCount").html(sub);
+                }
+            });
+        }
+    }
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+
+        @Html.Partial("~/Views/Byter/Shared/_ByterAccountNav.cshtml")
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="#" class="show-inbox">Inbox</a>
+                </div> 
+                <div class="col-sm-4">
+                    <a href="#" class="show-outbox">Outbox</a>
+                </div> 
+                <div class="col-sm-4">
+                    <a href="#" class="compose-new">New</a>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-sm-12 divider">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 message-card">
+                    <ul>
+                        <li><img src="/images/massage-g1pic.png"></li>
+                        <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+                        <li><img src="/images/sear-m-i.png"></li>
+                        <li><img src="/images/plus-m-i.png"></li>
+                        <li><img src="/images/close-m-i.png"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 message-card">
+                    <ul>
+                        <li><img src="/images/massage-g1pic.png"></li>
+                        <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+                        <li><img src="/images/sear-m-i.png"></li>
+                        <li><img src="/images/plus-m-i.png"></li>
+                        <li><img src="/images/close-m-i.png"></li>
+                    </ul>
+                </div>
+            </div>
+
+
+                @foreach (var item in Model)
+            {
+                    <div class="row">
+                        <div class="col-md-12 message-card">
+                            <ul>
+                                <li><img src="/images/massage-g1pic.png"></li>
+                                <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+                                <li><img src="/images/sear-m-i.png"></li>
+                                <li><img src="/images/plus-m-i.png"></li>
+                                <li><img src="/images/close-m-i.png"></li>
+                            </ul>
+                        </div>
+                        
+                        <ul>
+                            <li><img src="@item.profileimage"></li>
+                            <li>
+                                <p>
+                                    @item.Composer just sent you a
+                                    <samp class="red-tabtext">link</samp>
+                                    <span class="red-tabtext-2">@item.Path</span>  to post
+                                </p>
+                            </li>
+                            <li>
+                                <img src="/images/sear-m-i.png" onclick="ShowPreview('@item.TrackingId','@item.Category')">
+                            </li>
+                            <li>
+                                <img src="/images/plus-m-i.png" onclick="AddToList('@item.TrackingId')">
+                            </li>
+                            <li>
+                                <img src="/images/close-m-i.png" onclick="RemoveFromList('@item.TrackingId')">
+                            </li>
+                        </ul>
+                    </div>
+                }
+            </div>
+    </div>  
+</div>
+
+<div class="header_aphidtise">
+    <div id="logo">
+          <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+    </div>
+</div>
+<div class="headertab_aphidtise">
+
+    <div class="aphidbytecenter content scrollWidth" id="content_1" style="height: 600px;">
+        <div class="massage_index">
+            <div class="symbol-i"><a href="#" onclick="newabc()" id="abc">
+                <img src="/images/symbol-i.png"></a></div>
+
+            <div id="pop-up-over-m" style="margin-top: 10px;">
+                <img src="/images/symbol-i.png" class="i-pop-abhid">
+                <div class="pop-up-ov">
+                    <ul>
+                        <li>
+                            <img src="/images/sear-m-i.png"></li>
+                        <li>
+                            <p>
+                                Preview the link to Music, Video, EBook, Photography and Art files<p />
+                        </li>
+                    </ul>
+                </div>
+                <div class="pop-up-ov">
+                    <ul>
+                        <li>
+                            <img src="/images/plus-m-i.png"></li>
+                        <li>
+                            <p>
+                                Preview the link to Music, Video, EBook, Photography and Art files<p />
+                        </li>
+                    </ul>
+                </div>
+                <div class="pop-up-ov">
+                    <ul>
+                        <li>
+                            <img src="/images/close-m-i.png"></li>
+                        <li>
+                            <p>
+                                Preview the link to Music, Video, EBook, Photography and Art files<p />
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <ul id="tabs">
+                <li id=""><a href="#" name="tab1">Index</a>
+                   @* @if (ViewBag.MegCount)
+                    {
+                    <div class="in_c_text"></div>
+                    }*@
+                </li>
+                <li id=""><a href="#" name="tab2" onclick="ReduceCount('@ViewBag.MegCount')">Pending links for you
+                    <br />
+                    to Post</a>
+                    @if (ViewBag.MegCount!=0)
+                    {
+                         <div class="in_c_text" id="pdfu">@ViewBag.MegCount</div>
+                    }
+                    
+                </li>
+            </ul>
+
+            <div id="content" style="width: 100%!important; text-align: center;">
+                <div class="content-bodym">
+                    <div id="tab1" style="display: none; width: 100%;" class="tab1tex">
+                        <p>: You have earned @ViewBag.TotalCredit credits </p>
+                       
+                    </div>
+                    <div id="tab2" style="display: none; width: 100%;" class="tab1tex">
+                       
+
+                        @* <div class="tab2-boxtext">
+    <ul>
+    <li><img src="/images/massage-g1pic.png"></li>
+    <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+    <li><img src="/images/sear-m-i.png"></li>
+    <li><img src="/images/plus-m-i.png"></li>
+    <li><img src="/images/close-m-i.png"></li>
+    </ul>
+    </div><br/>*@
+                        @* <div class="tab2-boxtext">
+    <ul>
+    <li><img src="/images/massage-g2pic.png"></li>
+    <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+    <li><img src="/images/sear-m-i.png"></li>
+    <li><img src="/images/plus-m-i.png"></li>
+    <li><img src="/images/close-m-i.png"></li>
+    </ul>
+    </div><br/>*@
+                        @* <div class="tab2-boxtext" style="border-bottom:none;">
+    <ul>
+    <li><img src="/images/massage-g3pic.png"></li>
+    <li><p>“Lil Wayne” just sent you a <samp class="red-tabtext">link</samp> <span class="red-tabtext-2"> “http://www.aphidbyte.com/534..”</span>  to post</p></li>
+    <li><img src="/images/sear-m-i.png"></li>
+    <li><img src="/images/plus-m-i.png"></li>
+    <li><img src="/images/close-m-i.png"></li>
+    </ul>
+    </div><br/>*@
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="massage-footer-m">
+        <div class="massage-footer-m1">
+            <img src="/images/light-b-m.png"></div>
+        <div class="massage-footer-m2">
+            <p>These are the pending links of Composers you are subscribed to. You can post their links to yours social networks and receive credits for doing so.</p>
+        </div>
+    </div>
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script>
+<script>
+   
+
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+
+<script>
+    $(document).ready(function () {
+  
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    })(jQuery);
+</script>
+
+

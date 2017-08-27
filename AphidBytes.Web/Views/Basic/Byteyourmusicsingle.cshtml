@@ -1,0 +1,160 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.BasicGenerateCloneModel
+@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/clones")
+    @Styles.Render("~/Content/themes/base/css")
+@Styles.Render("~/Content/bootstrap-tokenfield/bootstrap-tokenfield.css")
+@Styles.Render("~/Content/bootstrap-tokenfield/tokenfield-typeahead.css")
+}
+@section scripts{
+    @Scripts.Render("~/js/home/clones.js")
+    @Scripts.Render("~/Scripts/bootstrap-tokenfield.js")
+<script>
+   
+    $('#txt-composer').tokenfield({
+
+
+
+
+        autocomplete: {
+            source: ['Brandon Cooper', 'Wess', 'Mario Gonzalez', 'Kurt Cobain', 'violet', 'brown', 'purple', 'black', 'white'],
+            delay: 100
+        },
+        showAutocompleteOnFocus: true
+    })
+    </script>
+}
+<div class="container-fluid">
+    
+    <div class="row">
+        @Html.Partial("~/Views/Basic/Shared/_BasicAccountNav.cshtml")
+        <div class="col-md-9">
+            @if (Model.Validation.HasCta)
+            {
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Partial("~/Views/Shared/_ValidationErrors.cshtml", Model.Validation)
+                    </div>
+                </div>
+            }
+            
+            <div class="row">
+                <div class="col-sm-12">
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "byteit-form", enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+
+                        <div >
+                            <img src="~/Images/UploadFileBackGround.png" style="width: 199px; height: 207px;  display: block;margin: 0 auto; object-fit: cover">
+                            <img src="~/img/info/upload.png" style="width: 44px; height: 44px; object-fit: cover; display: block;margin: 0 auto;">
+                        </div>
+                            <div class="form-group">
+                                <label for="txt-title" class="col-sm-3 control-label">Title:</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Title, new { id = "txt-title", @class = "form-control" })
+                                    <span class="required-field">*</span>
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+                                <label for="txt-name" class="col-sm-3 control-label">Artist Name:</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.ArtistName, new { id = "txt-name", @class = "form-control" })
+                                    <span class="required-field">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txt-album" class="col-sm-3 control-label">Album Title:</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.AlbumTitle, new { id = "txt-album", @class = "form-control" })
+                                    <span class="required-field">*</span>
+                                </div>
+                            </div>*@
+                            <div class="form-group">
+                                <label for="txt-thumb" class="col-sm-3 control-label">Thumbnail:</label>
+                                <div class="col-sm-6">
+                                    @Html.HiddenFor(model => model.MatrixImageServerId, new { id = "thumb-server" })
+                                    @Html.HiddenFor(model => model.MatrixImageServerPath, new { id = "thumb-path" })
+                                    @Html.HiddenFor(model => model.MatrixImageLength, new { id = "thumb-length" })
+                                    @Html.TextBoxFor(model => model.MatrixImage, new { type = "file", accept = "image/*", id = "txt-thumb", @class = "form-control" })
+                                    @* id = "txt-profilepicture", @class = "form-control", type = "file"  *@
+                                    <span class="required-field">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txt-thumb" class="col-sm-3 control-label">Track:</label>
+                                <div class="col-sm-6">
+                                    @Html.HiddenFor(model => model.AudioServerId, new { id = "audio-server" })
+                                    @Html.HiddenFor(model => model.AudioServerPath, new { id = "audio-path" })
+                                    @Html.HiddenFor(model => model.AudioLength, new { id = "audio-length" })
+                                    @Html.TextBoxFor(model => model.Audio, new { type = "file", accept = "audio/*", id = "txt-thumb", @class = "form-control" })
+                                    <span class="required-field">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txt-composer" class="col-sm-3 control-label">Composers:</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Composer, new { id = "txt-composer", @class = "form-control" })
+                                    <span class="required-field">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txt-producer" class="col-sm-3 control-label">Producers:</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Producer, new { id = "txt-producer", @class = "form-control" })
+                                    <span class="required-field">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txt-publisher" class="col-sm-3 control-label">Publisher:</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(model => model.Publisher, new { id = "txt-publisher", @class = "form-control" })
+                                    <span class="required-field">*</span>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <div class="form-group">
+                                <label for="txt-captcha" class="col-sm-3 control-label">Enter Captcha Code:</label>
+                                <div class="col-sm-6">
+                                    <p class="captcha">
+                                        <img id="cptcha" src="/Basic/ShowCaptchaImage">
+                                    </p>
+                                    @Html.TextBoxFor(model => model.Captcha, new { id = "txt-captcha", @class = "form-control" })
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <div class="form-group">
+                                <label for="txt-explicit" class="col-sm-3 control-label">Explicit Content:</label>
+                                <div class="col-sm-6">
+                                    @Html.DropDownListFor(model => model.ExplicitContent, new List<SelectListItem> {
+                                    new SelectListItem{Text="Yes"},
+                                    new SelectListItem{Text="No"}
+                                    }, new { id = "txt-explicit", @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                </div>
+                            </div>
+                            <div id="divProcessing" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: rgb(102, 102, 102); z-index: 30001; opacity: 0.8;">
+                                <p style="position: absolute; color: White; top: 50%; left: 45%;">
+                                    Loading, please wait...
+                                    <img src="~/Images/Loading.gif">
+                                </p>
+                            </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

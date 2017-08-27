@@ -1,0 +1,327 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+    
+	$("#abc").mouseover(function(){
+	$("#pop-up-over-m").css('display','block');
+		})
+		$("#abc").mouseleave(function(){
+			$("#pop-up-over-m").css('display','none');
+			});
+
+});
+</script>
+<script type="text/javascript" language="javascript">
+
+    function checklist(ctrl) {
+        $("#creditt-menu li").removeClass("credit-menu-bgli");
+        $("#one").removeClass("one123");
+        var list = document.getElementById("creditt-menu").getElementsByTagName('li');
+
+        for (i = 0; i < list.length; i++) {
+
+            // list[i].style.background = '#ffffff';
+
+        }
+
+        //ctrl.style.background = '#000';
+        $("#" + ctrl).addClass("credit-menu-bgli");
+    }
+
+</script>
+<script type="text/javascript">
+    // Run the script on DOM ready:
+    $(function () {
+        $('input').customInput();
+    });
+	</script>
+<div class="aphidtise_wrap">
+
+<div class="logid">
+
+<div class="logid_out">
+<ul>
+<li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+  <li><a href="~/Accounts/Logout">Logout</a></li>
+</ul>
+
+<div class="profilebg">
+<div class="migprofile"> <img src="/images/profilebg.png"> </div>
+<div class="info-logo"> <img src="/images/acinfo_logo.png"> </div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="header_aphidtise">
+<div id="logo"> <img src="/images/hphidbytelogo.png"> </div>
+</div>
+<div class="creditt-head-wrap">
+<div class="creditt-left-box">
+<p class="info-p">Credit Tracker > Links to postM</p>
+<div class="creditt-menu">
+<ul id="creditt-menu">
+<li onclick="checklist(this.id);" id="one"><a href="">Credit Summary</a></li>
+<li onclick="checklist(this.id);" id="two"><a href="">Posts Queue</a></li>
+<li onclick="checklist(this.id);" id="three" class="one123"><a href="">Links to PostM</a></li>
+<li onclick="checklist(this.id);" id="four"><a href="">Ad Credit Summary</a></li>
+</ul>
+</div>
+
+<div class="credit-head2-menu" style="margin-top:20px;">
+<p><a href="#">Sort Composers</a></p>
+<p><a href="#" style="color:#e46c0a;">A to Z</a></p>
+</div>
+
+<div class="credit-head2-menu">
+<p><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+<p><a href="#" style="color:#e46c0a;">Z to A</a></p>
+</div>
+</div>
+<div class="creditt-right-box">
+<div class="creditt-i-icon"><a href="#"><img src="/images/symbol-i.png"></a></div>
+<img src="/images/credits-bg.png">
+<p>96<br/>Credits</p>
+</div>
+
+<div class="credit-search-m1">
+<div class="credit-search-m2">
+<div class="credit-search-m3">
+<input name="" type="text">
+</div>
+<a href="#"><img src="/images/credits-bgsearch.png"></a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="headertab_aphidtise" style="margin-top:-60px; width:92%;">
+<div class="left-info" style="margin-top:-20px;">
+
+<ul class="infolist-menu">
+<li><a href="ByterAccountInfo">Account Info</a></li><li></li>
+<li><a href="Message">Messages</a>
+                 @if(ViewBag.MegCount!=0)
+                {
+                <div class="in_c_text_2">@ViewBag.MegCount</div>
+                }
+            </li>    <li></li>
+<li><a href="History">History</a></li><li></li>
+<li><a href="Playlists">Playlists</a></li><li></li>
+<li><a href="ByterCreditSummary">Credit Tracker</a></li><li><img src="/images/right_line.png"></li>
+<li><a href="CreditSubscription" style=" background:url(/images/imfo-bmenu-2.png);height: 31px; line-height: 17px;padding-bottom: 7px; padding-top: 7px; width: 103px;">Credit <br/> Subscriptions</a>
+</li>
+</ul>
+
+<div class="info-right"></div>
+<div class="info-footer-social"></div>
+
+</div>
+
+
+
+<div class="aphidbytecenter content scrollWidth" id="content_3" style="height:400px; margin-top:15px; width:71%;">
+<div class="massage_index3" style="width:95%;">
+<div style="width:100%; height:400px; margin:auto;">
+<br/>
+<!-- Table goes in the document BODY -->
+<table width="100%" class="gradienttable3">
+  <tr>
+    <th style="width:5%;"  class="table-tha"></th>
+    <th style="width:10%;" class="tableth-1"><p>Composer</p></th>
+    <th style="width:10%;" class="tableth-1"><p>Title</p></th>
+    <th style="width:10%;" class="tableth-1"><p>Category</p></th>
+    <th style="width:5%;"  class="tableth-1"><p>Credits</p></th>
+    <th style="width:5%;"  class="tableth-1"><p>Action</p></th>
+    <th style="width:15%;" class="tableth-1"><p>Post to your Networks</p></th>
+  
+  </tr>
+  <tr>
+    <td class="table-tha"><input type="checkbox" name="genre" id="check-1" value="action" />
+	                      <label for="check-1"></label>
+                          </td>
+    <td class="table-trb3"><p>Lil Wayne</p></td>
+    <td class="table-trb3"><p>Lollipop</p></td>
+    <td class="table-trb3" align="center"><p>Videos</p></td>
+    <td class="table-trb3" align="center"><p>3</p></td>
+    <td class="table-trb3" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb3">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb4"><p>Nicki Minaj</p></td>
+    <td class="table-trb4"><p>Moment for Life </td>
+    <td class="table-trb4" align="center"><p>Videos</p></td>
+    <td class="table-trb4" align="center"><p>3</p></td>
+    <td class="table-trb4" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb3"><p>Madonna</p></td>
+    <td class="table-trb3"><p>file2</p></td>
+    <td class="table-trb3" align="center"><p>Music</p></td>
+    <td class="table-trb3" align="center"><p>1</p></td>
+    <td class="table-trb3" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb3">
+    <div class="check-box1">
+     <p><input type="checkbox" name="genre" id="check-2" value="action" />
+	    <label for="check-2" ></label></p>
+    
+    <p>d</p>
+    <p>d</p>
+    <p>d</p> 
+    </div>	
+    </td>
+  </tr>
+  <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb4"><p>Nicki Minaj</p></td>
+    <td class="table-trb4"><p>Starships</p></td>
+    <td class="table-trb4" align="center"><p>Ebook</p></td>
+    <td class="table-trb4" align="center"><p>1</p></td>
+    <td class="table-trb4" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb3"><p>Kanye</p> </td>
+    <td class="table-trb3"><p>Flashing Lights</p></td>
+    <td class="table-trb3" align="center"><p>Music</p></td>
+    <td class="table-trb3" align="center"><p>3</p></td>
+    <td class="table-trb3" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb3">&nbsp;</td>
+  </tr>
+   <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb4"><p>Fat Joe</p></td>
+    <td class="table-trb4"><p>Make it rain</p></td>
+    <td class="table-trb4" align="center"><p>Videos</p></td>
+    <td class="table-trb4" align="center"><p>2</p></td>
+    <td class="table-trb4" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb4">&nbsp;</td>
+  </tr>
+   <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb3"><p>Universal Movies</p></td>
+    <td class="table-trb3"><p>Batman</p></td>
+    <td class="table-trb3" align="center"><p>Videos</p></td>
+    <td class="table-trb3" align="center"><p>1</p></td>
+    <td class="table-trb3" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb3">&nbsp;</td>
+  </tr>
+   <tr>
+    <td class="table-tha"><input type="checkbox" name="" value="action" /></td>
+    <td class="table-trb4"><p>Johnny Depp</p></td>
+    <td class="table-trb4"><p>Blow</p></td>
+    <td class="table-trb4" align="center"><p>Zip File</p></td>
+    <td class="table-trb4" align="center"><p>2</p></td>
+    <td class="table-trb4" align="center"><p><img src="/images/sear-mcredit-i.png"></p></td>
+    <td class="table-trb4">&nbsp;</td>
+  </tr>
+</table>
+
+
+
+<!-- Table goes in the document BODY -->
+
+</div>
+</div>
+</div>
+
+<div class="massage-footer-m">
+ 
+</div>
+</div>
+
+
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+
+<script>
+    $(document).ready(function () {
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+</script>
+
+<script type="text/jscript">
+    function divClicked() {
+        var divHtml = [];
+
+        $("#mydiv div").each(function () {
+            divHtml.push($(this).html());
+            var editableText = $("<input type='text' />");
+            editableText.val($(this).html());
+            $(this).replaceWith(editableText);
+            editableText.blur(editableTextBlurred);
+        });
+        editableText.focus();
+        // setup the blur event for this new textarea
+
+    }
+
+    function editableTextBlurred() {
+        var html = $(this).val();
+        var viewableText = $("<div>");
+        viewableText.html(html);
+        $(this).replaceWith(viewableText);
+        // setup the click event for this new div
+        //  viewableText.click(divClicked);
+    }
+
+    $(document).ready(function () {
+        $("#buttonclick").click(divClicked);
+    });
+
+</script>
+
+
+
+	<script type="text/javascript">
+	    // Run the script on DOM ready:
+	    $(function () {
+	        $('input').customInput();
+	    });
+	</script>
+
+
+

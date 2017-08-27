@@ -1,0 +1,283 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+ <script type="text/javascript">
+$(document).ready(function(e) {
+    
+	$("#abc").mouseover(function(){
+	$("#pop-up-over-m").css('display','block');
+		})
+		$("#abc").mouseleave(function(){
+			$("#pop-up-over-m").css('display','none');
+			});
+
+});
+</script>
+<script type="text/javascript" language="javascript">
+
+    function checklist(ctrl) {
+        $("#creditt-menu li").removeClass("credit-menu-bgli");
+        $("#one").removeClass("one123");
+        var list = document.getElementById("creditt-menu").getElementsByTagName('li');
+
+        for (i = 0; i < list.length; i++) {
+
+            // list[i].style.background = '#ffffff';
+
+        }
+
+        //ctrl.style.background = '#000';
+        $("#" + ctrl).addClass("credit-menu-bgli");
+    }
+
+
+</script>
+<div class="aphidtise_wrap">
+
+<div class="logid">
+
+<div class="logid_out">
+    
+@section LogOut
+{
+<ul>
+     
+<li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+  <li><a href="~/Accounts/Logout">Logout</a></li>
+</ul>
+
+<div class="profilebg">
+< <div class="migprofile">
+         
+            <img src="@Url.Action("Overview", "Byter")" height="100px" />
+        </div>
+<div class="info-logo"> <img src="/images/acinfo_logo.png"> </div>
+</div>
+    }
+</div>
+</div>
+
+</div>
+
+<div class="header_aphidtise">
+<div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a> </div>
+</div>
+<div class="creditt-head-wrap">
+<div class="creditt-left-box">
+<p class="info-p">Credit Tracker > Ad Credit Summary</p>
+<div class="creditt-menu">
+<ul id="creditt-menu">
+<li onclick="checklist(this.id);" id="one" ><a href="">Credit Summary</a></li>
+<li onclick="checklist(this.id);" id="two"><a href="">Posts Queue</a></li>
+<li onclick="checklist(this.id);" id="three"><a href="">Links to PostM</a></li>
+<li onclick="checklist(this.id);" id="four"class="one123"><a href="">Ad Credit Summary</a></li>
+</ul>
+</div>
+
+<div class="credit-head2-menu" style="margin-top:20px;">
+<p><a href="#">Sort Composers</a></p>
+<p><a href="#" style="color:#e46c0a;">A to Z</a></p>
+</div>
+
+<div class="credit-head2-menu">
+<p><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+<p><a href="#" style="color:#e46c0a;">Z to A</a></p>
+</div>
+</div>
+<div class="creditt-right-box">
+<div class="creditt-i-icon"><a href="#"><img src="/images/symbol-i.png"></a></div>
+<img src="/images/credits-bg.png">
+<p>96<br/>Credits</p>
+</div>
+
+<div class="credit-search-m1">
+<div class="credit-search-m2">
+<div class="credit-search-m3">
+<input name="" type="text">
+</div>
+<a href="#"><img src="/images/credits-bgsearch.png"></a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="headertab_aphidtise" style="margin-top:-60px;">
+<div class="left-info" style="margin-top:-20px;">
+
+<ul class="infolist-menu">
+<li><a href="ByterAccountInfo">Account Info</a></li><li></li>
+<li><a href="Message">Messages</a></li><li></li>
+<li><a href="Message">Messages</a><div class="in_c_text_2">@ViewBag.MegCount</div></li>
+<li><a href="Playlists">Playlists</a></li><li></li>
+<li><a href="ByterCreditSummary" class="basicselects">Credit Tracker</a></li><li>@*<img src="/images/right_line.png"></li>*@
+<li><a href="CreditSubscription" style=" height: 31px; line-height: 17px;padding-bottom: 7px; padding-top: 7px; width: 103px;">Credit <br/> Subscriptions</a>
+</li>
+</ul>
+
+<div class="info-right"></div>
+<div class="info-footer-social"></div>
+
+</div>
+
+
+
+<div class="aphidbytecenter content scrollWidth" id="content_4" style="height:400px; margin-top:15px;">
+<div class="massage_index4">
+<div style="width:100%; height:400px; margin:auto;">
+<br/>
+<!-- Table goes in the document BODY -->
+<table align="center" class="gradienttable">
+<tr>
+	<th><p>Title</p>
+    </th><th><p>Type</p></th>
+    <th><p>Credits</p></th>
+     <th><p>Composer</p></th>
+   
+
+</tr>
+<tr>
+	<td><p>Lollipop</p></td>
+    <td align="center"><p>Purchase</p></td>
+    <td align="center"><p>3</p></td>
+    <td><p>Lil Wayne</p></td>
+  
+  
+</tr>
+<tr>
+	<td><p>Moment for Life</p></td>
+    <td align="center"><p>Purchase</p></td>
+    <td align="center"><p>23</p></td>
+    <td><p>Nicki Minaj</p></td>
+   
+  
+</tr>
+<tr>
+    <td> <p>file2</p></td>
+    <td align="center"><p>Survey</p></td>
+    <td align="center"><p>8</p></td>
+    <td><p>Artisan Home</p></td>
+  
+  
+</tr>
+<tr>
+  <td><p>Starships</p></td>
+  <td align="center"><p>Watched</p></td>
+  <td align="center"><p>5</p></td>
+  <td><p>Nicki Minaj</p></td>
+
+</tr>
+<tr>
+  <td><p>Flashing Lights</p></td>
+  <td align="center"><p>Purchase</p></td>
+  <td align="center"><p>9</p></td>
+  <td><p>Kanye West</p></td>
+ 
+</tr>
+<tr>
+  <td><p>Make it rain</p></td>
+  <td align="center"><p>Watched</p></td>
+  <td align="center"><p>11</p></td>
+  <td><p>Fat Joe</p></td>
+
+</tr>
+<tr>
+  <td><p>Batman</p></td>
+  <td align="center"><p>Purchased Movie Ticket</p></td>
+  <td align="center"><p>14</p></td>
+  <td><p>Universal Movies</p></td>
+ 
+</tr>
+<tr>
+  <td><p>Blow</p></td>
+  <td align="center"><p>Purchased Movie Ticket</p></td>
+  <td align="center"><p>16</p></td>
+  <td><p>Johnny Depp</p></td>
+
+</tr>
+</table>
+
+
+</div>
+</div>
+</div>
+
+<div class="massage-footer-m">
+ 
+</div>
+</div>
+
+
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+
+<script>
+    $(document).ready(function () {
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+</script>
+
+<script type="text/jscript">
+    function divClicked() {
+        var divHtml = [];
+
+        $("#mydiv div").each(function () {
+            divHtml.push($(this).html());
+            var editableText = $("<input type='text' />");
+            editableText.val($(this).html());
+            $(this).replaceWith(editableText);
+            editableText.blur(editableTextBlurred);
+        });
+        editableText.focus();
+        // setup the blur event for this new textarea
+
+    }
+
+    function editableTextBlurred() {
+        var html = $(this).val();
+        var viewableText = $("<div>");
+        viewableText.html(html);
+        $(this).replaceWith(viewableText);
+        // setup the click event for this new div
+        //  viewableText.click(divClicked);
+    }
+
+    $(document).ready(function () {
+        $("#buttonclick").click(divClicked);
+    });
+    </script>
+   
+ 

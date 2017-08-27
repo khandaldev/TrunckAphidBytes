@@ -1,0 +1,103 @@
+﻿@using AphidBytes.Web.Session_Helper
+
+<!DOCTYPE html>
+
+@{
+    var accountInfoLink = Url.Action("LoginorSignUp", "Accounts");
+    var signUpLink = Url.Action("Index", "Register");
+    IAphidIdentity aphidIdentity = null;
+
+    if (AphidBytes.Web.Session_Helper.AphidSession.Current.IsAuthenticated)
+    {
+        aphidIdentity = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity;
+
+        switch (aphidIdentity.AccountTypeId)
+        {
+            /* case 1:
+                 accountInfoLink = Url.Action("BasicAccountInfo", "Basic");
+                 break;
+             case 2:
+                 accountInfoLink = Url.Action("AphidTiseAccountInfo", "AphidTise");
+                 break;
+             case 3:
+                 accountInfoLink = Url.Action("ByterAccountInfo", "Byter");
+                 break;
+             case 4:
+                 accountInfoLink = Url.Action("PremiumAccountInfo", "Premium");
+                 break;
+             case 5:
+                 accountInfoLink = Url.Action("EditNewRelease", "Home");
+                 break;
+             case 6:
+                 accountInfoLink = Url.Action("AphidLabsAccountInfo", "AphidLabs");
+                 break;
+             case 7:
+                 accountInfoLink = Url.Action("EditNewRelease", "Home");
+                 break;*/
+            case 1:
+                accountInfoLink = Url.Action("ByterAccountInfo", "Byter");
+                break;
+            case 2:
+                accountInfoLink = Url.Action("BasicAccountInfo", "Basic");
+                break;
+            case 3:
+                accountInfoLink = Url.Action("PremiumAccountInfo", "Premium");
+                break;
+            case 4:
+                accountInfoLink = Url.Action("AphidLabsAccountInfo", "AphidLabs");
+                break;
+            default:
+                accountInfoLink = Url.Action("Index", "Home");
+                break;
+        }
+
+        signUpLink = accountInfoLink;
+    }
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+    <title>@(string.IsNullOrWhiteSpace(ViewBag.PageTitle) ? "AphidByte" : ViewBag.PageTitle)</title>
+
+
+    @Styles.Render("~/bundles/css/layout-matrix")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @RenderSection("HeadScripts", required: false)
+</head>
+    <body>
+        <div class="background-div">
+            <img src="/Images/Demo4.gif" alt="matrix" /> 
+            <div class="darken"> </div>
+        </div> 
+        <div class="content">
+            @RenderBody()
+
+            <nav class="navbar navbar-default navbar-fixed-bottom footer-nav">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav navbar-center navbar-footer">
+                        <li><a href="@accountInfoLink">Navigation Menu</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="@Url.Action("ContactUs", "Accounts")">Contact</a></li>
+                        <li><a href="#">Store</a></li>
+                        <li><a href="@Url.Action("Terms", "Accounts")" target="_blank">Terms</a></li>
+                        <li><a href="@Url.Action("PrivacyPolicy", "Accounts")" target="_blank">Privacy Policy</a></li>
+                        <li><a href="@signUpLink">Sign Up</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        @RenderSection("scripts", required: false)
+        <script>
+            $("#closeicon").show();
+            $("#closebox").click(function (event) {
+                event.preventDefault();
+                $(this).hide();
+            });
+        </script>
+    </body>
+</html>

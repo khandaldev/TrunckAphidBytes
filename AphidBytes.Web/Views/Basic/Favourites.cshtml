@@ -1,0 +1,376 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.MessageModel
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $("#abc").mouseover(function () {
+            $("#pop-up-over-m").css('display', 'block');
+        })
+        $("#abc").mouseleave(function () {
+            $("#pop-up-over-m").css('display', 'none');
+        });
+
+    });
+
+</script>
+
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="@Url.Action("Overview", "Basic")" height="100px" />
+                </div>
+                <div class="profiletext-ct-info">
+                    <img src="/images/clone-pa.png">
+                    Basic Account
+                </div>
+            </div>
+
+        </div>
+
+        <div class="header_aphidtise">
+            <div id="logo" style="margin-top: 9px;">
+               <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/Images/hphidbytelogo.png"></a>
+                <br />
+                <br />
+
+            </div>
+
+            <div class="zplay-list1">
+                <div class="zplay-main1">
+                    <div class="zplay_grid1">
+                        <p class="info-p"><a href="~/Basic/Playlist">Playlists</a> > Favorites</p>
+                    </div>
+                    <div class="zplay_grid1">
+                        <div class="zplay_grid01">
+                            <img src="/Images/favorites_ms.png" id="buttonclick2">
+                        </div>
+                        <div class="zplay_grid02">
+                            <p>Favorites</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="headertab_aphidtise" style="margin-top: 50px; margin-left: 65px;">
+            <div class="aphidbyteleft">
+
+                <ul class="aphidbytelist-tq">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <li><a href="BAsicAccountInfo">Account Info</a></li>
+                    <li></li>
+                    <li><a href="Uploadmedia">Upload</a></li>
+                    <li></li>
+                    <li><a href="Message">Messages</a></li>
+                    @if (Model.NewCount != 0)
+                    {
+                       <p class="in_c_text_4">@Model.NewCount</p> 
+                    }
+                    <li></li>
+                    <li><a href="bytetracker">Byte Tracker</a></li>
+                    <li></li>
+                    <li><a href="History">History</a></li>
+                    <li></li>
+                    <li><a href="Playlist">Playlists</a></li>
+                    <li>
+                        @*<img src="/images/right_line.png" height="2"></li>*@
+                    <li><a href="Dataplan">Data Plan</a></li>
+                    <li></li>
+                </ul>
+
+                <div class="dsbox">
+                    <p>Dashboard<img src="/images/das-left.png" class="dsboxp"></p>
+                </div>
+                <p class="dstext">
+                    UPGRADE to
+            <samp id="upgradePremium" style="cursor:pointer;">Premium</samp>
+                </p>
+
+                <div class="info-footer-social">
+                    <div style="margin: 11px 0 0 50px; height: 80px;">
+                        <p></p>
+                        <p class="byter-pt" style="width: 50%; margin-left: 15px;"></p>
+                        <p class="byter-pt" style="width: 50%; margin-left: 15px; margin-top: 20px;"></p>
+                    </div>
+
+
+                </div>
+                <div class="aphidbyteleftright-info"></div>
+            </div>
+
+
+
+            <div class="aphidbytecenter content scrollWidth" id="content_1" style="height: 600px; margin-top: 85px;">
+                <div class="massage_index">
+
+                    <div class="add-playlist-da" id="closebox">
+                        <div class="tab2-boxtext-2z">
+                            @if (ViewBag.PostdataFavourites != null)
+                            {
+                                foreach (var item in ViewBag.PostdataFavourites)
+                                {
+                                <ul>
+                                    <li>
+                                        <p id="@item.TrackingNumber" class="rec_pre" style="cursor:pointer; color: white; font-family: arial; font-size: 14px; margin-left: 0; margin-top: 0; text-align: center; width: 200px;">@item.FileName</p>
+                                    </li>
+                                    <li><a href="#" style="cursor: pointer; float: right; margin-left: 30%; margin-top: -1%; position: absolute;">
+                                        <img id="@item.TrackingNumber" class="cl_butn" src="/Images/close-m-i.png"></a></li>
+                                </ul>
+                                }
+                            }
+                            else
+                            {
+                                <div style="color: white;">Favourite List Currently Empty..</div> 
+                            }
+                        </div>
+
+                        <div id="pop-up-over-m" style="margin-top: 10px;">
+                            <img src="/Images/symbol-i.png" class="i-pop-abhid">
+
+                            <div class="pop-up-ov">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="massage-footer-m">
+            <div class="limitplaylist">Limit is 10 playlists. 20 files per playlist.</div>
+
+        </div>
+        <div class="black_screen" style="display: none;"></div>
+        <div id="closeboxa" style="display: none;">
+            <img class="cl_h11_img" src="/img/overboxbg.png">
+            <div class="closetext">
+                <a href="#" id="closebta">
+                    <img src="/img/close.png" onclick="DialogCloseFunction()"></a>
+                <div class="texmpi-c">
+                    <img src="/img/mixbotton.png">
+                </div>
+                <ul id="addpl" class="texmpi-ct">
+                </ul>
+                <div class="effectpic">
+                    <img src="/img/effectsbg.png">
+                </div>
+
+            </div>
+        </div>
+
+        @*YesNo PopUP*@
+        <div id="yesno" style="display: none;">
+            <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+                <div class="bg_yes_no">
+                    <div>
+                        <p>Delete from Favourites?</p>
+                    </div>
+                    <div>
+                        <p id="yes"><a>Yes</a></p>
+                        <p id="no"><a>No</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*YesNo PopUP*@
+        @*mssg PopUP*@
+        <div id="msgbox" style="display: none;">
+            <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+                <div class="bg_yes_no">
+                    <div>
+                        <p>Item deleted from Favorites..</p>
+                    </div>
+                    <div>
+                        <p id="okk" style="margin-left: 27%;"><a>OK</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*mssg PopUP*@
+        @*errmssg PopUP*@
+        <div id="errmsgbox" style="display: none;">
+            <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+                <div class="bg_yes_no">
+                    <div>
+                        <p>Error deleting from Favorites..</p>
+                    </div>
+                    <div>
+                        <p id="eokk" style="margin-left: 27%;"><a>OK</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*errmssg PopUP*@
+
+
+        <div id="confmBox" class="confirm_send_mail_div sendme_con" style="display:none;">
+    
+    <div>
+        <h5 class="sendme_con_h5">
+         Confirmation:<img onclick="close_confmBox_popup()" class="cancel_delete-link" style="cursor: pointer; float: right; margin-top: 7px;" src="/Images/close.png">
+        </h5>
+        <p style="margin-top:8%;">
+         <strong>Are you Sure want to Upgrade ?</strong> <span id="Ncontacts">
+</span>
+        </p>
+       
+
+        <div class="btn-group sendme_con_groupbtn">
+         <button id="confrm_yes"  class="btn add  sendme_con_yes" onclick="UpgradeTOPremium()">Yes</button>
+         <div class="btn cancel sendme_con_no" onclick="close_confmBox_popup()" style="cursor: pointer;">No</div>
+        </div>
+
+       </div>
+      </div>
+<div id="yesnope" style="display:none;">
+<div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+<div class="bg_yes_no">
+<div><p>Are you sure to Upgrade?</p></div>
+<div><p id="yes"><a href="#">Yes</a></p><p id="no"><a href="#">No</a></p></div>
+    </div>
+</div>
+</div>
+
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Error Occured Try Again
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" /></div>
+
+</div>
+
+<div style="display:none;" id="upgradebox">
+<div class="bg_othr_box">
+<div class="bg_othr_box_1">
+<P>Account Upgraded Successfully Completed</P>
+<p></p>
+<p style="margin-top: 22px; margin-left: 137px;"><img src="~/Images/right-icone.png"></p>
+
+<P style="margin-top: 88px;"><a href="~/Accounts/Logout">OK</a></P>
+</div>
+</div>
+</div>
+
+
+
+
+
+        <script src="jquery.mCustomScrollbar.js"></script>
+        <script type="text/jscript">
+
+            function BackToMainPlaylist() {
+                location.href = "/Basic/Playlist";
+            }
+
+            (function ($) {
+                var track;
+                $('#no').click(function () {
+                    $("#yesno").hide();
+                });
+                $('#okk').click(function () {
+                    $('#msgbox').hide();
+                    location.href = "/Basic/Favourites"
+                });
+                $('#eokk').click(function () {
+                    $('#errmsgbox').hide();
+                    location.href = "/Basic/Favourites"
+                });
+                $('.cl_butn').click(function () {
+                    track = $(this).attr('id');
+                    $('#yes').attr('class',track);
+                    $("#yesno").attr('style', 'display:block; margin-top: -77%; margin-left: -9%;');
+                    $('#yes').click(function () {
+                        track=$(this).attr('class');
+                        $.post('/Basic/DelfromFav', { TrackingID: track }, function () { $("#yesno").hide(); }).done(function (data) {
+                            if (data == true) {
+                                $('#msgbox').attr('style', 'display:block; margin-top: -77%; margin-left: -9%;');
+                            } else {
+                                $('#errmsgbox').attr('style', 'display:block; margin-top: -77%; margin-left: -9%;');
+                            }
+
+                        });
+                    });
+                });
+
+                $('.rec_pre').click(function () {
+                    var aaa = $(this).attr('id');
+                    $.post('/Basic/fetchcat', { trackno: aaa }, function (data) {
+                        window.location = data;
+                    });
+                });
+
+                $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+                $(".browseInput").each(function (index) {
+                    if (index > 3)
+                        $(this).remove();
+                });
+                $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+                $(window).load(function () {
+                    $(".content").mCustomScrollbar();
+                });
+            })(jQuery);
+
+
+            $(document).ready(function () {
+                $('#upgradePremium').click(function () {
+                    $("#yesnope").attr('style', 'display:block');
+                });
+
+                $("#yes").click(function () {
+                    $("#yesnope").attr('style', 'display:none');
+                    $.post('/Basic/UpgardeToPremium', {}, function (data) {
+                        if (data == "Success") {
+
+                            $("#upgradebox").attr('style', 'display:block');
+                        } else { $("#button-bg4").attr('style', 'display:block'); }
+
+                    });
+
+                });
+                $("#no").click(function () {
+                    $("#yesnope").attr("style", "display:none");
+                });
+
+
+
+
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li:first").attr("id", "current"); // Activate the first tab
+                $("#content #tab1").fadeIn(); // Show first tab's content
+
+                $('#tabs a').click(function (e) {
+                    e.preventDefault();
+                    if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                        return;
+                    }
+                    else {
+                        $("#content").find("[id^='tab']").hide(); // Hide all content
+                        $("#tabs li").attr("id", ""); //Reset id's
+                        $(this).parent().attr("id", "current"); // Activate this
+                        $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+                    }
+                });
+
+            });
+
+        </script>

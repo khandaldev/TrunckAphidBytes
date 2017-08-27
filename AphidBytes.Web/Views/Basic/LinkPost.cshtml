@@ -1,0 +1,740 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.MessageModel
+           
+
+<div class="header_aphidtise">
+    <div id="logo">
+        <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+    </div>
+</div>
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <img src="@Url.Action("Overview", "Basic")" height="100px" />
+                <div class="profiletext-ct-info">
+                    <img src="/images/clone-pa.png">
+                    Basic Account
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="confmBox" class="confirm_send_mail_div sendme_con" style="display:none;">
+    
+    <div>
+        <h5 class="sendme_con_h5">
+         Confirmation:<img onclick="close_confmBox_popup()" class="cancel_delete-link" style="cursor: pointer; float: right; margin-top: 7px;" src="/Images/close.png">
+        </h5>
+        <p style="margin-top:8%;">
+         <strong>Are you Sure want to Upgrade ?</strong> <span id="Ncontacts">
+</span>
+        </p>
+       
+
+        <div class="btn-group sendme_con_groupbtn">
+         <button id="confrm_yes"  class="btn add  sendme_con_yes" onclick="UpgradeTOPremium()">Yes</button>
+         <div class="btn cancel sendme_con_no" onclick="close_confmBox_popup()" style="cursor: pointer;">No</div>
+        </div>
+
+       </div>
+      </div>
+<div id="yesno" style="display:none;">
+<div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+<div class="bg_yes_no">
+<div><p>Are you sure to Upgrade?</p></div>
+<div><p id="yes"><a href="#">Yes</a></p><p id="no"><a href="#">No</a></p></div>
+    </div>
+</div>
+</div>
+
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Error Occured Try Again
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" /></div>
+
+</div>
+
+<div style="display:none;" id="upgradebox">
+<div class="bg_othr_box">
+<div class="bg_othr_box_1">
+<P>Account Upgraded Successfully Completed</P>
+<p></p>
+<p style="margin-top: 22px; margin-left: 137px;"><img src="~/Images/right-icone.png"></p>
+
+<P style="margin-top: 88px;"><a href="~/Accounts/Logout">OK</a></P>
+</div>
+</div>
+</div>
+<div id="yesnodel" style="display: none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div>
+                <p>Are you sure want to delete?</p>
+            </div>
+            <div>
+                <p id="yesdel"><a>Yes</a></p>
+                <p id="nodel"><a>No</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="creditt-head-wrap">
+    <div class="cr-left-box">
+        <p class="info-p" style="cursor:pointer;"><span id="genclone"> Upload</span><span id="createlnk">> Create Link Posts > Select From Byte Tracker</span></p>
+    </div>
+
+   <div class="byter-hederfind" id="re_t2">
+        <div style="width: 20%;"><a href="#" id="edit">Edit</a>
+            <img src="/images/symboli.png" style="position: absolute; width: 20px; margin-top: -15px;">
+        </div>
+        <div class="sort-byter">
+            @*<p>Sort Title&nbsp;&nbsp;*@
+                @*<samp id="" class="order"><a href="#">A to Z</a></samp></p>*@
+            <@*p style="margin-left: 75px;"><samp class="order"><a href="#">Z to A</a></samp></p>*@
+        </div>
+        <div>                                            
+            <input type="text" class="credit-search-m3" />
+        </div>
+       <div style="margin-left: -6%;">
+           <a href="#"><img src="/images/credits-bgsearch.png" id="search"></a>
+           <samp id="A to Z" class="order"><a href="#"><img style="width: 26px !important; height: auto;" src="/images/filtericon.png" id="search"></a>
+</div>
+        <div style="position: relative; z-index: 999; margin-left: 62%; margin-top: -6%;">
+            <dl id="samplebyterbyter" class="dropdownbyter" style="margin: 0px 0 0px 5px; width: 210px;">
+                <dt><a id="basicbyter"><span style="color: #be9401;">Music</span></a></dt>
+                <dd>
+                    <ul id="byterclick">
+                        <li class="getname"><a>Video</a></li>
+                        <li class="getname"><a>Pdf</a></li>
+                        <li class="getname"><a>Photos</a></li>
+                        <li class="getname"><a>Music</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <li>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="headertab_aphidtise" style="margin-top: -130px; margin-left: 65px;">
+    <div class="aphidbyteleft">
+
+        <ul class="aphidbytelist-tq">
+            <li><a href="BasicAccountInfo">Account Info</a></li>
+            <li></li>
+            <li><a href="Uploadmedia">Upload</a></li>
+            <li>
+                @*<img src="/images/right_line.png" height="2"></li>*@
+            <li><a href="Message">Messages</a></li>
+            @if (Model.NewCount != 0)
+            {
+               <p class="in_c_text_4">@Model.NewCount</p> 
+            }
+            <li></li>
+            <li><a href="Bytetracker">Byte Tracker</a></li>
+            <li></li>
+            <li><a href="History">History</a></li>
+            <li></li>
+            <li><a href="PLaylist">Playlists</a></li>
+            <li></li>
+            <li><a href="Dataplan">Data Plan</a></li>
+            <li></li>
+        </ul>
+
+        <div class="dsbox">
+            <p>Dashboard<img src="/images/das-left.png" class="dsboxp"></p>
+        </div>
+        <p class="dstext">UPGRADE to
+            <samp id="upgradePremium" style="cursor:pointer;">Premium</samp></p>
+
+        <div class="info-footer-social">
+            <div style="margin: 11px 0 0 50px; height: 80px;">
+                <p>
+                    <img src="/images/byter-fbox.png" width="169%" height="23"></p>
+                <p class="byter-pt" style="width: 50%; margin-left: 15px;">(P) = Parent Clone</p>
+                <p class="byter-pt" style="width: 50%; margin-left: 15px; margin-top: 20px;">(T) = Total</p>
+            </div>
+
+
+        </div>
+        @*<div class="aphidbyteleftright-info"></div>*@
+    </div>
+
+
+
+    <div class="aphidbytecenter content scrollWidth" id="content_1" style="height: 400px; margin-top:70px; width: 70%;">
+        <div class="massage_index">
+            <div style="width: 100%; height: 400px; margin: auto; margin-top:0px;">
+                <br />
+                <!-- Table goes in the document BODY -->
+                <table align="center" id="table1" class="gradienttablebyter" style="width: 100%; margin-left: 20px;margin-top:5px">
+                    <tr>
+                        <th style="width: 13%;">
+                            <p>Title</p>
+                        </th>
+                        <th style="width: 10%;">
+                            <p>Channel</p>
+                        </th>
+                        <th style="width: 10%;">
+                            <p># of Clones</p>
+                        </th>
+                        <th style="width: 10%;">
+                            <p>Views</p>
+                        </th>
+                        <th style="width: 10%;">
+                            <p>Downloads</p>
+                        </th>
+                        <th style="width: 10%;">
+                            <p>File Size</p>
+                        </th>
+                        <th style="width: 10%;">
+                            <p>Tracking #</p>
+                        </th>
+                       @* <th style="width: 10%;">
+                            <p>Date Posted</p>
+                        </th>
+                        <th style="width: 10%;">
+                            <p>Edit</p>
+                        </th>*@
+                        <th style="width: 2%; background: none;"></th>
+                        <th style="width: 2%; background: none;"></th>
+                    </tr>
+                    @foreach (var item in ViewBag.PostData)
+                    {
+                        <tr class="gradient-trbyterr5" onclick="getData(@item.TrackingNumber);">
+                            <td>
+                                <p>@item.Title</p>
+                            </td>
+                            <td align="center"><p class="postimg"><img src="@item.MatrixImagePath"/></p></td>
+                            <td align="center">
+                                <p>@item.NoOfChannel</p>
+                            </td>
+                            <td>
+                                <p>@item.Views</p>
+                            </td>
+                            <td>
+                                <p>@item.Downloads</p>
+                            </td>
+                            <td>
+                                <p>@item.FileSize</p>
+                            </td>
+                            <td>
+                                <p>@item.TrackingNumber</p>
+                            </td>
+                            <td style="background: none;"><img onclick="" src="/Images/tvicon.png"></td>
+                            <td style="background: none;"><a href="socialposting"><img onclick="" src="/Images/sendicon.png"></a></td>
+                            
+                            @*<td><p>@Html.ActionLink("Edit","EditCreatePost", "Basic", new {TrackNo=item.TrackingNumber},null) </p></td>*@
+                            <td style="background: none;">
+                                <div class="grandit-3box">
+                                    <a href="#">
+                                        <img src="/Images\searmcrediti.png"onclick="Fileprivew(@item.TrackingNumber)"></a>
+
+                                </div>
+                            </td>
+                            <td style="background: none;">
+                                <div class="grandit-3box">
+                                    <a href="#">
+                                        <img src="/Images\close-m-i.png" onclick="Delete(@item.TrackingNumber)">
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="byter-girt-gt" style="margin-top: -200px;">
+        <a href="#" id="edittrack">
+            <img src="/images/byter-ok.png" onclick="okclick();"></a>
+
+    </div>
+
+    <div class="massage-footer-m">
+    </div>
+</div>
+
+
+
+
+<script src="jquery.mCustomScrollbar.js"></script>
+<script src="~/Scripts/jquery.tablesorter.js"></script>
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#upgradePremium').click(function () {
+            $("#yesno").attr('style', 'display:block');
+        });
+
+        $("#yes").click(function () {
+            $("#yesno").attr('style', 'display:none');
+            $.post('/Basic/UpgardeToPremium', {}, function (data) {
+                if (data == "Success") {
+
+                    $("#upgradebox").attr('style', 'display:block');
+                } else { $("#button-bg3").attr('style', 'display:block'); }
+
+            });
+
+        });
+        $("#no").click(function () {
+            $("#yesno").attr("style", "display:none");
+        });
+
+
+
+
+        $("#genclone").click(function () {
+            window.location.href = "/Basic/GenerateClones";
+        });
+        $("#createlnk").click(function () {
+            window.location.href = "/Basic/LinkPost";
+        });
+
+        $("#content").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#content #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#content").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+</script>
+
+<script type="text/jscript">
+    var trackId="track";
+    function divClicked() {
+        var divHtml = [];
+
+        $("#mydiv div").each(function () {
+            divHtml.push($(this).html());
+            var editableText = $("<input type='text' />");
+            editableText.val($(this).html());
+            $(this).replaceWith(editableText);
+            editableText.blur(editableTextBlurred);
+        });
+        editableText.focus();
+        // setup the blur event for this new textarea
+
+    }
+
+    function getData(a) {
+       
+        trackId = a;
+        //var gg = $(this).html();
+        //var ff1 = document.getElementsByClassName('gradient-trbyterr5')[0].id;
+        //var td = document.getElementsByTagName(ff1)[6];
+        //var ffg = td.children[0].attributes[1].nodeValue;
+        //alert(ffg);
+        //$.post('/Basic/EditCreatePost', { Text: aa }, function (data) {
+
+        //});
+    }
+    function openpopup() {
+        $("#popup1:visible").hide();
+        // $("#image-placeholder").attr("src", $(this).attr("href")); // replace image src with href from the link that was clicked
+        $("#popup1").fadeIn("fast");
+        $("#popup1-close").click(function (e) {
+            e.preventDefault();
+            $("#popup1").fadeOut("fast");
+        });
+
+    }
+    function previweSearch() {
+        alert("erfwerw");
+    }
+
+
+    function editableTextBlurred() {
+        var html = $(this).val();
+        var viewableText = $("<div>");
+        viewableText.html(html);
+        $(this).replaceWith(viewableText);
+        // setup the click event for this new div
+        //  viewableText.click(divClicked);
+    }
+    function okclick()
+    {
+        openpopup();
+        var cat = $('#basicbyter').text();
+        if (trackId == "track") {
+            $('#button-bg1').dialog("open");
+            document.getElementById("pop_wrapper").style.display = "block";
+            document.getElementById("socialname").innerHTML = "Select one row";
+           
+        }
+        else {
+            $.post('@Url.Action("selectchanneltoflood1", "Basic")', { trackid: trackId, cat: cat }, function (data)
+            {
+                window.location = data;
+            });
+        }
+    }
+    $(document).ready(function ()
+    {
+        $("#buttonclick").click(divClicked);
+        // $("#table1").tablesorter();
+        $("#edit").click(function () {
+            alert(trackId);
+            openpopup();
+            $.post('@Url.Action("EditCreatePost", "Basic")', { TrackId: trackId }, function (data) {
+
+            });
+
+        });
+
+
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        // $("#table2").css('display','none');
+        $("#basicbyter").click(function () {
+            $("#byterclick").toggle();
+        });
+
+        $("#byterclick li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyter span").html(text);
+            $("#byterclick").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick").hide();
+        });
+
+
+        var aa = "Music";
+        $(".getname").click(function () {
+            aa = $(this).text();
+            var tr;
+           
+            $.post('/Basic/ChangePostData', { Text: aa }, function (data) {
+                $(".gradient-trbyterr5").remove();
+                for (var i = 0; i < data.length; i++) {
+
+                    tr += '<tr class="gradient-trbyterr5" id="row1" onclick="getData(' + data[i].TrackingNumber + ');">';
+                    tr += '<td><p>' + data[i].Title + '</p></td>';
+                    
+                    tr += '<td align="center"><p class="postimg">';
+                    if (data[i].MatrixImagePath != null && data[i].MatrixImagePath != "") {
+                        tr += '<img src=' + data[i].MatrixImagePath + '>';
+                    }
+                    else { tr += '<img>' }
+                    tr += '</p></td>';
+                    tr += '<td align="center"><p>' + data[i].NoOfChannel + '</p></td>';
+                    tr += '<td><p>' + data[i].Views + '</p></td>';
+                    tr += '<td><p>' + data[i].Downloads + '</p></td>';
+                    tr += '<td><p>' + data[i].FileSize + '</p></td>';
+                    tr += '<td><p id=' + data[i].TrackingNumber + ' class="trackNo">' + data[i].TrackingNumber + '</p></td>';
+                    //tr += '<td><p>' + data[i].DateShow + '</p></td>';
+                    //tr += ' <td><p><a href="EditCreatePost?TrackNo=' + data[i].TrackingNumber + '">Edit</a> </p></td>';
+                    tr += '<td style="background:none;">';
+                    tr += '<div class="grandit-3box">';
+                    tr += '<a href="#"><img src="/Images/tvicon.png"onclick="Delete(' + data[i].TrackingNumber + ')"></a>'
+                    tr += '<td style="background:none;">';
+                    tr += '<div class="grandit-3box">';
+                    tr += '<a href="socialposting"><img src="/Images/sendicon.png" onclick="Fileprivew(' + data[i].TrackingNumber + ')"></a>';
+                    tr += '<td style="background:none;">';
+                    tr += '<div class="grandit-3box">';
+                    //tr += '<a href="#"><img src="/Images/tvicon.png"onclick="Delete(' + data[i].TrackingNumber + ')"></a>'
+                    //tr += '<td style="background:none;">';
+                    //tr += '<div class="grandit-3box">';
+                    //tr += '<a href="socialposting"><img src="/Images/sendicon.png" onclick="Fileprivew(' + data[i].TrackingNumber + ')"></a>';
+                    tr += '<a href="#"><img src="/Images/searmcrediti.png" onclick="Fileprivew(' + data[i].TrackingNumber + ')"></a>';
+                    tr += '</div>';
+                    tr += '</td>';
+                    tr += '<td style="background:none;">';
+                    tr += '<div class="grandit-3box">';
+                    tr += '<a href="#"><img src="/Images/close-m-i.png"onclick="Delete(' + data[i].TrackingNumber + ')"></a>'
+                    tr += '</div>';
+                    tr += '</td>';
+                    tr += '</tr>';
+                    // $("#table1").html('');
+                    $(".gradient-trbyterr5").remove();
+                    //$("#table2").css('display','block');
+                    $("#table1").append(tr);
+                }
+            });
+        });
+
+
+
+        $("#search").click(function () {
+            var text = $(".credit-search-m3").val();
+            var tr;
+            $.post('/Basic/SearchPostLink', { Text: text, Category: aa }, function (data) {
+                
+                if (data != null) {
+                    for (var i = 0; i < data.length; i++) {
+                        tr += '<tr class="gradient-trbyterr5" id="row1" onclick="getData(' + data[i].TrackingNumber + ');">';
+                        tr += '<td><p>' + data[i].Title + '</p></td>';
+                        tr += '<td align="center"><p>' + data[i].Channel + '</p></td>';
+                        tr += '<td align="center"><p class="postimg">';
+                        if (data[i].MatrixImagePath != null && data[i].MatrixImagePath != "") {
+                            tr += '<img src=' + data[i].MatrixImagePath + '>';
+                        }
+                        else { tr += '<img>' }
+                        tr += '</p></td>';
+                        tr += '<td><p>' + data[i].Views + '</p></td>';
+                        tr += '<td><p>' + data[i].Downloads + '</p></td>';
+                        tr += '<td><p>' + data[i].FileSize + '</p></td>';
+                        tr += '<td><p id=' + data[i].TrackingNumber + ' class="trackNo">' + data[i].TrackingNumber + '</p></td>';
+                        //tr += '<td><p>' + data[i].DateShow + '</p></td>';
+
+                        //tr += ' <td><p><a href="EditCreatePost?TrackNo=' + data[i].TrackingNumber + '">Edit</a> </p></td>';
+                        tr += '<td style="background:none;">';
+                        tr += '<div class="grandit-3box">';
+                        tr += '<a href="#"><img src="/Images/searmcrediti.png" onclick="Fileprivew(' + data[i].TrackingNumber + ')"></a>';
+                        tr += '</div>';
+                        tr += '</td>';
+                        tr += '<td style="background:none;">';
+                        tr += '<div class="grandit-3box">';
+                        tr += '<a href="#"><img src="/Images/close-m-i.png"onclick="Delete(' + data[i].TrackingNumber + ')"></a>'
+                        tr += '</div>';
+                        tr += '</td>';
+                        tr += '</tr>';
+                        // $("#table1").html('');
+                        $(".gradient-trbyterr5").remove();
+                        // $("#table2").css('display', 'block');
+                        $("#table1").append(tr);
+                    }
+                }
+                else { $(".gradient-trbyterr5").remove(); }
+            });
+        });
+        
+        $(".order").click(function () {
+           // var dd = $(this).text();
+            var tr;
+            var dd = $(this).attr("id");
+          
+
+            $.post('/Basic/AtoZ', { Text: aa, Order: dd }, function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    tr += '<tr class="gradient-trbyterr5" id="row1" onclick="getData(' + data[i].TrackingNumber + ');">';
+                    tr += '<td><p>' + data[i].Title + '</p></td>';
+                    tr += '<td align="center"><p class="postimg">';
+                    if (data[i].MatrixImagePath != null && data[i].MatrixImagePath != "") {
+                        tr += '<img src=' + data[i].MatrixImagePath + '>';
+                    }
+                    else { tr += '<img>' }
+                    tr += '</p></td>';
+                    tr += '<td align="center"><p>' + data[i].NoOfChannel + '</p></td>';
+                    tr += '<td><p>' + data[i].Views + '</p></td>';
+                    tr += '<td><p>' + data[i].Downloads + '</p></td>';
+                    tr += '<td><p>' + data[i].FileSize + '</p></td>';
+                    tr += '<td><p id=' + data[i].TrackingNumber + ' class="trackNo">' + data[i].TrackingNumber + '</p></td>';
+                    //tr += '<td><p>' + data[i].DateShow + '</p></td>';
+
+                    //tr += ' <td><p><a href="EditCreatePost?TrackNo=' + data[i].TrackingNumber + '">Edit</a> </p></td>';
+                    tr += '<td style="background:none;">';
+                    tr += '<div class="grandit-3box">';
+                    tr += '<a href="#"><img src="/Images/searmcrediti.png" onclick="Fileprivew(' + data[i].TrackingNumber + ')"></a>';
+                    tr += '</div>';
+                    tr += '</td>';
+                    tr += '<td style="background:none;">';
+                    tr += '<div class="grandit-3box">';
+                    tr += '<a href="#"><img src="/Images/close-m-i.png"onclick="Delete(' + data[i].TrackingNumber + ')"></a>'
+                    tr += '</div>';
+                    tr += '</td>';
+                    tr += '</tr>';
+                    //  $("#table1").html('');
+                    $(".gradient-trbyterr5").remove();
+                    //  $("#table2").css('display', 'block');
+                    $("#table1").append(tr);
+                }
+
+            });
+            if (dd == "A to Z") {
+                $(this).attr("id","Z to A");
+
+            } else {
+                $(this).attr("id","A to Z");
+            }
+        });
+
+
+
+
+        $("#basicbyterone").click(function () {
+            $("#byterclick2").toggle();
+        });
+
+        $("#byterclick2 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyterone span").html(text);
+            $("#byterclick2").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick2").hide();
+        });
+
+
+
+        $("#basicbytertwo").click(function () {
+            $("#byterclick3").toggle();
+        });
+
+        $("#byterclick3 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbytertwo span").html(text);
+            $("#byterclick3").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick3").hide();
+        });
+
+
+        $("#basicbyterfour").click(function () {
+            $("#byterclick4").toggle();
+        });
+
+        $("#byterclick4 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyterfour span").html(text);
+            $("#byterclick4").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick4").hide();
+        });
+
+
+    });
+</script>
+
+<script>
+
+    $('.gradient-trbyterr5').click(function () {
+        $(this).addClass('active');
+
+        $('.gradient-trbyterr5').removeClass('active');
+    });
+
+    $('.gradient-trbyterr5').click(function () {
+        $(this).addClass('active');
+        $('.gradient-trbyterr5').removeClass('active');
+
+
+    });
+    function Fileprivew(trackingnumber) {
+        var ii = $("#basicbyter").text();
+        $.post('/Basic/FilePrivew', { Trackingnumber: trackingnumber, Category: ii }, function (data) {
+        window.location = data;
+        });
+    }
+    $('.gradient-trbyterr5').click(function () {
+        //alert("kk");
+
+
+        $('.gradient-trbyterr5').removeClass('grd_g_bg');
+
+        $(this).addClass('grd_g_bg');
+    });
+    function popup() {
+        document.getElementById("button-bg1").style.display = "none";
+        document.getElementById("pop_wrapper").style.display = "none";
+    }
+        //$('.gradient-trbyterr5').click(function(){
+        // $(this).addClass('active');
+        //$('.gradient-trbyterr5').removeClass('active');	
+
+
+    //});
+
+    function Delete(trck) {
+        $("#yesnodel").attr('style', 'display:block');
+        $('#nodel').click(function () {
+            $("#yesnodel").hide();
+        });
+        $("#yesdel").click(function () {
+        $.post('/Basic/DeleteRecord', { Track: trck }, function (data) {
+            if (data == true) {
+                location.reload();
+            }
+        });
+        });
+    }
+
+</script>
+
+<div class="black_screen" id="pop_wrapper" style="display: none; z-index: 500;background-color:transparent"></div>
+<div id="button-bg1" style="display: none">
+
+    <div class="errormsg">
+        <p id="socialname"></p>
+    </div>
+     <div id="button-c2">
+            <img src="/img/button_bgw.png" onclick="popup();" />
+        </div>
+</div>

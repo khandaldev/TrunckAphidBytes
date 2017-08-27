@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@*<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Aphidbyte</title>
+    <meta charset="utf-8" />
+    <script src="js/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="backdoorstyle.css" type="text/css" />
+    <link rel="stylesheet" href="stylecss.css" type="text/css" />
+</head>*@
+
+<body>
+
+    <div class="wrap_main admin_v">
+        <div id="logo"><a style="cursor:pointer;" href="/"> <img src="/images/hphidbytelogo.png"></a> </div>
+        <div class="tophedboxa" style="width:100%;"><p style="color: #FFC000; cursor: pointer" onclick="goBack()">Back</p></div>
+
+        <aside class="admin-view-box">
+            <div class="admin_va">
+                <p><a href="#" class="adm-text-a">Edit<a /></p>
+                <p class="adm-text-p">George Hotz</p>
+                <p><a href="#" class="adm-text-s">Save<a /></p>
+                <div class="admin-prof">
+                    <p>General Information</p>
+                    <label>Hourly Rate:</label>
+                    <input type="text" value="" name="UserName" id="UserName" data-val-required="*" data-val="true" class="text-box single-line"></br>
+                    <label>General info:</label>
+                    <input type="text" value="" name="UserName" id="UserName" data-val-required="*" data-val="true" class="text-box single-line"></br>
+                    <textarea type="text" value="" class="text-box single-line"></textarea>
+                </div>
+            </div>
+        </aside>
+
+        <aside class="admin-view-box admin-mid">
+            <div class="admin-profb">
+                <p><img src="/Images/admin-v-profile.png"></p>
+                <p class="ad0p"><a href="#" class="adm-text-a">Edit<a/></p>
+                <div class="admin-prof" style="margin-top: 80px ! important;">
+                    <input type="text" value="" name="UserName" id="UserName" data-val-required="*" data-val="true" placeholder="Headline" class="text-box single-line" style="text-align:center;"></br>
+                    <input type="text" value="" name="UserName" id="UserName" data-val-required="*" data-val="true" placeholder="Type in Location" class="text-box single-line" style="text-align:center;"></br>
+                </div>
+            </div>
+        </aside>
+
+        <aside class="admin-view-box admin-rd">
+            <div class="admin_va ad0t">
+                <p><a href="#" class="adm-text-a">Edit<a /></p>
+                <p class="adm-text-p" style="margin-bottom: 40px;"><a href="#" class="ad0b">Contact</a></p>
+                <div class="admin-prof">
+                    <input type="text" value="" name="UserName" id="UserName" data-val-required="*" data-val="true" placeholder="Email Address" class="text-box single-line" style="text-align:center;"></br>
+                    <input type="text" value="" name="UserName" id="UserName" data-val-required="*" data-val="true" placeholder="Phone Number" class="text-box single-line" style="text-align:center;"></br>
+                    <input type="text" value="" name="UserName" id="UserName" data-val-required="*" data-val="true" placeholder="Website" class="text-box single-line" style="text-align:center;"></br>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</body>
+@*</html>*@

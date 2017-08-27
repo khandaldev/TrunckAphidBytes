@@ -1,0 +1,250 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+  @model AphidBytes.Accounts.Contracts.Model.ChannelModel
+@* <script src="~/js/jquery-1.10.2.js"></script>*@
+  <script type="text/javascript" src="~/js/jquery-1.10.2.js"></script>
+@*<link  rel="stylesheet" href="premium_cssstyle.css"/>*@
+@if (Model.UnAuthorised==true)
+{
+ <div style ="background-color:red">
+    You Are Not able to subscibe this Channel
+</div>   
+}
+
+@*LoginPopup*@
+<div class="showadd" style="height: 100%; width: 100%; display: none;">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        <div class="black_screen"></div>
+        <div id="ad_content" class="div_ad" style="width: 40%; position: fixed; margin-left:-9%; height: 40%;">
+             <div style="color:white;">
+            UserName:<div>@Html.TextBoxFor(model => model.UserName) </div>
+        </div>
+        <div style="color:white;">
+            Password:<div>@Html.TextBoxFor(model => model.Password) </div>
+        </div>
+            <div style="display:none;">
+                @Html.TextBoxFor(model => model.UserID)
+            </div>
+            <div style="display:none;">
+                @Html.TextBoxFor(model => model.ChannelId)
+            </div>
+        <div>
+            <input type="submit" value="Login" />
+        </div>
+    </div>
+       
+    }
+</div>
+@*LoginPopup*@
+<body class="main_mremuimbody">
+ <div class="main_mremuimbody">
+<div id="pagewrap">
+
+	<div id="header">
+	  <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/bphidbyte_sicon.png"/></a>
+	</div>
+		
+	<div id="content">
+	<div class="premium_bx1" style="margin-top:50px;">
+    <a href="#">@Model.UserName</a>  
+    <p>Biography<p/>
+   <p> 
+
+       @Model.UserData
+   </p>
+    </div>
+    <div class="prm_u"><a href="#"><img src="/images/nextpm_b.png"/></a></div>
+    <div class="prm_d"><a href="#"><img src="/images/pevpm_b.png"/></a></div>
+    </div>
+	
+  <div id="middle" style="margin-top:-20px;">
+  <div class="premium_bx2">
+	<div>
+        @if (Model.ImagePath=="" || Model.ImagePath==null)
+        {
+             <img src="~/Images/aphid-teclogo.png" width="200px" height="200px">
+        }else{
+        <img src="@Model.ImagePath" width="200px" height="200px">}
+
+	</div>
+    <div class="bg_sea" style="height:53px;width:302px;color:white;font-size:32px">@Model.UserName</div>
+    <div class="bg_stext"><p>DEF JAM RECORDS/ISLAND/G.O.O.D. MUSIC</p></div>
+    <div class="prem_dg">
+    <p><img src="/images/dg_1a.png"  style="width:50%;margin-top:10px"></p>
+    <p><img src="/images/dg_2.jpg" style="width:50%;margin-top:10px"></p>
+    </div>	 
+    </div>
+  </div>
+
+	<div id="sidebar">
+		<div class="premium_bx3" style="margin-top:-45px;">
+            @if (Model.SubscriptionStatus == false)
+            {
+                   <a href="#"><img src="/images/subscribe_mir.png" id="changesubstatus" onclick="SubscribeChannel('@Model.UserID','@Model.premiumUserId','@Model.ChannelId')" ></a>
+                   <a href="#"><img src="/Images/unsubscribe_mir.png" class="Unsub" id="changeunsubstatus" style="display:none;" onclick="ChannelUnSub('@Model.ChannelId','@Model.UserID',@Model.premiumUserId)" ></a>
+            }
+            else
+            {
+                <a href="#"><img src="/images/subscribe_mir.png" id="changesubstatus" class="Sub" onclick="SubscribeChannel('@Model.UserID','@Model.premiumUserId','@Model.ChannelId')" style="display:none;" ></a>
+             <a href="#"><img src="/Images/unsubscribe_mir.png" id="changeunsubstatus"  onclick="ChannelUnSub('@Model.ChannelId','@Model.UserID')" ></a>
+            }
+
+     
+       
+        <div class="bx_3prm">
+        <p><samp><img src="/images/prim_bold1.png"></samp>Licensing /Purchasing ARCHIVE</p>
+        <p><samp><img src="/images/prim_bold1.png"  style="padding: 3px 0; width: 3%;"></samp>BOOKING</p>
+        <p><samp><img src="/images/prim_bold3.png"  style=" width:6%;"></samp>MANAGEMENT</p>
+        </div>
+        <p class="p_bx3">Accolades</p>
+        <div class="bx_allbum">
+        <p><samp><img src="/images/allbum_prem.png"></samp>FINALLY FAMOUS Album  2X Platinum</p>
+        </div>
+        
+        <div class="bx_2x">
+        <p><samp><img src="/images/2x_pic1.png"></samp><samp><img src="/images/2x_pic1.png"></samp> &nbsp;2X Grammys</p>
+        </div>
+        
+        <div class="bx_pdr">
+        <p><samp><img src="/images/pdr_pic.png"></samp><samp><img src="/images/add_pic.png"></samp> Endorsements</p>
+        </div>
+        </div>
+        
+        <div class="max_box1"id ="maximize">
+        <p>Maximize</p>
+        <p><img src="/images/max_pic1.png" style="width:20%;"></p>
+        </div>
+         <div class="max_box1"style="display:none;"id ="Minimize">
+        <p>Minimize</p>
+        <p><img src="/images/max_pic1.png" style="width:20%;height:8px;"></p>
+        </div>
+
+</div>
+    <div id="footer"style="display:none;">
+		<div class="mview-footer">
+<samp>Featured Items</samp>
+        @*<div class="mremb_edit_b2"><a href="#">Edit</a></div>*@
+
+<div style="height:5px;"></div>
+<div class="fram-m_t2">
+<div id='prev' class="mecnext_s" style="width:10%; float:left; "><img src="/images/prev_ms.png"></div>
+<div  id="slider1" style="width:80%; float:left; height:90px;">
+
+<div class="slli-main"style="position: absolute; top: 0px; left: 0px; display: block; z-index: 3; opacity: 1; width: 744px; height: 90px;">
+<div class="preim_fram-s_veo"><img src="/images/vevo_pt1.png"  class="fram-r4a"style="cursor:pointer"></div>
+<div class="preim_fram-s_veo"><img src="/images/vevo_pt2.png" class="fram-r4a"style="cursor:pointer"></div>
+<div class="preim_fram-s_veo"><img src="/images/vevo_pt3.png" class="fram-r4a"style="cursor:pointer"></div>
+<div class="preim_fram-s_veo"><img src="/images/vevo_pt4.png" class="fram-r4a"style="cursor:pointer"></div>
+<div class="preim_fram-s_veo"><img src="/images/vevo_pt5.png" class="fram-r4a"style="cursor:pointer"></div>
+</div>
+
+
+<div class="slli-main"style="position: absolute; top: 0px; left: 0px; display: block; z-index: 3; opacity: 1; width: 744px; height: 90px;">
+<div class="preim_fram-s_veo"><img src="images/p_addpica.png" class="fram-r4a"style="cursor:pointer"></div>
+<div class="preim_fram-s_veo"><img src="/img/framepic2.png" class="fram-r4a"style="cursor:pointer"></div>
+<div class="preim_fram-s_veo"><img src="/img/framepic3.png" class="fram-r4a"style="cursor:pointer"></div>
+<div class="preim_fram-s_veo"><img src="/img/framepic3.png" class="fram-r4a"style="cursor:pointer"></div>
+<div class="preim_fram-s_veo"><img src="/img/framepic3.png" class="fram-r4a"style="cursor:pointer"></div>
+</div>
+
+
+</div>
+<div id='next' class="mecnext_s" style="width:10%; float:left;"><img src="/images/next_ms.png"></div>
+</div>
+
+
+</div>
+</div>
+    </div>
+    </div>
+
+ <script>
+     //$("#changesubstatus").click(function () {
+     //    $("#changesubstatus").hide();
+     //    $("#changeunsubstatus").show();
+         
+     //})
+          
+     //$("#changeunsubstatus").click(function () {
+     //    $("#changeunsubstatus").hide();
+     //    $("#changesubstatus").show();
+
+     //})
+     $("#maximize").click(function () {
+         $("#maximize").hide();
+         $("#Minimize").show();
+         $("#footer").show();
+     })
+     $("#Minimize").click(function () {
+         $("#Minimize").hide();
+         $("#maximize").show();
+         $("#footer").hide();
+     })
+ </script>
+<script language="javascript">
+    $(document).ready(function () {
+
+        $('#slider1').cycle({
+            fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+            speed: 'slow',
+            timeout: 0,
+            next: '#next',
+            prev: '#prev',
+            pager: '#thumb',
+
+            pagerAnchorBuilder: function (idx, slide) {
+                return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+            }
+        });
+
+        //$("#changesubstatus").click(function () {
+           
+        //});
+
+    });
+
+    function SubscribeChannel(userid,premiumUserID,channelID)
+    {
+        $.post('/Premium/CheckSession/', {}, function (data) {
+            if (data == "NotExists") {
+                $(".showadd").attr('style', 'display:block');
+            }
+            else {
+                $(".showadd").attr('style', 'display:none');
+                $.post('/Premium/LoginUserSubscription', { UserID: userid, PremiumID: premiumUserID, ChannelId: channelID }, function (data) {
+                    if (data == "True") {
+                        
+                        $("#changesubstatus").attr('style', 'display:none');
+                        $("#changeunsubstatus").attr('style', 'display:block');
+                    }
+                    else {
+                        $("#changesubstatus").attr('style', 'display:block');
+                        $("#changeunsubstatus").attr('style', 'display:none');
+                    }
+                });
+            }
+        });
+    }
+
+    function ChannelUnSub(channelId, userid, premiumUserID)
+    {
+       
+        $.post('/Premium/UnsubscribeChannel', { UserId: userid, ChannelId: channelId }, function (data) {
+            if (data == "True") {
+               // $("#changesubstatus").attr('style', 'display:none');
+                $(".Sub").attr('style', 'display:block');
+                $("#changeunsubstatus").attr('style', 'display:none');
+                //<a href="#"><img src="/images/subscribe_mir.png"id="changesubstatus" onclick="SubscribeChannel()" ></a>
+                
+            }
+            else {
+                $("#changesubstatus").attr('style', 'display:block');
+                $("#changeunsubstatus").attr('style', 'display:none');
+            }
+        });
+    }
+</script> 

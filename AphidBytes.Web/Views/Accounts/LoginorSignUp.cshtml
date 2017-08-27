@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;   
+}
+
+<div class="container-fluid">
+    <div class="row row-offset-lrg">
+        <div class="col-md-3 col-md-offset-3 txt-center">
+            <p>I have an account</p>
+            <a href="@Url.Action("LoginWtihSocialSite", "Accounts")" class="btn btn-signup">LOG IN</a>
+        </div>
+        <div class="col-md-3 txt-center">
+            <p>I do not have an account</p>
+            <a href="@Url.Action("Index", "Register")" class="btn btn-primary btn-signup">SIGN UP</a>
+        </div>
+    </div>
+</div>

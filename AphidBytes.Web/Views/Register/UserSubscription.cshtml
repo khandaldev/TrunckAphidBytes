@@ -1,0 +1,175 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.UserSubscribeModel
+@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/register")
+}
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />*@
+<link href="~/Content/ProfileStyle.css" rel="stylesheet" />
+<link href="~/Content/profile-page.css" rel="stylesheet" />
+<style>
+ 
+</style>
+@using (Html.BeginForm("UserSubscription", "Register", FormMethod.Post))
+{ 
+    <div class="wrapper">
+        <section>
+            <div class="container">
+                <div class="main_content">
+                    <div class="row">
+                       @Html.HiddenFor(x=>x.SubscribeUserId)
+                        @Html.HiddenFor(x=>x.UserId)
+                        @Html.HiddenFor(X=>X.ProfilePic)
+                        @Html.HiddenFor(x=>x.UserName)
+                        @Html.HiddenFor(x=>x.Email)
+                        <div class="col-sm-12">
+                            <div class="right_content">
+
+                                <div class="profile_page">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <div class="profile_page_left">
+                                                <div class="profile_head_details">
+                                                    <div class="profile_thumbnail">
+                                                        <img src="@Model.ProfilePic" alt="" />
+                                                    </div>
+                                                    <div class="profile_details">
+                                                        <h4>@Model.UserName</h4>
+                                                        <span>@Model.Address1 <br /> @Model.Address2</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="profile_about_details clearfix">
+                                                    <div class="about_left">
+                                                        <div class="about_block">
+                                                            <h3>About:</h3>
+                                                            <p>Berlin based web programmer, management information systems - quality made in Germany.</p>
+                                                            <p>Experience in Ruby on Rails, PHP, databases, CSS3, HTML5 and jQuery.</p>
+                                                            <p>The internet is the most powerful tool that we have to communicate - which is why I love web development and web design.</p>
+                                                        </div>
+                                                        <div class="about_block">
+                                                            <h3>Hourly Rate:<span>$90</span></h3>
+
+                                                        </div>
+                                                        <div class="about_block">
+                                                            <h3>Preference:<span>Fixed Rate</span></h3>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="about_right">
+                                                        <ul>
+                                                            <li><img src="~/Images/9e3014_e730f403531c413da266765c939b6968-mv2.png" alt="" /></li>
+                                                            <li><img src="~/Images/9e3014_4037a5366dc24397aa7c45d7407bef91-mv2.png" alt="" /></li>
+                                                            <li><img src="~/Images/9e3014_4299f4ea905946fda012962105ff9290-mv2.png" alt="" /></li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <div class="profile_page_right_sidebar">
+                                                <div class="subscribe_btn">
+                                                    @if (!Model.isOwn && !Model.isSubscribed)
+                                                    {
+                                                        <input type="submit" class="btn btn-default" value="Subscribe" />
+                                                    }
+                                                    else if (Model.isSubscribed && Model.UserId != Guid.Empty)
+                                                    {
+                                                        <input type="submit" class="btn btn-default" disabled="disabled" value="Subscribed" />
+                                                    }
+                                                    else if (Model.UserId == Guid.Empty)
+                                                    {
+                                                        <input type="submit" class="btn btn-default" disabled="disabled" title="Please Log-In to subscribe." value="Subscribe" />
+                                                    }
+                                                </div>
+                                                <div class="contact_details">
+                                                    <ul>
+                                                        <li><a href="#">E:@Model.Email</a></li>
+                                                        <li><a href="#">P: @Model.Phone</a></li>
+                                                        <li><a href="#">@Model.WebsiteUrl</a></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="skills">
+                                                    <h3>Skills</h3>
+                                                    <div class="skills_thumbnail">
+                                                        <img src="~/Images/9e3014_f6dac411cb9b4876907edcece538ac92-mv2.png" alt="" />
+                                                        <img src="~/Images/9e3014_ec12315cd3784e86a191e4b4a9eac9b4-mv2.png" alt="" />
+                                                    </div>
+                                                    <ul>
+                                                        <li>Audio Engineering</li>
+                                                        <li>Songwriting</li>
+                                                        <li>Producing</li>
+                                                        <li>Loving Autumn</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio_listing">
+                                        <div class="row">
+                                            <div class="col-sm-8 offset-2">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="works_portfolio_box">
+                                                            <img src="~/Images/9e3014_7ca257dfad6443c09975e1311f56fc27-mv2.png" alt="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="works_portfolio_box">
+                                                            <img src="~/Images/9e3014_1944fbef7d9d40be9a57ae3385034e15-mv2.png" alt="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="works_portfolio_box">
+                                                            <img src="~/Images/9e3014_b8f075e760b54226a2f305d6219f69ad-mv2_d_2524_1893_s_2.png" alt="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="works_portfolio_box">
+                                                            <img src="~/Images/1bad7253ec3c4dfd9a570568fe023c05.webp" alt="" />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="works_pagination">
+                                                    <span>1/1</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function () {
+       
+    });
+
+    function navigate(target) {
+        //Perform your AJAX call to your Controller Action
+        $.post(target, { UserName: $('#UserName').val(), Password: $('#Password').val() });
+    }
+</script>
+

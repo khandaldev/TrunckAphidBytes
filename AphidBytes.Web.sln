@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AphidBytes.Business", "AphidBytes.Business", "{F0EBAA81-50DC-4BA9-8E4A-0014C9CAAA09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AphidBytes.Data", "AphidBytes.Data", "{79A44384-72A4-4830-B14E-DA3F1B1F4771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AphidBytes.Web", "AphidBytes.Web\AphidBytes.Web.csproj", "{FD9DE32E-C41B-4B57-8D28-F6ECD596D189}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AphidTise.Entity", "AphidTise.Entity\AphidTise.Entity.csproj", "{DC064718-5781-4763-A655-97484D54F922}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AphidBytes.Accounts", "AphidBytes.Accounts", "{650E4F79-68AB-43F0-B8F6-CDC6D0B92D3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AphidBytes.Accounts.Contracts", "AphidBytes.Accounts.Contracts\AphidBytes.Accounts.Contracts.csproj", "{0C44007E-F2CD-4A2C-873B-14B046F478D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AphidBytes.Accounts.Processor", "AphidBytes.Accounts.Processor\AphidBytes.Accounts.Processor.csproj", "{DF8736F4-3821-4F8D-A1F3-BCF4D46DB307}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AphidBytes.Core", "AphidBytes.Core\AphidBytes.Core.csproj", "{06B74118-702D-432D-AC0C-E26D613F8662}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AphidBytes.BLL", "AphidBytes.BLL\AphidBytes.BLL.csproj", "{9EDD97A3-A567-4101-BE8C-DB0C2FF72D71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AphidByte.Test", "AphidByte.Test\AphidByte.Test.csproj", "{81EC3D42-F3A0-4BEF-8E28-9093F5901AB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD9DE32E-C41B-4B57-8D28-F6ECD596D189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD9DE32E-C41B-4B57-8D28-F6ECD596D189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD9DE32E-C41B-4B57-8D28-F6ECD596D189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD9DE32E-C41B-4B57-8D28-F6ECD596D189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC064718-5781-4763-A655-97484D54F922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC064718-5781-4763-A655-97484D54F922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC064718-5781-4763-A655-97484D54F922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC064718-5781-4763-A655-97484D54F922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C44007E-F2CD-4A2C-873B-14B046F478D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C44007E-F2CD-4A2C-873B-14B046F478D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C44007E-F2CD-4A2C-873B-14B046F478D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C44007E-F2CD-4A2C-873B-14B046F478D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8736F4-3821-4F8D-A1F3-BCF4D46DB307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8736F4-3821-4F8D-A1F3-BCF4D46DB307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8736F4-3821-4F8D-A1F3-BCF4D46DB307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8736F4-3821-4F8D-A1F3-BCF4D46DB307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06B74118-702D-432D-AC0C-E26D613F8662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B74118-702D-432D-AC0C-E26D613F8662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B74118-702D-432D-AC0C-E26D613F8662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B74118-702D-432D-AC0C-E26D613F8662}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EDD97A3-A567-4101-BE8C-DB0C2FF72D71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EDD97A3-A567-4101-BE8C-DB0C2FF72D71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EDD97A3-A567-4101-BE8C-DB0C2FF72D71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EDD97A3-A567-4101-BE8C-DB0C2FF72D71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81EC3D42-F3A0-4BEF-8E28-9093F5901AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81EC3D42-F3A0-4BEF-8E28-9093F5901AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81EC3D42-F3A0-4BEF-8E28-9093F5901AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81EC3D42-F3A0-4BEF-8E28-9093F5901AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC064718-5781-4763-A655-97484D54F922} = {79A44384-72A4-4830-B14E-DA3F1B1F4771}
+		{650E4F79-68AB-43F0-B8F6-CDC6D0B92D3B} = {F0EBAA81-50DC-4BA9-8E4A-0014C9CAAA09}
+		{0C44007E-F2CD-4A2C-873B-14B046F478D6} = {650E4F79-68AB-43F0-B8F6-CDC6D0B92D3B}
+		{DF8736F4-3821-4F8D-A1F3-BCF4D46DB307} = {650E4F79-68AB-43F0-B8F6-CDC6D0B92D3B}
+		{9EDD97A3-A567-4101-BE8C-DB0C2FF72D71} = {F0EBAA81-50DC-4BA9-8E4A-0014C9CAAA09}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

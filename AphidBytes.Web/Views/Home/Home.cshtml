@@ -1,0 +1,1127 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@section  JavaScript
+  {
+    <style type="text/css">
+        /* #SAG scroller demo #1 */
+
+        div#mysagscroller {
+            width: 250px; /*width of scroller*/
+            height: 350px;
+        }
+
+            div#mysagscroller ul li {
+                background: none;
+                color: white;
+                padding: 5px;
+                margin-bottom: 5px; /*bottom spacing between each LI*/
+            }
+
+                div#mysagscroller ul li:first-letter {
+                    font-size: 2px;
+                    background: none;
+                    color: black;
+                    padding: 0 2px;
+                    margin-right: 2px;
+                }
+
+
+        /* #SAG scroller demo #3 */
+
+        div#mysagscroller3 {
+            width: 60px; /*width of scroller*/
+            height: 275px;
+        }
+
+            div#mysagscroller3 ul li img {
+                border-width: 0;
+                display: inline-block; /*this causes each image to be flush against each other*/
+            }
+
+
+        div#mysagscroller4 {
+            width: 350px; /*width of scroller*/
+            height: 375px;
+        }
+
+
+            div#mysagscroller4 ul li img {
+                border-width: 0;
+                display: inline-block; /*this causes each image to be flush against each other*/
+                padding: 34px 0 0;
+            }
+
+        div#mysagscroller5 {
+            width: 350px; /*width of scroller*/
+            height: 375px;
+        }
+
+
+            div#mysagscroller5 ul li img {
+                border-width: 0;
+                display: inline-block; /*this causes each image to be flush against each other*/
+                padding: 34px 0 0;
+            }
+
+        /* #SAG scroller demo #2 */
+
+        div#mysagscroller2 {
+            width: 350px; /*width of scroller*/
+            height: 375px;
+        }
+
+            div#mysagscroller2 ul li img {
+                border-width: 0;
+                display: inline-block; /*this causes each image to be flush against each other*/
+                padding: 34px 0 0;
+            }
+
+        .sliderdesc {
+            display: none;
+        }
+
+        .anitem {
+            height: 5px;
+        }
+
+        #listofstuff {
+            height: 300px;
+            overflow: auto;
+        }
+
+        #content1 {
+            border: none;
+            min-height: 300px;
+            width: 200px;
+            height: 300px;
+        }
+
+        #item {
+            border: none;
+            height: 30px;
+            width: 150px;
+        }
+    </style>
+
+    @*<script type="text/javascript" src="crawler.js"></script>*@
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+   <script> ript type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="~/Content/sagscroller.css" rel="stylesheet" />
+    <script src="/Scripts/sagscroller.js"></script>
+    <script src="/Scripts/jquery.cycle.all.js"></script>"></>
+    <script>
+        var sagscroller3 = new sagscroller({
+            id: 'mysagsscroller3',
+            mode: 'click',
+            pause: 400,
+            animatedspeed: 2500
+        })
+
+        var sagscroller1 = new sagscroller({
+            id: 'mysagscroller',
+            mode: 'manual' //<--no comma following last option
+        })
+        //SAG scroller demo #2:
+
+        var sagscroller2 = new sagscroller({
+            id: 'mysagscroller2',
+            mode: 'auto',
+            pause: 400,
+            animatespeed: 2500 //<--no comma following last option
+        })
+        var sagscroller4 = new sagscroller({
+            id: 'mysagscroller4',
+            mode: 'auto',
+            pause: 400,
+            animatespeed: 2500 //<--no comma following last option
+        })
+        var sagscroller5 = new sagscroller({
+            id: 'mysagscroller5',
+            mode: 'auto',
+            pause: 400,
+            animatespeed: 2500 //<--no comma following last option
+        })
+
+        var uniquevar = new sagscroller({
+            id: 'mysagscroller',
+            option1: 'value1',
+            option2: 'value2'
+            //etc
+        })
+
+    </script>
+}
+<div class="wrap_main">
+
+    <div class="wrap-left-sidebar">
+
+        <div id="wrap-right-scroll">
+            <div id="w-right-text">
+                <div id="release">
+                    <p id ="pastrealease"style="cursor: pointer;color: #e0ac03;"><img src="/img/newr_icon.png"id="imgpre1"> Past Releases </p>
+                    <p id ="upcomingrealease"style="cursor: pointer"><img src=""id="imgpre2"style="display:none;">Upcoming Releases</p>
+                    <p id="newrealease"style="cursor: pointer"><img src=""id="imgpre3" style="display:none;">New Releases</p>
+                        </div>
+
+                    <div class="w-boxm1">
+                    <div id="mysagscroller2" class="sagscroller">
+                        <ul>
+                            @*<marquee behavior="scroll" direction="up" scrollamount="10" onmouseover="stop();" onmouseout="start();" style="width: auto; height: auto;  ">*@
+                            <li>
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Kanye West Yeezus June 16, 2013</p>
+                                <img src="/img/one_pic.png" width="80" height="80" left:"40px" class="img_leftscrolls">
+                                @*  <div class="left-bg1">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/img/one_pic_2.png" width="80" height="80"left:"40px" class="img_leftscrolls">
+                                @* <div class="left-bg2">
+                                     <img src="/img/one_pic_2.png">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/img/one_pic.png" width="80" height="80"left:"40px" class="img_leftscrolls">
+                                @*<div class="left-bg2">
+                                     <img src="/img/newr_icon.png">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/img/one_pic_2.png" width="80" height="80"left:"40px" class="img_leftscrolls">
+                                @*<img sr <div class="left-bg2">
+                                    c="/img/one_pic_2.png">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/img/one_pic.png" width="80" height="80" class="img_leftscrolls">
+                                @*<div class="left-bg2">
+                                     <img src="/img/one_pic_2.png">
+                                </div>*@
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="w-boxm2"  style="display:none;">
+                    <div id="mysagscroller4" class="sagscroller">
+                        <ul>
+                            @*<marquee behavior="scroll" direction="up" scrollamount="10" onmouseover="stop();" onmouseout="start();" style="width: auto; height: auto;  ">*@
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">ankur tandon Yeezus June 16, 2013</p>
+                                <img src="/Images/aphidtise_account_bg.png" width="80" height="80" left:"40px" class="img_leftscrolls">
+                                @*  <div class="left-bg1">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/Images/girl_wifi_bg.png" width="80" height="80"left:"40px" class="img_leftscrolls">
+                                @* <div class="left-bg2">
+                                     <img src="/img/one_pic_2.png">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/Images/googleplay_bg.png" width="80" height="80"left:"40px" class="img_leftscrolls">
+                                @*<div class="left-bg2">
+                                     <img src="/img/newr_icon.png">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/Images/linkdicone.png" width="80" height="80"left:"40px" class="img_leftscrolls">
+                                @*<img sr <div class="left-bg2">
+                                    c="/img/one_pic_2.png">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/Images/pinticone.png" width="80" height="80" class="img_leftscrolls">
+                                @*<div class="left-bg2">
+                                     <img src="/img/one_pic_2.png">
+                                </div>*@
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="w-boxm3" style="display:none;">
+                    <div id="mysagscroller5" class="sagscroller">
+                        <ul>
+                            @*<marquee behavior="scroll" direction="up" scrollamount="10" onmouseover="stop();" onmouseout="start();" style="width: auto; height: auto;  ">*@
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">arrjun tandon Yeezus June 16, 2013</p>
+                                <img src="/Images/premiu_left-bg.png" width="80" height="80" left:"40px" class="img_leftscrolls">
+                                @*  <div class="left-bg1">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/Images/wifi_icon_1.png" width="80" height="80"left:"40px" class="img_leftscrolls">
+                                @* <div class="left-bg2">
+                                     <img src="/img/one_pic_2.png">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/Images/youticone.png" width="80" height="80"left:"40px" class="img_leftscrolls">
+                                @*<div class="left-bg2">
+                                     <img src="/img/newr_icon.png">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/Images/pop-cam-t.png" width="80" height="80"left:"40px" class="img_leftscrolls">
+                                @*<img sr <div class="left-bg2">
+                                    c="/img/one_pic_2.png">
+                                </div>*@
+
+                            </li>
+
+                            <li>
+
+                                <p class="w-tex-left" style="border: 1px solid#a8ab08; float: left;">Mayweather 30 Days in May Now Available</p>
+                                <img src="/Images/Jay-Z-pic.png" width="80" height="80" class="img_leftscrolls">
+                                @*<div class="left-bg2">
+                                     <img src="/img/one_pic_2.png">
+                                </div>*@
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+       
+    </div>
+
+    <aside class="wrap-middle-sidebar">
+
+
+        <img src="/img/logo.png">
+        <div id="girl_bg" style="margin-left: 42%; margin-top: -31.5%; z-index:1000" ></div>
+        
+        <div class="wrap-search-box">
+
+            <input type="text" class="wrap-searchinbox" placeholder="Enter Title or Traking Number" />
+            <input type="button" value="SEARCH" class="warp-searchbtn" />
+        </div>
+
+        <div class="wrap-nav">
+            <ul class="wrap-navlinks">
+                <li>MUSIC</li>
+                <li>VIDEOS</li>
+                <li>PHOTOGRAPHY/ART</li>
+                <li>EBOOK</li>
+                <li>FILES</li>
+            </ul>
+
+        </div>
+        <div class="power-botton">
+            <aside class="lgn">LOGIN</aside>
+            <a href="#">
+                <img src="/img/power.png" class="pointer"></a>
+        </div>
+    </aside>
+ 
+
+    <aside class="wrap-right-sidebar"id="wrapsidebar">
+        <div id="wrap-right-scroll">
+            <div id="w-right-text">
+                <div id="content3"class ="componentin3" style="overflow:hidden;height:88px;width:80px;margin-left:68px;  ">
+                @*   <div id ="item3">*@
+                    <div id ="Film"style="cursor: pointer;">Film</div>
+                    <div id="PhotoGraphy"style="cursor: pointer;">Photography</div>
+                    <div id="Art"style="cursor: pointer;">Art</div>
+                    <div id="News"style="cursor: pointer;">News</div>
+                    <div id="Technology"style="cursor: pointer;color:#e0ac03">Technology</div>
+                    <div id="Music" style="cursor:pointer; ">Music</div>
+                    </div>
+                   @* 
+                        <div class="w-boxm">
+                        <div class="w-bx">
+                            <div  class="go_side"><img src="/img/next_right.png" /></div>
+                                 </div>
+                     
+                        <div class="w-bx3">
+                         <div class="go_thiside"><img  src="/img/pev_right.png" /></div>      
+                        </div>
+                    </div>*@
+@*</div> 
+         *@
+                </div>
+                <div class="w-right-bg">
+                    
+                      <div id="Technologhy" class="ankur">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/mtv_icon.png"></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+                      <div id="Photography" class="ankur" style="display:none">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/Images/aphidtise_account_apply.png"/></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/mtv_icon.png"></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+                      <div id="art" class="ankur" style="display:none">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/Images/aphidtise_account_apply.png"/></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/mtv_icon.png"></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+                      <div id="MusiC" class="ankur" style="display:none">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/Images/aphidtise_account_apply.png"/></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/mtv_icon.png"></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+                    <div id="NewS" class="ankur" style="display:none">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/Images/aphidtise_account_apply.png"/></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/mtv_icon.png"></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+  </div>
+</div>
+ 
+ </aside>
+ 
+    <aside class="wrap-right-sidebar2" id="wrapsidebar2"style="display:none;">
+				<div id="wrap-right-scroll">
+                <div id="w-right-text">
+                <div id="content3"class ="componentin3" style="overflow:hidden;height:88px;width:80px;margin-left:100px;">
+                @*   <div id ="item3">*@
+                    <div id ="Film"style="cursor: pointer;color: #e0ac03">Film</div>
+                    <div id="PhotoGraphy1"style="cursor: pointer;">Photography</div>
+                    <div id="Art1"style="cursor: pointer;">Art</div>
+                    <div id="News1"style="cursor: pointer;">News</div>
+                    <div id="Technology1"style="cursor: pointer;">Technology</div>
+                    <div id="Music1"style="cursor: pointer;">Music</div>
+              
+
+                    </div>
+                    
+                      @*  <div class="w-boxm">
+                        <div class="w-bx"style="width:78%">
+                            <div  class="go_side"><img src="/img/next_right.png" /></div>
+                                 </div>
+                     
+                        <div class="w-bx3">
+                         <div class="go_thiside"><img  src="/img/pev_right.png" /></div>      
+                        </div>
+                    </div>*@
+@*</div> 
+         *@
+                </div>
+               
+                <div class="w2-right-bg2" >
+                 <p class="text-p">Top Box Office Movies</p>
+                 <div class="w-box-tex">
+                     <div id="content2" class="componentin1" style="overflow:hidden;height:240px">
+                      <div id="item21" >
+                 <ul class="w-right-text">
+                    
+                 <li>1 Insidious 2 <div class="onload" style="display:none;"> <img src="/Images/onload.png"> </div> </li>
+                 <li>2 The Family </li>
+                 <li>3 Riddick</li>
+                 <li>4 Lee Daniel's The Butler</li>
+                 <li>5 We're the Millers </li>
+                 <li>6 Instructions Not Included</li>
+                 <li>7 Planes  </li>
+                 <li>8 One Direction: This is Us  </li>
+                 <li>9 Elysium  </li>
+                 <li>10 Percy Jackson: Sea of Monsters  </li>
+               
+                 </ul>
+                          </div>
+                         </div>
+                 </div>
+              <div>
+                 <div class="w-box-tex-right" >
+                     <div id="content2" class="componentin1" style="overflow:hidden;height:240px">
+                 <div id="item21">
+                 <ul class="w-right-text">
+                 <li>$41.0M</li>
+                 <li>$14.5M </li>
+                 <li>$7.0M</li>
+                 <li>$5.5M</li>
+                 <li>$5.4M</li>
+                 <li>$4.2M</li>
+                 <li>$3.0M</li>
+                 <li>$2.4M</li>
+                 <li>$2.0M</li>
+                 <li>$1.8M</li>
+                 
+                 </ul>
+                 </div>
+                 </div>
+                     </div>
+                 
+                </div>
+                
+                    <div id="prv-boon">
+                        <div>
+                             <div class="filmup"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="filmdown"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           
+                        </div>
+                    </div>
+                </div>
+                </div>
+             
+				</aside>	
+
+
+<footer class="mainFooter">
+
+    <div class="search-nav">
+        <ul class="navlinks_b">
+
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Store</a></li>
+            <li><a href="/Accounts/Terms">Terms    </a></li>
+            <li><a href="/Accounts/PrivacyPolicy">Privacy Policy </a></li>
+            <li><a href="/UserSponsored/Index">Sponsoring</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript">
+    
+    
+    $(document).ready(function () {
+        
+        
+                
+        
+
+        currentHeight = $('.componentin').innerHeight();
+        $(".go_up").click(function () {
+            $('.componentin').children('#item').animate({ "marginTop": "-=60px" });
+            $(".go_down").show();
+            if ($('.componentin').children('#item').css("margin-top") == "-420px") {
+                $(".go_up").hide();
+            }
+
+        });
+        $(".go_down").bind('click', function () {
+            $('.componentin').children('#item').animate({ "marginTop": "+=60px" });
+            $(".go_up").show();
+            if ($('.componentin').children('#item').css("margin-top") == "0px") {
+                $(".go_down").hide();
+            }
+        });
+        $(".filmup").click(function () {
+            //alert("zx");
+            $('.componentin1').children('#item21').animate({ "marginTop": "-=40px" });
+            $(".filmdown").show();
+            if ($('.componentin1').children('#item21').css("margin-top") == "-60px") {
+                $(".filmup").hide();
+            }
+
+        });
+        $(".filmdown").bind('click', function () {
+            // alert("vxcv");
+            $('.componentin1').children('#item21').animate({ "marginTop": "+=20px" });
+            $(".filmup").show();
+            if ($('.componentin1').children('#item21').css("margin-top") == "40px") {
+                $(".filmdown").hide();
+            }
+        });
+
+        
+
+        $(".go_side").click(function () {
+            var h =  $('.componentin3').innerHeight();
+            $('.componentin3').children('#Film').animate({ "marginTop": "-=12px" });
+            if (margin-top=="0px") {
+                $('.componentin3').children().css('color', '#e0ac03');
+            }
+          
+            x=$("#Music").position();
+        });
+        $(".go_thiside").click(function () {
+            var h =  $('.componentin3').innerHeight();
+            $('.componentin3').children('#Film').animate({ "marginTop": "+=12px" });
+        });
+    });
+</script>
+<script>
+    $("#closeicon").show();
+    $("#closebox").click(function (event) {
+        event.preventDefault();
+        $(this).hide();
+    });
+    $('#pastrealease').click(function () {
+        $("#imgpre3").attr('src', '').hide();
+        $("#imgpre2").attr('src', '').hide();
+        $("#imgpre1").attr('src', '/img/newr_icon.png').show();
+        $('#upcomingrealease').css('color', '#ccc');
+        $('#newrealease').css('color', '#ccc');
+        $('#pastrealease').css('color', '#e0ac03');
+        $('.w-boxm2').hide();
+        $('.w-boxm3').hide();
+        $('.w-boxm1').show();
+    })
+    $('#upcomingrealease').click(function () {
+        $("#imgpre3").attr('src', '').hide();
+        $("#imgpre1").attr('src', '').hide();
+        $("#imgpre2").attr('src', '/img/newr_icon.png').show();
+        $('#pastrealease').css('color', '#ccc');
+        $('#newrealease').css('color', '#ccc');
+        $('#upcomingrealease').css('color', '#e0ac03');
+        $('.w-boxm3').hide();
+        $('.w-boxm1').hide();
+        $('.w-boxm2').show();
+    })
+    $('#newrealease').click(function () {
+        $("#imgpre1").attr('src', '').hide();
+        $("#imgpre2").attr('src', '').hide();
+        $("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#pastrealease').css('color', '#ccc');
+        $('#upcomingrealease').css('color', '#ccc');
+        $('#newrealease').css('color', '#e0ac03');
+        $('.w-boxm2').hide();
+        $('.w-boxm1').hide();
+        $('.w-boxm3').show();
+    })
+    $('#Film').click(function () {
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#Film').css('color', '#ccc');
+        $('#Film').css('color', '#ccc');
+        $('#Film').css('color', '#ccc');
+        $('#Film').css('color', '#ccc');
+        $('#Film').css('color', '#ccc');
+        $('#pHOTOGRAPHY').hide();
+        $('#NewS').hide();
+        $('#ART').hide();
+        $('#Technologhy').hide();
+        $('#MusiC').hide();
+        $('#FILM').show();
+    })
+    $('#PhotoGraphy').click(function () {
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#FILM').css('color', '#ccc');
+        $('#Art').css('color', '#ccc');
+        $('#Technology').css('color', '#ccc');
+        $('#Music').css('color', '#ccc');
+        $('#News').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#e0ac03');
+        $('#FILM').hide();
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#Technologhy').hide();
+        $('#MusiC').hide();
+        $('#Photography').show();
+    })
+    $('#Art').click(function () {
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#FILM').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#ccc');
+        $('#Technology').css('color', '#ccc');
+        $('#Music').css('color', '#ccc');
+        $('#News').css('color', '#ccc');
+        $('#Art').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#NewS').hide();
+        $('#FILM').hide();
+        $('#Technologhy').hide();
+        $('#MusiC').hide();
+        $('#art').show();
+    })
+    $('#Technology').click(function () {
+        $('#FILM').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#ccc');
+        $('#Art').css('color', '#ccc');
+        $('#Music').css('color', '#ccc');
+        $('#News').css('color', '#ccc');
+        $('#Technology').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#FILM').hide();
+        $('#MusiC').hide();
+        $('#Technologhy').show();
+    })
+    $('#Music').click(function () {
+        $('#FILM').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#ccc');
+        $('#Art').css('color', '#ccc');
+        $('#Technology').css('color', '#ccc');
+        $('#News').css('color', '#ccc');
+        $('#Music').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#Technologhy').hide();
+        $('#FILM').hide();
+        $('#MusiC').show();
+    })
+    $('#News').click(function () {
+        $('#FILM').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#ccc');
+        $('#Art').css('color', '#ccc');
+        $('#Technology').css('color', '#ccc');
+        $('#Music').css('color', '#ccc');
+        $('#News').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#art').hide();
+        $('#Technologhy').hide();
+        $('#FILM').hide();
+        $('#MusiC').hide();
+        $('#NewS').show();
+    })
+    $('#Technology1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#FILM').css('color', '#ccc');
+        $('#News').css('color', '#ccc');
+        $('#Art').css('color', '#ccc');
+        $('#Music').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#ccc');
+        $('#Technology').css('color', '#e0ac03');
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#MusiC').hide();
+        $('#FILM').hide();
+        $('#Photography').hide();
+        $('#Technologhy').removeAttr("style", "display:none");
+    })
+    $('#Film').click(function () {
+        $('#wrapsidebar').attr("style", "display:none");
+        $('#wrapsidebar2').removeAttr("style", "display:none");
+    })
+    $('#PhotoGraphy1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#art').hide();
+        $('#NewS').hide();
+        $('#MusiC').hide();
+        $('#FILM').hide();
+        $('#Technologhy').hide();
+        $('#Technology').css('color', '#ccc');
+        $('#News').css('color', '#ccc');
+        $('#FILM').css('color', '#ccc');
+        $('#Art').css('color', '#ccc');
+        $('#Music').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#e0ac03');
+        $('#Photography').show();
+    })
+    $('#Art1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#MusiC').hide();
+        $('#FILM').hide();
+        $('#NewS').hide();
+        $('#Technologhy').hide();
+        $('#Photography').hide();
+        $('#Technology').css('color', '#ccc');
+        $('#News').css('color', '#ccc');
+        $('#FILM').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#ccc');
+        $('#Music').css('color', '#ccc');
+        $('#Art').css('color', '#e0ac03');
+        $('#art').show();
+    })
+    $('#Music1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#Photography').hide();
+        $('#FILM').hide();
+        $('#art').hide();
+        $('#NewS').hide();
+        $('#Technologhy').hide();
+        $('#Technology').css('color', '#ccc');
+        $('#News').css('color', '#ccc');
+        $('#FILM').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#ccc');
+        $('#Art').css('color', '#ccc');
+        $('#Music').css('color', '#e0ac03');
+        $('#MusiC').show();
+    })
+    $('#News1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#Photography').hide();
+        $('#FILM').hide();
+        $('#art').hide();
+        $('#MusiC').hide();
+        $('#Technologhy').hide();
+        $('#Technology').css('color', '#ccc');
+        $('#FILM').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#ccc');
+        $('#Art').css('color', '#ccc');
+        $('#Music').css('color', '#ccc');
+        $('#News').css('color','#e0ac03');
+        $('#NewS').show();
+    })
+
+</script>
+<script>
+    $(".w-right-text li").mouseover(function () {
+        $(".onload").css("display", "block");
+    });
+
+    $(".w-right-text li").mouseout(function () {
+        $(".onload").css("display", "none");
+    });
+
+
+</script>  
+        
+ 

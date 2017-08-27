@@ -1,0 +1,225 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.BasicAccountViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+    ViewBag.UsernameLabel = "Composer Name to be Displayed";
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/register")
+    @Styles.Render("~/Content/themes/base/css")
+}
+
+@section scripts{
+    @Scripts.Render("~/js/home/register.js")
+    <script>
+        $(function () {
+            $('#txt-username').rules().remote.complete = function (xhr) {
+                if (xhr.status == 200 && xhr.responseText === 'true') {
+                    var id = xhr.getResponseHeader('X-UserName');
+                    if (id == 'Not Available') {
+                            $("#btnSendPayment").prop('disabled', false);
+                    }
+                    else {
+                        $("#UserNameDiv").removeClass('hidden');
+                        $("#UserNameDiv").addClass('alert alert-danger');
+                        $("#btnSendPayment").prop('disabled', true)
+                    }
+                }
+            };
+
+            $('#txt-emailaddress').rules().remote.complete = function (xhr) {
+
+                if (xhr.status == 200 && xhr.responseText === 'true') {
+                    var id = xhr.getResponseHeader('X-Email');
+                    if (id == 'Already Registered') {
+                        $("#EmailDiv").removeClass('hidden');
+                        $("#EmailDiv").addClass('alert alert-danger');
+                        $("#btnSendPayment").prop('disabled', true)
+                    }
+                    else {
+                            $("#btnSendPayment").prop('disabled', false);
+                    }
+                }
+            };
+        });
+
+
+
+    </script>
+
+
+
+
+
+
+}
+
+
+
+<div class="container-fluid">
+    @if (Model.Validation.HasCta)
+    {
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @Html.Partial("~/Views/Shared/_ValidationErrors.cshtml", Model.Validation)
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "payment-form", enctype = "multipart/form-data", @class = "form-horizontal" }))
+            {
+
+                <div class="form-group">
+                    @*<label for="txt-username" class="col-sm-3 control-label">@ViewBag.UsernameLabel:</label>*@
+                    <label for="txt-username" class="col-sm-3 control-label">Username:</label>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.UserName, new { id = "txt-username", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+                        <br />
+
+                        <div class="hidden" id="UserNameDiv" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            User name already exist.
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="txt-password" class="col-sm-3 control-label">Password:</label>
+                    <div class="col-sm-4">
+                        @Html.PasswordFor(model => model.Password, new { id = "txt-password", @class = "form-control password-match" })
+                        <span class="required-field">*</span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="txt-confirmpassword" class="col-sm-3 control-label">Confirm Password:</label>
+                    <div class="col-sm-4">
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { id = "txt-confirmpassword", @class = "form-control password-match" })
+                        <span class="required-field">*</span>
+                    </div>
+                </div>
+
+
+                    <div class="form-group">
+                        <label for="txt-firstname" class="col-sm-3 control-label">First Name:</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.FirstName, new { id = "txt-firstname", @class = "form-control" })
+                            <span class="required-field">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-lastname" class="col-sm-3 control-label">Last Name:</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.LastName, new { id = "txt-lastname", @class = "form-control" })
+                            <span class="required-field">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-emailaddress" class="col-sm-3 control-label">Email Address:</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.EmailAddress, new { id = "txt-emailaddress", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+
+                            <div class="hidden" id="EmailDiv" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span>
+                                This email is already registered.
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="hidden" id="EmailDiv" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Already Exist!
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txt-dob" class="col-sm-3 control-label">Date of Birth:</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.DOB, new { id = "txt-dob", @class = "form-control date-picker" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-phonenumber" class="col-sm-3 control-label">Phone Number:</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.Phone, new { id = "txt-phonenumber", @class = "form-control" })
+                            <span class="required-field">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt-profilepicture" class="col-sm-3 control-label">Profile Picture:</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.ProfilePicture, new { id = "txt-profilepicture", @class = "form-control", type = "file" })
+                            @Html.ValidationMessageFor(model => model.ProfilePicture, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                <br />
+                <br />
+                <br />
+
+                @Html.Partial("~/Views/Shared/_StripePaymentForm.cshtml", Model);
+
+                <div class="form-group">
+                    <label for="txt-promo" class="col-sm-3 control-label">Promo Code:</label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.PromoCode, new { id = "txt-promo", @class = "form-control promotion-validation" })
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+                @Html.Partial("~/Views/Shared/_AddressForm.cshtml", Model);
+
+                <br />
+                <br />
+                <br />
+
+                @Html.Partial("~/Views/Shared/_SecurityQuestionForm.cshtml", Model);
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <input id="chkagree" type="checkbox" class="control-label" />
+                        I agree to the <a href="@Url.Action("Terms","Home")" type="submit" id="terms" target="_blank">
+                            AphidByte Software and Services Agreement
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <button type="button" id="btnSendPayment" disabled="disabled" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+
+                    <div class="hidden">
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <button type="submit" id="submitbtn" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <span class="price">$77.99</span>
+
+                        </div>
+                    </div>
+            }
+        </div>
+        <div class="col-md-2 txt-center">
+            <img src="/img/basic-account.png" alt="basic account" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+ 
+@*<meta charset="utf-8">
+<title>AphidTise</title>
+<link rel="stylesheet" href="stylecss.css" type="text/css">
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery.cycle.all.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>*@
+
+
+
+ 
+
+<div class="aphidtise_wrap">
+    <div class="header_aphidtise">
+        <div class="menunav" style="width:80%;">
+            <ul>
+                <li><a href="Services">Services</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">The Gall</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="AboutUsPage">About Us</a></li>
+                <li><a href="Support">Support</a></li>
+            </ul>
+        </div>
+        <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a> </div>
+    </div>
+</div>
+
+<div class="about_headtext" style="cursor:pointer;"><p><span id="AboutUs"> About Us</span><span> > Company Info</span></p></div>
+<div class="about_headbg">
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="margin:auto; float:none; height:90%;">
+<div class="massage_index">
+<br/>
+<p>About AphidByte</p>
+<p>AphidByte was founded August 11, 2010 in Atlanta, GA. As a company we are responsible for making a positive impact on our clients’ careers around the world. Here at AphidByte we understand that people are our most valuable asset. Our focus is to provide our clients and customers with resources across the globe, to create opportunities in the realms of business, art, photography, technology, music, film, advertising, & more.</p>
+<br/>
+<p>AphidByte creates tools to increase your marketing and sales experience like never before in the social media sector, on a personal level, and professionally. Our services also include an Adveritising Module which rewards customers with discounts for products, services and events. Integrity is what we stand for. Our core value is customer and client satisfaction.  In the past, entertainment and media structuring has been disorganized to say the least. From this day forward, everything in entertainment and business will change for the better thanks to AphidByte.
+</p>
+<br/>
+<p>AphidByte was established in 2010, and officially launched in 2014. Since then, has become one of the fastest growing brands in technology.  AphidByte is derived from the insect the Aphid, also known as plant lice and in Britain and the Commonwealth as greenflies, blackflies or whiteflies, (not to be confused with "jumping plant lice" or true whiteflies) are small sap-sucking insects, and members of the super family  Aphidoidea.[1] Aphids are among the most destructive insect pests on cultivated plants in temperate regions.[1] The damage they do to plants has made them enemies of farmers and gardeners the world over, but from a zoological standpoint they are a very successful group of organisms.[2] Their success is in part due to the asexual reproduction capability of some species.[not verified in body] About 4,400 species of 10 families are known. Historically, many fewer families were recognized, as most species were included in the family Aphididae. Around 250 species are serious pests for agriculture and forestry as well as an annoyance for gardeners. They vary in length from 1 to 10 millimeters (0.04 to 0.39 in).* This information relates to aphids reproduction and how fast they reproduce. The reproduction is matched with our cloning process. The streamlines the aphid clones rest on are plants. The Plant Gall in our Matrix is what protects Aphids from its predators. Intriguing right?</p>
+<br/>
+<p>Our Values</p>
+<p>AphidByte as a company is passionate about making a change in the careers of our clients. Day in and day out  we will dedicate our efforts in ensuring high quality service. </p>
+<br/>
+<p>*wikipedia aphid</p>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="menunav_footer2">
+<ul>
+<li><a href="#">Navigation  </a></li>
+<li><a href="#">Menu    </a></li>
+<li><a href="#">Advertise   </a></li>
+<li><a href="#">Store     </a></li>
+<li><a href="#">Terms    </a></li>
+<li><a href="#">Privacy Policy </a></li>
+<li><a href="#">Sponsoring</a></li>
+</ul>
+</div>
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+ </script> 
+ 
+<script language="javascript">
+    $(document).ready(function () {
+        $("#AboutUs").click(function () {
+            window.location.href = "/Accounts/AboutUsPage";
+        });
+
+	$('#about_slider_ab').cycle({
+		fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+		speed:  'slow', 
+   		timeout: 0,
+   		next:   '#next', 
+    	prev:   '#prev',
+    	pager:  '#thumb',
+    	 
+		pagerAnchorBuilder: function(idx, slide) { 
+        	return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>'; 
+    	}  
+	});
+	
+
+
+});	
+</script>
+ 
+

@@ -1,0 +1,606 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+ @model AphidBytes.Accounts.Contracts.Model.MessageModel
+<script src="~/js/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+<script src="~/Content/jquery.mCustomScrollbar.css"></script>
+<script type="text/javascript" language="javascript">
+
+    function checklist(ctrl)
+    {
+	$("#creditt-menu li").removeClass("credit-menu-bgli");
+	$("#one").removeClass("one123");
+        var list = document.getElementById("creditt-menu").getElementsByTagName('li');
+       
+        for(i=0; i<list.length; i++)
+        {
+
+          // list[i].style.background = '#ffffff';
+		
+        }
+	
+        //ctrl.style.background = '#000';
+        $("#"+ctrl).addClass("credit-menu-bgli");
+    }
+
+
+</script>
+
+ <div class="aphidtise_wrap">
+
+<div class="logid">
+    <a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a>
+<div class="logid_out">
+<ul>
+<li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+  <li><a href="~/Accounts/Logout">Logout</a></li>
+</ul>
+
+<div class="profilebg">
+ <img src="@Url.Action("Overview", "Premium")" height="100px" />
+<div class="premi-info-box"><img src="/images/premiumaccount_star_bg.png" style="width:100%;"><p class="preum-p-text">Premium Account</p></div>
+<div class="premi-info-box">
+    <a href="@Url.Action("EditChannelPage","Premium")">    <img style="margin: 10px 0 0 10px;" src="/images/grid14bg.png"></a>
+
+</div>
+ 
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+<div class="header_aphidtise">
+<div id="logo">  </div>
+</div>
+<div class="creditt-head-wrap">
+<div class="creditt-left-box">
+<p class="info-p"><span id="gen" style="cursor:pointer">Upload</span><span style="cursor:pointer" id="createlnk">> Create Link Posts </span></p>
+</div>
+
+<div class="byter-hederfind">
+<div style="width:20%;"><a>Edit</a><img src="/images/symbol-i.png" style="position:absolute; width:20px; margin-top:-15px;" ></div>
+@*<div class="sort-byter">
+<p>Sort Title&nbsp;&nbsp; <samp class="order"><a href="#"> A to Z</a></samp></p>
+<p style="margin-left:70px;"><samp class="order"><a href="#"> Z to A</a></samp></p>
+</div>*@
+<div><input type="text" class="credit-search-m3"> 
+</div>
+    <div style="margin-left:52%; margin-top:-5%;"><a href="#"><img src="/images/credits-bgsearch.png" id="search" /></a>
+    
+        <samp id="A to Z" class="order"><a href="#"><img style="width: 26px !important; height: auto;" src="/images/filtericon.png" id="search"></a>
+</div>
+<div style="position:relative; z-index:999; margin-left:62%; margin-top:-6%;"><dl id="samplebyterbyter" class="dropdownbyter" style=" margin:0px 0 0px 5px; width: 210px;">
+      <dt><a id="basicbyter"><span style="color:#be9401;">Music</span></a></dt>
+        <dd>
+            <ul id="byterclick">
+                 <li class="getname"><a>Video</a></li>
+                 <li class="getname"><a>Pdf</a></li>
+                <li class="getname"><a>Photos</a></li>
+                <li class="getname"><a>Music</a></li>
+               
+            </ul>
+        </dd>
+    </dl>
+<li> </div>
+
+</div>
+</div>
+
+
+<div class="headertab_aphidtise" style="margin-top:-130px; margin-left:65px;">
+<div class="aphidbyteleft">
+
+<ul class="aphidbytelist-preum">
+<li><a href="PremiumAccountInfo">Account Info</a></li><li></li>
+<li><a href="GenerateClones">Upload</a></li><li>@*<img src="/images/right_line.png" height="2" width="98">*@</li>
+<li><a href="PremiumMessage">Messages</a></li>
+   
+            @if (Model.NewCount != 0)
+            {
+               <p class="in_c_text_3">@Model.NewCount</p> 
+            }<li></li>
+<li><a href="Premiumbytetracker">Byte Tracker</a></li><li></li>
+<li><a href="PremiumHistory">History</a></li><li></li>
+<li><a href="PremiumDataplan">Data Plan</a></li><li></li>
+<li><a href="PremiumPlaylist">Playlists</a></li><li></li>
+
+</ul>
+  
+
+  <div class="prebox">
+            <a href="Dashboard">Dashboard<img src="~/images/premium_account_bg.png" class="pre-boxp"></a>
+        </div>
+
+<div class="mremium-tools"> <a href="PremiumTools"><img src="~/images/premium-tools.png" ></a></div>
+
+<div class="info-footer-social"></div>
+@*<div class="premium_rightline"></div>*@
+</div>
+
+    <div id="yesnodel" style="display: none;">
+        <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+            <div class="bg_yes_no">
+                <div>
+                    <p>Are you sure want to delete?</p>
+                </div>
+                <div>
+                    <p id="yesdel"><a>Yes</a></p>
+                    <p id="nodel"><a>No</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="height:400px; margin-top:90px; width:70%;">
+<div class="massage_index">
+<div style="width:100%; height:400px; margin:auto;">
+<br/>
+<!-- Table goes in the document BODY -->
+<table align="center" class="gradienttablepremium" id="table1" style="width:100%; margin-left:20px;">
+<tr>
+	<th style="width:13%;"><p>Title</p></th>
+    <th style="width:10%;"><p>Channel</p></th>
+    <th style="width:10%;"><p># of Clones</p></th>
+    <th style="width:10%;"><p>Views</p></th>
+    <th style="width:10%;"><p>Downloads</p></th>
+    <th style="width:10%;"><p>File Size</p></th>
+    <th style="width:10%;"><p>Tracking #</p></th>
+    @*<th style="width:10%;"><p>Date Posted</p></th>
+    <th style="width:10%;"><p>Edit</p></th>*@
+    <th style="width:2%; background:none;"></th>
+    <th style="width:2%; background:none;"></th>
+</tr>
+
+@foreach (var item in ViewBag.PostData)
+    {
+        <tr class="gradient-trbyterr5" onclick="getData(@item.TrackingNumber);">
+	<td><p>@item.Title</p></td>
+    <td align="center"><p class="postimg"><img src="@item.MatrixImagePath"/></p></td>
+    <td align="center"><p>@item.NoOfChannel</p></td>
+    <td><p>@item.Views</p></td>
+    <td><p>@item.Downloads</p></td>
+    <td><p>@item.FileSize</p></td>
+    <td><p>@item.TrackingNumber</p></td>
+     <td><img onclick="" src="/Images/tvicon.png"></td>
+     <td><a href="socialposting"><img onclick="" src="/Images/sendicon.png"></a></td>
+    @*<td><p>@item.DateShow</p></td>
+     <td><p><a href="@(Url.Action("EditLinkPostPremium", "Premium")+"?TrackNo="+item.TrackingNumber)">Edit</a> </p></td>*@
+    @*<td style="background:none;">*@
+    <td style="background:none;"><div class="grandit-3box"><a href="#">  <img src="/Images\searmcrediti.png"onclick="Fileprivew(@item.TrackingNumber)"></a></div></td>
+   @*</td>*@
+            <td style="background: none;">
+                <div class="grandit-3box">
+                    <a href="#">
+                        <img onclick="closebtn(@item.TrackingNumber);" src="/images/close-m-i.png">
+                    </a>
+                </div>
+            </td>
+</tr>
+    }
+   
+</table>
+
+
+</div>
+
+</div>
+
+</div>
+
+<div class="byter-girt-gt" style="margin-top:-200px;" >
+<a href="#" id="edittrackpre"><img src="/images/byter-ok.png" onclick="okclick();"></a>
+
+</div>
+
+
+
+<div class="massage-footer-m">
+</div>
+</div>
+
+
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+
+<script>
+    $(document).ready(function () {
+        $("#gen").click(function () {
+            window.location.href = "/Premium/GenerateClones";
+        });
+        $("#createlnk").click(function () {
+            window.location.href = "/Premium/PremiumLinkPost";
+        });
+    $("#content").find("[id^='tab']").hide(); // Hide all content
+    $("#tabs li:first").attr("id","current"); // Activate the first tab
+    $("#content #tab1").fadeIn(); // Show first tab's content
+    
+    $('#tabs a').click(function(e) {
+        e.preventDefault();
+        if ($(this).closest("li").attr("id") == "current"){ //detection for current tab
+         return;       
+        }
+        else{             
+          $("#content").find("[id^='tab']").hide(); // Hide all content
+          $("#tabs li").attr("id",""); //Reset id's
+          $(this).parent().attr("id","current"); // Activate this
+          $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+        }
+    });
+});
+</script>
+
+<script type="text/jscript">
+    var trackId="track";
+    function divClicked()
+    {
+
+    var divHtml = [];
+
+    $("#mydiv div").each(function(){
+    divHtml.push($(this).html());
+     var editableText = $("<input type='text' />");
+    editableText.val($(this).html());
+    $(this).replaceWith(editableText);
+     editableText.blur(editableTextBlurred);
+    });
+    editableText.focus();
+    // setup the blur event for this new textarea
+   
+}
+
+function editableTextBlurred() {
+    var html = $(this).val();
+    var viewableText = $("<div>");
+    viewableText.html(html);
+    $(this).replaceWith(viewableText);
+    // setup the click event for this new div
+  //  viewableText.click(divClicked);
+}
+
+$(document).ready(function() {
+    $("#buttonclick").click(divClicked);
+});
+function getData(a) {
+    trackId = a;
+}
+</script>
+
+
+<script type="text/javascript">
+        $(document).ready(function() {
+
+
+            var aa="Music";
+            $(".getname").click(function () {
+                aa = $(this).text();
+                var tr;
+                $.post('/Premium/ChangePostData', { Text: aa }, function (data) {
+                    $(".gradient-trbyterr5").remove();
+                    for (var i = 0; i < data.length; i++) {
+                        
+                        tr += '<tr class="gradient-trbyterr5" id="row1" onclick="getData(' + data[i].TrackingNumber + ');">';
+                        tr += '<td><p>' + data[i].Title + '</p></td>';
+                        tr += '<td align="center"><p class="postimg">'
+                       
+                        if (data[i].MatrixImagePath != null && data[i].MatrixImagePath != "") {
+                            tr += '<img src=' + data[i].MatrixImagePath + '>';
+                        }
+                        else { tr += '<img>' }
+                          tr+='</p></td>';
+                        tr += '<td align="center"><p>' + data[i].NoOfChannel + '</p></td>';
+                        tr += '<td><p>' + data[i].Views + '</p></td>';
+                        tr += '<td><p>' + data[i].Downloads + '</p></td>';
+                        tr += '<td><p>' + data[i].FileSize + '</p></td>';
+                        tr += '<td><p id=' + data[i].TrackingNumber + ' class="trackNo">' + data[i].TrackingNumber + '</p></td>';
+                        //tr += '<td><p>' + data[i].DateShow + '</p></td>';
+                        //tr += ' <td><p><a href="EditLinkPostPremium?TrackNo=' + data[i].TrackingNumber + '">Edit</a> </p></td>';
+                        tr += '<td style="background:none;">';
+                        tr += '<div class="grandit-3box">';
+                        tr += '<a href="#"><img src="/Images/tvicon.png"onclick="closebtn(' + data[i].TrackingNumber + ')"></a>'
+                        tr += '<td style="background:none;">';
+                        tr += '<div class="grandit-3box">';
+                        tr += '<a href="socialposting"><img src="/Images/sendicon.png" onclick="Fileprivew(' + data[i].TrackingNumber + ')"></a>';
+                        tr += '<td style="background:none;">';
+                        tr += '<div class="grandit-3box">';
+                        tr += '<a href="#"><img src="/Images/searmcrediti.png" onclick="Fileprivew(' + data[i].TrackingNumber + ')"></a>';
+                        tr += '<td style="background:none;">';
+                        tr += '<div class="grandit-3box">';
+                        tr += '<a href="#"><img src="/Images/close-m-i.png"onclick="closebtn(' + data[i].TrackingNumber + ')"></a>'
+                        tr += '</div>';
+                        tr += '</td>';
+                        tr += '</tr>';
+                        //$("#table1").html('');
+                        $(".gradient-trbyterr5").remove();
+                       // $("#table2").css('display', 'block');
+                        $("#table1").append(tr);
+                    }
+                });
+            });
+
+            $("#search").click(function () {
+                var text = $(".credit-search-m3").val();
+                var tr;
+                $.post('/Premium/SearchPostLink', { Text: text, Category: aa }, function (data) {
+                    //alert(data);
+                    if (data != null) {
+                        for (var i = 0; i < data.length; i++) {
+                            tr += '<tr class="gradient-trbyterr5" id="row1" onclick="getData(' + data[i].TrackingNumber + ');">';
+                            tr += '<td><p>' + data[i].Title + '</p></td>';
+                            tr += '<td align="center"><p class="postimg">';
+                            if (data[i].MatrixImagePath != null && data[i].MatrixImagePath != "") {
+                                tr += '<img src=' + data[i].MatrixImagePath + '>';
+                            }
+                            else { tr += '<img>' }
+                            tr += '</p></td>';
+                            tr += '<td align="center"><p>' + data[i].NoOfChannel + '</p></td>';
+                            tr += '<td><p>' + data[i].Views + '</p></td>';
+                            tr += '<td><p>' + data[i].Downloads + '</p></td>';
+                            tr += '<td><p>' + data[i].FileSize + '</p></td>';
+                            tr += '<td><p id=' + data[i].TrackingNumber + ' class="trackNo">' + data[i].TrackingNumber + '</p></td>';
+                            tr += '<td><p>' + data[i].DateShow + '</p></td>';
+                            tr += ' <td><p><a href="EditLinkPostPremium?TrackNo=' + data[i].TrackingNumber + '">Edit</a> </p></td>';
+                            tr += '<td style="background:none;">';
+                            tr += '<div class="grandit-3box">';
+                            tr += '<a href="#"><img src="/Images/searmcrediti.png" onclick="Fileprivew(' + data[i].TrackingNumber + ')"></a>';
+                            tr += '<td style="background:none;">';
+                            tr += '<div class="grandit-3box">';
+                            tr += '<a href="#"><img src="/Images/close-m-i.png"onclick="closebtn(' + data[i].TrackingNumber + ')"></a>'
+                            tr += '</div>';
+                            tr += '</td>';
+                            tr += '</tr>';
+                           
+                            $(".gradient-trbyterr5").remove();
+                            // $("#table2").css('display', 'block');
+                            $("#table1").append(tr);
+                        }
+                    }
+                    else { $(".gradient-trbyterr5").remove(); }
+                });
+            });
+
+
+            $(".order").click(function () {
+                // var dd = $(this).text();
+                var tr;
+                var dd = $(this).attr("id");
+          
+                $.post('/Premium/AtoZ', { Text: aa, Order: dd }, function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        tr += '<tr class="gradient-trbyterr5" id="row1" onclick="getData(' + data[i].TrackingNumber + ');">';
+                        tr += '<td><p>' + data[i].Title + '</p></td>';
+                        tr += '<td align="center"><p class="postimg">';
+                        if (data[i].MatrixImagePath != null && data[i].MatrixImagePath != "") {
+                            tr += '<img src=' + data[i].MatrixImagePath + '>';
+                        }
+                        else { tr += '<img>' }
+                        tr += '</p></td>';
+                        tr += '<td align="center"><p>' + data[i].NoOfChannel + '</p></td>';
+                        tr += '<td><p>' + data[i].Views + '</p></td>';
+                        tr += '<td><p>' + data[i].Downloads + '</p></td>';
+                        tr += '<td><p>' + data[i].FileSize + '</p></td>';
+                        tr += '<td><p id=' + data[i].TrackingNumber + ' class="trackNo">' + data[i].TrackingNumber + '</p></td>';
+                        //tr += '<td><p>' + data[i].DateShow + '</p></td>';
+                        //tr += ' <td><p><a href="EditLinkPostPremium?TrackNo=' + data[i].TrackingNumber + '">Edit</a> </p></td>';
+                        tr += '<td style="background:none;">';
+                        tr += '<div class="grandit-3box">';
+                        tr += '<a href="#"><img src="/Images/searmcrediti.png" onclick="Fileprivew(' + data[i].TrackingNumber + ')"></a>';
+                        tr += '<td style="background:none;">';
+                        tr += '<div class="grandit-3box">';
+                        tr += '<a href="#"><img src="/Images/close-m-i.png"onclick="closebtn(' + data[i].TrackingNumber + ')"></a>'
+                        tr += '</div>';
+                        tr += '</td>';
+                        tr += '</tr>';
+                       
+                        $(".gradient-trbyterr5").remove();
+                       
+                        $("#table1").append(tr);
+                    }
+
+                });
+
+                if (dd == "A to Z") {
+                    $(this).attr("id", "Z to A");
+
+                } else {
+                    $(this).attr("id", "A to Z");
+                }
+            });
+
+            $("#basicbyter").click(function() {
+                $("#byterclick").toggle();
+            });
+                        
+            $("#byterclick li a").click(function() {
+                var text = $(this).html();
+                $("#basicbyter span").html(text);
+                $("#byterclick").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick").hide();
+            });
+			
+
+			 $("#basicbyterone").click(function() {
+                $("#byterclick2").toggle();
+            });
+                        
+            $("#byterclick2 li a").click(function() {
+                var text = $(this).html();
+                $("#basicbyterone span").html(text);
+                $("#byterclick2").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick2").hide();
+            });
+			
+			
+			
+          $("#basicbytertwo").click(function() {
+                $("#byterclick3").toggle();
+            });
+                        
+            $("#byterclick3 li a").click(function() {
+                var text = $(this).html();
+                $("#basicbytertwo span").html(text);
+                $("#byterclick3").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick3").hide();
+            });
+			
+			
+			$("#basicbyterfour").click(function() {
+                $("#byterclick4").toggle();
+            });
+                        
+            $("#byterclick4 li a").click(function() {
+                var text = $(this).html();
+                $("#basicbyterfour span").html(text);
+                $("#byterclick4").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick4").hide();
+            });
+		   	
+			
+
+        });
+    </script>
+    
+    <script>
+
+$('.gradient-trbyterr5').click(function(){
+$(this).addClass('active');
+	
+	$('.gradient-trbyterr5').removeClass('active');		
+});
+
+$('.gradient-trbyterr5').click(function(){
+    $(this).addClass('active');
+	$('.gradient-trbyterr5').removeClass('active');	
+	
+	
+});
+</script>
+<script >
+ 
+
+function Fileprivew(trackingnumber) {
+    var ii = $("#basicbyter").text();
+
+    $.post('/Premium/FilePrivew', { Trackingnumber: trackingnumber, Category: ii }, function (data) {
+        //alert("data");
+        window.location = data;
+    });
+}
+
+  function okclick() {
+            openpopup();
+            var cat = $('#basicbyter').text();
+            if (trackId == "track") {
+                document.getElementById("pop_wrapper").style.display = "block";
+                $('#button-bg1').dialog("open");               
+                document.getElementById("socialname").innerHTML = "Select one row";
+
+            }
+            else {
+                $.post('@Url.Action("selectchanneltoflood1", "Premium")', { trackid: trackId, cat: cat }, function (data) {
+                window.location = data;
+            });
+        }
+    }
+
+        function openpopup() {
+            $("#popup1:visible").hide();
+            // $("#image-placeholder").attr("src", $(this).attr("href")); // replace image src with href from the link that was clicked
+            $("#popup1").fadeIn("fast");
+            $("#popup1-close").click(function (e) {
+                e.preventDefault();
+                $("#popup1").fadeOut("fast");
+            });
+
+        }
+        $('.gradient-trbyterr5').click(function () {
+            //alert("kk");
+
+
+            $('.gradient-trbyterr5').removeClass('grd_g_bg');
+
+            $(this).addClass('grd_g_bg');
+        });
+        function popup() {
+            document.getElementById("button-bg1").style.display = "none";
+            document.getElementById("pop_wrapper").style.display = "none";
+        }
+        //$('.gradient-trbyterr5').click(function(){
+        // $(this).addClass('active');
+        //$('.gradient-trbyterr5').removeClass('active');	
+
+
+        //});
+
+        function closebtn(trck)
+        {
+            $("#yesnodel").attr('style', 'display:block');
+            $('#nodel').click(function () {
+                $("#yesnodel").hide();
+            });
+            $("#yesdel").click(function () {
+            $.post('/Premium/DeleteRecrd', {Track:trck}, function (data) {
+               // alert(data);
+                if (data == true)
+                {
+                    location.reload();
+                }
+            });
+            });
+
+        }
+
+</script>
+
+<div class="black_screen" id="pop_wrapper" style="display: none; z-index: 500;background-color:transparent"></div>
+<div id="button-bg1" style="display: none">
+
+    <div class="errormsg">
+        <p id="socialname"></p>
+    </div>
+     <div id="button-c2">
+            <img src="/img/button_bgw.png" onclick="popup();" />
+        </div>
+</div>
+ 
+

@@ -1,0 +1,144 @@
+﻿@model AphidBytes.Web.Models.VideoTutorialsDisplay
+@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true; 
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/support")
+}
+
+@section scripts { 
+    @Scripts.Render("~/js/home/support.js")
+}
+
+<div class="container-fluid">
+    <div class="row row-offset-med tabbed-table">
+        <div class="col-md-2 alink">
+            <a href="#" class="link-section @(Model.IsClones ? "selected" : "")" data-section="clones">
+                <img src="~/img/clones.png" alt="clones" />
+                Clones
+            </a>
+        </div>
+        <div class="col-md-2 alink">
+            <a href="#" class="link-section @(Model.IsAdvertising ? "selected" : "")" data-section="advertising">
+                <img src="~/img/advertising.png" alt="advertising" />
+                Advertising
+            </a>
+        </div>
+        <div class="col-md-2 alink">
+            <a href="#" class="link-section @(Model.IsAccounts ? "selected" : "")" data-section="accounts">
+                <img src="~/img/accounts.png" alt="accounts" />
+                Accounts
+            </a>
+        </div>
+        <div class="col-md-2 alink">
+            <a href="#" class="link-section @(Model.IsVideoTutorials ? "selected" : "")" data-section="video-tutorials">
+                <img src="~/img/video-tutorials.png" alt="video tutorials" />
+                Video Tutorials
+            </a>
+        </div>
+    </div>
+
+    <div class="row clones"  style="@(Model.IsClones ? "" : "display:none;")">
+        <div class="col-md-7 col-md-offset-1">
+            <p>
+                <span class="question">What is a clone?</span><br />
+                A duplicate of one of your files. Typically posted to another location (website).
+            </p>
+            <p>
+                <span class="question">Creating a clone</span> <br />
+                This is where you post your file into the Gall. The analytical data on your file(s) is tracked via your Byte Tracker.
+            </p>
+            <p>
+                i.e. File 1 is posted into Matrix & ... <br />
+                Facebook (Only 1 in quantity to your personal Facebook) <br />
+                YouTube (Only 1 in quantity to your personal YouTube) <br />
+                etc.
+            </p>
+            <p>
+                <span class="question">What is the maximum amount of clones that can be generated?</span> <br />
+                A clone flood is based on how many sites that are in your database.
+            </p>
+            <p>
+                <span class="question">Am I allowed to generate a clone flood for a file I do not own the copyright to?</span> <br />
+                No. If you upload a file you do not own, your files will be removed when reported. Your account can be suspended or terminated without being refunded.
+            </p>
+        </div>
+    </div>
+
+    <div class="row accounts" style="@(Model.IsAccounts ? "" : "display:none;")">
+        <div class="col-md-7 col-md-offset-1">
+            <p>
+                <span class="question">Is there a tutorial on how the AphidByte system works before I decide to purchase a Basic or Premium Account membership?</span><br />
+                Yes, on the Log In screen, select the tab “Support” in the navigation pane on the top of the page and click on the “ Video Tutorials” link.
+            </p>
+            <p>
+                <span class="question">Do you offer joint accounts?</span><br />
+                No, but you can create an account as a group name.
+            </p>
+            <p>
+                <span class="question">Is there a refund for my account membership payment?</span><br />
+                No
+            </p>
+            <p>
+                <span class="question">Where do I go to purchase/add “Widgets” to my Account?</span><br />
+                “Widgets” after logging into your account in the sidebar navigation.
+            </p>
+            <p>
+                <span class="question">Will my account information on my account be kept private?</span><br />
+                See “Privacy Policy” for more information.
+            </p>
+            <p>
+                <span class="question">Is there a monthly fee for Basic, and Premium Account users?</span><br />
+                No.  Data Plans over 2GB of storage are subject to various costs.
+            </p>
+            <p>
+                <span class="question">Are there any annual renewal fees for my account?</span><br />
+                No.
+            </p>
+            <p>
+                <span class="question">What is the playlist limit for media files?</span><br />
+                15 playlist per account. 20 files per playlist.
+            </p>
+        </div>
+    </div>
+
+    <div class="row advertising" style="@(Model.IsAdvertising ? "" : "display:none;")">
+        <div class="col-md-7 col-md-offset-1">
+            <p>
+                <span class="question">How do I advertise on the AphidByte Matrix Site?</span><br />
+                Select “Advertise” on the bottom of this page and follow the instructions
+            </p>
+            <p>
+                <span class="question">What are the Advertising duration types?</span><br />
+                Daily, Monthly, and Weekly
+            </p>
+            <p>
+                <span class="question">What are the Advertising  payment types?</span><br />
+                Flat rate or PPC
+            </p>
+        </div>
+    </div>
+
+    <div class="row video-tutorials" style="@(Model.IsVideoTutorials ? "" : "display:none;")">
+        <div class="col-md-7 col-md-offset-1">
+            <a href="#">Byter Account Quick Start</a>
+            <br /><br />
+            <a href="#">Basic Account Quick Start</a>
+            <br /><br />
+            <a href="#">Premium Account Quick Start</a>
+            <br /><br />
+            <a href="#">AphidLabs Account Quick Start</a>
+            <br /><br />
+            <a href="#">What is the Byte Tracker?</a>
+            <br /><br />
+            <a href="#">Generating Ads</a>
+            <br /><br />
+            <a href="#">Generating Clones</a>
+            <br /><br />
+            <a href="#">How to add Widgets</a>
+        </div>
+    </div>
+</div>

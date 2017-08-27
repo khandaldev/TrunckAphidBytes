@@ -1,0 +1,344 @@
+.main_content .right_content {
+    padding-left: 0px;
+    padding-top: 40px; 
+}
+.reply_box {
+  .top_navigation ul {
+    text-align: right;
+    li {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 20px;
+      img {
+        float: left;
+        margin-left: 10px;
+      }
+      .checbox {
+        margin-top: 12px;
+        input {
+          width: 20px;
+          height: 20px;
+        }
+      }
+      &.btn {
+        border: 2px solid #000;
+        padding: 0px;
+        width: auto;
+        a {
+          font-size: 12px;
+          color: #000;
+          padding: 10px 40px;
+          display: block;
+          width: 140px;
+        }
+        &.active a, a:hover {}
+      }
+      &.search_box {
+        width: 250px;
+        .form-control {
+          width: 80%;
+          float: left;
+          .search_icon img {}
+        }
+      }
+    }
+  }
+  .mobile_menu {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    &:after {
+      position: absolute;
+      content: '';
+      height: 2px;
+      width: 30px;
+      background: #000;
+      left: 0;
+      top: 0px;
+    }
+    span {
+      &:after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 30px;
+        background: #000;
+        left: 0;
+        top: 16px;
+      }
+      &:before {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 30px;
+        background: #000;
+        left: 0;
+        top: 8px;
+      }
+    }
+  }
+  .reply_mail_box {
+    margin-top: 50px;
+    .mail_box {
+      background-color: hsla(0, 0%, 14%, 0.1);
+      border-radius: 9px;
+      box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.6);
+      padding: 20px 5em;
+      position: relative;
+      .mail_edit {
+        position: absolute;
+        top: 0;
+        right: 0px;
+        margin-top: -32px;
+        margin-right: -15px;
+        a img {
+          width: 74px;
+        }
+      }
+      .mailto {
+        padding-bottom: 20px;
+        label {
+          display: inline-block;
+          vertical-align: middle;
+          margin: 0px 10px 0px 0px;
+          font-size: 16px;
+        }
+        .avatar {
+          display: inline-block;
+          vertical-align: middle;
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 40px;
+          }
+        }
+        span {
+          color: #557321;
+          display: inline-block;
+          vertical-align: middle;
+          margin-left: 10px;
+          font-size: 16px;
+        }
+      }
+      .mail_subject {
+        padding-bottom: 20px;
+        label {
+          display: inline-block;
+          font-size: 16px;
+        }
+        .form-control {
+          border-radius: 0px;
+          width: 300px;
+          display: inline-block;
+          vertical-align: middle;
+          margin-left: 20px;
+        }
+      }
+      .mail_body {
+        padding-bottom: 20px;
+        p {
+          color: #000000;
+          font-size: 16px;
+        }
+      }
+    }
+    .mail_bottom {
+      text-align: right;
+      padding: 40px 20px;
+      .attach_icon {
+        display: inline-block;
+        vertical-align: middle;
+        transform: rotate(20deg);
+        a img {}
+      }
+      .send_btn {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 40px;
+        a {}
+      }
+    }
+  }
+}
+
+.comment_list .comment_block {
+  padding: 20px 0px;
+  .comment_date {
+    padding-left: 160px;
+    padding-bottom: 10px;
+    span {
+      font-size: 12px;
+    }
+  }
+  .comment_left {
+    display: inline-block;
+    width: 110px;
+    vertical-align: middle;
+  }
+  .comment_box:after {
+    position: absolute;
+    content: '';
+    border: solid transparent;
+    border-width: 10px 10px 10px 0;
+    border-right-color: rgba(0, 0, 0, 1);
+    top: 50%;
+    left: -10px;
+    margin-top: -5px;
+  }
+  .comment_left ul li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+    .checbox {
+      margin-top: 12px;
+      input {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    img {}
+  }
+  .comment_box {
+    border-radius: 40px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px solid rgba(0, 0, 0, 1);
+    position: relative;
+    display: inline-block;
+    width: 79%;
+    vertical-align: middle;
+    .comment_heading {
+      text-align: center;
+      padding: 10px;
+      .avatar {
+        position: absolute;
+        left: -10px;
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 40px;
+        }
+        span {
+          color: #557321;
+          font-size: 16px;
+        }
+      }
+      h4 {
+        color: #557321;
+        font-size: 16px;
+        letter-spacing: 1px;
+      }
+    }
+    .comment_body {
+      padding: 40px 60px;
+      p {
+        color: #605E5E;
+        font-size: 16px;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+
+
+
+.reply_box .messages_list {
+  padding: 80px 40px;
+  ul li {
+    margin-bottom: 40px;
+    position: relative;
+    .messages_box {
+      border-radius: 5px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(47, 46, 46, 1);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    &.selected .messages_box {
+      background: rgba(85, 115, 33, 0.21);
+    }
+    .selected_circle {
+      width: 38px;
+      height: 38px;
+      background: #68b04d;
+      border-radius: 50%;
+      position: absolute;
+      right: -19px;
+      top: 50%;
+      margin-top: -19px;
+    }
+    .checbox {
+      float: left;
+      width: 6%;
+      margin-top: 30px;
+      input {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .messages_box {
+      float: right;
+      width: 94%;
+      padding: 10px;
+      .avatar_left {
+        float: left;
+        width: 40px;
+        img {
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+        }
+      }
+      .right_message_content {
+        width: 90%;
+        float: left;
+        padding-left: 40px;
+        margin-left: -40px;
+        h4 {
+          color: #557321;
+          padding-bottom: 10px;
+          font-size: 17px;
+        }
+        p {
+          color: #000000;
+          font-size: 15px;
+          letter-spacing: 1px;
+        }
+      }
+      .right_dot {
+        float: right;
+        width: 10%;
+        position: relative;
+        &:after {
+          position: absolute;
+          content: '';
+          width: 3px;
+          height: 3px;
+          right: 40px;
+          background: #000;
+          top: 42px;
+        }
+        span {
+          &:before {
+            position: absolute;
+            content: '';
+            width: 3px;
+            height: 3px;
+            right: 20px;
+            background: #000;
+            top: 42px;
+          }
+          &:after {
+            position: absolute;
+            content: '';
+            width: 3px;
+            height: 3px;
+            right: 30px;
+            background: #000;
+            top: 42px;
+          }
+        }
+      }
+    }
+  }
+}

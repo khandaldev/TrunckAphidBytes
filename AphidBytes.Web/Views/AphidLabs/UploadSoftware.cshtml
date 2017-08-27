@@ -1,0 +1,973 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.AphidLabsUpload
+@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@*<div class="aphidtise_wrap">
+
+        <div class="logid">
+
+            <div class="logid_out">
+                <ul>
+                    <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                    <li><a href="~/Accounts/Logout">Logout</a></li>
+                </ul>
+
+                <div class="profilebg">
+                    <div class="migprofile">
+                        <img src="/images/profilebg.png">
+                    </div>
+                    <div class="profiletext-ct-info">
+                        <img src="/images/clone-pa.png">
+                        AphidLAb Account
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>*@
+
+
+<div id="LogOut" class="logid_out">
+
+    <ul>
+        <li><a href="#" style="color: #ffc000;">techy</a></li>
+        <li><a href="/Accounts/Logout">Logout</a></li>
+    </ul>
+    <div class="profilebg">
+        <div style="margin-right: 50px!important;" class="migprofile">
+
+
+
+
+
+            <img src="/images/profilebg.png">
+            <img style="padding-top: 15px; padding-bottom: 15px;" src="/images/aphidlaplogi_P2.png">
+            <img src="/images/grid14bg.png">
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- modal content -->
+<div id='confirm'>
+    <div class='header'></div>
+    <div class='message'></div>
+    <div class='buttons'>
+        <div class='no simplemodal-close'>No</div>
+        <div class='yes'>Yes</div>
+    </div>
+</div>
+
+
+<div id="toPopup" style="background-color:black;margin-top:-98px;background: url(/images/blackgreenwallpapervert.png);border-color:#77815f;border-width:5px; ">
+
+    <div class="close"></div>
+
+    <div id="popup_content">
+        <!--your content start-->
+
+        <div class="pop-mian">
+            <p class="pop-texts" style="margin-top: 20px; width: 40%;">Audio Interruption Files:</p>
+            <p>
+                <img src="" id="waves" width="160px;" height="92px;">
+                <audio id="player" />
+            </p>
+            <div style="float: left; width: 50%; height: 100px;">
+                <p class="pop-texts">(Short Audio Files only)</p>
+                <br />
+                <p class="pop-texts">
+                    Min Length 0:25<br />
+                    Max Length 0:50
+                </p>
+                <div style="float: right; width: 50%; height: 100px; margin-left: 500px;" class="pop-texts">
+                    <div class="file_name" style="float: right; width: 150%; color: #f00; height: 100px; margin-left: 500px;"></div>
+
+
+                </div>
+            </div>
+            <div id="pop-leftz1" style="display: none">
+
+
+                <p style="width: 45%;" id="audioInter"></p>
+                <div id='confirm-dialog'>
+                    <p>
+                        <a href="#" id="audioCross" class='confirm'>
+                            <img src="/images/closebotton.png">
+                        </a>
+                    </p>
+                </div>
+                <p id="PlayAudio" style="margin-left: 15px;">
+                    <a href="#">
+                        <img src="/images/play-bt.png">
+                    </a>
+                </p>
+                <p id="PauseAudio">
+                    <a href="#">
+                        <img src="/images/stop-bt.png">
+                    </a>
+                </p>
+            </div>
+
+
+        </div>
+
+        <div style="width: 100%;">
+            <div class="from_aphid">
+                <ul>
+                    <li>
+                        <label for="Company Logo" style="float: left; line-height: 19px; padding: 0 12px 20px 45px; width: 32%;">
+                            Upload new Audio
+                            <br />
+                            Interruption File:
+                        </label>
+                        <input type="file" id="fineinputAudio" form="file name" name="files[]" multiple>
+                        &nbsp;
+                    </li>
+
+                </ul>
+            </div>
+
+            <div>
+                <img src="/images/pop-line-m.png" style="width: 80%; margin-top: 15px;">
+            </div>
+            <div style="width: 100%; float: left; margin: 8px 0 0 176px;">
+                <p class="pop-z-t1">Watermarks:</p>
+                <p style="float: left;">
+                    <img src="/images/pop-cam-t.png">
+                </p>
+            </div>
+        </div>
+
+
+        <form action="/profile/upload" method="post" enctype="multipart/form-data">
+
+            <div style="margin-left:200px; margin-top:-220px;" id="ImgClose">
+                <a id="popup-close" href="" class="button"><img src="/Images/closebotton.png" onclick="CloseThis();" /> </a>
+            </div>
+            <div id="popup" style="display:none; margin-left:-100px">
+
+                <a id="popup-close" href="#" class="button"><img src="/Images/closebotton.png" onclick="CloseThis();" /> </a>
+                <p>
+                    <img src="" id="image-placeholder" width="200px" height="200px" />
+                </p>
+            </div>
+
+            <div class="from_aphid">
+                <ul>
+                    <li>
+                        <div class="file_name1" style="float: right; width: 50%; color: #f00; height: 100px; margin-left: 500px;"></div>
+                        <label for="Company Logo" style="float: left; line-height: 19px; padding: 0 12px 20px 45px; width: 32%;">
+                            Upload new
+                            <br />
+                            Watermark  File:
+                        </label>
+                        <input type="file" id="fineinputWater" form="file name" name="files[]" />
+
+                    </li>
+                </ul>
+            </div>
+
+            <div class="ch-pop-z1" id="ch-pop-z1" style="display: none">
+
+                <p style="color: #FFF;" id="imageText">
+
+                </p>
+                <p>
+                    <div id='confirm-dialog'>
+                <p>
+                    <a href="#" id="imageCross" class='confirm'>
+                        <img src="/images/close-serachb.png" style="margin-left: 8px;">
+                    </a>
+                </p>
+            </div>
+            </p>
+            <p>
+                <a href="#"><img src="/images/pop-serachb.png" style="width: 55%;" onclick="openpopup();"></a>
+            </p>
+    </div>
+
+    </form>
+</div>
+<!--your content end-->
+    </div>
+<!--toPopup end-->
+
+<div id="backgroundPopup"></div>
+<div id="yesno" style="display:none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div><p>Are you sure to Upgrade?</p></div>
+            <div><p id="yes"><a href="#">Yes</a></p><p id="no"><a href="#">No</a></p></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div style="display:none;" id="upgradebox">
+    <div class="bg_othr_box">
+        <div class="bg_othr_box_1">
+            <p>Account Upgraded Successfully Completed</p>
+            <p></p>
+            <p style="margin-top: 22px; margin-left: 137px;"><img src="/Images/right-icone.png"></p>
+
+            <p style="margin-top: 88px;"><a href="/Accounts/Logout">OK</a></p>
+        </div>
+    </div>
+</div>
+
+
+<div id="del_pop" style="display:none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div><p>Are you sure to Delete Account?</p></div>
+            <div><p><a id="delete_yes">Yes</a></p><p><a id="delete_no">No</a></p></div>
+        </div>
+    </div>
+</div>
+
+
+<div style="display:none; margin-left: 13%; margin-top: 10%; position: absolute; width: 75%; z-index: 999;" id="del_confirm_box">
+    <div class="bg_othr_box">
+        <div class="bg_othr_box_1">
+            <p>Account Delete Successful</p>
+            <p></p>
+            <p style="margin-top: 22px; margin-left: 137px;"><img src="/Images/right-icone.png"></p>
+
+            <p style="margin-top: 88px;"><a href="/Accounts/Logout">OK</a></p>
+        </div>
+    </div>
+</div>
+
+
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Error Occured Try Again
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" />
+    </div>
+
+</div>
+
+
+<div class="headertab_aphidtise">
+    <div id="logo">
+        <a style="cursor:pointer;" href="/"> <img src="/images/hphidbytelogo.png"></a>
+        <div class="upload-up">
+            <samp><img src="../Images/processing_uploadimg.png" /></samp>
+        </div>
+    </div>
+
+    <div class="aphidbyteleft">
+
+        <ul class="aphidbytelist-lab">
+            <li><a href="AphidLabsAccountInfo">Account Info</a></li>
+            <li>
+
+            </li>
+            <li><a href="GenerateClones">Messages</a></li>
+            <li></li>
+            @*<li><a href="Message" class="chnht1">Channel Information</a></li>*@
+            <li><a href="ChannelInformation" class="chnht1">Channel Information</a></li>
+
+            <li></li>
+            <li><a href="bytetracker">History</a></li>
+            <li></li>
+            <li><a href="AphidLAbUpload">Upload</a></li>
+            <li><img src="/images/right_line.png" height="2"></li>
+            <li><a href="ByteTracker">Byte Tracker</a></li>
+            <li></li>
+            <li><a href="Dataplan">Data Plan</a> </li>
+            <li></li>
+        </ul>
+
+
+        <div class="dsbox">
+
+            <samp><img src="../images/widegts_img.png"></samp>
+
+        </div>
+
+    </div>
+    <p class="info-p">Upload Software</p>
+
+    <div id="content_1" class="aphidbytecenter content ">
+        <div style="position:relative; height:100%; overflow:hidden; max-width:100%;" id="mCSB_1" class="mCustomScrollBox mCS-light">
+            <div style="position: relative; top: 0px;" class="mCSB_container">
+                <form method="post" enctype="multipart/form-data" action="/AphidLabs/UploadSoftware" novalidate="novalidate">
+                    <div class="from_aphidlab">
+                        <ul>
+                            <li>
+                                <div class="editor-label">
+                                    <label for="UserName">Upload File:</label>
+                                </div>
+                                @Html.TextBoxFor(model => model.Video, new { type = "file", form = "file name" })
+                                @*<input type="file" form="file name">*@
+                                <label for="Tags" style="text-align: center;">( .avi, .mp4, .mpeg, .mov, .flv. Or .wmv Files only )</label>
+                                @*<div class="editor-field">
+                                        <input type="file" id="fineinputAudio" form="file name" name="files[]" multiple="" style="height:35px!important;">
+                                        <span data-valmsg-replace="true" data-valmsg-for="RecoveryEmail" class="field-validation-valid ctext"></span>
+                                    </div>*@
+                            </li>
+
+                            <li>
+                                <div class="editor-label">
+                                    <label for="FirstName">Title of Upload:</label>
+                                </div>
+                                @Html.EditorFor(model => model.Titleofupload)
+                                @*<div class="editor-field">
+                                        <input class="text-box single-line" id="FirstName" name="FirstName" type="text" value="" />
+                                        <span class="field-validation-valid ctext" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                                    </div>*@
+                            </li>
+
+                            <li>
+                                <div class="editor-label">
+                                    <label for="FirstName">Upload Matrix Image:</label>
+                                </div>
+                                @Html.TextBoxFor(model => model.Matriximage, new { type = "file", accept = "image/*", form = "file name" })
+                                @*<div class="editor-field">
+                                        <input class="text-box single-line" id="FirstName" placeholder="Thumbnail will generate automatically" name="FirstName" type="text" value="" />
+                                        <span data-valmsg-replace="true" data-valmsg-for="RecoveryEmail" class="field-validation-valid ctext"></span>
+                                    </div>*@
+                            </li>
+
+
+                            <li>
+                                <div class="editor-label">
+                                    <label for="FirstName">Available for Download:</label>
+                                </div>
+                                @Html.DropDownListFor(model => model.AvailableDownload, new List<SelectListItem> {
+new SelectListItem{Text="Yes"},
+new SelectListItem{Text="No"}
+
+})
+                                @*<div class="editor-field">
+                                        <select name="ExpiryMonth" class="lab2drov" id="ExpiryMonth" data-val-number="The field ExpiryMonth must be a number." data-val="true">
+                                            <option value="">No</option>
+                                            <option value="1">Yes</option>
+
+                                        </select>
+                                        <span class="field-validation-valid ctext" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                                    </div>*@
+                            </li>
+
+                            <li>
+                                <div class="editor-label">
+                                    <label for="LastName" style="line-height:15px;">Set a Password for Downloader (optional):</label>
+                                </div>
+                                @Html.EditorFor(model => model.PasswordForDownload)
+                                @*<div class="editor-field">
+                                    <input class="text-box single-line" id="LastName" name="LastName" type="text" value="" /><label style="width: 8px;"><span style="color: red;">*</span></label>
+                                    <span class="field-validation-valid ctext" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                                </div>*@
+                            </li>
+                            <li>
+
+                            </li>
+
+                            <li>
+                                <div class="editor-label">
+                                    <label for="Phone">Verify Password:</label>
+                                </div>
+                                @Html.EditorFor(model => model.PasswordForDownload)
+                                @*<div class="editor-field">
+                                    <input class="text-box single-line" id="Phone" name="Phone" type="text" value="" />
+                                    <span class="field-validation-valid ctext" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+                                </div>*@
+                            </li>
+
+                            <li>
+                                <div class="editor-label">
+                                    <label for="Phone">Software Description:</label>
+                                </div>
+                                @Html.EditorFor(model => model.SoftwareDescription)
+                                @*<div class="editor-field">
+                <textarea class="text-box single-line abhid_vds" id="Phone" name="Phone"></textarea>
+                <span class="field-validation-valid ctext" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+            </div>*@
+                            </li>
+
+                            <li>
+                                <div class="editor-label">
+                                    <label for="Phone">Tags:</label>
+                                </div>
+                                <div class="editor-field">
+                                    <input class="text-box single-line" id="Phone" name="Phone" type="text" placeholder="Will generate automatically" value="" />
+                                    <span class="field-validation-valid ctext" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+                                </div>
+                            </li>
+
+
+
+                        </ul>
+                        <div style="clear: both; margin-left: 125px;">
+                            <input type="checkbox" name="vehicle" value="Bike">
+                            <samp>Apply To All</samp>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="canrt_a">
+                        <div style="float:left;">
+                            <button><img src="../Images/sear-mcredi-byter.png" style="width:50px;"></button><br>
+                            <p>Preview</p>
+                        </div>
+                        <div style="float:right;">
+                            <button><img src="../Images/ganrate_ppi.png"></button><br>
+                            <p>Generate</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="/Scripts/jquery.mCustomScrollbar.js"></script>
+
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+
+<script type="text/javascript">
+
+
+    function CloseThis() {
+
+        $("#popup").fadeOut("fast");
+    }
+
+    $('#ProfilePicture').change(function () {
+        //var names = [];
+        //for (var i = 0; i < $(this).get(0).files.length; ++i) {
+        //    names.push($(this).get(0).files[i].name);
+        //}
+        var na = $("#ProfilePicture").val();
+        //na = na.split('.');
+        if (!na.match(/(?:gif|jpg|png|bmp)$/)) {
+            // inputted file path is not an image of one of the above types
+            alert("Use Image File Only!");
+            $("#ProfilePicture").val("");
+        }
+
+    });
+    function openpopup() {
+        var a = $("#imageText").text();
+        $("#ImgClose").show();
+        $("#popup:visible").hide(); //hide popup if it is open
+        // e.preventDefault(); // don't follow link   "~/TempBasicImages/
+        var valk = "/TempBasicImages/" + a;
+        document.getElementById('image-placeholder').src = valk;
+        $("#image-placeholder").attr("src", $(this).attr("href")); // replace image src with href from the link that was clicked
+        $("#popup").fadeIn("fast"); //show popup
+        //$("#ImgClose").hide();
+
+        $("#popup-close").click(function (e) {
+            e.preventDefault();
+            $("#popup").fadeOut("fast");
+        });
+
+    }
+
+
+
+    var currentFile = '';
+    $(document).ready(function () {
+
+        $("#ImgClose").hide();
+        $("#waves").attr('src', '/images/wavespng.jpg');
+        $("#fineinput").click(function () {
+            var ts = $("#firstdown").text();
+            var liCountAudio = $("#myul li").size();
+            var tty = ts.trim();
+            var ts1 = $("#seconddown").text();
+            var liCount = $("#myul2 li").size();
+            if (liCountAudio >= 2) {
+                $("#fineinputAudio").attr("disabled", true);
+            }
+            else { $("#fineinputAudio").attr("disabled", false); }
+            if (liCount >= 2) {
+                $("#fineinputWater").attr("disabled", true);
+            }
+            else { $("#fineinputWater").attr("disabled", false); }
+            $.post('/Basic/GetAudio',
+            { key: "AudioFile", value: tty }, function (data) {
+                //alert("Success " + data.success);
+                player = document.getElementById('player');
+
+                player.setAttribute("src", "/TempBasicAudio/" + tty);
+            });
+
+        });
+
+        $('#upgradePremium').click(function () {
+            $("#yesno").attr('style', 'display:block');
+        });
+
+        $("#yes").click(function () {
+            $("#yesno").attr('style', 'display:none');
+            $.post('/Basic/UpgardeToPremium', {}, function (data) {
+                if (data == "Success") {
+
+                    $("#upgradebox").attr('style', 'display:block');
+                } else { $("#button-bg3").attr('style', 'display:block'); }
+
+            });
+
+        });
+        $('#show_del_pop').click(function () {
+            $("#del_pop").attr('style', 'display:block;');
+        });
+        $('#delete_no').click(function () {
+            $("#del_pop").attr('style', 'display:none;');
+        });
+        $("#delete_yes").click(function () {
+            $("#del_pop").attr('style', 'display:none');
+            $.post('/Basic/deleteAccount', {}, function (data) {
+                if (data == "Success") {
+                    $("#del_confirm_box").attr('style', 'display:block');
+                } else { $("#button-bg3").attr('style', 'display:block'); }
+
+            });
+
+        });
+
+        $("#ShowImage").click(function () {
+
+            var ClsNAme = $("#ShowImage").attr('class');
+
+            $.post('/Basic/GetImagePath', { ImgName: ClsNAme }, function (data) {
+                $("#popup:visible").hide(); //hide popup if it is open
+                // e.preventDefault(); // don't follow link   "~/TempBasicImages/
+
+                document.getElementById('image-placeholder').src = data;
+                $("#image-placeholder").attr("src", $(this).attr("href")); // replace image src with href from the link that was clicked
+                $("#popup").fadeIn("fast"); //show popup
+                //$("#ImgClose").hide();
+                $("#popup-close").click(function (e) {
+                    e.preventDefault();
+                    $("#popup").fadeOut("fast");
+                });
+            });
+        });
+
+
+
+        $(".fineinput1").click(function () {
+            var ts = $("#firstdown").text();
+            var ts1 = $("#seconddown").text();
+            if (ts == "No File Selected") {
+                $("#fineinputAudio").attr("disabled", false);
+            }
+            else { $("#fineinputAudio").attr("disabled", true); }
+            if (ts1 == "No File Selected") {
+                $("#fineinputWater").attr("disabled", false);
+            }
+            else { $("#fineinputWater").attr("disabled", true); }
+        });
+
+        $("#seconddown").click(function () {
+            //var cou = $("#myul2 li").size();
+            // var na = $("#myul2 li").text();
+            $('#myul2 li:not(:first):not(:last)').remove();
+            // alert(na);
+            // if (cou>=2) {
+
+            // }
+        });
+        $("#firstdown").click(function () {
+            //var cou = $("#myul2 li").size();
+            // var na = $("#myul2 li").text();
+            $('#myul li:not(:first):not(:last)').remove();
+            // alert(na);
+            // if (cou>=2) {
+
+            // }
+        });
+
+        $.post('/Basic/GetAudio',
+            function (data) {
+                // alert("Success " + data.success);
+            });
+
+
+        $("#RemoveImgDB").click(function () {
+            $("#seconddown").text("No File Selected");
+            var classname = $('#RemoveImgDB').attr('class')
+            //$.ajax({
+            //    type: "POST",
+            //    data: { Name: classname },
+            //    url: '/Basic/DeleteImage',
+            //    done: function (e, data) {
+
+            //    }
+            //});
+        });
+
+        $("#SetText").click(function () {
+            $("#firstdown").text("No File Selected");
+        });
+        $("div.close").click(function () {
+            player.pause();// disablePopup();  // function close pop up
+        });
+        $("#PlayAudio").click(function () {
+            player = document.getElementById('player');
+            $("#waves").attr('src', '/Images/waves.gif');
+
+            player.play();
+        });
+        $("#PauseAudio").click(function () {
+            $("#waves").attr('src', '/Images/wavespng.jpg');
+            player.pause();
+        });
+
+        $("#firstdown").click(function () {
+            $("#myul").toggle();
+        });
+
+        $("#myul li a").click(function () {
+            var text = $(this).html();
+
+            $("#firstdown span").html(text);
+            $.post('/SetSession/SetVariable',
+            { key: "AudioFile", value: text }, function (data) {
+                //alert("Success " + data.success);
+            });
+            $("#myul").hide();
+
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdown"))
+                $("#myul").hide();
+        });
+
+        $("#PlayBasicAudio").click(function () {
+            var className = $("#PlayBasicAudio").attr('class');
+            $.post('/Basic/GetAudioPath', { Name: className }, function (data) {
+                $("#player").attr('src', data);
+                player.play();
+                $("#waves").attr('src', '/images/waves.gif');
+                player.addEventListener('ended', function () {
+                    $("#waves").attr('src', '/images/wavespng.jpg');
+                });
+            });
+
+        });
+
+        $("#pausewave").click(function () {
+            $("#waves").attr('src', '/images/wavespng.jpg');
+
+        });
+
+        $("#SetText").click(function () {
+
+            $("#waves").attr('src', '/images/wavespng.jpg');
+
+        });
+
+
+        $("#seconddown").click(function () {
+            $("#myul2").toggle();
+        });
+
+        $("#myul2 li a").click(function () {
+            var text = $(this).html();
+            $("#seconddown span").html(text);
+            $.post('/SetSession/SetVariable',
+            { key: "ImageFile", value: text }, function (data) {
+                //alert("Success " + data.success);
+            });
+            $("#myul2").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdown"))
+                $("#myul2").hide();
+        });
+
+        //For Image
+
+        $('#fineinputWater').fileupload({
+            dataType: 'json',
+            url: '/Basic/UploadImage',
+            autoUpload: true,
+            done: function (e, data) {
+                //$('.file_name').html(data.result.name);
+                //$('.file_type').html(data.result.type);
+                //$('.file_size').html(data.result.size);
+                //$('.file-duration').html(data.result.duration);
+                if (data.result.name == "Invalid") {
+                    $(".file_name1").show();
+                    $('.file_name1').html(data.result.name + "Image");
+                    // alert("Invalid Image");
+                }
+                else {
+                    $(".file_name1").hide();
+                    $("#fineinputWater").attr('disabled', true);
+                    $("#imageText").empty();
+                    html = data.result.name;
+                    var dd = data.result.name;
+                    $("#imageText").append(html);
+                    $('#ch-pop-z1').css('display', 'block');
+                    var newOption = $('<li> <a href="#">' + html + '</a></li>');
+                    $('#myul2').append(newOption);
+                    $('#myul2 li a').click(function () {
+
+                        var selectedItem = $("#seconddown");
+                        // selectedItem.children().remove();
+                        var text = $(this).text();
+
+                        $.post('/SetSession/SetVariable',
+                        { key: "ImageFile", value: text }, function (data) {
+                            //alert("Success " + data.success);
+                        });
+                        if (text == "Default") {
+                            // selectedItem.append("<span>" + sel + "</span>");
+                            selectedItem.text("Default");
+                        }
+                        else {
+                            // selectedItem.append("<span>" + html + "</span>");
+                            selectedItem.text(dd);
+                            $("#myul2").hide();
+                        }
+                        // selectedItem.append("<span>" + html + "</span>");
+                        //$('#myul2 li').live('click', function () {
+
+                        //});
+
+                    });
+
+
+
+                    $('#myul2 li a').on('click', 'a', function () {
+                        console.log('clicked');
+                    });
+                }
+
+
+            }
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.progress .progress-bar').css('width', progress + '%');
+        });
+
+
+
+
+
+        //For Audio
+        $('#fineinputAudio').fileupload({
+            dataType: 'json',
+            url: '/Basic/UploadAudio',
+            autoUpload: true,
+            done: function (e, data) {
+                //$('.file_name').html(data.result.name);
+                //$('.file_type').html(data.result.type);
+                //$('.file_size').html(data.result.size);
+                //$('.file-duration').html(data.result.duration);
+                if (data.result.name == "Invalid") {
+                    $(".file_name").show();
+                    $('.file_name').html(data.result.name + " Audio or More Lenght ");
+                    //alert("Invalid Audio or More Length");
+                }
+                else {
+                    $(".file_name").hide();
+
+                    $("#fineinputAudio").attr('disabled', true);
+                    $("#audioInter").empty();
+                    html = data.result.name;
+                    $("#audioInter").append(html);
+                    $('#pop-leftz1').css('display', 'block');
+                    player = document.getElementById('player');
+                    player.setAttribute("src", data.result.type);
+
+                    var newOption = $('<li> <a href="#">' + html + '</a></li>');
+                    $('#myul').append(newOption);
+                    $('#myul li a').click(function () {
+                        var selectedItem = $("#firstdown");
+                        //var sel = $("#firstdown").find('option:selected').text();
+                        var htm = data.result.name;
+                        var text = $(this).text();
+                        selectedItem.text(text);
+                        $("#myul").hide();
+
+                        $.post('/SetSession/SetVariable',
+                        { key: "AudioFile", value: text }, function (data) {
+                            //alert("Success " + data.success);
+                        });
+
+
+                        //selectedItem.children().remove();
+                        //if (text == "Default") {
+                        //   // selectedItem.append("<span>" + sel + "</span>");
+                        //    selectedItem.text("Default");
+                        //}
+                        //else {
+                        //   // selectedItem.append("<span>" + html + "</span>");
+                        //    selectedItem.text(htm);
+                        //    $("#myul").hide();
+                        //}
+
+
+                    });
+
+                    $('#myul li a').on('click', 'a', function () {
+
+                    });
+
+                }
+
+
+            }
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.progress .progress-bar').css('width', progress + '%');
+        });
+
+
+    });
+
+    jQuery(function ($) {
+        $('#confirm-dialog input.confirm, #confirm-dialog a.confirm').click(function (e) {
+            e.preventDefault();
+            currentFile = e.currentTarget.id;
+            // example of calling the confirm function
+            // you must use a callback function to perform the "yes" action
+            confirm("Are you sure you want to delete? ", function () {
+                window.location.href = '#';
+
+
+            });
+        });
+    });
+
+    function confirm(message, callback) {
+        $('#confirm').modal({
+            closeHTML: "<a href='#' title='Close' class='modal-close'>x</a>",
+            position: ["40%", ],
+            overlayId: 'confirm-overlay',
+            containerId: 'confirm-container',
+            onShow: function (dialog) {
+                var modal = this;
+
+                $('.message', dialog.data[0]).append(message);
+
+                // if the user clicks "yes"
+                $('.yes', dialog.data[0]).click(function () {
+                    // call the callback
+                    if (currentFile == 'audioCross') {
+                        $("#audioInter").empty();
+                        $('#pop-leftz1').css('display', 'none');
+                        player = document.getElementById('player');
+                        player.setAttribute("src", "");
+                        var x = document.getElementById('myul');
+                        x.children[1].remove();
+                        $.ajax({
+                            type: "POST",
+                            url: '/Basic/DeleteAudio',
+                            done: function (e, data) {
+
+                            }
+                        });
+                        $("#fineinputAudio").attr('disabled', false);
+
+
+                        //if ($.isFunction(callback)) {
+                        //    callback.apply();
+                        //}
+                        // close the dialog
+                        // or $.modal.close();
+
+                    }
+                    else {
+                        $("#imageText").empty();
+                        $('#ch-pop-z1').css('display', 'none');
+                        var x1 = document.getElementById('myul2');
+                        x1.children[1].remove();
+                        $.ajax({
+                            type: "POST",
+                            url: '/Basic/DeleteImage',
+                            done: function (e, data) {
+
+                            }
+                        });
+                        $("#fineinputWater").attr('disabled', false);
+                    }
+                    modal.close();
+                });
+            }
+        });
+    }
+</script>
+<script>
+    //function close_confmBox_popup() {
+    //    $(".confirm_send_mail_div sendme_con").hide();
+    //}
+    //function UpgradeTOPremium() {
+
+    //    alert("upgraded..");
+    //}
+
+    //$(document).ready(function () {
+    //    $('#upgradePremium').click(function() {
+    //        // $('#confmBox').show();
+    //        ("#yesno")
+    //    });
+
+    //});
+    $("#no").click(function () {
+        $("#yesno").attr("style", "display:none");
+    })
+</script>
+
+
+
+<script src="/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="/Scripts/jquery.validate.js"></script>
+<script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="/Scripts/jquery.simplemodal.js"></script>
+
+
+
+
+<!-- Visual Studio Browser Link -->
+<script type="application/json" id="__browserLink_initializationData">
+    {"appName":"Firefox","requestId":"9f6000753e0245d29b08a7df024b955a"}
+</script>
+
+<!-- End Browser Link -->

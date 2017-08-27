@@ -1,0 +1,840 @@
+﻿@using AphidBytes.Web.Session_Helper
+@model AphidBytes.Accounts.Contracts.Model.AdminModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutMatrix.cshtml";
+    ViewBag.RenderHeader = false;
+    ViewBag.RenderFooter = false;
+}
+
+@section HeadScripts {
+    @*@Styles.Render("~/bundles/css/home")*@
+<link href="/Content/lib/bxslider/css/jquery.bxslider.min.css" rel="stylesheet">
+<link href="/Content/copy-of-tester.css" rel="stylesheet">
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/js/home")
+    @Scripts.Render("~/js/home/gall.js")
+}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="tester_block">
+                    <div class="thumbnail">
+                        <img src="/Images/user.png" alt="">
+                    </div>
+                    <div class="description">
+                        <h3>Are you an Entrepreneur?</h3>
+                        <p>Share your story. Upload your portfolio of works for the world to see. Welcome to the realm of Music Artists, Photographers, Developers, Actors, Writers, Artists, Models &amp; more.</p>
+                        <a href="#"><img src="/Images/arrow_down.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="tester_block">
+                    <div class="thumbnail">
+                        <img src="/Images/user1.png" alt="">
+                    </div>
+                    <div class="description">
+                        <h3>Just want the latest News?</h3>
+                        <p>Receive the latest news in Film, Music, Tech, Photography/Art, and Literature. Subscribe to your favorite creators’ channels. Create Ad's and make playlists as well.</p>
+                        <a href="#"><img src="/Images/arrow_down.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="slider_section">
+    <div class="row">
+        <div class="bx-wrapper" style="max-width: 100%;">
+            <div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 522px;">
+                <ul class="bxslider" style="width: 4215%; position: relative; transition-duration: 0s; transform: translate3d(-1363px, 0px, 0px);">
+                    <li style="float: left; list-style: none; position: relative; width: 1363px;" class="bx-clone" aria-hidden="true"><img src="/Images/tester_slider4.jpg"></li>
+                    <li style="float: left; list-style: none; position: relative; width: 1363px;" aria-hidden="false"><img src="/Images/tester_slider1.jpg"></li>
+                    <li style="float: left; list-style: none; position: relative; width: 1363px;" aria-hidden="true"><img src="/Images/tester_slider2.jpg"></li>
+                    <li style="float: left; list-style: none; position: relative; width: 1363px;" aria-hidden="true"><img src="/Images/tester_slider3.jpg"></li>
+                    <li style="float: left; list-style: none; position: relative; width: 1363px;" aria-hidden="true"><img src="/Images/tester_slider4.jpg"></li>
+                    <li style="float: left; list-style: none; position: relative; width: 1363px;" class="bx-clone" aria-hidden="true"><img src="/Images/tester_slider1.jpg"></li>
+                </ul>
+            </div><div class="bx-controls bx-has-controls-direction bx-has-pager"><div class="bx-controls-direction"><a class="bx-prev" href="">Prev</a><a class="bx-next" href="">Next</a></div><div class="bx-pager bx-default-pager"><div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link active">1</a></div><div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div><div class="bx-pager-item"><a href="" data-slide-index="2" class="bx-pager-link">3</a></div><div class="bx-pager-item"><a href="" data-slide-index="3" class="bx-pager-link">4</a></div></div></div>
+        </div>
+    </div>
+</section>
+<section class="section_banner music">
+    <div class="container">
+        <div class="heading">
+            <h2>MUSIC</h2>
+        </div>
+    </div>
+    <div class="banner_strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="listing">
+                        <li><a href="#">Music Artist</a></li>
+                        <li><a href="#">Producer</a></li>
+                        <li><a href="#">Songwriter</a></li>
+                        <li><a href="#">Musician</a></li>
+                        <li><a href="#">Engineer</a></li>
+                        <li>
+                            <a href="#">
+                                Publisher<br>
+                                &amp; more
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="signup_btn ">
+                        <a href="#" class="btn btn-primary pull-right">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section_banner visual">
+    <div class="container">
+        <div class="heading">
+            <h2 class="black_text text-right">VISUAL ARTS</h2>
+        </div>
+    </div>
+    <div class="banner_strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="listing">
+                        <li><a href="#">Photographer</a></li>
+                        <li><a href="#">Filmmaker</a></li>
+                        <li><a href="#">Songwriter</a></li>
+                        <li><a href="#">Actor/Actress</a></li>
+                        <li><a href="#">Director</a></li>
+                        <li><a href="#">Fashion Designer</a></li>
+                        <li><a href="#">Model</a></li>
+                        <li><a href="#">Ceramics Professional</a></li>
+                        <li><a href="#">Painter</a></li>
+                        <li><a href="#">Sculptor</a></li>
+                        <li><a href="#">Printmaker</a></li>
+                        <li><a href="#">Crafter</a></li>
+                        <li>
+                            <a href="#">
+                                Architect<br>
+                                &amp; more
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="signup_btn ">
+                        <a href="#" class="btn btn-primary pull-right">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section_banner design">
+    <div class="container">
+        <div class="heading">
+            <h2>DEVELOPERS + DESIGN</h2>
+        </div>
+    </div>
+    <div class="banner_strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="listing">
+                        <li><a href="#">Software Engineer</a></li>
+                        <li><a href="#">Programmer</a></li>
+                        <li><a href="#">Coder</a></li>
+                        <li><a href="#">Hacker</a></li>
+                        <li><a href="#">Developer</a></li>
+                        <li><a href="#">UX/UI Professional</a></li>
+                        <li><a href="#">Web Designer</a></li>
+                        <li><a href="#">Logo Designer</a></li>
+                        <li><a href="#">Graphic Designer</a></li>
+                        <li><a href="#">Gaming Developer</a></li>
+                        <li>
+                            <a href="#">
+                                Consultant<br>
+                                &amp; more
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="signup_btn ">
+                        <a href="#" class="btn btn-primary pull-right">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section_banner literature">
+    <div class="container">
+        <div class="heading">
+            <h2>LITERATURE</h2>
+        </div>
+    </div>
+    <div class="banner_strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="listing">
+                        <li><a href="#">Author</a></li>
+                        <li><a href="#">Editor</a></li>
+                        <li><a href="#">Journalist</a></li>
+                        <li><a href="#">Columnist</a></li>
+                        <li><a href="#">Blogger</a></li>
+                        <li><a href="#">Ghostwriter</a></li>
+                        <li>
+                            <a href="#">
+                                Publisher<br>
+                                &amp; more
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="signup_btn ">
+                        <a href="#" class="btn btn-primary pull-right">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section_banner fan">
+    <div class="container">
+        <div class="heading">
+            <h2>Fan</h2>
+        </div>
+    </div>
+    <div class="banner_strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="listing">
+                        <li><a href="#">Non-Creator</a></li>
+                        <li><a href="#">Receive updates from the latest Films, Music, Technology, Books, <br />Photography, Art, Articles, etc. </a></li>
+                        <li><a href="#">Subscribe to your favorite creators</a></li>
+                        <li><a href="#">Create Ads</a></li>
+                        <li><a href="#">Make playlists</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="signup_btn ">
+                        <a href="#" class="btn btn-primary pull-right">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section_banner community">
+    <div class="container">
+        <div class="heading">
+            <h2>COMMUNITY</h2>
+        </div>
+    </div>
+    <div class="banner_strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="community_listing_block">
+                        <li class="clearfix">
+                            <div class="left_thumnail">
+                                <img src="/Images/community_left.png" alt="">
+                            </div>
+                            <div class="listing_description">
+                                <img src="/Images/sails_logo.png" alt="">
+                                <h5>Mike McNeil, Tech</h5>
+                            </div>
+                        </li>
+                        <li class="clearfix">
+                            <div class="left_thumnail">
+                                <img src="/Images/community_left.png" alt="">
+                            </div>
+                            <div class="listing_description">
+                                <img src="/Images/sails_logo.png" alt="">
+                                <h5>Mike McNeil, Tech</h5>
+                            </div>
+                        </li>
+                        <li class="clearfix">
+                            <div class="left_thumnail">
+                                <img src="/Images/community_left.png" alt="">
+                            </div>
+                            <div class="listing_description">
+                                <img src="/Images/sails_logo.png" alt="">
+                                <h5>Mike McNeil, Tech</h5>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="listing">
+                        <li><a href="#">Join the community of creators</a></li>
+                        <li><a href="#">Collaborate on tasks to finish projects </a></li>
+                        <li><a href="#">Use Widgets for enhance tools</a></li>
+                        <li><a href="#">Peer to Peer Messaging</a></li>
+                        <li><a href="#">Utilize resources from our partners</a></li>
+                        <li><a href="#">Create Ads</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="slider_section">
+    <div class="row">
+        <ul class="footer_bxslider">
+            <li>
+                <img src="/Images/footer_slider1.webp" />
+                <div class="slider_text">
+                    Upload your works for fans to discover in one place (AphidByte portal results). If you have that same file on other websites you can attach them as child files to your parent file. Search for Music Artists, Developers, Photographers, etc.
+                </div>
+            </li>
+            <li>
+                <img src="/Images/footer_slider2.webp" />
+                <div class="slider_text">
+                    Decide whether you are a Creator or Fan
+                    <ol>
+                        <li>Register yourself or company as a member and create your profile</li>
+                        <li>Choose the correct account type based on your profession
+                        <li>
+                    </ol>
+                </div>
+            </li>
+            <li>
+                <img src="/Images/footer_slider3.webp" />
+                <div class="slider_text">
+                    Add widgets to your profile for enhancement tools. Project management tools, music writings, video and photography effects, etc.
+                </div>
+            </li>
+            <li>
+                <img src="/Images/footer_slider4.webp" />
+                <div class="slider_text">
+                    We provide our members with resources from affiliates to help grow their businesses, services, and products.
+                </div>
+            </li>
+            <li>
+                <img src="/Images/footer_slider5.webp" />
+                <div class="slider_text">
+                    Subscribe and connect with other Creators in the community. Instant messaging with notifications ensures you stay on top of all networking tasks and collaborations.
+
+                </div>
+            </li>
+            <li>
+                <img src="/Images/footer_slider6.webp" />
+                <div class="slider_text">
+                    Modify your public channel to display your portfolio of works along with biography, contact, and business information.
+                </div>
+            </li>
+            <li>
+                <img src="/Images/footer_slider7.webp" />
+                <div class="slider_text">
+                    Manage the analytics of all those sites from one tracker. From views, to downloads you can see everything from the Byte Tracker dashboard.
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+@*<div class="container-fluid">
+    <div class="row row-offset-med">
+        <div class="col-md-4 col-md-offset-4">
+            <img src="/img/glossy-aphidbyte.png" alt="AphidByte" class="img-responsive search-img table-center" />
+        </div>
+    </div> 
+    <div class="row row-offset-small">
+        <div class="col-md-6 col-md-offset-3 center-responsive">
+            <input type="text" class="form-control search-box-gall" id="Searchtext" placeholder="Enter Title, Composer, or Tracking Number" />
+            <a href="#" class="btn btn-primary search-button">Search</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 center-responsive gall-nav-links">
+            <a href="#" class="btn btn-radio btn-margin-right selected" id="SearchMusic" data-category="" data-placeholder="Enter Title or Tracking Number">Music</a>
+            <a href="#" class="btn btn-radio btn-margin-right " id="searchVisualArts" data-category="" data-placeholder="Enter Title or Tracking Number">Visual Arts</a>
+            <a href="#" class="btn btn-radio btn-margin-right " id="searchLiterature" data-category="" data-placeholder="Enter Title or Tracking Number">Literature</a>
+            <a href="#" class="btn btn-radio  " id="searchTech" data-category="" data-placeholder="Enter Title or Tracking Number">Tech</a>
+        </div>
+    </div>
+
+    <div class="row row-offset-med">
+        <div class="col-md-4 col-md-offset-4 txt-center login-item">
+            @if (!AphidSession.Current.IsAuthenticated)
+            {
+                <a href="@Url.Action("LoginorSignUp", "Accounts")">
+                    <img src="/img/power.png" alt="Log in" class="pointer" />
+                </a>
+                <p>Login</p>
+            }
+            else
+            {
+                <a href="@Url.Action("Logout", "Accounts")">
+                    <img src="/img/login-out.png" alt="Log out" class="pointerLogOut" />
+                </a>
+                <p>Logout</p>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="wifi-warning">
+    <div id="closebox" class="cf">
+        <div id="closeicon" class="icon-bar cf">
+            <img src="/img/wifi_icon.png" alt="wifi" class="pull-left wifi-img" />
+
+            <a href="#" class="pull-right">
+                <img src="/img/close.png" alt="close warning" class="close-img" />
+            </a>
+        </div>
+        <div class="warning-content">
+            <p>For the best AphidByte Matrix experience, please connect to Wi-Fi.</p>
+        </div>
+    </div>
+</div>
+
+<div class="showadd" style="height: 100%; width: 100%; display: none;">
+    <div class="black_screen"></div>
+
+    <div id="ad_content" class="div_ad" style="">
+    </div>
+</div>*@
+
+<script src="/Content/lib/bxslider/js/jquery.bxslider.min.js"></script>
+<script>
+    $("#closeicon").show();
+    $("#closebox").click(function (event) {
+        event.preventDefault();
+        $(this).hide();
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.bxslider').bxSlider();
+        $(".footer_bxslider").bxSlider();
+    });
+</script>
+
+<script type="text/javascript">
+
+    function close_showadd() {
+        $('.showadd').hide();
+        $('.black_screen').hide();
+    }
+    function open_showadd() {
+        $('.black_screen').show();
+        $('.showadd').show();
+    }
+
+    $(document).ready(function () {
+        $.post('/Home/Fetch_Ad_Video_Data', { ad_type_id: 4 }, function (data) {
+            if (data != null) {
+                var ad_html_content = '';
+                var ad_height = window.innerHeight;
+                var ad_width = window.innerWidth;
+                var vid_url = data.AdVideo;///Basic Audio Files/4.mp4';  //1.mp4  2.MPG  3.wmv  4.mpg
+                var vid_description = data.AdInformation;//"place content here for description...";
+                var img_url = data.AdPicture;
+                var ad_type_id = data.AdTypeID;
+                //if (ad_type_id == 3) {
+                //    //for video
+                //    if (vid_url != null) {
+                //        ad_html_content += '<video style=" border-radius:0px;" autoplay="autoplay" onended="close_showadd()" src="' + vid_url + '">';
+                //        ad_html_content += 'Your browser does not support the video tag.</video>';
+                //        ad_html_content += '<img src="/img/close.png" onclick="close_showadd()" style=" position: absolute; margin-top: -15px; margin-left: -14px;" >';
+                //        ad_html_content += '<div id="ad_description" style="height:10%; width:100%; color:white;">' + vid_description + '</div>';
+                //        $('#ad_content').append(ad_html_content);
+                //        open_showadd();
+                //    }
+                //    else {
+                //        if (img_url != null) {
+                //            ad_html_content += '<img id="ad_image" src="' + img_url + '" style="height:60%; width:70%;"/>';
+                //            ad_html_content += '<img src="/img/close.png" onclick="close_showadd()" style=" position: absolute; margin-top: -15px; margin-left: -14px;" >';
+                //            ad_html_content += '<div id="ad_description" style="height:10%; width:100%; color:white;">' + vid_description + '</div>';
+                //            $('#ad_content').append(ad_html_content);
+                //            open_showadd();
+                //            setTimeout(close_showadd, 5000);
+                //        }
+
+                //    }
+
+
+                //}
+                //end video
+
+                //else {
+                if (ad_type_id == 4) {
+                    ad_html_content = '<img src="' + img_url + '" />';
+                    $('#girl_bg').append(ad_html_content);
+                }
+                //    }
+                //}
+                //else {
+                //    close_showadd();
+
+            }
+        });
+        $("#SearchMusic").click(function () {
+
+            $("#SeachVideo").removeClass("select_bg_s");
+            $("#SearchPhotography").removeClass("select_bg_s");
+            $("#SearchEbook").removeClass("select_bg_s");
+            $("#SearchFiles").removeClass("select_bg_s");
+            $("#SearchMusic").addClass("select_bg_s");
+        });
+        $("#SeachVideo").click(function () {
+
+            $("#SearchMusic").removeClass("select_bg_s");
+            $("#SearchPhotography").removeClass("select_bg_s");
+            $("#SearchEbook").removeClass("select_bg_s");
+            $("#SearchFiles").removeClass("select_bg_s");
+            $("#SeachVideo").addClass("select_bg_s");
+        });
+        $("#SearchPhotography").click(function () {
+
+            $("#SearchMusic").removeClass("select_bg_s");
+            $("#SeachVideo").removeClass("select_bg_s");
+            $("#SearchEbook").removeClass("select_bg_s");
+            $("#SearchFiles").removeClass("select_bg_s");
+            $("#SearchPhotography").addClass("select_bg_s");
+        });
+        $("#SearchEbook").click(function () {
+
+            $("#SearchMusic").removeClass("select_bg_s");
+            $("#SeachVideo").removeClass("select_bg_s");
+            $("#SearchPhotography").removeClass("select_bg_s");
+            $("#SearchFiles").removeClass("select_bg_s");
+            $("#SearchEbook").addClass("select_bg_s");
+        });
+        $("#SearchFiles").click(function () {
+
+            $("#SearchMusic").removeClass("select_bg_s");
+            $("#SeachVideo").removeClass("select_bg_s");
+            $("#SearchPhotography").removeClass("select_bg_s");
+            $("#SearchEbook").removeClass("select_bg_s");
+            $("#SearchFiles").addClass("select_bg_s");
+        });
+
+        currentHeight = $('.componentin').innerHeight();
+        $(".go_up").click(function () {
+            $('.componentin').children('#item').animate({ "marginTop": "-=60px" });
+            $(".go_down").show();
+            if ($('.componentin').children('#item').css("margin-top") == "-420px") {
+                $(".go_up").hide();
+            }
+
+        });
+        $(".go_down").bind('click', function () {
+            $('.componentin').children('#item').animate({ "marginTop": "+=60px" });
+            $(".go_up").show();
+            if ($('.componentin').children('#item').css("margin-top") == "0px") {
+                $(".go_down").hide();
+            }
+        });
+        $(".filmup").click(function () {
+            //alert("zx");
+            $('.componentin1').children('#item21').animate({ "marginTop": "-=40px" });
+            $(".filmdown").show();
+            if ($('.componentin1').children('#item21').css("margin-top") == "-60px") {
+                $(".filmup").hide();
+            }
+
+        });
+        $(".filmdown").bind('click', function () {
+            // alert("vxcv");
+            $('.componentin1').children('#item21').animate({ "marginTop": "+=20px" });
+            $(".filmup").show();
+            if ($('.componentin1').children('#item21').css("margin-top") == "40px") {
+                $(".filmdown").hide();
+            }
+        });
+
+
+
+        $(".go_side").click(function () {
+            var h = $('.componentin3').innerHeight();
+            $('.componentin3').children('#Film').animate({ "marginTop": "-=12px" });
+            if (margin - top == "0px") {
+                $('.componentin3').children().css('color', '#e0ac03');
+            }
+
+            x = $("#Music").position();
+        });
+        $(".go_thiside").click(function () {
+            var h = $('.componentin3').innerHeight();
+            $('.componentin3').children('#Film').animate({ "marginTop": "+=12px" });
+        });
+    });
+</script>
+<script>
+    $("#closeicon").show();
+    $("#closebox").click(function (event) {
+        event.preventDefault();
+        $(this).hide();
+    });
+    $('#pastrealease').click(function () {
+        $("#imgpre3").attr('src', '').hide();
+        $("#imgpre2").attr('src', '').hide();
+        $("#imgpre1").attr('src', '/img/newr_icon.png').show();
+        $('#upcomingrealease').css('color', '#FFF');
+        $('#newrealease').css('color', '#FFF');
+        $('#pastrealease').css('color', '#e0ac03');
+        $('.w-boxm2').hide();
+        $('.w-boxm3').hide();
+        $('.w-boxm1').show();
+    })
+    $('#upcomingrealease').click(function () {
+        $("#imgpre3").attr('src', '').hide();
+        $("#imgpre1").attr('src', '').hide();
+        $("#imgpre2").attr('src', '/img/newr_icon.png').show();
+        $('#pastrealease').css('color', '#FFF');
+        $('#newrealease').css('color', '#FFF');
+        $('#upcomingrealease').css('color', '#e0ac03');
+        $('.w-boxm3').hide();
+        $('.w-boxm1').hide();
+        $('.w-boxm2').show();
+    })
+    $('#newrealease').click(function () {
+        $("#imgpre1").attr('src', '').hide();
+        $("#imgpre2").attr('src', '').hide();
+        $("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#pastrealease').css('color', '#FFF');
+        $('#upcomingrealease').css('color', '#FFF');
+        $('#newrealease').css('color', '#e0ac03');
+        $('.w-boxm2').hide();
+        $('.w-boxm1').hide();
+        $('.w-boxm3').show();
+    })
+    $('#Film').click(function () {
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#Film').css('color', '#FFF');
+        $('#Film').css('color', '#FFF');
+        $('#Film').css('color', '#FFF');
+        $('#Film').css('color', '#FFF');
+        $('#Film').css('color', '#FFF');
+        $('#pHOTOGRAPHY').hide();
+        $('#NewS').hide();
+        $('#ART').hide();
+        $('#Technologhy').hide();
+        $('#MusiC').hide();
+        $('#FILM').show();
+    })
+    $('#PhotoGraphy').click(function () {
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#FILM').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Technology').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#e0ac03');
+        $('#FILM').hide();
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#Technologhy').hide();
+        $('#MusiC').hide();
+        $('#Photography').show();
+    })
+    $('#Art').click(function () {
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Technology').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#Art').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#NewS').hide();
+        $('#FILM').hide();
+        $('#Technologhy').hide();
+        $('#MusiC').hide();
+        $('#art').show();
+    })
+    $('#Technology').click(function () {
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#Technology').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#FILM').hide();
+        $('#MusiC').hide();
+        $('#Technologhy').show();
+    })
+    $('#Music').click(function () {
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Technology').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#Music').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#Technologhy').hide();
+        $('#FILM').hide();
+        $('#MusiC').show();
+    })
+    $('#News').click(function () {
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Technology').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#art').hide();
+        $('#Technologhy').hide();
+        $('#FILM').hide();
+        $('#MusiC').hide();
+        $('#NewS').show();
+    })
+    $('#Technology1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#FILM').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Technology').css('color', '#e0ac03');
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#MusiC').hide();
+        $('#FILM').hide();
+        $('#Photography').hide();
+        $('#Technologhy').removeAttr("style", "display:none");
+    })
+    $('#Film').click(function () {
+        $('#wrapsidebar').attr("style", "display:none");
+        $('#wrapsidebar2').removeAttr("style", "display:none");
+    })
+    $('#PhotoGraphy1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#art').hide();
+        $('#NewS').hide();
+        $('#MusiC').hide();
+        $('#FILM').hide();
+        $('#Technologhy').hide();
+        $('#Technology').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#FILM').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#e0ac03');
+        $('#Photography').show();
+    })
+    $('#Art1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#MusiC').hide();
+        $('#FILM').hide();
+        $('#NewS').hide();
+        $('#Technologhy').hide();
+        $('#Photography').hide();
+        $('#Technology').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#Art').css('color', '#e0ac03');
+        $('#art').show();
+    })
+    $('#Music1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#Photography').hide();
+        $('#FILM').hide();
+        $('#art').hide();
+        $('#NewS').hide();
+        $('#Technologhy').hide();
+        $('#Technology').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#e0ac03');
+        $('#MusiC').show();
+    })
+    $('#News1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#Photography').hide();
+        $('#FILM').hide();
+        $('#art').hide();
+        $('#MusiC').hide();
+        $('#Technologhy').hide();
+        $('#Technology').css('color', '#FFF');
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#e0ac03');
+        $('#NewS').show();
+    })
+
+</script>
+<script>
+    $(".w-right-text li").mouseover(function () {
+        $(".onload").css("display", "block");
+    });
+
+    $(".w-right-text li").mouseout(function () {
+        $(".onload").css("display", "none");
+    });
+    $("#SearchMusic").click(function () { $("#SearchButton").attr("value", "MUSIC"); });
+    $("#SeachVideo").click(function () { $("#SearchButton").attr("value", "VIDEOS"); });
+    $("#SearchPhotography").click(function () { $("#SearchButton").attr("value", "Photography"); });
+    $("#SearchEbook").click(function () { $("#SearchButton").attr("value", "EBOOK"); });
+    $("#SearchFiles").click(function () { $("#SearchButton").attr("value", "FILES"); });
+
+</script>
+<script>
+    $("#closeicon").show();
+    $("#closebox").click(function (event) {
+        event.preventDefault();
+        $(this).hide();
+    });
+    var cat;
+
+
+
+   
+
+
+</script>

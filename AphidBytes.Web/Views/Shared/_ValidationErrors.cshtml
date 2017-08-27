@@ -1,0 +1,37 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.ValidationModel
+
+@{  
+    var errorCtas = Model.ValidationCtas.Where(c => c.Type == AphidBytes.Accounts.Contracts.Model.ValidationTypes.Error).ToList();
+    var warningCtas = Model.ValidationCtas.Where(c => c.Type == AphidBytes.Accounts.Contracts.Model.ValidationTypes.Warning).ToList();
+    var informationCtas = Model.ValidationCtas.Where(c => c.Type == AphidBytes.Accounts.Contracts.Model.ValidationTypes.Information).ToList();
+}
+
+@if (errorCtas != null && errorCtas.Any())
+{
+    <div class="error-section">
+        @foreach(var errorCta in errorCtas)
+        {
+            <p>@errorCta.Message</p>
+        }
+    </div>
+}
+
+@if (warningCtas != null && warningCtas.Any())
+{
+    <div class="warning-section">
+        @foreach (var warningCta in warningCtas)
+        {
+            <p>@warningCta.Message</p>
+        }
+    </div>
+}
+
+@if (informationCtas != null && informationCtas.Any())
+{
+    <div class="informational-section">
+        @foreach (var informationCta in informationCtas)
+        {
+            <p>@informationCta.Message</p>
+        }
+    </div>
+}

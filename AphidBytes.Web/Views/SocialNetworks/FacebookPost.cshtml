@@ -1,0 +1,44 @@
+﻿@{
+}
+
+<h2>FacebookPost</h2>
+<script type="text/javascript">
+
+        function PostStatus() {
+            var msg = $('#facebokModal').val();
+
+            if (msg != '') {
+                $.ajax({
+                    url: '/SocialNetworks/PostStatus',
+                    type: 'POST',
+                    data: { msg: msg },
+                    success: function (authLink) {
+                        if (authLink != 'No') {
+                            window.open(authLink, 'title', 'width=660,height=300,status=no,scrollbars=yes,toolbar=0,menubar=no,resizable=yes,top=60,left=320');
+
+                        }
+                    }
+                });
+            }
+            else {
+                alert('please write your message.');
+            }
+        }
+</script>
+
+
+@using (Html.BeginForm())
+{
+    <fieldset style="color: Black;">
+        <legend>Message</legend>
+        <div>
+            <label style="font-style: italic; color: Gray;">
+                Write your Post
+            </label><br />
+            @Html.TextArea("txtPostStatus", new { maxlength = 100, style = "height:100px;width:300px;" })
+        </div>
+        <div style="text-align: left;">
+            <input id="btnPost" type="button" value="Post Status" onclick="PostStatus();" />
+        </div>
+    </fieldset>
+}

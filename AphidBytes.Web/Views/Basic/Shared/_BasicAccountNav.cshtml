@@ -1,0 +1,74 @@
+﻿<div class="col-md-3 side-navigation">
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("BasicAccountInfo")" class="btn btn-selects basic @(ViewBag.SelectedPage == "acctinfo" ? "selected" : "")">
+                Account Info
+                <img src="~/img/info/accountinfo.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("GenerateClones")" class="btn btn-selects basic @(ViewBag.SelectedPage == "upload" ? "selected" : "")">
+                Upload
+                <img src="~/img/info/upload.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("Message")" class="btn btn-selects basic @(ViewBag.SelectedPage == "message" ? "selected" : "")">
+                Messages <span class="message-count">@ViewBag.MsgCount</span>
+                <img src="~/img/info/messages.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("ByteTracker")" class="btn btn-selects basic @(ViewBag.SelectedPage == "bytetracker" ? "selected" : "")">
+                Byte Tracker
+                <img src="~/img/info/bytetracker.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("DataPlan")" class="btn btn-selects basic @(ViewBag.SelectedPage == "dataplan" ? "selected" : "")">
+                Data Plan
+                <img src="~/img/info/dataplan.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("Channel")" class="btn btn-selects basic channel @(ViewBag.SelectedPage == "channel" ? "selected" : "")">
+                Channel
+                <img src="~/img/info/channel.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("Playlist")" class="btn btn-selects basic @(ViewBag.SelectedPage == "playlist" ? "selected" : "")">
+                Playlists
+                <img src="~/img/info/playlists.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="#" class="btn btn-selects aphidlab">
+                Widgets
+                <img src="~/img/support/widgets.png">
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="@Url.Action("History")" class="btn btn-selects basic @(ViewBag.SelectedPage == "history" ? "selected" : "")">
+                History
+                <img src="~/img/info/history.png" alt="data plan" />
+            </a>
+        </div>
+    </div>
+</div>

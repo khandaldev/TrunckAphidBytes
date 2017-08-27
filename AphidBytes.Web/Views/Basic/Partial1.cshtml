@@ -1,0 +1,62 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.SocialNetworkModel
+@foreach (var item in ViewBag.Social)
+{
+    if (item.category == "Twitter")
+    {
+    <li>
+        <div class="byter-sing-b">
+            <input type="checkbox" class="checkbox1" id="Twitter" /></div>
+        <div id="sociallipic">
+            <img src="/Images/ticone.png">
+        </div>
+        <a href="#">Twitter</a>
+        <div id="mec-closebyter">
+            <img src="/img/dots-close-byter.png"></div>
+    </li>
+        // <li> <div class="byter-sing-b">@Html.CheckBoxFor(model => model.Twitter_IsValid)</div><div id="sociallipic"> <img src="/Images/ticone.png"/> </div><a href="#">Twitter</a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+    }
+    if (item.category == "GooglePlus")
+    {
+    <li>
+        <div class="byter-sing-b">
+            <input type="checkbox" class="checkbox1" id="GooglePlus" /></div>
+        <div id="sociallipic">
+            <img src="/Images/googleplus.jpg ">
+        </div>
+        <a href="#">GooglePlus</a>
+        <div id="mec-closebyter">
+            <img src="/img/dots-close-byter.png"></div>
+    </li>
+        //  <li><div class="byter-sing-b">@Html.CheckBoxFor(model => model.GooglePlus_IsValid)</div><div id="sociallipic"> <img src="/Images/googleplus.jpg "/> </div><a href="#">Google+</a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+    }
+    if (item.category == "Facebook")
+    {
+    <li>
+        <div class="byter-sing-b">
+            <input type="checkbox" class="checkbox1" id="Facebook" /></div>
+        <div id="sociallipic">
+            <img src="/Images/ficone.png">
+        </div>
+        <a href="#">Facebook</a>
+        <div id="mec-closebyter">
+            <img src="/img/dots-close-byter.png"></div>
+    </li>
+        //  <li> <div class="byter-sing-b">@Html.CheckBoxFor(model => model.Facebook_IsValid)</div><div id="sociallipic"> <img src="/Images/ficone.png"/> </div><a href="#">facebook</a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+    }
+    if (item.category == "LinkedLin")
+    {
+    <li>
+        <div class="byter-sing-b">
+            <input type="checkbox" class="checkbox1" id="Linkedin" /></div>
+        <div id="sociallipic">
+            <img src="/Images/linkdicone.png">
+        </div>
+        <a href="#">Linkedin</a>
+        <div id="mec-closebyter">
+            <img src="/img/dots-close-byter.png"></div>
+    </li>
+        //<li><div class="byter-sing-b">@Html.CheckBoxFor(model => model.Linkedin_IsValid)</div><div id="sociallipic"> <img src="/Images/linkdicone.png"/> </div><a href="#">Linkdin</a> <div id="mec-closebyter"> <img src="/img/dots-close-byter.png"></div></li>
+    }
+}
+
+

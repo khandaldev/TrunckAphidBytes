@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "AddNetworkToDb";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@model AphidBytes.Accounts.Contracts.Model.UrlLinkModel
+<div class="popbyter-mianz">
+    <div class="popbyter-miansub">
+        <div class="popbyter-subleft">
+           <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/bphidbyte_sicon.png"></a><br />
+            <p><a href="#">Back</a></p>
+
+        </div>
+
+        <div class="byter_requestemil">
+            <p>
+                <img src="/images/w-icone.png"></p>
+            <p>Request another site</p>
+        </div>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="requestemil-intext" id="Wholelinks">
+                <ul>
+                    <li>
+                        @Html.EditorFor(model => model.Link1, new  {@class="txturl" })
+                        @*<input type="text" size="30" class="txturl" name="email"></li>*@
+                    <li>
+                        @Html.EditorFor(model => model.Link2, new  {@class="txturl" })
+                        @*<input type="text" size="30" class="txturl1" name="email"></li>*@
+                    <li>
+                        @Html.EditorFor(model => model.Link3, new  {@class="txturl" })
+                        @*<input type="text" size="30" class="txturl2" name="email"></li>*@
+                    <li>
+                        @Html.EditorFor(model => model.Link4, new  {@class="txturl" })
+                        @*<input type="text" size="30" class="txturl3" name="email"></li>*@
+                    <li>
+                        @Html.EditorFor(model => model.Link5, new  {@class="txturl" })
+                       @* <input type="text" size="30" class="txturl4" name="email"></li>*@
+                </ul>
+
+            </div>
+            <input type="submit" class="requestemilp1" value="Submit" />@*
+            <p class="requestemilp1" id="Submit"><a href="#">Submit</a></p>*@
+     
+        }
+        <p class="requestemilp">Don’t see a site of preference in our database? Enter the URL address of the site you’d like to see us add to our database for your channels.</p>
+
+    </div>
+
+
+
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        $("#Link1").val("");
+        $("#Link2").val("");
+        $("#Link3").val("");
+        $("#Link4").val("");
+        $("#Link5").val("");
+
+    });
+</script>

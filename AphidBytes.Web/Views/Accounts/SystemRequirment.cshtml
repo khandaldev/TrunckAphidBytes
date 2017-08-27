@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/support")
+}
+
+@section scripts {
+    @Scripts.Render("~/js/home/support.js")
+}
+
+<div class="container-fluid">
+    <div class="row row-offset-small">
+        <div class="col-md-12 txt-center header-img label-green">
+            <img src="~/images/desk_t_pic.png" alt="desktop" class="table-center" />
+            Recommended System Requirements for <br />Desktop
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 txt-center">
+            <p class="">Mac OS 10.10 or later <img src="/images/desk_i_icon.png" alt="mac" class="img-medium"/></p>
+            <p class="small-margin-top">Windows 7 or later<img src="/images/desk_w_icon.png" alt="windows"  class="img-medium"/></p>
+        </div>
+        <div class="col-md-4 col-md-offset-4 txt-center">
+            <p class="label-green">
+                Recommended Memory<br />
+                Requirements
+            </p>
+            <p>8GB or higher</p>
+            <p class="label-green small-margin-top">Recommended Web Browsers</p>
+            <p>
+                <img src="/images/moz_icon.png" alt="mozilla" class="img-sml"/>
+                <img src="/images/ie_icon.png" alt="ie" class="img-sml"/>
+                <img src="/images/saf_icon.png" alt="safari" class="img-sml"/>
+                <img src="/images/chro_icon.png" alt="chrome"  class="img-sml"/>
+            </p>
+        </div>
+    </div>
+
+    <div class="row row-offset-small">
+        <div class="col-md-12 txt-center header-img img-small txt-center label-green">
+            <img src="~/images/mobile.png" alt="mobile" class="table-center" /> 
+            Recommended System Requirements for <br />Mobile Devices
+        </div>
+    </div>
+
+    <div class="row row-offset-small">
+        <div class="col-md-2 col-md-offset-2 header-img img-small txt-center">
+            <img src="/images/wi_f_icon.png" alt="wifi"/>
+            Wi-Fi
+        </div>
+        <div class="col-md-2 col-md-offset-1 header-img img-small txt-center">
+            <img src="/images/android-full.png" alt="android" />
+            Marshmallow 6.0 or later
+        </div>
+        <div class="col-md-2 col-md-offset-1 header-img img-small txt-center">
+            <img src="/images/desk_w_icon.png" alt="windows"/>
+            Windows 7.0 or later
+        </div>
+    </div>
+    <div class="row row-offset-small">
+        <div class="col-md-2 col-md-offset-5 header-img img-small txt-center">
+            <img src="/images/iOS.png" alt="iOS" />
+            iOS 9 or later
+        </div>
+    </div>
+</div>

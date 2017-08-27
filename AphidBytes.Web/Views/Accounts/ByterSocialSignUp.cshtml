@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+
+<div class="warp_mainbasic">
+
+    <p class="igav">I do not have an account > Byter Account > Sign Up</p>
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="register_login">
+
+            <div class="social_botton1">
+
+                <ul>
+                    <li class="socialfb"><samp><img class="fe_in" src="../images/fb_ni.png"></samp>Sign Up with Facebook</li>
+                    <li class="socialfg"><samp><img class="gp_in" src="../images/gp_ni.png"></samp>Sign Up with Google Plus</li>
+                    <li class="socialfe"><samp><img class="em_in" src="../images/em_ni.png"></samp>Sign Up with Email Address</li>
+
+                </ul>
+
+            </div>
+
+
+
+        </div>
+    }
+
+    <div class="pre_pcso">
+
+        <span><img src="../images/sbb_pic.png"></span>
+        <span><img src="../images/sb_img.png"></span>
+        <span><img src="../images/bbc_pic.png"></span>
+
+        <p style="margin: auto; width: 65%;">Log In page for Byter, Basic, and AphidLabs users</p>
+
+    </div>
+</div>
+
+<div class="menunav_footer2">
+    <ul>
+        <li><a href="#">Navigation  </a></li>
+        <li><a href="#">Menu    </a></li>
+        <li><a href="#">Advertise   </a></li>
+        <li><a href="#">Store     </a></li>
+        <li><a href="#">Terms    </a></li>
+        <li><a href="#">Privacy Policy </a></li>
+        <li><a href="/UserSponsored/Index">Upload</a></li>
+    </ul>
+</div>
+
+

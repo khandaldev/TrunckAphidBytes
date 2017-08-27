@@ -1,0 +1,641 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.SponsoredModel
+  
+
+
+
+<script type="text/javascript">
+      $(function() {
+        var moveLeft = 20;
+        var moveDown =-50;
+        
+        $('a#trigger').hover(function(e) {
+          $('div#i-pop-up').show();
+          //.css('top', e.pageY + moveDown)
+          //.css('left', e.pageX + moveLeft)
+          //.appendTo('body');
+        }, function() {
+          $('div#i-pop-up').hide();
+        });
+        
+        $('a#trigger').mousemove(function(e) {
+          $("div#i-pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+        
+      });
+    </script>
+
+<div class="aphidtise_wrap">
+
+<div class="logid">
+
+
+
+<div class="profilebg">
+ 
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="header_aphidtise">
+<div class="menunav" style="width:80%;">
+<ul>
+<li><a href="Services">Services</a></li>
+<li><a href="LoginUser">Login</a></li>
+<li><a href="#">The Gall</a></li>
+<li><a href="#">Store</a></li>
+<li><a href="AboutUsPage">About Us</a></li>
+<li><a href="Support">Support</a></li>
+</ul>
+</div>
+<div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a> </div>
+<div class="processingbyter" style="margin-top:10px;">
+<div class="processingbyter-head">
+<div class="processingbyterleft">
+ <p id="progresstext"></p>
+ <p class="progressbar" role="progressbar" style="width: 0%"/>
+<div class="sponso_logo"><img src="/images/sponsored_user_logo.png"></div>
+
+</div>
+</div>
+</div>
+
+@using(Html.BeginForm(null,null,FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="headertab_aphidtise" style="margin-top:85px;">
+<div class="aphidbyteleft" style="margin-top: 6px;">
+
+<ul class="sponsored_menu">
+<li></li><li></li>
+<li><a href="#">Upload</a></li><li><img src="/images/right_line.png" height="2" width="96"></li>
+</ul>
+   <div class="tophedboxa">
+  <p onclick="goBack()" style="color: #FFC000; margin-top: -221px;margin-left: -73px; cursor: pointer">Back</p>
+  </div>
+
+
+
+
+
+<div class="info-footer-social"></div>
+<div class="sponsored_rightline"></div>
+</div>
+<p class="info-p">Byte Your Ebook</p>
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="height:600px; margin-top:20px;">
+<div style="height:600px; width:100%;">
+<div class="from_aphid">
+<ul>
+<li> 
+<label for="Company Logo">Ebook Title: </label>
+    @Html.TextBoxFor(model=>model.Title)
+@*<input type="text" name="email" id="email" size="30" />*@
+</li>
+<li>   
+<label for="psw">Tags: </label>
+    @Html.TextBoxFor(model=>model.Tag)
+@*<input type="text" name="psw" id="psw" size="30" />*@
+<label for="Tags">(Automatically Populates)</label>
+
+</li>
+
+<li> 
+<label for="Confirm Password">Creator Name:</label>
+    @Html.TextBoxFor(model=>model.CreatotName)
+@*<input name="email" type="text" id="email" value="Creator Name cannot be modified" size="30" />*@
+
+</li>
+
+<li> 
+<label for="Last Name">Upload File:</label>
+    @Html.TextBoxFor(model=>model.PdfFilePath,new{type = "file", accept = "application/pdf", form = "file name"})
+@*<input type="file" form="file name">*@
+<label for="Tags">( .pdf file only)</label>
+</li>
+
+<li> 
+<label for="Email Address">Upload Matrix Image:</label>
+   @Html.TextBoxFor(model=>model.MatrixImage,new {type = "file", accept = "image/*", form = "file name"})
+@*<input type="file" form="file name">*@
+<label for="Tags">( .jpg or .png files only )</label>
+</li>
+
+<li> 
+<label for="Date of Birth">Composers:</label>
+    @Html.TextBoxFor(model=>model.ComposerName)
+@*<input type="text" name="email" id="email" size="30" />*@
+</li>
+
+<li> 
+<label for="Company Logo">Publisher:</label>
+    @Html.TextBoxFor(model=>model.Publisher)
+@*<input type="text" name="email" id="email" size="30" />*@
+
+  
+</li>
+
+<li> 
+<label for="Company Logo">Select Interruption File:</label>
+</li>
+    @Html.DropDownListFor(model=>model.SelectedInteruptionFile,new List<SelectListItem>{
+    new SelectListItem{Text="No Interruption"},
+    new SelectListItem{Text="Default AphidByte"}
+})
+@*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbyter"><span>Watermark 1</span></a></dt>
+        <dd>
+            <ul id="byterclick">
+                <li><a>No Interruption</a></li>
+                <li><a>Default AphidByte Audio Interruption</a></li>
+                <li><a>Custom Audio Interruption</a></li>
+            </ul>
+        </dd>
+    </dl>*@
+<li> 
+
+<label for="Company Logo">Percentage of pages for Watermark:</label></li>
+    @Html.DropDownListFor(model=>model.PagePercentage,new List<SelectListItem>{
+    new SelectListItem{Text="25%"},
+    new SelectListItem{Text="50%"},
+    new SelectListItem{Text="75%"}
+})
+@*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbyterone"><span>25%</span></a></dt>
+        <dd>
+            <ul id="byterclick2">
+                <li><a>Default Randomized Entry</a></li>
+                <li><a>Producer Tag Sequence</a></li>
+                <li><a>Beginning of File</a></li>
+                <li><a>Ending of File</a></li>
+            </ul>
+        </dd>
+    </dl>*@
+<li> 
+<label for="Company Logo">Available for Download:</label>
+</li>
+    @Html.DropDownListFor(model => model.AvailableForDownload, new List<SelectListItem> { 
+    new SelectListItem{Text="Yes"},
+    new SelectListItem{Text="No"}
+})
+@*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbytertwo"><span>Yes</span></a></dt>
+        <dd>
+            <ul id="byterclick3">
+                <li><a>Yes</a></li>
+                <li><a>No</a></li>
+               </ul>
+        </dd>
+    </dl>*@
+<li> 
+<label for="Company Logo">Explicit Content?:</label>
+</li>
+    @Html.DropDownListFor(model=>model.ExplicitContent,new List<SelectListItem>{
+    new SelectListItem{Text="Yes"},
+    new SelectListItem{Text="No"}
+})
+@*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbyterfour"><span>No</span></a></dt>
+        <dd>
+            <ul id="byterclick4">
+               <li><a>Yes</a></li>
+               <li><a>No</a></li>
+            </ul>
+        </dd>
+    </dl>*@
+
+<li> 
+<label for="Company Logo">Enter Captcha Code:</label>
+    @Html.EditorFor(model=>model.Captcha)
+    <p class="captcha">
+     <img src="/UserSponsored/ShowCaptchaImage">
+     </p>
+@*<input type="text" name="email" id="email" size="30" /> <p class="captcha"><img src="/images/captcha-code.png"></p>*@
+</li>
+
+
+</ul>
+
+
+
+</div>
+</div>
+
+<div class="basicfooter-byter">
+<div class="basicfooter-bytermain">
+<div class="bytet-mfm">
+    @Html.CheckBoxFor(model=>model.Isvalid)
+@*<input name="" type="checkbox" value="" class="info-p">*@
+<label for="Company Logo" class="info-p"><a href="#" id="trigger">Accept Terms & Conditions:</a></label>
+</div>
+<div class="bytet-mfm">
+<div>
+<p><a href="#"><img src="/images/sear-mcredi-byter.png" id="preview"></a></p>
+<p class="infof-p">Preview</p>
+</div>
+
+<div>
+@*<p><a href="#"><img src="/images/aphid_logo-byter.png"></a></p>*@
+<input type="submit" id="submitbutton" value="" style="background: url(/images/aphid_logo-byter.png); height: 78px; width: 85px; border: none;" />
+<p class="info-p">Generate</p>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+}
+
+
+</div>
+<div id="show_pop" style="display:none;">
+<div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+<div class="bg_yes_no">
+<div><p>Upload in Progress..</p></div>
+</div>
+</div>
+</div>
+<div id="button-bg1" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Invalid file
+    </div>
+    <div id="button-c1">
+        <img src="/img/button_bgw.png" />
+    </div>
+
+</div>
+<div id="button-bg2" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        please select Image & Pdf
+    </div>
+    <div id="button-c2">
+        <img src="/img/button_bgw.png" />
+    </div>
+
+</div>
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Captcha Do no match
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" />
+    </div>
+
+</div>
+<div id="popup" style="display: none; background: url('/images/aphidtisebg.png'); width: 70%; left: 16%!important; margin-top: -173px; height: 590px;">
+    <div class="popbyter-mianz" style="height: 0px!important;">
+        <div class="popbyter-miansub">
+            <div class="popbyter-subleft" style="margin-left: -160px;">
+               <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/bphidbyte_sicon.png" style="width: 70%; margin-left: -19px;"></a><br />
+                <p>
+                    <a href="#" style="display: block; margin-bottom: 20px; margin-top: -13px;">Back</a>
+                </p>
+
+            </div>
+
+
+            <div class="popbyter-sub1">
+                <div class="popbyter-sub1left"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-close" href="" class="button" style="text-align: right; margin-top: -14px; margin-right: -12px;">
+        <img src="/Images/closebotton.png" onclick="CloseThis();" />
+    </div>
+    <div>
+
+        <div style="width: 60%; float: left; height: 125px; margin-left: 89px; margin-top: -77px;">
+            @* <object data="" type="application/pdf" width="100%" height="400%" id="pdfview">
+                 <embed src="" type="application.pdf" />
+                   alt : <a href=""></a>
+               </object>*@
+            @*   <object data="" type="application/pdf" width="100%" height="100%" id="pdfview"></object>*@
+            <iframe src="" style="width: 600px; height: 500px;" id="pdfview" frameborder="0"></iframe>
+        </div>
+
+
+
+        @*  <object data="" type="application/pdf" width="100%" height="400%" id="pdfview" contenteditable="true">
+            <embed src="" type="application/pdf" />*@
+        @* <iframe  src="" width="500px" height="400px"></iframe>*@
+
+        @*</object>*@
+
+
+
+        <div class="popbyter-subright" style="width: 30%!important; margin-top: -80px;">
+            <p style="width: 50%; margin-left: 75px;">Processing 72%</p>
+            <p style="width: 50%;">
+                <img src="/images/processing-bg.png" style="margin-top: -18px; width: 157px;">
+            </p>
+
+            <div style="margin-top: 135px;">
+                <p style="margin: 0px; width: 100%; text-align: center; padding-left: 26px;">Interruption Pictures:</p>
+
+                <dl id="samplebyter" class="dropdownbyter" style="margin-left: 56px;">
+
+                    <dt><a id="basicbyter"><span id="DefaultText" style="">Default AphidByte</span></a></dt>
+                    <dd>
+                        <ul id="byterclick">
+                            @*  <li id="DefaultAphidByte"><a>Default AphidByte</a></li>*@
+                            <li><a href="#" class="itemval">Default AphidByte</a> <a></a></li>
+                           
+                            @* @foreach (var item in ViewBag.CityList)
+                                        {onclick="ChangeIntreppution('Custom');"onclick="ChangeIntreppution('Default AphidByte');
+                                            <li id="itemvalue"><a></a></li>  
+                                              
+                                        }*@
+
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <div style="width: 28%; float: right; margin-top: 144px;">
+            <p>
+                <img src="~/Images/zoom_in.png" id="zoomin" style="margin-left: 136px; margin-top: -15px;"> />
+            </p>
+            <p>
+                <img src="~/Images/zoomout.png" id="zoomout" style="margin-left: 136px; margin-top: -15px;"> />
+            </p>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="i-pop-up">
+   <p>
+  
+   </p>
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+ </script> 
+
+<script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
+    var fileinp;
+    var fileop;
+   
+    $("#Title").val("");
+    $("#Tag").val("");
+    $("#ComposerName").val("");
+    $("#Publisher").val("");
+    $("#Captcha").val("");
+    $("#PdfFilePath").val("");
+    $("#MatrixImage").val("");
+    $(document).ready(function () {
+        var captchaFlag = 0, isValid = 0;
+        $("#submitbutton").attr('disabled', 'disabled');
+        $("#Isvalid").change(function () {
+            if ($("#Isvalid").attr('checked')) {
+                isValid = 1;
+                if (captchaFlag == 1) {
+                    $("#submitbutton").removeAttr('disabled');
+                }
+            } else {
+                alert("Accept Terms and Conditions");
+                isValid = 0;
+                $("#submitbutton").attr('disabled', 'disabled');
+            }
+        });
+
+        $("#preview").click(function () {
+            if ($("#SelectedInteruptionFile").val() == "No Interruption") {
+                $("#pdfview").attr('src', pdfpathsplit);
+                // alert(pdfSplitPath);
+                $("#popup").show();
+            }
+            else {
+                if ($("#MatrixImage").val() != '' && $("#Pdf").val() != '') {
+
+                    var File = $("#SelectedInteruptionFile").val();
+                    var Per = $("#PagePercentage").val();
+                    var Title = $("#Title").val();
+                    var Composer = $("#ComposerName").val();
+                    var dd = $("#Default AphidByte").val();
+
+                    $.post('/UserSponsored/PdfInterruption',
+                                          { IntF: File, FileName: fileinp, Percentage: Per, Image: fileop, Title: Title, ComposerName: Composer, Default: dd }, function (data) {
+                                              //alert(data.name);
+                                              //alert(data);
+
+                                              $("#pdfview").attr('src', data);
+                                          });
+                    $("#popup").show();
+                }
+                else {
+                    $("#button-bg2").dialog("open");
+                }
+            }
+            //alert("message");
+        });
+
+
+
+
+        $("#Captcha").change(function () {
+            $.post("/UserSponsored/GetCaptcha", function (retObject) {
+                var bb = $("#Captcha").val();
+                if (retObject != bb) {
+                    $("#button-bg3").dialog("open");
+                    captchaFlag = 0;
+                    $("#submitbutton").attr('disabled', 'disabled');
+                }
+                else {
+                    captchaFlag = 1;
+                    if (isValid == 1) {
+                        $("#submitbutton").removeAttr('disabled');
+                    }
+                }
+            });
+        });
+
+        $('.itemval').click(function () {
+            var value = $(this).text();
+            var file = $("#SelectedInteruptionFile").val();
+            var per = $("#PagePercentage").val();
+            var title = $("#Title").val();
+            var composer = $("#ComposerName").val();
+            var dd = $("#Default AphidByte").val();
+            $.post('/UserSponsored/PdfInterruption', { IntF: value, FileName: fileinp, Percentage: per, Image: fileop, Title: title, Composer: composer, Default: dd }, function (data) {
+                $("#popup").show();
+                $("pdfview").attr('src',data)
+
+            });
+        });
+        function CloseThis() {
+            $("#ImgClose").hide();
+        }
+        $("#popup-close").click(function (e) {
+            e.preventDefault();
+            $("#popup").fadeOut("fast");
+        });
+        $("#MatrixImage").change(function () {
+            var img = $(this).val();
+            var split = img.split('.');
+            if (split[1] == "jpg" || split[1] == "JPG" || split[1] == "png" || split[1] == "PNG") {
+
+            }
+            else {
+                $("#button-bg1").dialog("open");
+                $("#MatrixImage").val("");
+            }
+        });
+        var prog = 0;
+        $('#MatrixImage').fileupload({
+            dataType: 'json',
+            url: '/UserSponsored/MatrixImage',
+            autoUpload: true,
+            done: function (e, data) {
+                fileinp = data.result.name;
+                $('.progressbar').css('width', 0 + '%');
+                document.getElementById('progresstext').innerHTML = '';
+                $("#show_pop").hide();
+                $('#Audio').removeAttr('disabled', 'disabled');
+                prog = 0;
+            }
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.progressbar').css('width', progress + '%');
+            document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+            $("#show_pop").attr('style', 'display:block');
+            $("#submitbutton").attr('disabled', 'disabled');
+            prog = 1;
+            $("#PdfFilePath").attr('disabled', 'disabled');
+        });
+        $("#PdfFilePath").change(function () {
+            var value = $(this).val();
+            var split = value.split('.');
+            if (split[1] == "pdf" || split[1] == "PDF") {
+
+            }
+            else {
+                $("#button-bg1").dialog("open");
+                $("#PdfFilePath").val("");
+            }
+        });
+        var pdfpathsplit;
+        $('#PdfFilePath').fileupload({
+            dataType: 'json',
+            url: '/UserSponsored/pdffile',
+            autoUpload: true,
+            done: function (e, data) {
+                pdfpathsplit = data.result.name;
+
+                $('.progressbar').css('width', 0 + '%');
+                document.getElementById('progresstext').innerHTML = '';
+                $('#MatrixImage').removeAttr('disabled', 'disabled');
+                prog = 0;
+                $("#show_pop").hide();
+            }
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.progressbar').css('width', progress + '%');
+            document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+        });
+
+
+            $("#basicbyter").click(function() {
+                $("#byterclick").toggle();
+            });
+                        
+            $("#byterclick li a").click(function() {
+                var text = $(this).html();
+                $("#basicbyter span").html(text);
+                $("#byterclick").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick").hide();
+            });
+			
+
+			 $("#basicbyterone").click(function() {
+                $("#byterclick2").toggle();
+            });
+                        
+            $("#byterclick2 li a").click(function() {
+                var text = $(this).html();
+                $("#basicbyterone span").html(text);
+                $("#byterclick2").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick2").hide();
+            });
+			
+			
+			
+          $("#basicbytertwo").click(function() {
+                $("#byterclick3").toggle();
+            });
+                        
+            $("#byterclick3 li a").click(function() {
+                var text = $(this).html();
+                $("#basicbytertwo span").html(text);
+                $("#byterclick3").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick3").hide();
+            });
+			
+			
+			$("#basicbyterfour").click(function() {
+                $("#byterclick4").toggle();
+            });
+                        
+            $("#byterclick4 li a").click(function() {
+                var text = $(this).html();
+                $("#basicbyterfour span").html(text);
+                $("#byterclick4").hide();
+            });
+        
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick4").hide();
+            });
+		   	
+			
+
+        });
+    </script>
+
+
+ 

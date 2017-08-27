@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+ <meta charset="utf-8">
+<title>AphidTise</title>
+<link rel="stylesheet" href="stylecss.css" type="text/css">
+<link href="jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery.cycle.all.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="featuredcontentglider.js"></script>
+
+</head>
+<body>
+
+    <div class="header_aphidtise">
+        <div class="menunav" style="width:80%;">
+            <ul>
+                <li><a href="Services">Services</a></li>
+                <li><a href="LoginUser">Login</a></li>
+                <li><a href="#">The Gall</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="AboutUsPage">About Us</a></li>
+                <li><a href="Support">Support</a></li>
+            </ul>
+        </div>
+        <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a> </div>
+    </div>
+
+
+<div class="aphidtise_wrap">
+</div>
+<div class="about_headtext" style="cursor:pointer;"><p><span id="Aboutus">About Us</span><span>  > Corporate Team</span></p></div>
+<div class="about_headbg">
+<div id="corporate_team" class="corporate_team_a">
+
+<div class="corporate_subhead" id="corporate_subhead">
+<div align="center"><img src="/Images/Andrew_Kim.png"><p>Andrew Kim</p><p>Vice President of Sales & Accounts</p></div>
+<div align="center"><img src="/Images/Jeremy_Sheckell.png"><p>Jeremy Sheckell</p><p>Vice President of Marketing</p></div>
+<div align="center"><img src="/Images/Alvah_Emmanuel.png"><p>Alvah Emmanuel</p><p>Chief Financial Officer</p></div>
+<div align="center"><img src="/Images/Brandon_Cooper.png"><p>Brandon Cooper</p><p>Chief Executive Officer</p></div>
+<div align="center"><img src="/Images/Byrce_Carlson.png"><p>Byrce Carlson</p><p>Public Relations Manager</p></div>
+<div align="center"><img src="/Images/Enzo_Musmeci.png"><p>Enzo Musmeci</p><p>Vice President of Design</p></div>
+</div>
+
+<div class="corporate_subhead" id="corporate_subhead">
+<div align="center"><img src="/Images/Buck_McMurray.png">@*<p>Buck McMurray</p><p>Spokesperson</p>*@</div>
+<div align="center"><img src="/Images/Co-Founder.png">@*<p>Chief Technology Officer, </p><p>Co-Founder</p>*@</div>
+</div>
+
+
+</div>
+
+<div id="p-select">
+<div style="width:42px;height:38px;float:right;margin-top:-390px; margin-right:50px;"><a href="#" class="prev"><img src="/Images/up_team.png"></a></div>
+<div style="width:42px;height:38px;float:right; margin-right:50px;" id="p-select"><a href="#"  class="next"><img src="/Images/down_team.png"></a></div>
+</div>
+
+</div>
+
+
+<div class="menunav_footer2">
+<ul>
+<li><a href="#">Navigation  </a></li>
+<li><a href="#">Menu    </a></li>
+<li><a href="#">Advertise   </a></li>
+<li><a href="#">Store     </a></li>
+<li><a href="/Accounts/Terms">Terms    </a></li>
+<li><a href="/Accounts/PrivacyPolicy">Privacy Policy </a></li>
+<li><a href="/UserSponsored/Index">Sponsoring</a></li>
+</ul>
+</div>
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+
+<script>
+    (function($){
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+ </script> 
+
+
+<script type="text/javascript">
+
+featuredcontentglider.init({
+	gliderid:"corporate_team", //ID of main glider container
+	contentclass:"corporate_subhead", //Shared CSS class name of each glider content
+	togglerid: "p-select", //ID of toggler container
+	remotecontent: "", //Get gliding contents from external file on server? "filename" or "" to disable
+	selected: 0, //Default selected content index (0=1st)
+	persiststate: false, //Remember last content shown within browser session (true/false)?
+	speed: 500, //Glide animation duration (in milliseconds)
+	direction: "downup", //set direction of glide: "updown", "downup", "leftright", or "rightleft"
+	autorotateconfig: [3000, 2], //if auto rotate enabled, set [milliseconds_btw_rotations, cycles_before_stopping]
+	onChange: function(previndex, curindex, $allcontents){ // fires when Glider changes slides
+  		//custom code here
+	}
+})
+
+</script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Aboutus").click(function () {
+                window.location.href = "/Accounts/AboutUsPage";
+            });
+        });
+
+    </script>

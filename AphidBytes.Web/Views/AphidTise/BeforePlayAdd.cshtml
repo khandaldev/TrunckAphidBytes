@@ -1,0 +1,180 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.AdvertisementModel   
+
+ @{
+        
+     Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+  
+
+<div class="aphidtise_wrap">
+</div>
+<div class="header_aphidtise">
+  <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;">  <img src="/images/hphidbytelogo.png"></a> </div>
+</div>
+<div class="about_headtext"><p><a href="#">Back</a></p></div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "post1", enctype = "multipart/form-data" }))
+{
+<div class="about_headbg" style="background:none !important;">
+
+<div class="w_main_imax">
+<div style="width:15% !important;">
+<p id="uplo" style="cursor:pointer;">Upload</p>
+@*<input type="file" id="fileup" style="display:none;"/>*@
+@*<input type="file" form="file name">*@
+@Html.TextBoxFor(model => model.AdVideo, new { type = "file", form = "file name", id = "fileup", style = "display:none;" })
+</div>
+
+<div class="mix_z2_box">
+<div class="per_vad"><samp class="per_vad_b2"><a href="#"id="privewadd">Preview Ad</a></samp></div>
+
+<p class="mz_6_video"><video id="vi_d" style="height: 95%; width: 124%; border-radius: 0;" autoplay="autoplay"></video></p>
+<p style="color:#F3B801; line-height:25px; text-align:center;">Video must be in _MP4__ format</p>
+<p style="color:#F3B801; text-align:center;  line-height:25px;">Video Only</p>
+<p style="text-align:center;  line-height:25px;"><samp><img src="/Images/cr_d_img.png"/></samp id="credi">@Model.CreditsID credits</p>
+
+</div>
+
+<div>
+
+<p>Before Play Ad</p>
+<p><img src="/Images/3d-images_7.png"/></p>
+
+<div class="imax_hand"><p id="pay" style="cursor:pointer;"><a>Proceed to payment and scheduling configuration</a></p>
+                <input id="sub" type="submit" style="display:none;" /></div>
+
+</div>
+
+
+
+
+</div>
+
+
+<div class="menunav_footer2">
+<ul style="background:none !important; clear:both;">
+<li><a href="#">Navigation  </a></li>
+<li><a href="#">Menu    </a></li>
+<li><a href="#">Advertise   </a></li>
+<li><a href="#">Store     </a></li>
+<li><a href="#">Terms    </a></li>
+<li><a href="#">Privacy Policy </a></li>
+<li><a href="#">Sponsoring</a></li>
+</ul>
+</div>
+</div>
+   
+@*<a href="#" class="topopup">Click Here Trigger</a>*@
+        <div id="toPopup" style="left: 4% !important;margin: auto !important;width:90%; top:10%; background:#000 !important; border:none;opacity:0.9"> 
+        <div style="position:absolute; width:20%;"><img src="/img/bphidbyte_sicon2.png" /></div>
+        <div class="close"></div>
+        <samp class="out_close"><p>Close to go back to previous screen</p></samp>
+
+       	<span class="ecs_tooltip"></span>
+        
+		<div id="popup_content">
+        <div class="matrix_xadn1">
+       
+        
+        <div style="margin-top:3%!important;">
+        <div class="mix_vframe_a">
+       <video id="prev_vid" style="border-radius:0;"></video></div>
+        <div class="mix_vftext01">
+        <p>$ @Model.PriceToDisplay</p>
+        <p><img src="/Images/cr_d_img.png"/>@Model.CreditsID credits</p>
+        </div>
+        
+        </div>
+        <div >
+        <div class="mix_vframe_atext">
+        <h2>@Model.Title</h2>
+        <p>@Model.AdInformation</p>
+        </div>
+        
+         @Html.TextBoxFor(model => model.AdVideo, new { style = "display:none;" })
+         @Html.TextBoxFor(model => model.TrackingNumber, new { style = "display:none;" })
+        
+        </div>
+        
+        <div>
+        <div class="view_st_max_c" style="width:100%; margin-top:50%;">
+        <p><a href="" id="ad_website">View Site</a></p>
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        </div> 
+        <!--your content end-->
+    
+     </div> <!--toPopup end-->
+}
+  <div id="backgroundPopup"></div>
+ 
+<script>
+    var vidpath = "";
+    $('#uplo').click(function () {
+        document.getElementById('fileup').click();
+    });
+
+    $('#fileup').fileupload({
+        dataType: 'json',
+        url: '/AphidTise/vidtodb',
+        autoUpload: true,
+        done: function (e, data) {
+            vidpath = data.result.name;
+            var video_pl = document.getElementById("vi_d");
+            video_pl.setAttribute("src", vidpath);
+            video_pl.addEventListener("load", function () {
+            }, true);
+            video_pl.play();
+
+
+        }
+
+    });
+
+
+    //credi
+    //privewadd
+
+
+
+    $(document).ready(function () {
+        vidpath = '@Model.AdVideo';
+        var video_pl = document.getElementById("vi_d");
+        video_pl.setAttribute("src", vidpath);
+        video_pl.addEventListener("load", function () {
+        }, true);
+        video_pl.play();
+        var link = document.getElementById("ad_website");
+        link.href = "http://" + '@Model.AdHyperLinkUrl';
+
+        $('#pay').click(function () {
+            alert('clicked');
+            $('#sub').click();
+        });
+
+    });
+
+    $("#privewadd").click(function () {
+        $("#toPopup").show();
+        var anee = document.getElementById("vi_d");
+        anee.pause();
+
+        var videopr = document.getElementById("prev_vid");
+        videopr.setAttribute("src", vidpath);
+        videopr.addEventListener("load", function () {
+        }, true);
+        videopr.play();
+    })
+    $("#closeicon").show();
+    $(".close").click(function (event) {
+        event.preventDefault();
+        $("#toPopup").hide();
+        var videopr = document.getElementById("prev_vid");
+        videopr.pause();
+    });
+</script>

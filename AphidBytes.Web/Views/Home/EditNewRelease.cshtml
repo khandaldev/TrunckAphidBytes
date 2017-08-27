@@ -1,0 +1,1087 @@
+﻿    @model AphidBytes.Accounts.Contracts.Model.AdminModel
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@{
+   
+       
+}
+<style>
+   #content1 {
+            border: none;
+            min-height: 300px;
+            width: 200px;
+            height: 300px;
+        }
+
+        #item {
+            border: none;
+            height: 30px;
+            width: 150px;
+        }
+
+
+</style>
+<div class="wrap_main">
+    <p class="top-head-text">ADMIN EDIT VIEW (Releases)</p>
+    
+    <aside class="wrap-left-sidebar" style="position:absolute;height:450px;overflow:scroll;width:308px; z-index:100;">
+        @*<div class="edittext">Save</div>*@
+        <div style="display:none;">
+           
+           
+        </div>
+        <div id="wrap-right-scroll">
+            <div class="boxedit">
+                <p id="past" style="color: #e0ac03;cursor: pointer;"><img src="/img/newr_icon.png"id="imgpre1">Past Release</p>
+                <p style=" cursor: pointer;" id="new"><img src=""id="imgpre2"style="display:none;">New Release</p>
+                <p id="upcoming" style="/*margin-left:143px; margin-top:-32px;*/cursor: pointer;"><img src=""id="imgpre3"style="display:none;">Upcoming Release</p>
+                 
+                <div style="display:none;" id="pastData">
+                 @foreach (var item in ViewBag.Message1)
+                  {
+                      
+                      <div id="past+@item.PDBID">
+                     <div id="close-editb" class="AdminDataPast">
+                      
+                    <div id="box-c-button" class="pText+@item.PDBID" ><a href="#" id="ppText+@item.PDBID" class="pastt">Edit Information</a></div>
+                    <div id="box-c-button" ><a href="#" id="we+@item.PDBID" class="editImage">Edit Image </a></div>
+                        <div class="edittext" id="sp+@item.PDBID" style="margin-right:-75px; margin-top:10px; display:none;" onclick="saveData(@item.PDBID);" >Save</div>
+                    <div id="close-pic-box">
+                        <div id="c-buttona" class="past+@item.PDBID"><a href="#">
+                            <img src="/img/close.png" id="@item.PDBID" class="Delete" /></a></div>
+                        <div><input type="file" id="e+@item.PDBID" class="ChangeImage" style="display:none" /> </div>
+                        <div class="close-picsa" >
+                            <p id="pText+@item.PDBID">@item.Message</p>
+                        </div>
+                        <div>
+                            <img src="..@item.ImgPath" id="m+@item.PDBID" class="imgpath+@item.PDBID">
+                        </div>
+                      
+                </div></div></div>   
+                     
+                  }
+                     
+          </div>
+                 <div style="display:none;"  id="newData">
+                 @foreach (var item in ViewBag.Message2)
+                 {  <div id="past+@item.NDBID">
+                     <div id="close-editb" class="AdminDataPast">
+                    <div id="box-c-button" class="pText+@item.NDBID" ><a href="#" id="ppText+@item.NDBID" class="pastt">Edit Information</a></div>
+                    <div id="box-c-button" ><a href="#" id="en+@item.NDBID" class="editImage">Edit Image </a></div>
+                        <div class="edittext" id="sp+@item.NDBID" style="margin-right:-75px; margin-top:10px; display:none;" onclick="saveData(@item.NDBID);">Save</div>
+                    <div id="close-pic-box">
+                        <div id="c-buttona" class="past+@item.NDBID"><a href="#">
+                            <img src="/img/close.png" id="@item.NDBID" class="Delete" /></a></div>
+                        <div><input type="file" id="n+@item.NDBID" class="ChangeImage" style="display:none" /> </div>
+                        <div class="close-picsa" >
+                            <p id="pText+@item.NDBID">@item.Msg</p>
+                        </div>
+                        <div>
+                            <img src="..@item.Path" id="m+@item.NDBID" class="imgpath+@item.NDBID">
+                        </div>
+                </div></div></div>
+                 }
+          </div>
+               
+                 <div style="display:none;" id="upData">
+                 @foreach (var item in ViewBag.Message3)
+                 { <div id="past+@item.UDBID">
+                     <div id="close-editb" class="AdminDataPast">
+                    <div id="box-c-button" class="pText+@item.UDBID" ><a href="#" id="ppText+@item.UDBID" class="pastt">Edit Information</a></div>
+                    <div id="box-c-button" class="editImage"><a href="#" id="eu+@item.UDBID" class="editImage">Edit Image </a></div>
+                        <div class="edittext" id="sp+@item.UDBID" style="margin-right:-75px; margin-top:10px; display:none;" onclick="saveData(@item.UDBID);" >Save</div>
+                    <div id="close-pic-box">
+                        <div id="c-buttona" class="past+@item.UDBID"><a href="#">
+                            <img src="/img/close.png" id="@item.UDBID" class="Delete" /></a></div>
+                        <div><input type="file" id="u+@item.UDBID" class="ChangeImage" style="display:none" /> </div>
+                        <div class="close-picsa" >
+                            <p id="pText+@item.UDBID">@item.Message</p>
+                        </div>
+                        <div>
+                            <img src="..@item.Path" id="m+@item.UDBID" class="imgpath+@item.UDBID">
+                        </div>
+                </div></div></div>
+                 }
+          </div>
+            </div>
+            <div id="close-editb" class="AdminDataNew">
+                @* <div id="box-c-button"><a href="#">Edit Information</a></div>
+                        <div id="box-c-button"><a href="#">Edit Image </a></div>
+                        <div id="close-pic-box">
+                            <div id="c-buttona">
+                                <a href="#">
+                                    <img src="/img/close.png"></a>
+                            </div>
+                            <div class="close-picsa">
+                                <p>Mayweather 30 Days in May Now Available</p>
+                            </div>
+                            <div>
+                                <img src="/img/one_pic_2.png">
+                            </div>
+                        </div>*@
+            </div>
+            <div id="close-editb" class="AdminDataUpcoming">
+            </div>
+            <div>
+                <img src="/img/bottonplus.png" id="AddNew" /></div>
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                      
+                <div id="close-editb" class="appenddiv">
+                </div>
+                <div id="addplus">
+                    <div id="fupload">
+                        <input type="file" id="imageupload" />
+                    </div>
+                    <p>
+                        <input type="submit" value="Add" id="Add" name="file" />
+                    </p>
+                </div>
+            }
+            <div id="scroll-cba">
+                <a href="#">
+                    <img src="/img/pev_b.png">
+                </a>
+                <a href="#">
+                    <img src="/img/next_b.png"></a>
+
+            </div>
+        </div>
+</div>
+</aside>
+
+         
+    <aside class="wrap-middle-sidebar" style="margin-left: 336px; margin-top:0px;">
+        <div class="edittext2c3-c" align="right"><a href="#">Edit</a></div>
+
+
+        <img src="/img/logo.png">
+
+        <div class="wrap-search-box">
+            <input type="text" class="wrap-searchinbox" placeholder="Enter Title or Traking Number" />
+            <input type="button" value="SEARCH" class="warp-searchbtn" />
+        </div>
+
+        <div class="wrap-nav">
+            <ul class="wrap-navlinks">
+                <li>MUSIC</li>
+                <li>VIDEOS</li>
+                <li>PHOTOGRAPHY/ART</li>
+                <li>EBOOK</li>
+                <li>FILES</li>
+            </ul>
+
+        </div>
+        <div class="power-botton">
+            <aside class="lgn">LOGIN</aside>
+            <a href="#">
+                <img src="/img/power.png" class="pointer"></a>
+        </div>
+    </aside>
+
+
+
+  <aside class="wrap-right-sidebar"id="wrapsidebar">
+    <div class="edittext2-c"><a href="#">Edit</a></div>
+
+    <div id="wrap-right-scroll">
+         <div id="w-right-text">
+                <div id="content3"class ="componentin3" style="overflow:hidden;height:88px;width:80px;margin-left:68px;  ">
+                @*   <div id ="item3">*@
+                    <div id ="Film"style="cursor: pointer;">Film</div>
+                    <div id="PhotoGraphy"style="cursor: pointer;">Photography</div>
+                    <div id="Art"style="cursor: pointer;">Art</div>
+                    <div id="News"style="cursor: pointer;">News</div>
+                    <div id="Technology"style="cursor: pointer;color:#e0ac03">Technology</div>
+                    <div id="Music" style="cursor:pointer; ">Music</div>
+                    </div>
+                   @*  
+         *@
+                </div>
+
+                    <div class="w-right-bg">
+                    
+                      <div id="Technologhy" class="ankur">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/mtv_icon.png"></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+                      <div id="Photography" class="ankur" style="display:none">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/Images/aphidtise_account_apply.png"/></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/mtv_icon.png"></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+                      <div id="art" class="ankur" style="display:none">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/Images/aphidtise_account_apply.png"/></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/mtv_icon.png"></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+                      <div id="MusiC" class="ankur" style="display:none">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/Images/aphidtise_account_apply.png"/></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/mtv_icon.png"></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+                    <div id="NewS" class="ankur" style="display:none">
+                         <div id ="scroollleft">
+                            <div class="component">
+                                    
+  
+  <div id="content1" class="componentin" style="overflow:hidden; margin: auto auto auto -15px; width: 220px;position:relative;top:11px">
+     <div id="item">
+          
+   
+         <div style="width:50px; height:30px; float:left;  "><img src="/Images/cnbc.jpg" /></div>
+         <div style="width:191px; height:30px; margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="~/Images/bbc.jpg" /></div>
+         <div  style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext" >Kanye West walked head-first into a metal <a href="#" class="redmore_t" >(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/logo_a.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px ;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/tmz_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px; "><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+        <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+       <div> 
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+      <div>
+      <div style="width:50px; height:30px; float:left;  "><img src="/img/vh_logo.png"></div>
+         <div style="width:191px; height:30px;margin-top:32px;"><p class="right_sctext">Kanye West walked head-first into a metal <a href="#" class="redmore_t">(Read More)</a></p></div>
+       </div>
+
+  </div>
+                        <div id="prv-boon">
+                        <div>
+                             <div class="go_up"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="go_down"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           </div>
+                    </div>
+                </div>
+                    </div>
+</div>
+  </div>
+
+        </div>
+
+    </div>
+
+</aside>
+<aside class="wrap-right-sidebar2" id="wrapsidebar2"style="display:none;">
+				<div id="wrap-right-scroll">
+                <div id="w-right-text">
+                <div id="content3"class ="componentin3" style="overflow:hidden;height:88px;width:80px;margin-left:100px;">
+                @*   <div id ="item3">*@
+                    <div id ="Film"style="cursor: pointer;color: #e0ac03">Film</div>
+                    <div id="PhotoGraphy1"style="cursor: pointer;">Photography</div>
+                    <div id="Art1"style="cursor: pointer;">Art</div>
+                    <div id="News1"style="cursor: pointer;">News</div>
+                    <div id="Technology1"style="cursor: pointer;">Technology</div>
+                    <div id="Music1"style="cursor: pointer;">Music</div>
+              
+
+                    </div>
+                    
+                      @*  <div class="w-boxm">
+                        <div class="w-bx"style="width:78%">
+                            <div  class="go_side"><img src="/img/next_right.png" /></div>
+                                 </div>
+                     
+                        <div class="w-bx3">
+                         <div class="go_thiside"><img  src="/img/pev_right.png" /></div>      
+                        </div>
+                    </div>*@
+@*</div> 
+         *@
+                </div>
+               
+                <div class="w2-right-bg2" >
+                 <p class="text-p">Top Box Office Movies</p>
+                 <div class="w-box-tex">
+                     <div id="content2" class="componentin1" style="overflow:hidden;height:240px">
+                      <div id="item21" >
+                 <ul class="w-right-text">
+                    
+                 <li>1 Insidious 2 <div class="onload" style="display:none;"> <img src="/Images/onload.png"> </div> </li>
+                 <li>2 The Family </li>
+                 <li>3 Riddick</li>
+                 <li>4 Lee Daniel's The Butler</li>
+                 <li>5 We're the Millers </li>
+                 <li>6 Instructions Not Included</li>
+                 <li>7 Planes  </li>
+                 <li>8 One Direction: This is Us  </li>
+                 <li>9 Elysium  </li>
+                 <li>10 Percy Jackson: Sea of Monsters  </li>
+               
+                 </ul>
+                          </div>
+                         </div>
+                 </div>
+              <div>
+                 <div class="w-box-tex-right" >
+                     <div id="content2" class="componentin1" style="overflow:hidden;height:240px">
+                 <div id="item21">
+                 <ul class="w-right-text">
+                 <li>$41.0M</li>
+                 <li>$14.5M </li>
+                 <li>$7.0M</li>
+                 <li>$5.5M</li>
+                 <li>$5.4M</li>
+                 <li>$4.2M</li>
+                 <li>$3.0M</li>
+                 <li>$2.4M</li>
+                 <li>$2.0M</li>
+                 <li>$1.8M</li>
+                 
+                 </ul>
+                 </div>
+                 </div>
+                     </div>
+                 
+                </div>
+                
+                    <div id="prv-boon">
+                        <div>
+                             <div class="filmup"><img src="/img/pev_b.png" style="cursor: pointer;width:30px"/></div>
+     <div class="filmdown"><img  src="/img/prev_b.png"  style="cursor: pointer;width:30px"/> </div>
+                        </div>
+                        <div>
+                           
+                        </div>
+                    </div>
+                </div>
+                
+               
+                </div>
+             
+				</aside>
+
+
+
+<footer class="mainFooter">
+
+    <div class="search-nav">
+        <ul class="navlinks_b">
+
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Store</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy Policy  </a></li>
+            <li><a href="#">Sponsoring</a></li>
+        </ul>
+    </div>
+    
+</footer>
+<script>
+    var imageName;
+    var classname;
+    var oo;
+    var hhh;
+    function saveData(id)
+    {
+        var text;
+        var imgPath;
+        var imgid = "#m+" + id;
+        var img = $(imgid).attr('src');
+        
+        var txt = "pText+" + id;
+        
+         var txtdata = document.getElementById(txt);
+          text = txtdata.innerHTML;
+          if (imageName != null) {
+              imgPath = "/TempBasicImages/" + imageName;
+          }
+          else { }
+        var tbox = "text1" + id;
+        var txtTbox = document.getElementById(tbox);
+        if (txtTbox == null) {
+            
+        } else { text = txtTbox.value; }
+       
+        var tt;
+        $.post('/Home/UpdateRelease', { ID: id, Text: text, Path: imgPath }, function (data) {
+            if (data == "Success") {
+                location.reload();
+            }
+            else { alert("something went wrong"); }
+        });
+       
+    }
+
+    $(document).ready(function () {
+        
+        $("#pastData").css('display', 'block');
+       
+        $(".pastt").click(function () {
+           
+            var aa = $(this).attr('id');
+            //var sa = $(".edittext").attr('id');
+            var spli = aa.split("+");
+            var ff = spli[1];
+            var zz = "sp+" + ff;
+            var save = document.getElementById(zz);
+            save.style.display = "block";
+            var ss = aa.substring(1);
+            classname = aa;
+             hhh = document.getElementById(ss);
+            var text = hhh.innerHTML;
+            hhh.innerHTML = '';
+            var ele = document.createElement("textarea");
+            ele.setAttribute("style","margin-left:-5px;width:72px;height:60px");
+            ele.setAttribute("id", "text1"+ff);
+            
+            // var box = '<textarea name="form" style="width:71px; height:60px; margin-left:-3px;">' + text + '</textarea>';
+            hhh.appendChild(ele);
+        });
+
+        //$(".edittext").click(function () {
+            
+        //});
+
+
+        $(".Delete").click(function () {
+            var id = $(this).attr('id');
+            var id3 = $(this).closest('div').attr('class');
+            var ele = document.getElementById(id3);
+           
+            $.post('/Home/DeleteRecord', { ID: id }, function (data) {
+                ele.parentNode.removeChild(ele);
+               
+            });
+        });
+
+        $("#fupload").hide();
+
+        $("#Add").hide();
+        $("#AddNew").click(function () {
+            var adddiv = '';
+            var addbutton;
+            $("#fupload").show();
+            $("#Add").show();
+            adddiv += '<div id="box-c-button">Edit Information</div>';
+            adddiv += '<div id="box-c-button" style="margin-left: 179px;">Edit Image</div>';
+            adddiv += '<div id="close-pic-box">';
+            adddiv += '<div id="c-buttona">';
+            adddiv += ' <img src="/img/close.png"></div>';
+            adddiv += '<div class="close-picsa">';
+            adddiv += '<p><textarea name="form" style="width:71px; height:60px; margin-left:-3px;"></textarea></p>';
+            adddiv += '</div>';
+            adddiv += '<div style="margin-top:-4px; margin-left:146px; "><img src="" id="pre" /></div>';
+            adddiv += '</div>';
+            $(".appenddiv").append(adddiv);
+        });//<input type="text" style="width:71px; height:60px; margin-left:-3px;" />
+
+
+        $('.ChangeImage').fileupload({
+            dataType: 'json',
+            url: '/Home/UploadImage',
+            autoUpload: true,
+            done: function (e, data) {
+                imageName = data.result.name;
+                alert(imageName);
+                // var dd = $(".imgpath").attr('id');
+                var dd = document.getElementsByClassName(oo)[0].id;
+                var jj = dd.split("+");
+                var pp = "sp+" + jj[1];
+                var uu=document.getElementById(dd);
+                uu.style.display = "block";
+                uu.src = "/TempBasicImages/" + imageName;
+               // var aa = $(".edittext").attr('id');
+                //var aa = document.getElementById(pp)[0].id;
+                //var spli = aa.split("+");
+                //var ff = spli[1];
+                var save = document.getElementById(pp);
+                save.style.display = "block";
+                
+            }
+
+        });
+
+        $(".editImage").click(function () {
+            var dd = $(this).attr('id');
+            var gg=dd.split("+");
+            var tt=gg[1];
+            var kk = dd.substring(1);
+            var ff = document.getElementById(kk);
+            ff.style.display = "block";
+             oo = "imgpath+" + tt;
+            var img = $(oo).attr('id');
+            var gg=document.getElementById(img);
+           // gg.style.display = "none";
+        });
+
+        $('#imageupload').fileupload({
+            dataType: 'json',
+            url: '/Home/UploadImage',
+            autoUpload: true,
+            done: function (e, data) {
+                imageName = data.result.name;
+                alert(imageName);
+                document.getElementById("pre").src = "/TempBasicImages/" + imageName;
+            }
+
+        });
+
+        $("#past").click(function () {
+            var id = $(this).text();
+            $("#imgpre3").attr('src', '').hide();
+            $("#imgpre2").attr('src', '').hide();
+            $("#imgpre1").attr('src', '/img/newr_icon.png').show();
+            $("#pastData").css('display', 'block');
+            $("#newData").css('display', 'none');
+            $("#upData").css('display', 'none');
+            $('#past').css('color', '#e0ac03');
+            $('#new').css('color', '#FFF');
+            $('#upcoming').css('color', '#FFF');
+            $.post('/Home/GetId',
+                { ID: id }, function (data) {
+                });
+
+        });
+        $("#new").click(function () {
+            var id = $(this).text();
+            $("#imgpre3").attr('src', '').hide();
+            $("#imgpre1").attr('src', '').hide();
+            $("#imgpre2").attr('src', '/img/newr_icon.png').show();
+            $("#newData").css('display', 'block');
+            $("#pastData").css('display', 'none');
+            $("#upData").css('display', 'none');
+            $('#past').css('color', '#FFF');
+            $('#new').css('color', '#e0ac03');
+            $('#upcoming').css('color', '#FFF');
+            $.post('/Home/GetId',
+                { ID: id }, function (data) {
+                });
+
+        });
+        $("#upcoming").click(function () {
+            var id = $(this).text();
+            $("#imgpre1").attr('src', '').hide();
+            $("#imgpre2").attr('src', '').hide();
+            $("#imgpre3").attr('src', '/img/newr_icon.png').show();
+            $("#upData").css('display', 'block');
+            $("#pastData").css('display', 'none');
+            $("#newData").css('display', 'none');
+            $('#past').css('color', '#FFF');
+            $('#new').css('color', '#FFF');
+            $('#upcoming').css('color', '#e0ac03');
+            $.post('/Home/GetId',
+                { ID: id }, function (data) {
+                });
+
+        });
+
+    });
+</script>
+<script>
+    $("#closeicon").show();
+    $("#closebox").click(function (event) {
+        event.preventDefault();
+        $(this).hide();
+    });
+    
+    $('#Film').click(function () {
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#Film').css('color', '#FFF');
+        $('#Film').css('color', '#FFF');
+        $('#Film').css('color', '#FFF');
+        $('#Film').css('color', '#FFF');
+        $('#Film').css('color', '#FFF');
+        $('#pHOTOGRAPHY').hide();
+        $('#NewS').hide();
+        $('#ART').hide();
+        $('#Technologhy').hide();
+        $('#MusiC').hide();
+        $('#FILM').show();
+    })
+    $('#PhotoGraphy').click(function () {
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#FILM').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Technology').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#e0ac03');
+        $('#FILM').hide();
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#Technologhy').hide();
+        $('#MusiC').hide();
+        $('#Photography').show();
+    })
+    $('#Art').click(function () {
+        //$("#imgpre1").attr('src', '').hide();
+        //$("#imgpre2").attr('src', '').hide();
+        //$("#imgpre3").attr('src', '/img/newr_icon.png').show();
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Technology').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#Art').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#NewS').hide();
+        $('#FILM').hide();
+        $('#Technologhy').hide();
+        $('#MusiC').hide();
+        $('#art').show();
+    })
+    $('#Technology').click(function () {
+        $('#FILM').css('color', '#ccc');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#Technology').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#FILM').hide();
+        $('#MusiC').hide();
+        $('#Technologhy').show();
+    })
+    $('#Music').click(function () {
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Technology').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#Music').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#Technologhy').hide();
+        $('#FILM').hide();
+        $('#MusiC').show();
+    })
+    $('#News').click(function () {
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Technology').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#e0ac03');
+        $('#Photography').hide();
+        $('#art').hide();
+        $('#Technologhy').hide();
+        $('#FILM').hide();
+        $('#MusiC').hide();
+        $('#NewS').show();
+    })
+    $('#Technology1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#FILM').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Technology').css('color', '#e0ac03');
+        $('#NewS').hide();
+        $('#art').hide();
+        $('#MusiC').hide();
+        $('#FILM').hide();
+        $('#Photography').hide();
+        $('#Technologhy').removeAttr("style", "display:none");
+    })
+    $('#Film').click(function () {
+        $('#wrapsidebar').attr("style", "display:none");
+        $('#wrapsidebar2').removeAttr("style", "display:none");
+    })
+    $('#PhotoGraphy1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#art').hide();
+        $('#NewS').hide();
+        $('#MusiC').hide();
+        $('#FILM').hide();
+        $('#Technologhy').hide();
+        $('#Technology').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#FILM').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#e0ac03');
+        $('#Photography').show();
+    })
+    $('#Art1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#MusiC').hide();
+        $('#FILM').hide();
+        $('#NewS').hide();
+        $('#Technologhy').hide();
+        $('#Photography').hide();
+        $('#Technology').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#Art').css('color', '#e0ac03');
+        $('#art').show();
+    })
+    $('#Music1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#Photography').hide();
+        $('#FILM').hide();
+        $('#art').hide();
+        $('#NewS').hide();
+        $('#Technologhy').hide();
+        $('#Technology').css('color', '#FFF');
+        $('#News').css('color', '#FFF');
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#e0ac03');
+        $('#MusiC').show();
+    })
+    $('#News1').click(function () {
+        $('#wrapsidebar2').attr("style", "display:none");
+        $('#wrapsidebar').removeAttr("style", "display:none");
+        $('#Photography').hide();
+        $('#FILM').hide();
+        $('#art').hide();
+        $('#MusiC').hide();
+        $('#Technologhy').hide();
+        $('#Technology').css('color', '#FFF');
+        $('#FILM').css('color', '#FFF');
+        $('#PhotoGraphy').css('color', '#FFFF');
+        $('#Art').css('color', '#FFF');
+        $('#Music').css('color', '#FFF');
+        $('#News').css('color', '#e0ac03');
+        $('#NewS').show();
+    })
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        currentHeight = $('.componentin').innerHeight();
+        $(".go_up").click(function () {
+            $('.componentin').children('#item').animate({ "marginTop": "-=60px" });
+            $(".go_down").show();
+            if ($('.componentin').children('#item').css("margin-top") == "-420px") {
+                $(".go_up").hide();
+            }
+
+        });
+        $(".go_down").bind('click', function () {
+            $('.componentin').children('#item').animate({ "marginTop": "+=60px" });
+            $(".go_up").show();
+            if ($('.componentin').children('#item').css("margin-top") == "0px") {
+                $(".go_down").hide();
+            }
+        });
+        $(".filmup").click(function () {
+            //alert("zx");
+            $('.componentin1').children('#item21').animate({ "marginTop": "-=40px" });
+            $(".filmdown").show();
+            if ($('.componentin1').children('#item21').css("margin-top") == "-60px") {
+                $(".filmup").hide();
+            }
+
+        });
+        $(".filmdown").bind('click', function () {
+            // alert("vxcv");
+            $('.componentin1').children('#item21').animate({ "marginTop": "+=20px" });
+            $(".filmup").show();
+            if ($('.componentin1').children('#item21').css("margin-top") == "40px") {
+                $(".filmdown").hide();
+            }
+        });
+
+
+
+        $(".go_side").click(function () {
+            var h = $('.componentin3').innerHeight();
+            $('.componentin3').children('#Film').animate({ "marginTop": "-=12px" });
+            if (margin - top == "0px") {
+                $('.componentin3').children().css('color', '#e0ac03');
+            }
+
+            x = $("#Music").position();
+        });
+        $(".go_thiside").click(function () {
+            var h = $('.componentin3').innerHeight();
+            $('.componentin3').children('#Film').animate({ "marginTop": "+=12px" });
+        });
+    });
+</script>

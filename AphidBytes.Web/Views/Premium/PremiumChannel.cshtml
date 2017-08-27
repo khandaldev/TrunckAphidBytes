@@ -1,0 +1,395 @@
+﻿@{
+    ViewBag.PageTitle = "Account";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@model AphidBytes.Accounts.Contracts.Model.MessageModel
+
+
+
+<script type="text/javascript">
+    $(function () {
+        var moveLeft = 20;
+        var moveDown = -50;
+
+        $('a#trigger').hover(function (e) {
+            $('div#i-pop-up').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up').hide();
+        });
+
+        $('a#trigger').mousemove(function (e) {
+            $("div#i-pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var moveLeft = -60;
+        var moveDown = -80;
+
+        $('a#trigger2').hover(function (e) {
+            $('div#i-pop-up2').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up2').hide();
+        });
+
+        $('a#trigger2').mousemove(function (e) {
+            $("div#i-pop-up2").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+</script>
+
+
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="/images/profilebg.png">
+                </div>
+                <div class="profiletext-ct-info">
+                    <img src="/images/clone-pa.png">
+                    Basic Account</div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="header_aphidtise">
+    <div id="logo">
+      <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+    </div>
+    <div class="headertab_aphidtise">
+
+        <div class="aphidbyteleft">
+
+            <ul class="aphidbytelist-preum">
+                <li><a href="PremiumAccountInfo">Account Info</a></li>
+                <li></li>
+                <li><a href="GenerateClones">Generate Clones</a></li>
+                <li>
+                    <img src="/images/right_line.png" height="2" width="98"></li>
+                <li><a href="PremiumMessage">Messages</a></li>
+                @if (Model.NewCount != 0)
+                {
+                    <div style="position: absolute; background-color: red; color: white; margin-top: -56px; margin-left: 97px; padding: 5px; border-radius: 67px;">@Model.NewCount</div>
+                }
+                <li></li>
+                <li><a href="Premiumbytetracker">Byte Tracker</a></li>
+                <li></li>
+                <li><a href="PremiumHistory">History</a></li>
+                <li></li>
+                <li><a href="PremiumDataplan">Data Plan</a></li>
+                <li></li>
+                <li><a href="PremiumPlaylist">Playlists</a></li>
+                <li></li>
+
+            </ul>
+
+
+            <div class="prebox">
+                <p><a href="Dashboard">Dashboard<img src="~/images/premium_account_bg.png" class="pre-boxp"></a></p>
+            </div>
+            <div class="mremium-tools"><a href="PremiumTools">
+                <img src="~/images/premium-tools.png"></a></div>
+
+            <div class="info-footer-social"></div>
+            <div class="premium_rightline"></div>
+        </div>
+
+        <p class="info-p" style="margin-bottom: 25px; cursor:pointer;"><span id="genclone">Generate Clones</span><span id="byteyourvideo">> Byte Your Video</span></p>
+        <div style="height: 600px; width: 100%;">
+            <div class="byter-header-caemrapic">
+                <div class="byter-caemrapicpic">
+                    <p>
+                        <img src="/images/basic-iconeb.png"></p>
+                    <p>Byte Your Videos</p>
+                </div>
+                <p class="byter-iinfo"><a href="#" id="trigger">
+                    <img src="/images/boldbg.png"></a></p>
+            </div>
+
+            <div id="content_1" class="aphidbytecenter content scrollWidth mCustomScrollbar _mCS_1" style="margin: 5px 0 0 95px;">
+                <div style="position: relative; height: 100%; overflow: hidden; max-width: 100%;" id="mCSB_1" class="mCustomScrollBox mCS-light">
+                    <div style="position: relative; top: 0;" class="mCSB_container">
+                        <div class="mecscroll">
+                            <div id="slider1" style="position: relative; width: 473px; height: 600px; overflow: hidden;">
+                                <p class="info-p">Select Channel(s) to Flood to</p>
+
+                                <div style="width: 100%; height: 600px; margin: auto; overflow: hidden; position: absolute; margin-top: 0px; left: 0px; display: block; z-index: 5; opacity: 1;">
+
+                                    <div class="social-nav">
+                                        <ul>
+                                            <div class="byter-right-li">
+                                                <img src="/images/linedwonp.png"></div>
+
+                                            <li>
+                                                <div class="byter-infoc"><a href="#" id="trigger2">
+                                                    <img src="/images/boldbg.png"></a></div>
+                                                <div class="byter-sing-b">
+                                                    <input name="" type="checkbox" value=""></div>
+                                                <div id="sociallimain-pic">
+                                                    <img src="/images/mtv-bytli.png">
+                                                </div>
+                                                <a href="#">Matrix</a>
+                                                <div id="mec-closebyter">
+                                                    <img src="/images/dots-close-byter.png"></div>
+                                            </li>
+
+                                            <li>
+                                                <div class="byter-sing-b">
+                                                    <input name="" type="checkbox" value=""></div>
+                                                <div id="sociallipic">
+                                                    <img src="/images/vimeoicone.png">
+                                                </div>
+                                                <a href="#">Daily Motion</a>
+                                                <div id="mec-closebyter">
+                                                    <img src="/images/dots-close-byter.png"></div>
+                                            </li>
+                                            <div>
+                                                <li>
+                                                    <div class="byter-sing-b">
+                                                        <input name="" type="checkbox" value=""></div>
+                                                    <div id="sociallipic">
+                                                        <img src="/images/youticone.png">
+                                                    </div>
+                                                    <a href="#">YouTube</a>
+                                                    <div id="mec-closebyter">
+                                                        <img src="/images/dots-close-byter.png"></div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="byter-sing-b">
+                                                        <input name="" type="checkbox" value=""></div>
+                                                    <div id="sociallipic">
+                                                        <img src="/images/dailymotionicone.png">
+                                                    </div>
+                                                    <a href="#">Vimeo</a>
+                                                    <div id="mec-closebyter">
+                                                        <img src="/images/dots-close-byter.png"></div>
+                                                </li>
+                                                <li>
+                                                    <div class="byter-sing-b">
+                                                        <input name="" type="checkbox" value=""></div>
+                                                    <div id="sociallipic">
+                                                        <img src="/images/micone.png">
+                                                    </div>
+                                                    <a href="#">MySpace</a>
+                                                    <div id="mec-closebyter">
+                                                        <img src="/images/dots-close-byter.png"></div>
+                                                </li>
+                                            </div>
+
+                                            <div class="byter-postb">
+                                                <p>Byter</p>
+                                            </div>
+                                            <div class="byter-postb2">
+                                                <p>Post</p>
+                                            </div>
+                                            <div class="byter-postb3"></div>
+
+                                        </ul>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div id="mec-footer">
+   <div class="mec-footer-box">
+        <div class="mecbox-l">
+            <img src="/img/icone.png">
+        </div>
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/AddChannel"style="color:white;cursor:pointer">Add more sites from our database to your Channel Group</a></samp>
+        </div>
+         <div class="mecbox-l" style="clear: left;">
+            <img src="/img/toplogo.png" style="width: 55%;">
+        </div>
+        
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/ModifyExistingNetworks"style="color:white;cursor:pointer">Modify Existing Channels</a></samp>
+        </div>
+       <div class="mecbox-l" style="clear: left;">
+            <img src="/img/w-icone.png">
+        </div>
+        <div class="mecbox-rec">
+            <samp class="mectext-t" style="margin-top: 5px;"><a href="/SocialNetworks/AddNetworkToDb"style="color:white;cursor:pointer"> Request another site</a></samp>
+        </div>
+        <div class="mecbox-l" style="clear: left;">
+            <img src="/img/csocialnetwork.png">
+        </div>
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/Index" style="color:white;cursor:pointer">Connect Your Social Networks</a></samp>
+        </div>
+    </div>
+    <div class="byter-waring">
+        <p>Warning: File should have Interruption added prior to this flood.</p>
+    </div>
+
+    <div id="i-pop-up">
+        <p>
+            Channels change when Category is changed. For example. If “Byte Your Music” is selected, Reverbnation, Myspace, Soundclick, etc. is shown as the options to select. If Videos is selected, Youtube, Dailymotion, etc. are the options. Etc. Same for ebooks, art and photos
+
+        </p>
+    </div>
+
+    <div id="i-pop-up2">
+        <p>
+            Matrix is selected automatically. Cannot be unselected.
+
+        </p>
+    </div>
+
+    <script src="jquery.mCustomScrollbar.js"></script>
+    <script>
+        (function ($) {
+
+            $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+            $(".browseInput").each(function (index) {
+                if (index > 3)
+                    $(this).remove();
+            });
+            $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+            $(window).load(function () {
+                $(".content").mCustomScrollbar();
+            });
+        })(jQuery);
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#genclone").click(function () {
+                window.location.href = "/Premium/GenerateClones";
+            });
+            $("#byteyourvideo").click(function () {
+                window.location.href="/Premium/PremiumByteyourvideo"
+            });
+
+            $("#basicbyter").click(function () {
+                $("#byterclick").toggle();
+            });
+
+            $("#byterclick li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyter span").html(text);
+                $("#byterclick").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick").hide();
+            });
+
+
+            $("#basicbyterone").click(function () {
+                $("#byterclick2").toggle();
+            });
+
+            $("#byterclick2 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyterone span").html(text);
+                $("#byterclick2").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick2").hide();
+            });
+
+
+
+            $("#basicbytertwo").click(function () {
+                $("#byterclick3").toggle();
+            });
+
+            $("#byterclick3 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbytertwo span").html(text);
+                $("#byterclick3").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick3").hide();
+            });
+
+
+            $("#basicbyterfour").click(function () {
+                $("#byterclick4").toggle();
+            });
+
+            $("#byterclick4 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyterfour span").html(text);
+                $("#byterclick4").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick4").hide();
+            });
+
+
+
+            $("#basicbyter5").click(function () {
+                $("#byterclick5").toggle();
+            });
+
+            $("#byterclick5 li a").click(function () {
+                var text = $(this).html();
+                $("#basicbyter5 span").html(text);
+                $("#byterclick5").hide();
+            });
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdownbyter"))
+                    $("#byterclick5").hide();
+            });
+
+
+
+        });
+    </script>

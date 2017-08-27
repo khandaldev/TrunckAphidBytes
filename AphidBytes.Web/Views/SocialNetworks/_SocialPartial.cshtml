@@ -1,0 +1,64 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.SocialNetworkModel
+@foreach (var item in ViewBag.Statuslist)
+{
+    if (item.category == "Twitter")
+    {
+    <li>
+        <div class="byter-sing-b">
+            <input type="checkbox" class="checkbox1" id="Twitter" />
+        </div>
+        <div id="sociallipic">
+            <img src="/Images/ticone.png">
+        </div>
+        <a href="#">Twitter</a>
+        <div id="mec-close">
+            <img src="/img/dots-close.png" onclick="autocheckedbox('Twitter');">
+        </div>
+    </li>
+    }
+    if (item.category == "GooglePlus")
+    {
+    <li>
+        <div class="byter-sing-b">
+            <input type="checkbox" class="checkbox1" id="GooglePlus" />
+        </div>
+        <div id="sociallipic">
+            <img src="/Images/googleplus.jpg ">
+        </div>
+        <a href="#">GooglePlus</a>
+        <div id="mec-close">
+            <img src="/img/dots-close.png" onclick="autocheckedbox('DailyMotion');">
+        </div>
+    </li>
+    }
+    if (item.category == "Facebook")
+    {
+    <li>
+        <div class="byter-sing-b">
+            <input type="checkbox" class="checkbox1" id="Facebook" />
+        </div>
+        <div id="sociallipic">
+            <img src="/Images/ficone.png">
+        </div>
+        <a href="#">Facebook</a>
+        <div id="mec-close">
+            <img src="/img/dots-close.png" onclick="autocheckedbox('Facebook');">
+        </div>
+    </li>
+    }
+    if (item.category == "LinkedLin")
+    {
+    <li>
+        <div class="byter-sing-b">
+            <input type="checkbox" class="checkbox1" id="LinkedLin" />
+        </div>
+        <div id="sociallipic">
+            <img src="/Images/linkdicone.png">
+        </div>
+        <a href="#">Linkedin</a>
+        <div id="mec-close">
+            <img src="/img/dots-close.png" onclick="autocheckedbox('Linkedin');">
+        </div>
+    </li>
+    }
+}

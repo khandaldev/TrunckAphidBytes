@@ -1,0 +1,504 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+<div id="new_pop_d"  style="display:none; position:absolute; z-index:999; margin-top:17%; margin-left:30%;" onclick="$(this).hide();">
+<img src="/Images/Success_Button_d.png" style="width:60%;"/>
+</div>
+
+<div id="new_pop"  style="display:none; position:absolute; z-index:999; margin-top:17%; margin-left:30%;" onclick="$(this).hide();">
+<img src="/Images/Success_Button_c.png" style="width:60%;"/>
+</div>
+
+ <div class="black_screen" style="display: none;"></div>
+<div id="closeboxa" style="display: none">
+    <img src="/img/overboxbg.png">
+    <div class="closetext">
+        <a href="#" id="closebta">
+            <img src="/img/close.png" onclick="DialogCloseFunction()"></a>
+        <div class="texmpi-c">
+            <img src="/img/mixbotton.png">
+        </div>
+        <ul id="addpl" class="texmpi-ct">
+        </ul>
+        <div class="effectpic">
+            <img src="/img/effectsbg.png">
+        </div>
+    </div>
+
+</div>
+
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<div class="socialsetupwrap" style="width: 100%;">
+    <div style="width: 20%; float: left; margin: 30px 25px 0;">
+        <div class="logosocila">
+            <img src="/Images/bphidbyte_sicon2.png">
+        </div>
+        <div class="tophedboxa">
+            <p onclick="goBack()" style="color: #FFC000; cursor: pointer">Back</p>
+        </div>
+    </div>
+
+    <div class="socialhead-view">
+        <div class="matrix-viewbox3">
+            @foreach (var item in ViewBag.PostData)
+            {
+                <div class="mviewboxa">
+                    <div class="mview-pic">
+                        <img src="@Url.Action("Overview", "Byter")"/>
+                    </div>
+                    <div class="mview-rightbox">
+                        <div id="explicit_content" class="e_p_t1" style="display: none;">
+                            <img src="/Images/e_icon.png" /></div>
+                        <p>@item.Title<br>
+                            @item.ArtistName<br>
+                            @item.AlbumTitle<br>
+                            www.aphidbyte.com/JayZ
+                        </p>
+                        <p style="color: #e46c0a; margin-top: 10px;">Tracking #@item.TrackingNumber</p>
+                        <div class="view-channel">
+                            <a href="selectchanneltoflood">
+                                <img src="/Images/view-channel.png"></a>
+                        </div>
+                    </div>
+
+                    <div class="aphid-c">
+                        <img src="/Images/aphid-teclogo.png">
+                        <p>Return to The Gall</p>
+                    </div>
+                </div>
+
+
+                <div class="mviewboxb" id="vid_box_">
+                    <p><a href="#">Videos</a></p>
+                    <samp id="greenbu">
+                        <a href="#">
+                            <img src="/Images/green.png" id="openpopup"></a></samp>
+                    <div class="video-mpc">
+                        <video id="videoplayer" width="320" height="240" style="border-radius: 0%;" autoplay="autoplay" onended="close_showadd()">
+                        </video>
+                    </div>
+                    <div id="play-p">
+                        <div class="apb_progressbar">
+
+                            <div class="apb_player_ticker">
+                                <img id="tick_img" src="/img/apb_player_ticker.png">
+                            </div>
+
+                            <div id="cur_time" class="apb_player_time_control">0.00</div>
+                            <div class="apb_player_volume_control">
+                                <img src="/img/apb_control_volume.png">
+                            </div>
+                            <div id="tot_time" class="apb_player_volume_text_control">0.00</div>
+                            <div class="apb_progress_wrapper">
+                                <img src="/img/aphd_progressbar.png">
+                            </div>
+                        </div>
+                        <div class="apb_controls">
+                            <img src="/img/controls_bg.png">
+                        </div>
+                        <div class="apb_player_btns">
+
+                            <ul>
+                                <li>
+                                    <img id="Play_Muzic" src="/img/coltrol_play.png"></li>
+                                <li style="padding-top: 5px;">
+                                    <img id="Pause_Muzic" src="/img/control_pause.png"></li>
+                                <li style="padding-top: 5px;">
+                                    <img id="Stop_Muzic" src="/img/control_stop.png"></li>
+                            </ul>
+                        </div>
+                    </div>
+                         <img src="/Images/Picture1fullscreen.png" style="height: 51px; margin-left: 67%; margin-top: 3%;" onclick="fulscreen();">
+                </div>
+                <div id="add_skip" class="skipadd" style="display: none; background-color: #FFFFFF; margin-left: 56%; margin-top: 18%; position: absolute;">SKIP AD ...</div>
+                <div class="mviewboxc">
+                    <img src="/Images/amazone-p.png">
+                    <p>$0.87</p>
+                    <img src="/Images/itunes.png">
+                    <p>$1.29</p>
+                    <img src="/Images/googleplay.png">
+                    <p>$0.99</p>
+
+                    <a href="@item.VideoFile" id="avail_Down">
+                        <img id="imageDownload" src="" style="width: 25%; margin-top: 40px; height: auto;">
+                        <script>
+                            var filename = '@item.VideoFile';
+                            filename = filename.substr(filename.lastIndexOf('_') + 1);
+                            $('#avail_Down').attr('download', filename);
+                            if (('@item.AvailableDownload' == 'Yes') || ('@item.AvailableDownload' == '1')) {
+                                var i = "/Images/dwonload.png";
+                                $('#imageDownload').attr('src', i);
+                            } else {
+                                var i = "/Images/dwonloadbw.png";
+                                $('#imageDownload').attr('src', i);
+                                $('#avail_Down').click(function (e) {
+                                    e.preventDefault();
+                                });
+                            }
+                            if (('@item.ExplicitContent' == '1') || ('@item.ExplicitContent' == 'Yes')) {
+                                $('#explicit_content').show();
+                            } else {
+                                $('#explicit_content').hide();
+                            }
+                        </script>
+                    </a>
+                    <img id="confirmboxfav" src="/Images/favopiv.png" style="width: 22%; height: auto;margin-top: 54px;">
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+
+    <div class="mview-footer">
+        <samp>People who viewed this also viewed</samp>
+        <div class="fram-m">
+            <div id='prev' class="mecnext_s" style="width: 10%; float: left;">
+                <img src="/Images/prev_s.png">
+            </div>
+            <div id="slider1" style="width: 80%; float: left; height: 90px;">
+
+                <div class="slli-main">
+                    <div class="fram-s">
+                        <img src="/Images/framepic1.png" class="fram-sf">
+                    </div>
+                    <div class="fram-s">
+                        <img src="/Images/framepic2.png" class="fram-sf">
+                    </div>
+                    <div class="fram-s">
+                        <img src="/Images/framepic3.png" class="fram-sf">
+                    </div>
+                </div>
+
+                <div class="slli-main">
+                    <div class="fram-s">
+                        <img src="/Images/Jay-Z-pic.png" class="fram-sf">
+                    </div>
+                    <div class="fram-s">
+                        <img src="/Images/framepic2.png" class="fram-sf">
+                    </div>
+                    <div class="fram-s">
+                        <img src="/Images/framepic2.png" class="fram-sf">
+                    </div>
+                </div>
+
+                <div class="slli-main">
+                    <div class="fram-s">
+                        <img src="/Images/Jay-Z-pic.png" class="fram-sf">
+                    </div>
+                    <div class="fram-s">
+                        <img src="/Images/framepic2.png" class="fram-sf">
+                    </div>
+                    <div class="fram-s">
+                        <img src="/Images/framepic2.png" class="fram-sf">
+                    </div>
+                </div>
+
+
+            </div>
+            <div id='next' class="mecnext_s" style="width: 10%; float: left;">
+                <img src="/Images/next_s.png">
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="m-footer">
+
+    <ul class="navlinksm_b">
+        <li><a href="#">Advertise</a></li>
+        <li><a href="#">Store</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Privacy Policy  </a></li>
+        <li><a href="#">Sponsoring</a></li>
+    </ul>
+
+
+</div>
+@*YesNo PopUP*@
+<div id="yesno" style="display: none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div>
+                <p>Add Video to Favourites?</p>
+            </div>
+            <div>
+                <p id="yes"><a>Yes</a></p>
+                <p id="no"><a>No</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+@*YesNo PopUP*@
+@*mssg PopUP*@
+<div id="msgbox" style="display: none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div>
+                <p>Video Added to Favorites..</p>
+            </div>
+            <div>
+                <p id="okk"><a>OK</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+@*mssg PopUP*@
+@*errmssg PopUP*@
+<div id="errmsgbox" style="display: none;">
+    <div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+        <div class="bg_yes_no">
+            <div>
+                <p>Error Adding to Favorites..</p>
+            </div>
+            <div>
+                <p id="eokk"><a>OK</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+@*errmssg PopUP*@
+
+
+
+
+<script lang="javascript">
+    $('#slider1').cycle({
+        fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+        speed: 'slow',
+        timeout: 0,
+        next: '#next',
+        prev: '#prev',
+        pager: '#thumb',
+
+        pagerAnchorBuilder: function (idx, slide) {
+            return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+        }
+    });
+    
+    function goBack() {
+        window.history.back();
+    }
+
+    var count = 0;
+    $("#openpopup").click(function () {
+        plalist_show();
+
+    });
+    function plalist_show() {
+        var plCount = 0;
+        $.post('/Basic/totalplaylist').done(function (count) {
+            plCount = count;
+        });
+        var songtrackid = $(this).attr('id');
+        var htmldialogcontent = '';
+        //alert(songtrackid);
+        $.post('/Basic/GetPlayList', { TrackingID: '@Session["Trackingnumber"]' }, function () {
+        }).done(function (dataa) {
+            if (dataa.length > 0) {
+                htmldialogcontent = '';
+                var i = 0;
+                while (i < dataa.length) {
+
+                    htmldialogcontent += '<li class="playname_dialogbox" id="' + dataa[i].toString() + '">' + dataa[i].toString() + '</li>';
+
+                    i++;
+                }
+                if (plCount < 15) {
+                    htmldialogcontent += '<p id="editable_name"> Create Playlist</p>';
+                }
+            } else {
+                htmldialogcontent = '';
+                if (plCount < 15) {
+                    htmldialogcontent += '<p id="editable_name"> Create Playlist</p>';
+                }
+                else {
+                    htmldialogcontent += '<p> playlist count full   </p>';
+                }
+
+            }
+            $("#addpl").empty();
+            $("#addpl").append(htmldialogcontent);
+            $(".black_screen").show();
+            $("#closeboxa").show();
+        });
+    }
+
+    $("#addpl").on('click', '.playname_dialogbox', function () {
+        var newPlayName = $(this).text();
+        var resultFetched = false;
+        $.post('/Basic/AddVideoToPlaylist', { PlaylistName: newPlayName, TrackingID: '@Session["Trackingnumber"]' }, function (dat) {
+            resultFetched = dat;
+        }).done(function () {
+            if (resultFetched == true) {
+                $("#new_pop").show();
+                $("#closeboxa").hide();
+                $(".black_screen").hide();
+            }
+            else {
+                $("#new_pop_d").show();
+                $("#closeboxa").hide();
+                $(".black_screen").hide();
+            }
+        });
+
+    });
+
+    function DialogCloseFunction() {
+        $("#closeboxa").hide();
+        $(".black_screen").hide();
+
+    }
+    $('#add_skip').click(function () {
+        $('#add_skip').hide();
+        play_vid_withoutadd();
+    });
+
+    function close_showadd() {
+        if (count == 5) {
+            $('#add_skip').hide();
+            play_vid_withoutadd();
+        } else {
+            video_pl.currentTime = video_pl.duration;
+        }
+    }
+    function fulscreen()
+    {
+        var videoElement = document.getElementById('videoplayer');
+        if (videoElement.requestFullscreen) {
+            videoElement.requestFullscreen();
+        } else if (videoElement.msRequestFullscreen) {
+            videoElement.msRequestFullscreen();
+        } else if (videoElement.mozRequestFullScreen) {
+            videoElement.mozRequestFullScreen();
+        } else if (videoElement.webkitRequestFullscreen) {
+            videoElement.webkitRequestFullscreen();
+        }
+
+
+
+    }
+
+
+    function play_vid_withoutadd() {
+        count = 2;
+        var video_pl = document.getElementById("videoplayer");
+        video_pl.setAttribute("src", "@ViewBag.Video_To_Preview");
+        video_pl.addEventListener("load", function () {
+        }, true);
+        video_pl.play();
+
+        $('#Play_Muzic').click(function () {
+            video_pl.play();
+        });
+        $('#Pause_Muzic').click(function () {
+            video_pl.pause();
+        });
+        $("#Stop_Muzic").on('click', function () {
+            video_pl.currentTime = video_pl.duration;
+        });
+    }
+    $(document).ready(function () {
+        try {
+            $.post('/Basic/Fetch_Ad_Video_Data', { ad_type_id: 1 }, function (data) {
+
+                if (data != null) {
+                    var ad_video = data.AdVideo;
+                    var video_pl = document.getElementById("videoplayer");
+                    video_pl.setAttribute("src", ad_video);
+                    video_pl.addEventListener("load", function () {
+                    }, true);
+                    $('#add_skip').show();
+                    count = 5;
+                } else {
+                    play_vid_withoutadd();
+                }
+            });
+        }
+        catch (e) {
+
+            play_vid_withoutadd();
+        }
+
+        close_showadd();
+        $('#slider1').cycle({
+            fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+            speed: 'slow',
+            timeout: 0,
+            next: '#next',
+            prev: '#prev',
+            pager: '#thumb',
+
+            pagerAnchorBuilder: function (idx, slide) {
+                return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+            }
+        });
+
+
+
+    });
+
+    //for editableText content
+    $("#addpl").on('dblclick', '#editable_name', function () {
+        var ele = document.getElementById('editable_name');
+        var temp = ele.innerHTML;
+        var textBox = document.createElement('INPUT');
+        textBox.setAttribute('type', 'text');
+        textBox.value = ele.innerHTML;
+        textBox.onchange = function () {
+            var newValue = this.value;
+            this.parentNode.innerHTML = newValue;
+            alert("Your new value: \n\n" + newValue);
+            ele.innerHTML = temp;
+            var htmldialogcontent = '';
+            htmldialogcontent += '<li class="playname_dialogbox"> ' + newValue + '</li>';
+            $("#addpl").append(htmldialogcontent);
+        }
+
+        this.innerHTML = '';
+
+        this.appendChild(textBox);
+    });
+    // end for editableText content
+    $('#confirmboxfav').click(function () {
+        $("#yesno").attr('style', 'display:block; margin-top: -50%; margin-left: -5%;');
+    });
+    $('#no').click(function () {
+        $("#yesno").hide();
+    });
+    $('#okk').click(function () {
+        $('#msgbox').hide();
+    });
+    $('#eokk').click(function () {
+        $('#errmsgbox').hide();
+    });
+
+    $('#yes').click(function () {
+        $.post('/Basic/AddSongtoFav', { TrackingID: '@Session["Trackingnumber"]' }, function () { $("#yesno").hide(); }).done(function (data) {
+            if (data == true) {
+                $('#msgbox').attr('style', 'display:block; margin-top: -50%; margin-left: -5%;');
+            } else {
+                $('#errmsgbox').attr('style', 'display:block; margin-top: -50%; margin-left: -5%;');
+            }
+
+        });
+    });
+
+</script>

@@ -1,0 +1,205 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.MessageModel
+
+ 
+
+
+<div id="toPopup"> 
+    	
+        <div class="close"></div>
+       	
+		<div id="popup_content"> <!--your content start-->
+        <p>
+        
+<div class="pop-mian">
+       <p class="pop-texts" style="margin-top: 20px; width: 40%;">Audio Interruption Files:</p>
+       <p><img src="/images/goone-bg.png"></p>
+       <div style="float:left; width:50%; height:100px;">
+       <p class="pop-texts">(Short Audio Files only)</p>
+       <br/>
+       <p class="pop-texts">Min Length 0:25<br/>
+          Max Length 0:50
+        </p>
+    
+       </div>
+       <div id="pop-leftz1">
+       <p style="width:45%;">Flower.mp3</p>
+       <p><a href="#"  class="livebox"><img src="/images/closebotton.png"></a></p>
+       <p style="margin-left:15px;"><a href="#"><img src="/images/play-bt.png"></a></p>
+       <p><a href="#"><img src="/images/stop-bt.png"></a></p>
+       <p style="width:45%;">Onthemoon.mp3</p>
+       <p><a href="#"><img src="/images/closebotton.png"></a></p>
+       <p style="margin-left:15px;"><a href="#"><img src="/images/play-bt.png"></a></p>
+       <p><a href="#"><img src="/images/stop-bt.png"></a></p>
+       </div>
+        
+        
+</div>   
+
+<div style="width:100%;">
+<div class="from_aphid">
+<ul>
+<li> 
+<label for="Company Logo" style="float: left;
+    line-height: 19px;
+    padding: 0 12px 20px 45px;
+    width: 32%;">Upload new Audio <br/>Interruption File:</label>
+<input type="file" id="fineinput"/>
+</li>
+
+</ul>
+</div>
+
+<div><img src="images/pop-line-m.png" style="width:80%; margin-top:15px;"></div>
+<div style="width:100%; float: left; margin: 8px 0 0 176px;">
+<p class="pop-z-t1">Watermarks:</p>
+<p style="float:left;"><img src="/images/pop-cam-t.png"></p>
+</div>
+</div>
+
+<div class="from_aphid">
+<ul>
+<li> 
+<label for="Company Logo" style="float: left;
+    line-height: 19px;
+    padding: 0 12px 20px 45px;
+    width: 32%;">Upload new Audio <br/>Watermark  File:</label>
+<input type="file" id="fineinput"/>
+</li>
+</ul>
+</div>
+
+<div class="ch-pop-z1">
+<p style="color:#FFF;">Butterfly.jpg</p>
+<p><img src="/images/close-serachb.png" style="margin-left:8px;"></p>
+<p><img src="/images/pop-serachb.png" style="width:55%;"></p>
+<p style="color:#FFF;">FourLeafClover.png</p>
+<p><img src="/images/close-serachb.png" style="margin-left:8px;"></p>
+<p><img src="/images/pop-serachb.png" style="width:55%;"></p>
+<p style="color:#FFF;">Railroad.psd</p>
+<p><img src="/images/close-serachb.png" style="margin-left:8px;"></p>
+<p><img src="/images/pop-serachb.png" style="width:55%;"></p>
+</div>
+
+       
+        </div> <!--your content end-->
+    
+    </div> <!--toPopup end-->
+   
+   	<div id="backgroundPopup"></div>
+
+<div class="aphidtise_wrap">
+
+<div class="logid">
+    <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+<div class="logid_out">
+<ul>
+<li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+  <li><a href="~/Accounts/Logout">Logout</a></li>
+</ul>
+
+<div class="profilebg">
+<div class="migprofile"> 
+    @*<img src="/images/profilebg.png">*@
+     <img src="@Url.Action("Overview", "Premium")" height="100px" />
+</div>
+<div class="premi-info-box"><img src="/images/premiumaccount_star_bg.png" style="width:100%;"><p class="preum-p-text">Premium Account</p></div>
+<div class="premi-info-box"><a href="@Url.Action("EditChannelPage","Premium")"> <img src="/images/grid14bg.png" style="margin: 10px 0 0 10px; z-index:999; " onclick=""></a></div>
+ 
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<div class="header_aphidtise">
+<div id="logo">  </div>
+</div>
+<div class="headertab_aphidtise">
+<div class="aphidbyteleft" style="margin-top: 6px;">
+
+<ul class="aphidbytelist-preum">
+<li><a href="PremiumAccountInfo">Account Info</a></li><li></li>
+<li><a href="GenerateClones" class="basicselects">Upload</a></li><li><img src="/images/right_line.png" height="2"></li>
+<li><a href="PremiumMessage">Messages</a></li>
+   
+            @if (Model.NewCount != 0)
+            {
+               <p class="in_c_text_3">@Model.NewCount</p> 
+            }
+    <li></li>
+<li><a href="Premiumbytetracker">Byte Tracker</a></li><li></li>
+<li><a href="PremiumHistory">History</a></li><li></li>
+<li><a href="PremiumDataplan">Data Plan</a></li><li></li>
+<li><a href="PremiumPlaylist">Playlists</a></li><li></li>
+
+</ul>
+
+
+  <div class="prebox">
+           <a href="Dashboard">Dashboard<img src="~/images/premium_account_bg.png" class="pre-boxp" style="margin-left: -2px !important;"></a>
+        </div>
+<div class="mremium-tools"> <a href="PremiumTools"><img src="~/images/premium-tools.png" ></a></div>
+
+<div class="info-footer-social"></div>
+@*<div class="premium_rightline"></div>*@
+</div>
+<p class="info-p">Upload > Byte Your </p>
+
+<div class="from_aphid"  style="width:60%; margin-right:10%;">
+<div class="premium_account1">
+<div class="premium_accountm">
+<div class="basic-right-gridm"><p>Select One</p></div>
+<div class="premium_grid-right-grid"><a href="PremiumByteyourmusic">Byte Your Music</a></div>
+<div class="basic-right-grid2"><img src="/images/basic-iconea.png"></div>
+<div class="premium_grid-right-grid">@Html.ActionLink("Byte Your Videos","PremiumByteyourvideo","Premium") </div>
+<div class="basic-right-grid2"><img src="/images/basic-iconeb.png"></div>
+<div class="premium_grid-right-grid"><a href="PremiumBYteyourArtPhotography">Byte Your Art/Photography</a></div>
+<div class="basic-right-grid2"><img src="/images/basic-iconec.png"></div>
+<div class="premium_grid-right-grid"><a href="PremiumByteyourEbook">Byte Your Ebooks</a></div>
+<div class="basic-right-grid2"><img src="/images/basic-iconed.png"></div>
+@*<div class="premium_grid-right-grid"><a href="PremiumByteyourFiles">Byte Your Files</a></div>
+<div class="basic-right-grid2"><img src="/images/basic-iconee.png"></div>*@
+<div class="premium_grid-right-grid"><a href="PremiumLinkPost">Create Link Posts</a></div>
+<div class="basic-right-grid2"><img src="/images/basic-iconef.png"></div>
+<div class="basic-right-gridm3"><a href="#" id="trigger"><img src="/images/boldbg.png"></a></div>
+</div>
+</div>
+
+<div id="i-pop-up">
+   <p>
+  This is where you post a link (file that is already in the Matrix). to your social networks. This is also where you upload a pre-existing Music, Video, EBook, Photo/Art, file to your personal sites  (Youtube, Dailymotion, etc.) When clicked it shows Byte Tracker for you to select which file and proceeds to screen of selecting which social network.  
+
+   </p>
+</div>
+
+</div>
+
+
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+
+
+
+
+ 

@@ -1,0 +1,148 @@
+//colors
+$color_kidnapper_approx: #dfe8cc;
+$black: #000000;
+$color_fern_frond_approx: #557321;
+$white: rgb(255, 255, 255);
+$color_mine_shaft_approx: #2f2e2e;
+
+.main_content {
+	.right_content {
+	    padding-top: 80px;
+		padding-left: 0px;
+	}
+}
+
+
+.profile_page {
+	.profile_page_left {
+		.profile_head_details {
+			width: 220px;
+			text-align: center;
+			padding-bottom: 40px;
+			.profile_thumbnail {
+				width: 210px;
+				height: 210px;
+				background: $color_kidnapper_approx;
+				//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+				border-radius: 50%;
+				overflow: hidden;
+				margin-bottom: 20px;
+				img {
+					width: 230px;
+				}
+			}
+			.profile_details {
+				h4 {
+					font-size: 18px;
+					color: $black;
+					font-weight: bold;
+					text-transform: uppercase;
+					padding-bottom: 15px;
+				}
+				span {
+					font-size: 12px;
+					color: $black;
+					line-height: 17px;
+					display: block;
+				}
+			}
+		}
+		.profile_about_details {
+			.about_left {
+				float: left;
+				width: 100%;
+				padding-right: 150px;
+				margin-right: -150px;
+				.about_block {
+					margin-bottom: 10px;
+					h3 {
+						font-size: 16px;
+						color: $color_fern_frond_approx;
+						padding-bottom: 20px;
+						span {
+							font-size: 14px;
+							color: $black;
+							font-weight: normal;
+						}
+					}
+					p {
+						font-size: 14px;
+						color: $black;
+					}
+				}
+			}
+			.about_right {
+				float: right;
+				width: 120px;
+				text-align: center;
+				ul {
+					text-align: center;
+					li {
+						padding-bottom: 30px;
+						img {
+							max-width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+	.profile_page_right_sidebar {
+		.subscribe_btn {
+			padding-bottom: 40px;
+			a {
+				display: block;
+				width: auto;
+				font-size: 12px;
+				padding: 12px;
+			}
+		}
+		.contact_details {
+			padding-bottom: 5em;
+			ul li {
+				padding-bottom: 10px;
+				a {
+					font-size: 13px;
+					color: $black;
+					text-align: center;
+					display: block;
+				}
+			}
+		}
+		.skills {
+			h3 {
+				font-size: 16px;
+				color: $color_fern_frond_approx;
+				padding-bottom: 30px;
+			}
+			.skills_thumbnail {
+				padding-bottom: 30px;
+				img {
+					display: inline-block;
+					width: 48%;
+				}
+			}
+			ul li {
+				font-size: 13px;
+				color: $black;
+				padding-bottom: 10px;
+			}
+		}
+	}
+	.portfolio_listing {
+		.works_portfolio_box {
+			padding: 15px;
+			height: 203px;
+			&:hover {
+				background-color: $white;
+			}
+			img {
+			}
+		}
+		.works_pagination {
+			color: $color_mine_shaft_approx;
+			display: block;
+			text-align: right;
+		}
+	}
+}

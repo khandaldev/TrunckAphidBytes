@@ -1,0 +1,163 @@
+﻿@using AphidBytes.Web.Session_Helper
+
+<!DOCTYPE html>
+
+@{
+    var accountInfoLink = Url.Action("LoginorSignUp", "Accounts");
+    var changePasswordLink = "#";
+    var creditCardInfoLink = "#";
+    var signUpLink = Url.Action("Index", "Register");
+    IAphidIdentity aphidIdentity = null;
+
+    if (AphidBytes.Web.Session_Helper.AphidSession.Current.IsAuthenticated)
+    {
+        aphidIdentity = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity;
+
+        switch (aphidIdentity.AccountTypeId)
+        {
+            case 1:
+                accountInfoLink = Url.Action("BasicAccountInfo", "Basic");
+                changePasswordLink = Url.Action("ChangePassword", "Basic");
+                creditCardInfoLink = Url.Action("CreditCardInfo", "Basic");
+                break;
+            case 2:
+                accountInfoLink = Url.Action("AphidTiseAccountInfo", "AphidTise");
+                changePasswordLink = Url.Action("ChangePassword", "AphidTise");
+                creditCardInfoLink = Url.Action("CreditCardInfo", "AphidTise");
+                break;
+            case 3:
+                accountInfoLink = Url.Action("ByterAccountInfo", "Byter");
+                changePasswordLink = Url.Action("ChangePassword", "Byter");
+                creditCardInfoLink = Url.Action("CreditCardInfo", "Byter");
+                break;
+            case 4:
+                accountInfoLink = Url.Action("PremiumAccountInfo", "Premium");
+                changePasswordLink = Url.Action("ChangePassword", "Premium");
+                creditCardInfoLink = Url.Action("CreditCardInfo", "Premium");
+                break;
+            case 5:
+                accountInfoLink = Url.Action("EditNewRelease", "Home");
+                break;
+            case 6:
+                accountInfoLink = Url.Action("AphidLabsAccountInfo", "AphidLabs");
+                changePasswordLink = Url.Action("ChangePassword", "AphidLabs");
+                creditCardInfoLink = Url.Action("CreditCardInfo", "AphidLabs");
+                break;
+            case 7:
+                accountInfoLink = Url.Action("EditNewRelease", "Home");
+                break;
+            default:
+                accountInfoLink = Url.Action("Index", "Home");
+                break;
+        }
+
+        signUpLink = accountInfoLink;
+    }
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+    <title>@(string.IsNullOrWhiteSpace(ViewBag.PageTitle) ? "AphidByte" : ViewBag.PageTitle)</title>
+    
+    @Styles.Render("~/bundles/css/layout-backdoor")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery-migrate-1.4.1.min.js")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+
+    @RenderSection("HeadScripts", required: false)
+</head>
+<body>
+    @if (ViewBag.RenderHeader)
+    {
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                        <img alt="AphidByte Home" src="/img/home-logo.png">
+                    </a>
+                    <a href="#" class="pull-left btn btn-nav navbar-btn">
+                        <div class="menu-icon">
+                            <div></div>
+                            <div></div>
+                            <div></div> 
+                        </div>
+                    </a>
+                </div>
+
+
+                <ul class="nav navbar-nav navbar-main navbar-main-center">
+                    <li><a href="@Url.Action("Services", "Accounts")">Services</a></li>
+                    <li><a href="@Url.Action("LoginorSignUp", "Accounts")" class="">Login</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">The Gall</a></li>
+                    <li><a href="@Url.Action("AboutUsPage", "Accounts")">About Us</a></li>
+                    <li><a href="@Url.Action("Support", "Accounts")">Support</a></li>
+                </ul>
+
+                @if (AphidBytes.Web.Session_Helper.AphidSession.Current.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-main navbar-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <img class="profile-picture" src="@aphidIdentity.ProfilePicture" alt="user picture" />
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@accountInfoLink">Account Info</a></li>
+                                <li><a href="@creditCardInfoLink">Payment Method</a></li>
+                                <li><a href="@changePasswordLink">Change Password</a></li>
+                                <li><a href="@Url.Action("UserSubscription", "Register")">Public Profile</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("Logout", "Accounts")">Log out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    }
+            </div>
+        </nav>
+    }
+
+    @RenderBody()
+
+    @if (ViewBag.RenderFooter)
+                    {
+        <nav class="navbar navbar-default navbar-fixed-bottom footer-nav">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-center navbar-footer">
+                    <li><a href="@accountInfoLink">Navigation Menu</a></li>
+                    <li><a href="#">Advertise</a></li>
+                    <li><a href="@Url.Action("ContactUs", "Accounts")">Contact</a></li>
+                    <li><a href="#">Store</a></li>
+                    <li><a href="@Url.Action("Terms", "Accounts")" target="_blank">Terms</a></li>
+                    <li><a href="@Url.Action("PrivacyPolicy", "Accounts")" target="_blank">Privacy Policy</a></li>
+                    <li><a href="@signUpLink">Sign Up</a></li>
+                </ul>
+            </div>
+        </nav>
+    }
+
+    @Scripts.Render("~/bundles/core")
+
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        (function ($) {
+            $(".navbar-btn").on("click", function (e) {
+                e.preventDefault();
+                var $el = $(e.currentTarget);
+                if ($el.hasClass("expanded")) {
+                    $(".navbar-main").removeClass("expanded");
+                    $el.removeClass("expanded");
+                }
+                else {
+                    $(".navbar-main").addClass("expanded");
+                    $el.addClass("expanded");
+                }
+            });
+        })(jQuery);
+    </script>
+</body>
+</html>

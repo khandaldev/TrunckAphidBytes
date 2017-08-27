@@ -1,0 +1,309 @@
+$color_2: #fff;
+//colors
+$black: #000;
+$color_celeste_approx: #ccc;
+$color_havelock_blue_approx: #5280dd;
+.main_content {
+    .right_content {
+        padding-left: 0px;
+        padding-top: 40px;
+    }
+}
+
+.player-example {
+    padding: 10em 0px 0px;
+    .player_header {
+        border-top: 1px solid #a59f9f;
+        border-bottom: 1px solid #a59f9f;
+        padding: 10px;
+        position: relative;
+        .player_nav {
+            position: absolute;
+            top: -35px;
+            right: 0px;
+            ul {
+                li {
+                    display: inline-block;
+                    margin-left: 20px;
+                }
+            }
+        }
+        .player_listing {
+            .left_player {
+                padding-top: 40px;
+                .left_thumbnail {
+                    float: left;
+                    width: 120px;
+                    text-align: center;
+                    .icon_img {
+                        padding-top: 20px;
+                    }
+                }
+            }
+            .right_content {
+                float: left;
+                width: 100%;
+                margin-left: -120px;
+                padding-left: 130px;
+                padding-top: 20px;
+                span {
+                    font-size: 13px;
+                    line-height: 16px;
+                    display: block;
+                }
+            }
+            .right_player {
+                text-align: center;
+                .player_bottom_img {
+                    padding-top: 40px;
+                    ul {
+                        li {
+                            display: inline-block;
+                            width: 70px;
+                            text-align: center;
+                            a {
+                                font-size: 18px;
+                                color: $black;
+                                img {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .apppreview__right {
+                padding-top: 40px;
+                ul {
+                    text-align: center;
+                    li {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-left: 15px;
+                        border: 3px solid #000;
+                        img {}
+                    }
+                }
+            }
+        }
+    }
+    .select_lising {
+        margin: 0px 0px;
+        border-bottom: 1px solid #a59f9f;
+        border-top: 1px solid #a59f9f;
+        background: rgba(0, 0, 0, 0.12);
+        ul {
+            padding: 0px 0px 80px 0px;
+            li {
+                display: inline-block;
+                position: relative;
+                margin-right: 40px;
+                padding-top: 80px;
+                .circle {
+                    height: 40px;
+                    width: 40px;
+                    border: 1px solid #000;
+                    border-radius: 50%;
+                    padding: 5px;
+                    margin: 0px auto;
+                    &:before {
+                        position: absolute;
+                        content: '';
+                        border-left: 1px solid #000;
+                        top: 0;
+                        height: 80px;
+                        left: 50%;
+                    }
+                    img {
+                        width: 100%;
+                    }
+                }
+                span {
+                    font-size: 11px;
+                    padding-top: 10px;
+                    display: block;
+                }
+            }
+        }
+    }
+    .comment_area {
+        padding: 40px 0px;
+        .content_section {
+            p {
+                font-size: 12px;
+                color: $black;
+            }
+        }
+    }
+    .comment_form {
+        .form-group {
+            .form-control {
+                width: 60%;
+                float: left;
+                background: #797979;
+                border: 1px solid #7e9f36;
+                color: $color_2;
+                padding: 10px;
+            }
+            .publish_btn {
+                width: 38%;
+                float: right;
+                background: #e9eae9;
+                text-align: center;
+                text-transform: uppercase;
+                color: $black;
+                font-size: 11px;
+                padding: 11px;
+                border: 1px solid #7e9f36;
+                border-radius: 20px;
+            }
+        }
+    }
+    .comment_boxes {
+        border: 1px solid #7e9f36;
+        padding: 40px;
+        background: rgba(121, 121, 121, 0.17);
+        border-radius: 30px;
+        ul {
+            li {
+                .thumbnail {
+                    float: left;
+                    width: 50px;
+                    img {
+                        border-radius: 50%;
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                .comment_content {
+                    margin-left: -50px;
+                    padding-left: 50px;
+                    width: 100%;
+                    float: left;
+                    span {
+                        font-size: 13px;
+                        color: $black;
+                    }
+                    p {
+                        color: $black;
+                        font-size: 12px;
+                    }
+                    .all_comment {
+                        padding-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.select_preview_slider {
+    padding: 40px 0px;
+    h4 {
+        color: #000000;
+        font-size: 17px;
+        text-align: center;
+        padding: 10px 0px 20px;
+    }
+    ul {
+        text-align: center;
+        li {
+            img {
+                display: inline-block;
+                vertical-align: middle;
+                border: 5px solid #605e5e;
+                margin-left: 20px;
+            }
+        }
+    }
+}
+
+.select_preview_slider {
+    .app_preview_slider {}
+    .bx-wrapper {
+        max-width: 620px;
+        margin: 0 auto;
+        background: none;
+        border: none;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: none;
+        .bx-prev {
+            left: -100px;
+        }
+        .bx-next {
+            right: -100px;
+            &:focus {
+                background-position: 0;
+            }
+            &:hover {
+                background-position: 0;
+            }
+        }
+        .bx-controls-direction a {
+            width: 50px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.bx-wrapper {
+    background: none;
+    border: none;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: none;
+}
+
+.store_page {
+    .store_details_page {
+        .store_left {
+            .bx-wrapper {
+                margin-bottom: 140px;
+                .bx-pager {
+                    bottom: -95px;
+                    a {
+                        border: solid $color_celeste_approx 1px;
+                        display: block;
+                        margin: 0 5px;
+                        padding: 3px;
+                        &:hover {
+                            border: solid $color_havelock_blue_approx 1px;
+                        }
+                        &.active {
+                            border: solid $color_havelock_blue_approx 1px;
+                        }
+                    }
+                }
+            }
+            .bx-pager .bx-pager-item a img {
+                width: 50px;
+            }
+        }
+        .store_right {
+            padding-bottom: 40px;
+            h3 {
+                font-size: 27px;
+                color: $black;
+                padding-bottom: 20px;
+            }
+            p {
+                font-size: 17px;
+                color: $black;
+            }
+        }
+    }
+    .store_details_header .store_details_nav {
+        padding-bottom: 70px;
+        ul {
+            text-align: right;
+            li {
+                margin-left: 30px;
+                display: inline-block;
+                a img {
+                    width: 50px;
+                }
+            }
+        }
+    }
+}

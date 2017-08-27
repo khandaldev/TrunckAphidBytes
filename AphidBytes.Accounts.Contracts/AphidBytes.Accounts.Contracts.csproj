@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0C44007E-F2CD-4A2C-873B-14B046F478D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AphidBytes.Accounts.Contracts</RootNamespace>
+    <AssemblyName>AphidBytes.Accounts.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\Assemblies\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.1\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.1.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 4\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContentServers\ContentServerManager.cs" />
+    <Compile Include="IAphidLAb.cs" />
+    <Compile Include="IBasic.cs" />
+    <Compile Include="IAphidTise.cs" />
+    <Compile Include="IAccounts.cs" />
+    <Compile Include="IByter.cs" />
+    <Compile Include="IChat.cs" />
+    <Compile Include="ICommon.cs" />
+    <Compile Include="IFeedBack.cs" />
+    <Compile Include="IHome.cs" />
+    <Compile Include="IPremium.cs" />
+    <Compile Include="ISocialNetwork.cs" />
+    <Compile Include="IUserSponsored.cs" />
+    <Compile Include="Model\AphidAccountType.cs" />
+    <Compile Include="Model\AdminModel.cs" />
+    <Compile Include="Model\AdvertisementModel.cs" />
+    <Compile Include="Model\AllGenerateCloneModel.cs" />
+    <Compile Include="Model\AphidLabAccountModel.cs" />
+    <Compile Include="Model\AphidLabsUpload.cs" />
+    <Compile Include="Model\AphidTiseAccountViewModel.cs" />
+    <Compile Include="Model\AphidTiseGenerateAds.cs" />
+    <Compile Include="Model\BaseTypes\IAccountInfo.cs" />
+    <Compile Include="Model\BaseTypes\IAddressProvider.cs" />
+    <Compile Include="Model\BaseTypes\IPaymentProvider.cs" />
+    <Compile Include="Model\BaseTypes\ISecurityQuestions.cs" />
+    <Compile Include="Model\BasicAccountViewModel.cs" />
+    <Compile Include="Model\BasicGenerateCloneModel.cs" />
+    <Compile Include="Model\BindDropDown.cs" />
+    <Compile Include="Model\ByteArray.cs" />
+    <Compile Include="Model\ByterAccountViewModel.cs" />
+    <Compile Include="Model\Bytetrackermodel.cs" />
+    <Compile Include="Model\CalculateFileSize.cs" />
+    <Compile Include="Model\ChannelModel.cs" />
+    <Compile Include="Model\ChatClassFile.cs" />
+    <Compile Include="Model\EnumTypes.cs" />
+    <Compile Include="Model\FacebookAccountViewModel.cs" />
+    <Compile Include="Model\GooglePlusAccountViewModel.cs" />
+    <Compile Include="Model\HistorySubscription.cs" />
+    <Compile Include="Model\LinkShareHistory.cs" />
+    <Compile Include="Model\LoginProfileDto.cs" />
+    <Compile Include="Model\myChatUserModel.cs" />
+    <Compile Include="Model\CreateLinkPostModel.cs" />
+    <Compile Include="Model\CreditSummaryModel.cs" />
+    <Compile Include="Model\DataPlanDetail.cs" />
+    <Compile Include="Model\Email.cs" />
+    <Compile Include="Model\favourites.cs" />
+    <Compile Include="Model\FeedBackModel.cs" />
+    <Compile Include="Model\ForgetPassword.cs" />
+    <Compile Include="Model\GetPostData.cs" />
+    <Compile Include="Model\InterruptedFileModel.cs" />
+    <Compile Include="Model\InterruptionViewModel.cs" />
+    <Compile Include="Model\LinktoPostModel.cs" />
+    <Compile Include="Model\LoginUser.cs" />
+    <Compile Include="Model\MessageModel.cs" />
+    <Compile Include="Model\myAdminModel.cs" />
+    <Compile Include="Model\ChatHub.cs" />
+    <Compile Include="Model\myMessage.cs" />
+    <Compile Include="Model\NewReleaseModel.cs" />
+    <Compile Include="Model\PastReleaseModel.cs" />
+    <Compile Include="Model\PlaylistModel.cs" />
+    <Compile Include="Model\PostingDataModel.cs" />
+    <Compile Include="Model\PostQueueModel.cs" />
+    <Compile Include="Model\PremiumAccountViewModel.cs" />
+    <Compile Include="Model\PremiumGenerateCloneModel.cs" />
+    <Compile Include="Model\PurchaseHistoryModel.cs" />
+    <Compile Include="Model\RandomPassword.cs" />
+    <Compile Include="Model\ResetPassword.cs" />
+    <Compile Include="Model\searchmodel.cs" />
+    <Compile Include="Model\ShowSelectedNetwork.cs" />
+    <Compile Include="Model\SocialNetworkModel.cs" />
+    <Compile Include="Model\SponsoredModel.cs" />
+    <Compile Include="Model\StripeConfigurationModel.cs" />
+    <Compile Include="Model\ToolsModel.cs" />
+    <Compile Include="Model\upcomingRelease.cs" />
+    <Compile Include="Model\UrlLinkModel.cs" />
+    <Compile Include="Model\UserConfirmationForgrtPasswordChange.cs" />
+    <Compile Include="Model\UserSubscribeModel.cs" />
+    <Compile Include="Model\ValidationModel.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\AphidBytes.Accounts.Contracts.dll" />
+    <Content Include="bin\Debug\AphidBytes.Accounts.Contracts.pdb" />
+    <Content Include="bin\Debug\DataAnnotationsExtensions.dll" />
+    <Content Include="obj\Debug\AphidBytes.Accounts.Contracts.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\AphidBytes.Accounts.Contracts.dll" />
+    <Content Include="obj\Debug\AphidBytes.Accounts.Contracts.pdb" />
+    <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.0.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="obj\Debug\AphidBytes.Accounts.Contracts.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="packages.config" />
+    <None Include="Scripts\jquery-1.9.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AphidBytes.Core\AphidBytes.Core.csproj">
+      <Project>{06b74118-702d-432d-ac0c-e26d613f8662}</Project>
+      <Name>AphidBytes.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

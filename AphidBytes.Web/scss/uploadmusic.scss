@@ -1,0 +1,144 @@
+//colors
+$black: #000;
+$color_romance_approx: #fffefe;
+$color_masala_approx: #3e3e3e;
+$white: #fff;
+$color_midnight_blue_approx: #002e5d;
+$color_chicago_approx: #605e5e;
+
+.upload_music_page {
+	.upload_music_head_left {
+		text-align: center;
+		padding-left: 70px;
+		span {
+			color: $black;
+			font-size: 11px;
+			display: block;
+			padding-bottom: 30px;
+		}
+		img {
+		}
+		ul li {
+			display: inline-block;
+			color: $color_romance_approx;
+			margin-right: 10px;
+			a {
+				font-size: 12px;
+			}
+			span {
+				color: $color_masala_approx;
+				font-size: 12px;
+			}
+		}
+	}
+	.upload_music_head_right {
+		padding: 110px 20px;
+		.checkbox {
+			input {
+				float: left;
+				width: 20px;
+				margin-top: 15px;
+				height: 20px;
+				margin-right: 10px;
+			}
+			span {
+				float: left;
+				width: 100%;
+				margin-left: -30px;
+				padding-left: 30px;
+				font-size: 11px;
+			}
+		}
+	}
+	.upload_music_form {
+		padding-left: 70px;
+		.form-group {
+			label {
+				color: $black;
+				font-size: 11px;
+				display: block;
+				text-align: center;
+			}
+			input.form-control {
+			}
+			textarea.form-control {
+				height: 150px;
+			}
+		}
+		.contributors_block {
+			border: 1px solid $black;
+			padding: 6px;
+			font-size: 14px;
+			background: $white;
+			ul li {
+				display: inline-block;
+				margin-right: 5px;
+				img {
+					width: 20px;
+					margin-left: 5px;
+				}
+				span {
+					font-size: 11px;
+				}
+			}
+		}
+		.artwork_image {
+			text-align: center;
+			img {
+			}
+		}
+		.checkbox {
+			padding: 40px;
+			span {
+				float: left;
+				width: 100%;
+				margin-left: -30px;
+				padding-left: 30px;
+				font-size: 11px;
+			}
+			input.form-control {
+				float: left;
+				width: 20px;
+				margin-top: 15px;
+				height: 20px;
+				margin-right: 10px;
+			}
+		}
+	}
+	.bottom_content {
+		padding-top: 50px;
+		font-size: 11px;
+		p {
+			font-size: 11px;
+			color: $color_chicago_approx;
+		}
+	}
+	.buttons_group ul li {
+		float: left;
+		margin: 0 10px;
+		a {
+			font-size: 11px;
+			color: $color_midnight_blue_approx;
+			text-decoration: none;
+			background-color: $white;
+			border: solid $color_midnight_blue_approx 2px;
+			cursor: pointer !important;
+			display: block;
+			padding: 10px 20px;
+			width: 180px;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 30px;
+			text-align: center;
+			height: 72px;
+			margin-bottom: 20px;
+		}
+		span {
+			font-size: 11px;
+			display: block;
+			text-align: center;
+		}
+	}
+}
+.main_content .right_content {
+	padding-left: 0;
+}

@@ -1,0 +1,18 @@
+﻿@font-face {
+ font-family:'MyWebFont';
+ src: url('fonts/square-721-bt.ttf'); /* IE9 Compat Modes */
+ src: url('fonts/square-721-bt.ttf') format('embedded-opentype'), /* IE6-IE8 */
+      url('fonts/square-721-bt.ttf') format('woff'), /* Modern Browsers */
+      url('fonts/square-721-bt.ttf')  format('truetype'), /* Safari, Android, iOS */
+      url('fonts/square-721-bt.ttf') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+ font-family:'MyWebFont2';
+ src: url('fonts/OCRAEXT.TTF'); /* IE9 Compat Modes */
+ src: url('fonts/OCRAEXT.TTF') format('embedded-opentype'), /* IE6-IE8 */
+      url('fonts/OCRAEXT.TTF') format('woff'), /* Modern Browsers */
+      url('fonts/OCRAEXT.TTF')  format('truetype'), /* Safari, Android, iOS */
+      url('fonts/OCRAEXT.TTF') format('svg'); /* Legacy iOS */
+}
+

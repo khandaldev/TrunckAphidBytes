@@ -1,0 +1,49 @@
+﻿@{
+}
+@model AphidBytes.Accounts.Contracts.Model.MessageModel
+@*<script type="text/javascript">
+
+
+    </script>*@
+
+@foreach (var item in Model.listMessageModel)
+{
+    string id = "inbox" + item.id;
+
+    if (@item.IsRead == false)
+    {
+
+        <div id="@id" class="tab-content current" onclick="readMsg(@item.id)">
+            <ul class="col-1box">
+                <a style="width: 25px; position: absolute; position: relative; margin-top: 22px;"><img id="Delete" style="float: right; width: 30px; margin-right: 28px; margin-top: 25px;" src="../images/delete_tools.png" /></a>
+                <a style="position: absolute; line-height: 290px; margin-left: -7px;"><img class="Showimage" style="border-radius: 54px;" src="../images/boldgreenpic.png" /></a>
+                <li>
+                    <p class="colwth-a">From :</p>
+                    <p id="sendername">@item.sender_username</p>
+                    <p class="colwth-a">Subject :</p>
+                    <p>@item.message_subject</p>
+                    <p class="colwth-a">Message :</p>
+                    <p>@item.message_body</p>
+                    <input type="hidden" value="@item.id" id="MessageId" />
+                    @*@Html.HiddenFor(m =>m.id, new { id = "id" })*@
+                </li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div id='"inbox"+ @item.id' class="tab-content current">
+            <ul class="col-1box">
+                <a style="width: 25px; position: absolute; position: relative; margin-top: 22px;"><img style="float: right; width: 30px; margin-right: 28px; margin-top: 25px;" src="../images/delete_tools.png" /></a>
+                <li>
+                    <p class="colwth-a">From :</p>
+                    <p>@item.sender_username</p>
+                    <p class="colwth-a">Subject :</p>
+                    <p>@item.message_subject</p>
+                    <p class="colwth-a">Message :</p>
+                    <p>@item.message_body</p>
+                </li>
+            </ul>
+        </div>
+    }
+}

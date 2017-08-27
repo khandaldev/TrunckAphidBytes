@@ -1,0 +1,343 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.PostingDataModel 
+
+
+
+ <script type="text/javascript">
+    $(function () {
+        var moveLeft = 20;
+        var moveDown = -50;
+
+        $('a#trigger').hover(function (e) {
+            $('div#i-pop-up').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up').hide();
+        });
+
+        $('a#trigger').mousemove(function (e) {
+            $("div#i-pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var moveLeft = -60;
+        var moveDown = -80;
+
+        $('a#trigger2').hover(function (e) {
+            $('div#i-pop-up2').show();
+            //.css('top', e.pageY + moveDown)
+            //.css('left', e.pageX + moveLeft)
+            //.appendTo('body');
+        }, function () {
+            $('div#i-pop-up2').hide();
+        });
+
+        $('a#trigger2').mousemove(function (e) {
+            $("div#i-pop-up2").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+        });
+
+    });
+</script>
+
+<body>
+
+    <div class="aphidtise_wrap">
+
+        <div class="logid">
+
+            <div class="logid_out">
+                <ul>
+                   <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+                </ul>
+
+
+                <div class="profilebg">
+                    <div class="migprofile">
+                   <img src="@Url.Action("Overview", "Premium")" height="100px" />
+                    </div>
+                    <div class="premi-info-box">
+                        <img src="/images/premiumaccount_star_bg.png" style="width: 100%;"><p class="preum-p-text">Premium Account</p>
+                    </div>
+                    <div class="premi-info-box">
+                       <a href="@Url.Action("EditChannelPage","Premium")">    <img style="margin: 10px 0 0 10px;" src="/images/grid14bg.png"></a>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="header_aphidtise">
+        <div id="logo">
+          <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+        </div>
+        <div class="headertab_aphidtise">
+            <div class="aphidbyteleft" style="margin-top: 140px;">
+                <ul class="aphidbytelist-preum">
+                    <li><a href="PremiumAccountInfo">Account Info</a></li>
+                    <li></li>
+                    <li><a href="GenerateClones">Upload</a></li>
+                    <li>
+                        <img src="/images/right_line.png" height="2" width="98"></li>
+                    <li><a href="PremiumMessage">Messages</a></li>
+                    
+            @if (Model.NewCount != 0)
+            {
+               <p class="in_c_text_3">@Model.NewCount</p> 
+            }
+                    <li></li>
+                    <li><a href="Premiumbytetracker">Byte Tracker</a></li>
+                    <li></li>
+                    <li><a href="PremiumHistory">History</a></li>
+                    <li></li>
+                    <li><a href="PremiumDataplan">Data Plan</a></li>
+                    <li></li>
+                    <li><a href="PremiumPlaylist">Playlists</a></li>
+                    <li></li>
+
+                </ul>
+
+
+                <div class="prebox">
+                    <p>Dashboard<img src="/images/premium_account_bg.png" class="pre-boxpchange"></p>
+                </div>
+
+                <div class="mremium-tools">
+                    <img src="/images/premium-tools.png"></div>
+
+                <div class="info-footer-social"></div>
+                <div class="premium_rightline"></div>
+            </div>
+            <p class="info-p" style="margin-bottom: 25px; cursor:pointer;"><span id="genclone"> Generate Clones</span><span>> Send Links to Marketing Team</span></p>
+            <div style="height: 600px; width: 100%;">
+                <div class="prem-infoa"><a href="#" id="trigger">
+                    <img src="/images/symbol-i2.png"></a></div>
+
+
+                <div id="content_1" class="aphidbytecenter content scrollWidth mCustomScrollbar _mCS_1" style="margin: 5px 0 0 0px;">
+                    <div style="position: relative; height: 100%; overflow: hidden; max-width: 100%;" id="mCSB_1" class="mCustomScrollBox mCS-light">
+                        <div style="position: relative; top: 0;" class="mCSB_container">
+                            <div class="mecscroll">
+                                <div id="slider1" style="position: relative; width: 100%; height: 600px; overflow: hidden;">
+                                    <div class="market-teamcss">
+                                        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/formdata" }))
+                                        {
+                                            <div class="MarketTeam">
+                                            <div style="display:none;">
+           @Html.TextBoxFor(model => model.Title);
+        @Html.TextBoxFor(model => model.InterruptedFilePath);
+        @Html.TextBoxFor(model => model.TrackingNumber);
+        @Html.TextBoxFor(model => model.Original);
+        @Html.TextBoxFor(model => model.Path);
+         @Html.TextBoxFor(model => model.Category);
+        @Html.TextAreaFor(model => model.MatrixImagePath);
+        @Html.TextAreaFor(model => model.ComposerName);
+</div>
+                                        <div class="market-teamcssmain">
+                                            <p>Send Links to Marketing Team</p>
+                                            <p style="border: none;">
+                                                <img src="/images/premimageline.png"></p>
+                                            <p style="border: none;">@Model.Title</p>
+                                            <p style="border: none;">
+                                                <img src="/images/premimageline2.png"></p>
+                                            <p style="border: none;">
+                                                <samp>
+                                                    <img src="/images/sear-mcredit-i.png" id="@Model.Category"onclick="Fileprivew(@Model.TrackingNumber,'@Model.Category')" style="margin: -20px -65px 0; opacity: 0.8; position: absolute; width: 35px;cursor:pointer">
+                                                </samp>
+                                              @Model.InterruptedFilePath</p>
+                                            <p style="border: none;">
+                                                <img src="/images/premimageline2.png"></p>
+                                            <p style="border: none;">
+                                                 <input type="submit" id="ActionPage" value="" class="marketingbg"></p>
+                                               @* <img src="/images/market-send.png" style="margin-top: -50px; position: relative; width: 50%;" ></p>*@
+                                            <p>Send Links to Marketing Team</p>
+
+
+
+
+
+                                        </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div style="width: 100%; height: 600px; margin: auto; overflow: hidden; position: absolute; margin-top: 0px; left: 0px; display: block; z-index: 5; opacity: 1;">
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div id="mec-footer">
+        <div id="i-pop-up">
+            <p>
+                Channels change when Category is changed. For example. If “Byte Your Music” is selected, Reverbnation, Myspace, Soundclick, etc. is shown as the options to select. If Videos is selected, Youtube, Dailymotion, etc. are the options. Etc. Same for ebooks, art and photos
+
+            </p>
+        </div>
+
+        <div id="i-pop-up2">
+            <p>
+                Links to Post category does not upload a file. It can only select a pre-existing Clone of theirs, that is already in The Matrix.
+
+            </p>
+        </div>
+
+        <script src="jquery.mCustomScrollbar.js"></script>
+        <script>
+            (function ($) {
+
+                $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+                $(".browseInput").each(function (index) {
+                    if (index > 3)
+                        $(this).remove();
+                });
+                $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+                $(window).load(function () {
+                    $(".content").mCustomScrollbar();
+                });
+            })(jQuery);
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#genclone").click(function () {
+                    window.location.href = "/Premium/GenerateClones";
+                });
+
+                $("#basicbyter").click(function () {
+                    $("#byterclick").toggle();
+                });
+
+                $("#byterclick li a").click(function () {
+                    var text = $(this).html();
+                    $("#basicbyter span").html(text);
+                    $("#byterclick").hide();
+                });
+
+                $(document).bind('click', function (e) {
+                    var $clicked = $(e.target);
+                    if (!$clicked.parents().hasClass("dropdownbyter"))
+                        $("#byterclick").hide();
+                });
+
+
+                $("#basicbyterone").click(function () {
+                    $("#byterclick2").toggle();
+                });
+
+                $("#byterclick2 li a").click(function () {
+                    var text = $(this).html();
+                    $("#basicbyterone span").html(text);
+                    $("#byterclick2").hide();
+                });
+
+                $(document).bind('click', function (e) {
+                    var $clicked = $(e.target);
+                    if (!$clicked.parents().hasClass("dropdownbyter"))
+                        $("#byterclick2").hide();
+                });
+
+
+
+                $("#basicbytertwo").click(function () {
+                    $("#byterclick3").toggle();
+                });
+
+                $("#byterclick3 li a").click(function () {
+                    var text = $(this).html();
+                    $("#basicbytertwo span").html(text);
+                    $("#byterclick3").hide();
+                });
+
+                $(document).bind('click', function (e) {
+                    var $clicked = $(e.target);
+                    if (!$clicked.parents().hasClass("dropdownbyter"))
+                        $("#byterclick3").hide();
+                });
+
+
+                $("#basicbyterfour").click(function () {
+                    $("#byterclick4").toggle();
+                });
+
+                $("#byterclick4 li a").click(function () {
+                    var text = $(this).html();
+                    $("#basicbyterfour span").html(text);
+                    $("#byterclick4").hide();
+                });
+
+                $(document).bind('click', function (e) {
+                    var $clicked = $(e.target);
+                    if (!$clicked.parents().hasClass("dropdownbyter"))
+                        $("#byterclick4").hide();
+                });
+
+
+
+                $("#basicbyter5").click(function () {
+                    $("#byterclick5").toggle();
+                });
+
+                $("#byterclick5 li a").click(function () {
+                    var text = $(this).html();
+                    $("#basicbyter5 span").html(text);
+                    $("#byterclick5").hide();
+                });
+
+                $(document).bind('click', function (e) {
+                    var $clicked = $(e.target);
+                    if (!$clicked.parents().hasClass("dropdownbyter"))
+                        $("#byterclick5").hide();
+                });
+
+
+
+            });
+            function categorychange(key) {
+                if (key == 'Music') return 0;
+                if (key == 'Video') return 1;
+                if (key == 'Photos') return 2;
+                if (key == 'Pdf') return 3;
+                if (key == 'Files') return 4;
+
+            }
+            function Fileprivew(trackingnumber,cat) {
+                $.post('/Premium/FilePrivew', { Trackingnumber: trackingnumber, Category: cat }, function (data) {
+                    //alert("data");
+                    window.location = data;
+                });
+            }
+        </script>
+
+
+ 
+
+ 
+
+
+
+ 
+ 
+
+ 

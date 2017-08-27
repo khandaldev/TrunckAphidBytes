@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+ 
+
+<div class="aphidtise_wrap">
+
+    <div class="header_aphidtise">
+        <div class="menunav">
+            <ul>
+                <li><a href="Services">Services</a></li>
+                <li><a class="" href="LoginUser">Login</a></li>
+                <li><a href="#">The Gall</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="AboutUsPage">About Us</a></li>
+                <li><a href="Support">Support</a></li>
+            </ul>
+        </div>
+        <div id="logo"><a style="cursor:pointer;" href="/"> <img src="/images/hphidbytelogo.png"></a> </div>
+    </div>
+</div>
+
+<div class="logid_out">
+ 
+    <ul>
+        <li><a href="#"style="color:#DCA806">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+        <li><a href="~/Accounts/Logout">Logout</a></li>
+    </ul>
+
+    <div class="profilebg">
+        <div class="migprofile">
+            @* <img src="/images/profilebg.png">*@
+            <img src="@Url.Action("Overview", "AphidTise")" height="100px" />
+        </div>
+        <div class="profiletext txt1">AphidTise Account</div>
+        <div class="logo txtL">
+            <img src="/images/logobg.png">
+        </div>
+    </div>
+
+ 
+</div>
+      
+
+
+
+
+<div class="headertab_aphidtise">
+<p class="toptext2nd"> History</p>
+
+    <div class="aphidbyteleft aphdl">
+
+        <ul class="aphidbytelistA">
+            <li><a href="AphidtiseAccountInfo">Account Info</a></li>
+            <li></li>
+            <li><a href="AphidTiseGenrateAds">Generate Ads</a></li>
+            <li>@*<img src="" height="2">*@</li>
+            <li><a href="AphidtiseMessage">Messages</a></li>
+            <li>@*<img src="">*@</li>
+            <li><a href="AphidtiseByteTracker">Byte Tracker</a></li>
+            <li>@*<img src="">*@</li>
+            <li><a href="AphidtiseHistory">History</a></li>
+            <li><img src="/images/right_line.png"></li>
+        </ul>
+        @*<div class="aphidbyteleftright-info-a"></div>*@
+        <div class="aphidbyteleftright"></div>
+    </div>
+
+<div class="aphidbytecenter content scrollWidth" id="content_1">
+    <div class="from_aphid faphL fd1l ">
+        <ul>
+            <li>
+                <label for="Company Name" style=" width:147px; height:61px;"><img src="/images/historyb.png"></label>
+            </li>
+        </ul>
+        <div class="history_bg">
+            <ul>
+                <li>
+                    <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>
+                    <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>
+                    <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>
+                    <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>
+                    <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>
+                    <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>
+                    <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>
+                    <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>
+                    <p>You purchased “Rainy Days” for $4.99 Order number 2340234734</p>
+                </li>
+            </ul>
+            <br />
+            <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+            @*<ul class="update">
+                <li><a href="#">Update</a></li>
+                </ul>*@
+
+        </div>
+
+    </div>
+
+
+</div>
+</div>
+<script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script> 
+ 

@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderHeader = true;
+    ViewBag.RenderFooter = true;
+}
+
+@section HeadScripts {
+    @Styles.Render("~/bundles/css/support")
+}
+
+@section scripts {
+    @Scripts.Render("~/js/home/support.js")
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 txt-center header-img">
+            <img src="~/img/support/guides.png" alt="guides" class="table-center" />
+            Guides
+        </div>
+    </div>
+
+    <div class="row row-offset-small">
+        <div class="col-md-11 col-md-offset-1">
+            <p>No Guides are available at this time</p>
+        </div>
+    </div>
+</div>

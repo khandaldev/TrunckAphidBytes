@@ -1,0 +1,48 @@
+$color_1: #000;
+$color_2: #605E5E;
+
+.main_content {
+	.right_content {
+		padding-left: 0px;
+		padding-top: 40px;
+	}
+}
+.addclone_details {
+	.subheading {
+		text-align: center;
+		h2 {
+			font-size: 14px;
+			color: $color_1;
+		}
+	}
+	.details_block {
+		text-align: center;
+		h6 {
+			font-size: 11px;
+			color: $color_2;
+			text-align: center;
+			padding: 40px 0px 60px;
+		}
+		.url_box {
+			text-align: center;
+			padding-bottom: 40px;
+			.store_thumbnail {
+				padding-bottom: 10px;
+			}
+			.url_details {
+				.form-group {
+					label {
+						font-size: 11px;
+						color: $color_2;
+					}
+					.form-control {
+						text-align: center;
+						font-size: 11px;
+						padding: 10px;
+						color: $color_2;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,438 @@
+﻿@{
+    ViewBag.Title = "ModifyExistingNetworks";
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.SocialNetworkModel
+@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>*@
+<script src="js/jquery.cycle.all.js"></script>
+
+
+<div class="socialsetupwrap">
+    <div style="width: 20%; float: left;">
+        <div class="logosocila">
+            <img src="/img/bphidbyte_sicon2.png">
+        </div>
+        <div class="tophedboxa"><a href="goBack();">Back</a></div>
+    </div>
+    </div>
+
+    <div class="mec-hed">
+        <div class="mec-hed1">
+            <div class="mec-hed2">
+                <div id="slider2" class="text-sllider">
+                    <p>Video</p>
+                    <p>Ebook</p>
+                    <p>Photography</p>
+                    <p>Files</p>
+                </div>
+                <div id='next' class="mecprev_s">
+                    <img src="/img/prev_s.png">
+                </div>
+
+                <div class="mec-video" style="overflow: hidden;">
+                    <div id="slider3" class="/img-sllider" style="margin: auto; text-align: center;">
+                        <img src="/img/video-icone.png">
+                        <img src="/img/ebook-icone.png">
+                        <img src="/img/photo-icone.png">
+                        <img src="/img/file-icone.png">
+                    </div>
+                </div>
+
+                <div id='prev' class="mecnext_s">
+                    <img src="/img/next_s.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="mecsllider">
+            <div class="aphidbytecenter content scrollWidth" id="content_1" style="width: 90% !important;">
+                <div class="mecscroll">
+                    <div id="slider1">
+                        <div style="width: 500px; height: 600px; margin: auto; overflow: hidden;">
+
+                            <div class="social-nav">
+                                <ul>
+                                    @foreach (var item in ViewBag.Statuslist)
+                                    {
+                                        if ((item.category == "YouTube") && (item.CurrentStatusSocial == "false"))
+                                        {
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="YouTube" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/youticone.png">
+                                            </div>
+                                            <a href="#">YouTube</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('YouTube');">
+                                            </div>
+                                        </li>
+                                        }
+                                        if ((item.category == "DailyMotion") && (item.CurrentStatusSocial == "false"))
+                                        {
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="DailyMotion" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/vimeoicone.png">
+                                            </div>
+                                            <a href="#">Daily Motion</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('DailyMotion');">
+                                            </div>
+                                        </li>
+
+                                        }
+                                        if ((item.category == "Vimeo") && (item.CurrentStatusSocial == "false"))
+                                        {
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="Vimeo" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/dailymotionicone.png">
+                                            </div>
+                                            <a href="#">Vimeo</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('Vimeo');">
+                                            </div>
+                                        </li>
+                                        }
+                                        if ((item.category == "MTV") && (item.CurrentStatusSocial == "false"))
+                                        {
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="MTV" />
+                                            </div>
+                                            <div id="sociallimain-pic">
+                                                <img src="/img/mtv-li.png">
+                                            </div>
+                                            <a href="#">MTV</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('MTV');">
+                                            </div>
+                                        </li>
+                                        }
+                                        if ((item.category == "MySpace") && (item.CurrentStatusSocial == "false"))
+                                        {
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="MySpace" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/micone.png">
+                                            </div>
+                                            <a href="#">MySpace</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('MySpace');">
+                                            </div>
+                                        </li>
+                                        }
+
+                                    }
+
+                                    @*   @Html.Partial("_SocialPartial", Model);*@
+
+
+
+                                </ul>
+                            </div>
+
+
+
+                        </div>
+
+                        <div style="width: 100%; height: 345px; margin: auto;">
+                            <div class="social-nav">
+                                <ul>
+                                    @foreach (var item in ViewBag.Statuslist)
+                                    {
+                                        if ((item.category == "Scribd") && (item.CurrentStatusSocial == "false"))
+                                        {
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="Scribd" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/scribdicone.png" style="height: 107%; margin-left: -8%; width: 85%;">
+                                            </div>
+                                            <a href="#">Scribd</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('Scribd');">
+                                            </div>
+                                        </li>
+                                        }
+
+                                        if ((item.category == "FreeBook") && (item.CurrentStatusSocial == "false"))
+                                        {
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="FreeBook" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/freebookicone.png">
+                                            </div>
+                                            <a href="#">FreeBook</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('FreeBook');">
+                                            </div>
+                                        </li>
+                                        }
+
+                                    }
+                                    @* @Html.Partial("_SocialPartial", Model);*@
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="width: 100%; height: 345px; margin: auto;">
+                            <div class="social-nav">
+                                <ul>
+                                    @foreach (var item in ViewBag.Statuslist)
+                                    {
+                                        if ((item.category == "Instagram") && (item.CurrentStatusSocial == "false"))
+                                        {
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="Instagram" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/cmicone.png">
+                                            </div>
+                                            <a href="#">Instagram</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('Instagram');">
+                                            </div>
+                                        </li>
+                                        }
+
+                                        if ((item.category == "DeviantArt") && (item.CurrentStatusSocial == "false"))
+                                        {
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="DeviantArt" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/devianicone.png">
+                                            </div>
+                                            <a href="#">DeviantArt</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('DevianArt');">
+                                            </div>
+                                        </li>
+                                        }
+                                        if ((item.category == "Flicker") && (item.CurrentStatusSocial == "false"))
+                                        {                                                   
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="Flicker" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/flickricone.png">
+                                            </div>
+                                            <a href="#">Flicker</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('Flicker');">
+                                            </div>
+                                        </li>
+                                        }
+                                        if ((item.category == "Fotki") && (item.CurrentStatusSocial == "false"))
+                                        {                                                   
+                                        <li>
+                                            <div class="byter-sing-b">
+                                                <input type="checkbox" class="checkbox1" id="Fotki" />
+                                            </div>
+                                            <div id="sociallipic">
+                                                <img src="/img/fokiicone.png">
+                                            </div>
+                                            <a href="#">Fotki</a>
+                                            <div id="mec-close">
+                                                <img src="/img/dots-close.png" onclick="autocheckedbox('Fotki');">
+                                            </div>
+                                        </li>
+                                        }
+
+                                    }
+                                    @* @Html.Partial("_SocialPartial", Model); *@
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div style="width: 100%; height: 345px; margin: auto;">
+                            <div class="social-nav">
+                                <ul>
+                                    @Html.Partial("_SocialPartial", Model);
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div id="mec-footer">
+            <div class="mec-footer-box">
+                <div class="mecbox-l">
+                    <img src="/img/icone.png">
+                </div>
+                <div class="mecbox-r">
+                    <samp class="mectext-t">Add more sites from our database to your Channel Group</samp>
+                </div>
+                <div class="mecbox-l" style="clear: left;">
+                    <img src="/img/w-icone.png">
+                </div>
+                <div class="mecbox-rec">
+                    <samp class="mectext-t" style="margin-top: 5px;">Request another site</samp>
+                </div>
+                <div class="mecbox-l" style="clear: left;">
+                    <img src="/img/csocialnetwork.png">
+                </div>
+                <div class="mecbox-r">
+                    <samp class="mectext-t">Connect Your Social Networks</samp>
+                </div>
+            </div>
+            <div id="mec-button"><a onclick="DeleteData();">Save Changes</a></div>
+        </div>
+    </div>
+
+    <script language="javascript">
+        $(document).ready(function () {
+
+            $('#slider1').cycle({
+                fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+                speed: 'slow',
+                timeout: 0,
+                next: '#next',
+                prev: '#prev',
+                pager: '#thumb',
+
+                pagerAnchorBuilder: function (idx, slide) {
+                    return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+                }
+            });
+
+            $('#slider2').cycle({
+                fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+                speed: 'slow',
+                timeout: 0,
+                next: '#next',
+                prev: '#prev',
+                pager: '#thumb',
+
+                pagerAnchorBuilder: function (idx, slide) {
+                    return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+                }
+            });
+
+            $('#slider3').cycle({
+                fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+                speed: 'slow',
+                timeout: 0,
+                next: '#next',
+                prev: '#prev',
+                pager: '#thumb',
+
+                pagerAnchorBuilder: function (idx, slide) {
+                    return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>';
+                }
+            });
+
+
+        });
+    </script>
+
+
+
+
+    <script src="js/jquery.mCustomScrollbar.js"></script>
+    <script>
+        (function ($) {
+
+            $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+            $(".browseInput").each(function (index) {
+                if (index > 3)
+                    $(this).remove();
+            });
+            $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+            $(window).load(function () {
+                $(".content").mCustomScrollbar();
+            });
+        })(jQuery);
+        function autocheckedbox(data) {
+            $('#' + data).attr('Checked', 'true');
+        }
+        function goBack() {
+            window.history.back();
+        }
+        function DeleteData() {
+            var socialarray = [];
+            if ($("#Facebook").is(':checked')) {
+                socialarray.push("Facebook");
+            }
+            if ($("#LinkedLin").is(':checked')) {
+                socialarray.push("LinkedLin");
+            }
+            if ($("#Twitter").is(':checked')) {
+                socialarray.push("Twitter");
+            }
+            if ($("#Fotki").is(':checked')) {
+                socialarray.push("Fotki");
+            }
+            if ($("#Flicker").is(':checked')) {
+                socialarray.push("Flicker");
+            }
+            if ($("#Instagram").is(':checked')) {
+                socialarray.push("Instagram");
+            }
+            if ($("#Scribd").is(':checked')) {
+                socialarray.push("Scribd");
+            }
+            if ($("#YouTube").is(':checked')) {
+                socialarray.push("YouTube");
+            }
+            if ($("#DailyMotion").is(':checked')) {
+                socialarray.push("DailyMotion");
+            }
+            if ($("#DevianArt").is(':checked')) {
+                socialarray.push("DevianArt");
+            }
+            if ($("#FreeBook").is(':checked')) {
+                socialarray.push("FreeBook");
+            }
+            if ($("#MySpace").is(':checked')) {
+                socialarray.push("MySpace");
+            }
+            if ($("#MTV").is(':checked')) {
+                socialarray.push("MTV");
+            }
+            if ($("#Vimeo").is(':checked')) {
+                socialarray.push("Vimeo");
+            }
+            var datavalue = socialarray.toString();
+            $.post('@Url.Action("Deletedata", "SocialNetworks")', { value: datavalue }, function (data)
+            {
+                if (data != "LoginUser") {
+                    $('#button-sucess').dialog("open");
+                    $('#socialname1').text(data);
+                    setTimeout(function () {
+                        $('#button-sucess').dialog("close");
+                    }, 400);
+                }
+                else {
+                    location.href = "/Accounts/LoginUser";
+                }
+            });
+
+        }
+    </script>
+<div id="button-sucess" style="display: none">
+
+    <div class="suceessmsg">
+        <p id="socialname1"></p>
+    </div>
+</div>

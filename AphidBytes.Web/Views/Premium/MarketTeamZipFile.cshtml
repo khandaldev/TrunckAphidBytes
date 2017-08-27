@@ -1,0 +1,169 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.PostingDataModel
+
+
+<div id="button-bg3"  class="hidden" style="display:none">
+ 
+    <div class="errormsg" >Already Send!!!!
+</div>
+    <div id="button-c2"><img src="/img/button_bgw.png" onclick="Remove();" /></div>
+
+</div>
+
+
+
+
+<div class="popbyter-mianz">
+<div class="popbyter-miansub">
+<div class="popbyter-subleft" style="width:60%;">
+ <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img id="Navigate" src="/Images/bphidbyte_sicon.png" style="width:20%;"></a><br/>
+<p style="width:100%; cursor:pointer;" id="genclone"><a>RETURN TO GENERATE CLONES</a></p>
+
+</div>
+<div class="popbyter-sub1">
+
+</div>
+
+<div class="popbyter-footer1">  
+<div class="return-popupc">
+<p>@Model.Title</p>
+<p><img src="/Images/return-line-bg.png"></p>
+
+</div>
+<div class="flash_lightc" style="margin-bottom:97px;">
+<div class="flash_lightcinner">
+  @if(Model.Title!=null)
+    {
+<p>Are you sure you want to send the link “@Model.Title” to your Marketing Team?</p>
+  }
+<div class="flash_lightcinnera1">
+<br/>
+<p><a href="#" style="color:#00b050;" onclick="LinkSend('@Model.Original','@Model.Title','@Model.TrackingNumber','@Model.Category','@Model.ComposerName','@Model.Credits')">Yes</a></p>
+<p><a href="#" style="color:#d10804;" onclick="SendData()">No</a></p>
+<br/><br/><br/><br/><br/>
+
+</div>
+
+
+
+</div>
+</div>
+<div class="flash_lightc">
+<div class="flash_lightcinner">
+    @if(Model.MatrixImagePath!=null)
+    {
+<p><img onclick="Fileprivew('@Model.TrackingNumber')" src="/Images/folder-iconchnage.png" style="width:30%; margin-bottom:40px;"></p>
+    }
+    else
+    {
+  <p><img onclick="Fileprivew('@Model.TrackingNumber')"src="/Images/folder-iconchnage.png" style="width:30%; margin-bottom:40px;"></p>
+        
+    }
+<div class="flash_lightcinnera1">
+
+<img src="/img/file-icone.png" style="float:left; margin-top:-45px;">
+     @if (Model.Path != null && Model.Title != null && Model.TrackingNumber != null)
+     {
+<p style="width:100%; height:50px;">@Model.ComposerName New Music “@Model.Title” Listen here<samp><a href="#" style="color:#0364a2; width:100%;">@Model.Path/@Model.TrackingNumber</a></samp></p>
+     }
+</div>
+
+
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="b-preimum_2" style="margin-top:20px;"></div>
+<div class="flash_team">
+<p>“@Model.Title” has just been sent to your Marketing Team!</p>
+<p><img src="/img/flashing_flay.png"></p>
+</div>
+</div>
+ 
+<div id="popup" style="display: none; background: url('/images/aphidtisebg.png'); width: 70%; left: 16%!important; margin-top: -173px; height: 535px;">
+    <div class="popbyter-mianz" style="height: 0px!important;">
+        <div class="popbyter-miansub">
+            <div class="popbyter-subleft" style="margin-left: -160px;">
+                 <a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/bphidbyte_sicon.png" style="width: 70%; margin-left: -19px;"></a><br />
+                <p>
+                    <a href="#" style="display: block; margin-bottom: 20px; margin-top: -13px;">Back</a>
+                </p>
+
+                   <p><img id="MatrixPath" src="@Model.MatrixImagePath" style="width:30%; margin-bottom:40px;"></p>
+               
+
+            </div>
+
+            <div class="popbyter-sub1">
+                <div class="popbyter-sub1left">
+                 
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="popup-close" href="" class="button" style="text-align: right; margin-top: -14px; margin-right: -12px;">
+        <img src="/Images/closebotton.png" onclick="CloseThis();" />
+    </div>
+    </div>
+   
+        
+
+
+<script type="text/javascript">
+    function Remove()
+    {
+        $("#button-bg3").hide();
+    }
+    $(document).ready(function () {
+        $("#genclone").click(function () {
+            window.location.href = "/Premium/GenerateClones";
+        });
+        $('.flash_team').hide();
+      
+        
+
+    });
+    $("#popup-close").click(function (e) {
+        e.preventDefault();
+        $("#popup").fadeOut("fast");
+
+    });
+    function LinkSend(path, title, track, cat, composer,credit) {
+       // alert("dasd");
+        $.post('/Premium/SendtoSubscriber', { Path: path, Title: title, TrackingNo: track, CAT: cat, ComposerName: composer,Credits:credit }, function (data) {
+           // alert(data)
+            if (data == "Send Successful") {
+              
+                $('.flash_team').show();
+            }
+            else
+            {
+                $("#button-bg3").dialog("open");
+            }
+        });
+
+    }
+    function SendData() {
+        window.location.href = '/Premium/Premiumbytetracker';
+    }
+    function Fileprivew(trackingnumber) {
+
+        ii = "Files";
+        $.post('/Premium/FilePrivew', { Trackingnumber: trackingnumber, Category: ii }, function (data) {
+            //alert("data");
+            window.location = data;
+        });
+    }
+    
+
+
+
+
+</script>

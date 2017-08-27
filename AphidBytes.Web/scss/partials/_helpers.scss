@@ -1,0 +1,113 @@
+﻿@import "variables"; 
+@import "mixins"; 
+
+.cf:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.menu-icon { 
+    div { 
+        width: 30px;
+        height: 5px;
+        background-color: #515151;
+        margin: 4px 0;
+    }
+}
+
+.channel { 
+    margin-top: 15px; 
+    img {
+        margin-top: -15px; 
+    }
+}
+
+.label-green { 
+    color: $dark-green;
+}
+
+.block-display { 
+    display: block;
+}
+
+.list-margin-small  { 
+    li { 
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+.list-margin-med { 
+    li { 
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.list-margin-lrg { 
+    li { 
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+.inside-bullets { 
+    list-style-position: inside;
+    margin: 0; 
+    padding: 0;
+}
+.no-bullets { 
+    list-style-type: none; 
+}
+
+.txt-bold { 
+    font-weight: bold;
+}
+
+.txt-center { 
+    text-align: center;
+}
+
+.txt-right { 
+    text-align: right; 
+}
+
+.txt-left { 
+    text-align: left; 
+}
+
+.txt-xlarge { 
+    font-weight: bold;
+    font-size: 1.7em; 
+}
+
+.txt-italic { 
+    font-style: italic; 
+}
+
+.table-center { 
+    margin-left: auto; 
+    margin-right: auto; 
+    display: table;
+}
+
+.row-offset-small { 
+    margin-top: 2%; 
+}
+
+.row-offset-med { 
+    margin-top: 5%; 
+}
+
+.row-offset-lrg { 
+    margin-top: 10%; 
+}
+
+.pull-left { 
+    float: left; 
+}
+
+.pull-right { 
+    float: right;
+}

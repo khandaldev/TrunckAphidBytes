@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
+  
+    <script src="~/Scripts/script.js"></script>
+
+    <script src="~/Scripts/jquery.mCustomScrollbar.js"></script>
+    <title>@(string.IsNullOrWhiteSpace(ViewBag.PageTitle) ? "AphidByte" : ViewBag.PageTitle)</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/jqueryui")
+
+    @Scripts.Render("~/bundles/jqueryval")
+  
+
+</head>
+<body>
+
+    @*<div class="aphidtise_wrap">
+
+        <div class="logid">
+            <div class="menunav" style="margin-left: 60px;">
+                <ul>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">The Gall</a></li>
+                    <li><a href="#">Store</a></li>
+                    <li><a href="aboutuspage">About Us</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="logid_out">
+
+
+                <div>
+                    <div class="migprofile"></div>
+                    <div class="profiletext_cha">
+                        <samp style="color: red;">*</samp>
+                        Required</div>
+                    <div class="logo"></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>*@
+
+    <div class="aphidtise_wrap">
+
+        <div class="header_aphidtise">
+            <div class="menunav">
+                <ul>
+                    <li><a href="/Accounts/Services">Services</a></></li>
+                    <li><a href="/Accounts/LoginUser" class="">Login</a></></li>
+                    <li><a href="#">The Gall</a></li>
+                    <li><a href="#">Store</a></li>
+                    <li><a href="/Accounts/AboutUsPage">About Us</a></></li>
+                    <li><a href="/Accounts/Support">Support</a></li>
+                    @*<li><a href="Services">Services</a></li>
+                    <li><a href="LoginUser">Login</a></li>
+                    <li><a href="#">The Gall</a></li>
+                    <li><a href="#">Store</a></li>
+                    <li><a href="AboutUsPage">About Us</a></li>
+                    <li><a href="Support">Support</a></li>*@
+                </ul>
+            </div>
+            <div id="logo"><a href="/" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a> </div>
+        </div>
+    </div>
+
+
+
+
+    <div>
+        @RenderBody()
+
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>

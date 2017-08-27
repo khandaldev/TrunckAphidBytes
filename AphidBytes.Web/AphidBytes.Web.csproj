@@ -1,0 +1,1995 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FD9DE32E-C41B-4B57-8D28-F6ECD596D189}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AphidBytes.Web</RootNamespace>
+    <AssemblyName>AphidBytes.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ASPSnippets.GoogleAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\ASPSnippets.GoogleAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting, Version=3.5.6.0, Culture=neutral, PublicKeyToken=c10f85d521a011a9, processorArchitecture=MSIL">
+      <HintPath>..\packages\AttributeRouting.Core.3.5.6\lib\net40\AttributeRouting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AttributeRouting.Web, Version=3.5.6.0, Culture=neutral, PublicKeyToken=c10f85d521a011a9, processorArchitecture=MSIL">
+      <HintPath>..\packages\AttributeRouting.Core.Web.3.5.6\lib\net40\AttributeRouting.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AttributeRouting.Web.Mvc, Version=3.5.6.0, Culture=neutral, PublicKeyToken=c10f85d521a011a9, processorArchitecture=MSIL">
+      <HintPath>..\packages\AttributeRouting.3.5.6\lib\net40\AttributeRouting.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AWSSDK, Version=2.3.55.2, Culture=neutral, PublicKeyToken=9f476d3089b52be3, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.2.3.55.2\lib\net45\AWSSDK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.Core.3.3.8\lib\net45\AWSSDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\Assemblies\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation">
+      <HintPath>..\Assemblies\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.4.13329\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="Ewk.Extensions, Version=1.1.4759.21149, Culture=neutral, PublicKeyToken=0ffe897e6e5722cd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ewk.Extensions.1.1.4759.21149\lib\net45\Ewk.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Ewk.SoundCloud.ApiLibrary, Version=1.1.4809.41996, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ewk.SoundCloud.ApiLibrary.1.1.4809.41996\lib\net45\Ewk.SoundCloud.ApiLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Facebook.6.4.2\lib\net45\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="FlickrNet, Version=3.22.0.0, Culture=neutral, PublicKeyToken=2491df59efa5d132, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlickrNet.3.22.0\lib\net20\FlickrNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.GData.Client, Version=2.2.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Google.GData.Client.2.2.0.0\lib\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0b4c5df2ebf20876, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Google.GData.Extensions.2.2.0.0\lib\Google.GData.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.YouTube, Version=2.2.0.0, Culture=neutral, PublicKeyToken=af04a32718ae8833, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Google.GData.YouTube.2.2.0.0\lib\Google.GData.YouTube.dll</HintPath>
+    </Reference>
+    <Reference Include="ImpactWorks.FBGraph">
+      <HintPath>..\lib\ImpactWorks.FBGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.10\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Krystalware.UploadHelper">
+      <HintPath>..\lib\Krystalware.UploadHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.1.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions">
+      <HintPath>..\packages\WindowsAPICodePack-ShellExtensions.1.1\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Scribd.Net">
+      <HintPath>..\packages\Scribd.Net.dll.2011.4.6.1\lib\Scribd.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Stripe.net, Version=7.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stripe.net.7.0.3\lib\net45\Stripe.net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2">
+      <HintPath>..\lib\Twitterizer2.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc4">
+      <HintPath>..\packages\Unity.Mvc4.1.2.0.0\lib\net40\Unity.Mvc4.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.0.0.0\lib\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.0\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Code\CryptorEngine.cs" />
+    <Compile Include="App_Start\AttributeRoutingConfig.cs" />
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AddAdminController.cs" />
+    <Compile Include="Controllers\AphidLabsController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\FeedBackController.cs" />
+    <Compile Include="Controllers\PrivateController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\RegistrationApiController.cs" />
+    <Compile Include="Controllers\UserSponsoredController.cs" />
+    <Compile Include="Controllers\ValidationsController.cs" />
+    <Compile Include="Extensions\HttpContextExtensions.cs" />
+    <Compile Include="Extensions\ValidationModelExtensions.cs" />
+    <Compile Include="Helpers\Bootstrapper.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\AphidTiseController.cs" />
+    <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Controllers\ByterController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MusicController.cs" />
+    <Compile Include="Controllers\PremiumController.cs" />
+    <Compile Include="Controllers\SetSessionController.cs" />
+    <Compile Include="Controllers\SocialNetworksController.cs" />
+    <Compile Include="Filters\SessionFilter.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Images.cs" />
+    <Compile Include="Helpers\ModelStateHelper.cs" />
+    <Compile Include="Models\CaptchaModel.cs" />
+    <Compile Include="Models\Dailymotion.cs" />
+    <Compile Include="Models\FaceBookModel.cs" />
+    <Compile Include="Models\FbModel.cs" />
+    <Compile Include="Models\FeedbackModel.cs" />
+    <Compile Include="Models\PremiumCodesModel.cs" />
+    <Compile Include="Models\FlickerModel.cs" />
+    <Compile Include="Models\FlickrManager.cs" />
+    <Compile Include="Models\Gmodel.cs" />
+    <Compile Include="Models\GooglePlusModel.cs" />
+    <Compile Include="Models\LinkedLinModel.cs" />
+    <Compile Include="Models\PdfIntrreputionModel.cs" />
+    <Compile Include="Models\PremiumVideoInterruption.cs" />
+    <Compile Include="Models\ScribdModel.cs" />
+    <Compile Include="Models\SoundCloudModel.cs" />
+    <Compile Include="Models\TwitterModel.cs" />
+    <Compile Include="Models\UploadFilesResult.cs" />
+    <Compile Include="Models\UserSponsoredPdfInterruption.cs" />
+    <Compile Include="Models\UserSponsoredVidInterruptionmodel.cs" />
+    <Compile Include="Models\VideoInterruptionModel.cs" />
+    <Compile Include="Models\VideoTutorialsDisplay.cs" />
+    <Compile Include="Models\YouTubeModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\AudioUploader.cs" />
+    <Compile Include="Utility\ErrorConstants.cs" />
+    <Compile Include="Utility\ImageUploader.cs" />
+    <Compile Include="Utility\RegexUtilities.cs" />
+    <Compile Include="Utility\VideoUploader.cs" />
+    <Compile Include="Web\AphidController.cs" />
+    <Content Include="Content\bootstrap-tokenfield\bootstrap-tokenfield.css" />
+    <Content Include="Content\bootstrap-tokenfield\tokenfield-typeahead.css" />
+    <Content Include="Content\copy-of-tester.css" />
+    <Content Include="Content\jquery.bxslider.css" />
+    <Content Include="Content\lib\bxslider\css\jquery.bxslider.css" />
+    <Content Include="Content\lib\bxslider\css\jquery.bxslider.min.css" />
+    <Content Include="Content\lib\bxslider\js\jquery.bxslider.js" />
+    <Content Include="Content\lib\bxslider\js\jquery.bxslider.min.js" />
+    <Content Include="Content\profile-page.css" />
+    <Content Include="Content\ProfileStyle.css" />
+    <Content Include="Content\styleHome.css" />
+    <Content Include="Images\9e3014_1944fbef7d9d40be9a57ae3385034e15-mv2.png" />
+    <Content Include="Images\9e3014_e730f403531c413da266765c939b6968-mv2.png" />
+    <Content Include="Images\DemoPrivate.gif" />
+    <Content Include="Images\Loading.gif" />
+    <Content Include="Images\UploadConfirmation.png" />
+    <Content Include="Images\UploadFileBackGround.png" />
+    <Content Include="img\services\analytics.png" />
+    <Content Include="img\services\data-plan.png" />
+    <Content Include="img\services\feature-sets.png" />
+    <Content Include="img\services\file-cloning-relay.png" />
+    <Content Include="img\services\marketing-advertising.png" />
+    <Content Include="img\services\the-gall.png" />
+    <Content Include="img\services\uploading.png" />
+    <Content Include="img\services\widgets.png" />
+    <Content Include="img\support\contact-us-mail.png" />
+    <Content Include="img\support\contact-us-phone.png" />
+    <Content Include="img\support\contact-us.png" />
+    <Content Include="img\support\data-plan.png" />
+    <Content Include="img\support\faqs.png" />
+    <Content Include="img\support\feedback.png" />
+    <Content Include="img\support\guides.png" />
+    <Content Include="img\support\live-chat-background.png" />
+    <Content Include="img\support\live-chat.png" />
+    <Content Include="img\support\system-requirements.png" />
+    <Content Include="img\support\technical-support.png" />
+    <Content Include="img\support\video-tutorials.png" />
+    <Content Include="img\support\view.png" />
+    <Content Include="img\support\widgets.png" />
+    <Content Include="js\home\learn.js" />
+    <Content Include="js\home\clones.js" />
+    <Content Include="Scripts\bootstrap-tokenfield.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="js\core.js" />
+    <Content Include="js\home\gall.js" />
+    <Content Include="js\home\support.js" />
+    <Content Include="js\home\register.js" />
+    <Content Include="Content\bootstrap-tokenfield\tokenfield-typeahead.less" />
+    <Content Include="Content\bootstrap-tokenfield\bootstrap-tokenfield.less" />
+    <Content Include="Images\1bad7253ec3c4dfd9a570568fe023c05.webp" />
+    <None Include="Properties\PublishProfiles\FilePath.pubxml" />
+    <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-migrate-1.4.1.min.js" />
+    <Content Include="Scripts\parallax.min.js" />
+    <Content Include="scss\css-build\addclonesmusic.css" />
+    <Content Include="scss\css-build\advertise.css" />
+    <Content Include="scss\css-build\app-preview.css" />
+    <Content Include="scss\css-build\autodetection.css" />
+    <Content Include="scss\css-build\autodetectionalert.css" />
+    <Content Include="scss\css-build\basicprodetails.css" />
+    <Content Include="scss\css-build\bytetracker.css" />
+    <Content Include="scss\css-build\clonedetails.css" />
+    <Content Include="scss\css-build\clones.css" />
+    <Content Include="scss\css-build\copy-of-eng-res.css" />
+    <Content Include="scss\css-build\dashboard.css" />
+    <Content Include="scss\css-build\engres.css" />
+    <Content Include="scss\css-build\error.css" />
+    <Content Include="scss\css-build\home.css" />
+    <Content Include="scss\css-build\interview.css" />
+    <Content Include="scss\css-build\layout-backdoor.css" />
+    <Content Include="scss\css-build\layout-matrix.css" />
+    <Content Include="scss\css-build\layout-plain.css" />
+    <Content Include="scss\css-build\learn.css" />
+    <Content Include="scss\css-build\login.css" />
+    <Content Include="scss\css-build\merchandise.css" />
+    <Content Include="scss\css-build\messages.css" />
+    <Content Include="scss\css-build\modifyad.css" />
+    <Content Include="scss\css-build\player_example.css" />
+    <Content Include="scss\css-build\premium-user-channel.css" />
+    <Content Include="scss\css-build\previewofad.css" />
+    <Content Include="scss\css-build\profile-page.css" />
+    <Content Include="scss\css-build\register.css" />
+    <Content Include="scss\css-build\reply.css" />
+    <Content Include="scss\css-build\selectadvertisement.css" />
+    <Content Include="scss\css-build\select_widgets.css" />
+    <Content Include="scss\css-build\sets.css" />
+    <Content Include="scss\css-build\singleoralbum.css" />
+    <Content Include="scss\css-build\store.css" />
+    <Content Include="scss\css-build\storeupload.css" />
+    <Content Include="scss\css-build\style.css" />
+    <Content Include="scss\css-build\support.css" />
+    <Content Include="scss\css-build\uploadmobileappinfo.css" />
+    <Content Include="scss\css-build\uploadmusic.css" />
+    <Content Include="scss\css-build\whichaccount.css" />
+    <Content Include="scss\css-build\widgets.css" />
+    <Content Include="scss\partials\_page-matrix.scss" />
+    <Content Include="scss\layout-matrix.scss" />
+    <Content Include="App_Code\Functions.cshtml" />
+    <Content Include="scss\register.scss" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="scss\login.scss" />
+    <Content Include="scss\css-build\addclonesmusic.css.map" />
+    <Content Include="scss\css-build\advertise.css.map" />
+    <Content Include="scss\css-build\app-preview.css.map" />
+    <Content Include="scss\css-build\autodetection.css.map" />
+    <Content Include="scss\css-build\autodetectionalert.css.map" />
+    <Content Include="scss\css-build\basicprodetails.css.map" />
+    <Content Include="scss\css-build\clonedetails.css.map" />
+    <Content Include="scss\css-build\clones.css.map" />
+    <Content Include="scss\css-build\copy-of-eng-res.css.map" />
+    <Content Include="scss\css-build\dashboard.css.map" />
+    <Content Include="scss\css-build\engres.css.map" />
+    <Content Include="scss\css-build\error.css.map" />
+    <Content Include="scss\css-build\home.css.map" />
+    <Content Include="scss\css-build\interview.css.map" />
+    <Content Include="scss\css-build\layout-backdoor.css.map" />
+    <Content Include="scss\css-build\layout-matrix.css.map" />
+    <Content Include="scss\css-build\layout-plain.css.map" />
+    <Content Include="scss\css-build\learn.css.map" />
+    <Content Include="scss\css-build\login.css.map" />
+    <Content Include="scss\css-build\merchandise.css.map" />
+    <Content Include="scss\css-build\messages.css.map" />
+    <Content Include="scss\css-build\modifyad.css.map" />
+    <Content Include="scss\css-build\player_example.css.map" />
+    <Content Include="scss\css-build\premium-user-channel.css.map" />
+    <Content Include="scss\css-build\previewofad.css.map" />
+    <Content Include="scss\css-build\profile-page.css.map" />
+    <Content Include="scss\css-build\register.css.map" />
+    <Content Include="scss\css-build\reply.css.map" />
+    <Content Include="scss\css-build\selectadvertisement.css.map" />
+    <Content Include="scss\css-build\select_widgets.css.map" />
+    <Content Include="scss\css-build\sets.css.map" />
+    <Content Include="scss\css-build\singleoralbum.css.map" />
+    <Content Include="scss\css-build\store.css.map" />
+    <Content Include="scss\css-build\storeupload.css.map" />
+    <Content Include="scss\css-build\style.css.map" />
+    <Content Include="scss\css-build\support.css.map" />
+    <Content Include="scss\css-build\uploadmobileappinfo.css.map" />
+    <Content Include="scss\css-build\uploadmusic.css.map" />
+    <Content Include="scss\css-build\whichaccount.css.map" />
+    <Content Include="scss\css-build\widgets.css.map" />
+    <Content Include="scss\addclonesmusic.scss" />
+    <Content Include="scss\advertise.scss" />
+    <Content Include="scss\app-preview.scss" />
+    <Content Include="scss\autodetection.scss" />
+    <Content Include="scss\autodetectionalert.scss" />
+    <Content Include="scss\basicprodetails.scss" />
+    <Content Include="scss\build-sass.bat" />
+    <Content Include="scss\clonedetails.scss" />
+    <Content Include="scss\copy-of-eng-res.scss" />
+    <Content Include="scss\dashboard.scss" />
+    <Content Include="scss\engres.scss" />
+    <Content Include="scss\error.scss" />
+    <None Include="scss\home.scss" />
+    <Content Include="scss\partials\_variables.scss" />
+    <Content Include="scss\partials\_forms.scss" />
+    <Content Include="scss\partials\_helpers.scss" />
+    <Content Include="scss\partials\_bootstrap.scss" />
+    <Content Include="scss\partials\_layout.scss" />
+    <Compile Include="Session Helper\AphidSession.cs" />
+    <Compile Include="Session Helper\SessionHelper.cs" />
+    <Content Include="Views\AphidLabs\History.cshtml" />
+    <Content Include="Views\Shared\_LayoutWhite.cshtml" />
+    <Content Include="scss\partials\_page-white.scss" />
+    <Content Include="scss\partials\_fonts.scss" />
+    <Content Include="scss\partials\_buttons.scss" />
+    <Content Include="scss\partials\_mixins.scss" />
+    <Content Include="scss\layout-backdoor.scss" />
+    <Content Include="scss\support.scss" />
+    <Content Include="Views\Shared\_StripePaymentForm.cshtml" />
+    <Content Include="Views\Shared\_SecurityQuestionForm.cshtml" />
+    <Content Include="Views\Shared\_AddressForm.cshtml" />
+    <Content Include="Views\Shared\_AccountInfoForm.cshtml" />
+    <Content Include="Views\Byter\ChangePassword.cshtml" />
+    <Content Include="Views\Byter\Shared\_ByterAccountNav.cshtml" />
+    <Content Include="Views\Shared\_ValidationErrors.cshtml" />
+    <Content Include="Views\Byter\CreditCardInfo.cshtml" />
+    <Content Include="Views\Basic\Shared\_BasicAccountNav.cshtml" />
+    <Content Include="Views\Basic\ChangePassword.cshtml" />
+    <Content Include="Views\Basic\CreditCardInfo.cshtml" />
+    <Content Include="Views\AphidLabs\Shared\_AphidLabsAccountNav.cshtml" />
+    <Content Include="Views\AphidLabs\ChangePassword.cshtml" />
+    <Content Include="Views\AphidLabs\CreditCardInfo.cshtml" />
+    <Content Include="Views\Register\Premium.cshtml" />
+    <Content Include="Views\Home\LearnMore.cshtml" />
+    <Content Include="Views\Shared\_LayoutPlain.cshtml" />
+    <Content Include="scss\layout-plain.scss" />
+    <Content Include="scss\learn.scss" />
+    <Content Include="Views\Accounts\SecurityQuestionsAnswer.cshtml" />
+    <Content Include="Views\Accounts\SecurityQuestionsPassword.cshtml" />
+    <Content Include="scss\clones.scss" />
+    <Content Include="Views\Premium\Shared\_PremiumAccountNav.cshtml" />
+    <Content Include="Views\Premium\ChangePassword.cshtml" />
+    <Content Include="Views\Premium\CreditCardInfo.cshtml" />
+    <Content Include="Views\Premium\Shared\_DataPlanRow.cshtml" />
+    <Content Include="scss\partials\_responsive.scss" />
+    <Content Include="Views\Premium\UploadMediaPremium.cshtml" />
+    <Content Include="Views\Register\SignUpWithFacebook.cshtml" />
+    <Content Include="Views\Basic\uplaodpage.cshtml" />
+    <Content Include="Views\Basic\Verification.cshtml" />
+    <Content Include="Views\Shared\_AccounSocialNetworktInfoForm.cshtml" />
+    <Content Include="Views\Register\SignUpWithGoogle.cshtml" />
+    <Content Include="Views\Home\Terms.cshtml" />
+    <Content Include="Views\Private\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPrivate.cshtml" />
+    <Content Include="Views\AphidLabs\Verification.cshtml" />
+    <Content Include="Views\Premium\Verification.cshtml" />
+    <Content Include="Views\Byter\Verification.cshtml" />
+    <Content Include="Views\Byter\SendVerificationMail.cshtml" />
+    <Content Include="Views\AphidLabs\SendVerificationMail.cshtml" />
+    <Content Include="Views\Basic\SendVerificationMail.cshtml" />
+    <Content Include="Views\Premium\SendVerificationMail.cshtml" />
+    <Content Include="Views\Basic\UploadConfirmation.cshtml" />
+    <Content Include="scss\interview.scss" />
+    <Content Include="scss\merchandise.scss" />
+    <Content Include="scss\messages.scss" />
+    <Content Include="scss\modifyad.scss" />
+    <Content Include="scss\player_example.scss" />
+    <Content Include="scss\premium-user-channel.scss" />
+    <Content Include="scss\previewofad.scss" />
+    <Content Include="scss\profile-page.scss" />
+    <Content Include="scss\reply.scss" />
+    <Content Include="scss\selectadvertisement.scss" />
+    <Content Include="scss\select_widgets.scss" />
+    <Content Include="scss\sets.scss" />
+    <Content Include="scss\singleoralbum.scss" />
+    <Content Include="scss\store.scss" />
+    <Content Include="scss\storeupload.scss" />
+    <Content Include="scss\style.scss" />
+    <Content Include="scss\uploadmobileappinfo.scss" />
+    <Content Include="scss\uploadmusic.scss" />
+    <Content Include="scss\watch-sass.bat" />
+    <Content Include="scss\whichaccount.scss" />
+    <Content Include="scss\widgets.scss" />
+    <Content Include="Views\Register\UserSubscription.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\backdoorstyle.css" />
+    <Content Include="Content\component.css" />
+    <Content Include="Content\demo.css" />
+    <Content Include="Content\ie7.css" />
+    <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="Content\jquery.horizontal.scroll.css" />
+    <Content Include="Content\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\normalize.css" />
+    <Content Include="Content\popup-css.css" />
+    <Content Include="Content\popup.css" />
+    <Content Include="Content\premium_cssstyle.css" />
+    <Content Include="Content\sagscroller.css" />
+    <Content Include="Content\script.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\stylecss.css" />
+    <Content Include="Content\styleresponsive.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\progressingbar.css" />
+    <Content Include="DefaultFiles\DEFAULT_APHIDBYTE_WARNING_AUDIO.MP3" />
+    <Content Include="DefaultFiles\Logo_Tech_.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Configuration\UnityConfiguration.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Images\%24img_pic.png" />
+    <Content Include="Images\+green.png" />
+    <Content Include="Images\+icone.png" />
+    <Content Include="Images\+plus_b.png" />
+    <Content Include="Images\-buttonb.png" />
+    <Content Include="Images\1.png" />
+    <Content Include="Images\21img_pic.png" />
+    <Content Include="Images\2x_pic1.png" />
+    <Content Include="Images\3d-images4_b.png" />
+    <Content Include="Images\3d-images4_c.png" />
+    <Content Include="Images\3d-images4_d.png" />
+    <Content Include="Images\3d-images_4.png" />
+    <Content Include="Images\3d-images_5.png" />
+    <Content Include="Images\3d-images_6.png" />
+    <Content Include="Images\3d-images_7.png" />
+    <Content Include="Images\3d-images_8_c.png" />
+    <Content Include="Images\4x_button.png" />
+    <Content Include="Images\88-40.png" />
+    <Content Include="Images\about_usover.png" />
+    <Content Include="Images\abut-serachbg.png" />
+    <Content Include="Images\accounts.png" />
+    <Content Include="Images\accounts_bg.png" />
+    <Content Include="Images\acinfo_logo.png" />
+    <Content Include="Images\addtofavs.png" />
+    <Content Include="Images\add_pic.png" />
+    <Content Include="Images\advertising_bg.png" />
+    <Content Include="Images\ad_vi_pic.png" />
+    <Content Include="Images\ajax-loader-11.gif" />
+    <Content Include="Images\allbum_prem.png" />
+    <Content Include="Images\Alvah_Emmanuel.png" />
+    <Content Include="Images\amazone-p.png" />
+    <Content Include="Images\amazon_bg.png" />
+    <Content Include="Images\analytics-pic.png" />
+    <Content Include="Images\Andrew_Kim.png" />
+    <Content Include="Images\and_i_pic.png" />
+    <Content Include="Images\and_p_2nd.png" />
+    <Content Include="Images\apb_channel.png" />
+    <Content Include="Images\apb_left.png" />
+    <Content Include="Images\apb_right.png" />
+    <Content Include="Images\apb_slide_img1.png" />
+    <Content Include="Images\apb_slide_img2.png" />
+    <Content Include="Images\apb_tools.png" />
+    <Content Include="Images\aphd_progressbarb.png" />
+    <Content Include="Images\aphd_progressbarw.png" />
+    <Content Include="Images\aphid-teclogo.png" />
+    <Content Include="Images\aphidbitebutton.png" />
+    <Content Include="Images\aphidbitebuttonA.png" />
+    <Content Include="Images\AphidByte Sponsored.png" />
+    <Content Include="Images\aphidbyte_wallpaper_green_residue.png" />
+    <Content Include="Images\AphidLabsLogo.png" />
+    <Content Include="Images\aphidtiseaccountbg.png" />
+    <Content Include="Images\aphidtisebg.png" />
+    <Content Include="Images\aphidtisebgtop.png" />
+    <Content Include="Images\aphidtisebgtopnew.png" />
+    <Content Include="Images\aphidtise_account.png" />
+    <Content Include="Images\aphidtise_account_apply.png" />
+    <Content Include="Images\AphidTise_Account_A_Swirl.png" />
+    <Content Include="Images\aphidtise_account_bg.png" />
+    <Content Include="Images\AphidTise_PopUp_MultipleChoice-Example.png" />
+    <Content Include="Images\AphidTise_PopUp_MultipleChoice.png" />
+    <Content Include="Images\aphid_labsbg.png" />
+    <Content Include="Images\aphid_labsicon.png" />
+    <Content Include="Images\aphid_labsiconb.png" />
+    <Content Include="Images\aphid_logo-byter.png" />
+    <Content Include="Images\aphid_logo.png" />
+    <Content Include="Images\applybg.png" />
+    <Content Include="Images\arrowpic.png" />
+    <Content Include="Images\arrow_bg.png" />
+    <Content Include="Images\arrow_bg_right.png" />
+    <Content Include="Images\arrow_bold.png" />
+    <Content Include="Images\arrow_button.png" />
+    <Content Include="Images\arrow_button_left.png" />
+    <Content Include="Images\arrow_pic.png" />
+    <Content Include="Images\ar_ro1z.png" />
+    <Content Include="Images\audio-p.png" />
+    <Content Include="Images\audio_bicon.png" />
+    <Content Include="Images\back_bg.png" />
+    <Content Include="Images\basic-bg-bth-grid.png" />
+    <Content Include="Images\basic-bg-grid.png" />
+    <Content Include="Images\basic-byter-gird-over.png" />
+    <Content Include="Images\basic-iconea.png" />
+    <Content Include="Images\basic-iconeb.png" />
+    <Content Include="Images\basic-iconec.png" />
+    <Content Include="Images\basic-iconed.png" />
+    <Content Include="Images\basic-iconee.png" />
+    <Content Include="Images\basic-iconef.png" />
+    <Content Include="Images\basicaccountbg.png" />
+    <Content Include="Images\basica_ccountbg.png" />
+    <Content Include="Images\basiclogo.png" />
+    <Content Include="Images\BasicPremPaymentbutton.png" />
+    <Content Include="Images\basicsidenew.png" />
+    <Content Include="Images\basic_account.png" />
+    <Content Include="Images\basic_account_bg.png" />
+    <Content Include="Images\basic_account_bgright.png" />
+    <Content Include="Images\Basic_Green_Tab.png" />
+    <Content Include="Images\basic_line_bg.png" />
+    <Content Include="Images\basic_line_bg2.png" />
+    <Content Include="Images\Basic_Navigation_Buttons.png" />
+    <Content Include="Images\bbc_pic.png" />
+    <Content Include="Images\bg-g-y.png" />
+    <Content Include="Images\bg.jpg" />
+    <Content Include="Images\bgbtn.png" />
+    <Content Include="Images\bgbtn2.png" />
+    <Content Include="Images\bgmainpaly.png" />
+    <Content Include="Images\bg_apb.png" />
+    <Content Include="Images\bigseamp.png" />
+    <Content Include="Images\big_sean.png" />
+    <Content Include="Images\blackgreenwallpaper.png" />
+    <Content Include="Images\blackgreenwallpapervert.png" />
+    <Content Include="Images\blank.gif" />
+    <Content Include="Images\blank.png" />
+    <Content Include="Images\boldbg.png" />
+    <Content Include="Images\BottomofVideoBannerIconEmpty.png" />
+    <Content Include="Images\botton-bg.png" />
+    <Content Include="Images\botton-bg_select copy.png" />
+    <Content Include="Images\botton-bg_select.png" />
+    <Content Include="Images\botton-bg_select1.png" />
+    <Content Include="Images\bottonplus.png" />
+    <Content Include="Images\boxbgimages.png" />
+    <Content Include="Images\box_4_bg.png" />
+    <Content Include="Images\bphidbyte_sicon.png" />
+    <Content Include="Images\bphidbyte_sicon2.png" />
+    <Content Include="Images\Brandon_Cooper.png" />
+    <Content Include="Images\browncredits.png" />
+    <Content Include="Images\Buck_McMurray.png" />
+    <Content Include="Images\button %282%29.png" />
+    <Content Include="Images\button.png" />
+    <Content Include="Images\button_bgw.png" />
+    <Content Include="Images\Byrce_Carlson.png" />
+    <Content Include="Images\bytebookletwallpaper.png" />
+    <Content Include="Images\byter-.png" />
+    <Content Include="Images\byter-con.png" />
+    <Content Include="Images\byter-fbox.png" />
+    <Content Include="Images\byter-footer-logo.png" />
+    <Content Include="Images\byter-footerp.png" />
+    <Content Include="Images\byter-headbg.png" />
+    <Content Include="Images\byter-loveserach-b2.png" />
+    <Content Include="Images\byter-loveserach.png" />
+    <Content Include="Images\byter-ok.png" />
+    <Content Include="Images\byter-postbotton.png" />
+    <Content Include="Images\byter-prev.png" />
+    <Content Include="Images\byter-videob.png" />
+    <Content Include="Images\byter-youtob.png" />
+    <Content Include="Images\byter2.png" />
+    <Content Include="Images\byter3.png" />
+    <Content Include="Images\byteraudiopbg1.png" />
+    <Content Include="Images\byteraudiopbg2.png" />
+    <Content Include="Images\byteraudiopbg3.png" />
+    <Content Include="Images\byteraudiopbg4.png" />
+    <Content Include="Images\byteraudiopbg6.png" />
+    <Content Include="Images\byteraudiopbg7.png" />
+    <Content Include="Images\byteraudiopbg8.png" />
+    <Content Include="Images\byteraudiopbg9.png" />
+    <Content Include="Images\byteraudiopbgpre1.png" />
+    <Content Include="Images\byteraudiopbgpre2.png" />
+    <Content Include="Images\byterb.png" />
+    <Content Include="Images\byterbg.png" />
+    <Content Include="Images\byterb_account.png" />
+    <Content Include="Images\ByterWelcomeLogo.png" />
+    <Content Include="Images\byter_account-i.png" />
+    <Content Include="Images\byter_account-i2.png" />
+    <Content Include="Images\byter_account-i3.png" />
+    <Content Include="Images\byter_account.png" />
+    <Content Include="Images\byter_accountbg.png" />
+    <Content Include="Images\byter_bg2.png" />
+    <Content Include="Images\byter_imgbg.png" />
+    <Content Include="Images\byter_m.png" />
+    <Content Include="Images\Byter_Navigation_Buttons.png" />
+    <Content Include="Images\byter_red_bg.png" />
+    <Content Include="Images\byter_right_bg.png" />
+    <Content Include="Images\ByteYourMusicSelection_Premium.png" />
+    <Content Include="Images\byte_tracker_p1.png" />
+    <Content Include="Images\byt_bgty.png" />
+    <Content Include="Images\b_message.png" />
+    <Content Include="Images\b_tracker.png" />
+    <Content Include="Images\captcha-code.png" />
+    <Content Include="Images\cassette-bg.png" />
+    <Content Include="Images\cassettebox-bg.png" />
+    <Content Include="Images\CategoryTabsforSearchEngine.png" />
+    <Content Include="Images\CategoryTabsforSearchEngine_SELECTED.png" />
+    <Content Include="Images\centerpic.png" />
+    <Content Include="Images\changepostb.png" />
+    <Content Include="Images\channel-grid3.png" />
+    <Content Include="Images\channel_view.png" />
+    <Content Include="Images\channel_view_2.png" />
+    <Content Include="Images\chatbox_bg_a1.png" />
+    <Content Include="Images\checkbox-bg.png" />
+    <Content Include="Images\checkbox-selects.png" />
+    <Content Include="Images\checkbox.gif" />
+    <Content Include="Images\choose-existing.png" />
+    <Content Include="Images\chooseexistingfile.png" />
+    <Content Include="Images\chro_icon.png" />
+    <Content Include="Images\circle_bg.png" />
+    <Content Include="Images\circle_bg_color.png" />
+    <Content Include="Images\clone-frame.png" />
+    <Content Include="Images\clone-pa.png" />
+    <Content Include="Images\clones_bg.png" />
+    <Content Include="Images\close-grid.png" />
+    <Content Include="Images\close-m-i.png" />
+    <Content Include="Images\close-serachb.png" />
+    <Content Include="Images\close.png" />
+    <Content Include="Images\closebotton.png" />
+    <Content Include="Images\cmicone.png" />
+    <Content Include="Images\Co-Founder.png" />
+    <Content Include="Images\colo_pr_pic.png" />
+    <Content Include="Images\connectyoursocialnetworks.png" />
+    <Content Include="Images\Copy of premiumaccountlogo.png" />
+    <Content Include="Images\Copy of PremiumWelcomeLogo.png" />
+    <Content Include="Images\Copy of prim_bold2.png" />
+    <Content Include="Images\Copy of prim_bold3.png" />
+    <Content Include="Images\Copy of prim_bold3_green.png" />
+    <Content Include="Images\Copy of proceed_image.png" />
+    <Content Include="Images\Copy of Progress_bar.gif" />
+    <Content Include="Images\CorporateTeam.PNG" />
+    <Content Include="Images\create-byterbg.png" />
+    <Content Include="Images\credit-grid-bg.png" />
+    <Content Include="Images\credit-grid-bg2.png" />
+    <Content Include="Images\credit-grid-bgbyter.png" />
+    <Content Include="Images\credit-grid-bgpreium.png" />
+    <Content Include="Images\credit-grid2bg.png" />
+    <Content Include="Images\credit-grid_2.png" />
+    <Content Include="Images\credit-grid_red.png" />
+    <Content Include="Images\credits-bg.png" />
+    <Content Include="Images\credits-bgsearch.png" />
+    <Content Include="Images\credits-bg_gray.png" />
+    <Content Include="Images\credits-menu2.png" />
+    <Content Include="Images\cr_d_img.png" />
+    <Content Include="Images\csocialnetwork.png" />
+    <Content Include="Images\Culture1.png" />
+    <Content Include="Images\c_max_fram.png" />
+    <Content Include="Images\dailymotionicone.png" />
+    <Content Include="Images\das-left.png" />
+    <Content Include="Images\dataplan-pic.png" />
+    <Content Include="Images\delete_tools.png" />
+    <Content Include="Images\Demo3.gif" />
+    <Content Include="Images\Demo4.gif" />
+    <Content Include="Images\deskt_line_bg.png" />
+    <Content Include="Images\desk_i_icon.png" />
+    <Content Include="Images\desk_m_icon.png" />
+    <Content Include="Images\desk_t_pic.png" />
+    <Content Include="Images\desk_w_icon.png" />
+    <Content Include="Images\devianicone.png" />
+    <Content Include="Images\dgapropic.png" />
+    <Content Include="Images\dgawifiicon.png" />
+    <Content Include="Images\dg_1a.png" />
+    <Content Include="Images\dg_2.jpg" />
+    <Content Include="Images\djaimg.png" />
+    <Content Include="Images\dots-close-byter.png" />
+    <Content Include="Images\dots-close.png" />
+    <Content Include="Images\downloadcompleted.png" />
+    <Content Include="Images\downloadingexample.png" />
+    <Content Include="Images\downloading_box_empty.png" />
+    <Content Include="Images\Download_icon.png" />
+    <Content Include="Images\down_team.png" />
+    <Content Include="Images\dragBar.png" />
+    <Content Include="Images\drop-dp.png" />
+    <Content Include="Images\ds-account.png" />
+    <Content Include="Images\ds-accountlock.png" />
+    <Content Include="Images\dwonload.png" />
+    <Content Include="Images\dwonloadbw.png" />
+    <Content Include="Images\ebook-icone.png" />
+    <Content Include="Images\ebook_eicon.png" />
+    <Content Include="Images\em_ni.png" />
+    <Content Include="Images\Enzo_Musmeci.png" />
+    <Content Include="Images\expand.png" />
+    <Content Include="Images\expandyourgenius.png" />
+    <Content Include="Images\expbg.png" />
+    <Content Include="Images\e_icon.png" />
+    <Content Include="Images\fancybox_loading.gif" />
+    <Content Include="Images\fancybox_sprite.png" />
+    <Content Include="Images\favopiv.png" />
+    <Content Include="Images\favorites.png" />
+    <Content Include="Images\favorites_ms.png" />
+    <Content Include="Images\fb_ni.png" />
+    <Content Include="Images\feed_b_bg.png" />
+    <Content Include="Images\feed_b_text_bg.png" />
+    <Content Include="Images\feed_emailllbg.png" />
+    <Content Include="Images\feed_i_pic.png" />
+    <Content Include="Images\ficone.png" />
+    <Content Include="Images\ficone2.png" />
+    <Content Include="Images\file-icone.png" />
+    <Content Include="Images\filecloning.png" />
+    <Content Include="Images\file_ficon.png" />
+    <Content Include="Images\flashing_flay.png" />
+    <Content Include="Images\flashing_seracha1.png" />
+    <Content Include="Images\flashing_seracha2.png" />
+    <Content Include="Images\flickricone.png" />
+    <Content Include="Images\fokiicone.png" />
+    <Content Include="Images\folder-iconchnage.png" />
+    <Content Include="Images\framepic1.png" />
+    <Content Include="Images\framepic2.png" />
+    <Content Include="Images\framepic3.png" />
+    <Content Include="Images\freebookicone.png" />
+    <Content Include="Images\g-clone1.png" />
+    <Content Include="Images\g2img.png" />
+    <Content Include="Images\gall-pic.png" />
+    <Content Include="Images\general_clones.png" />
+    <Content Include="Images\genrate_bgt1.png" />
+    <Content Include="Images\getstart_bg.png" />
+    <Content Include="Images\gicone.png" />
+    <Content Include="Images\girl_wifi_bg.png" />
+    <Content Include="Images\glogo1.png" />
+    <Content Include="Images\glogo2.png" />
+    <Content Include="Images\glogo3.png" />
+    <Content Include="Images\glogo4.png" />
+    <Content Include="Images\glogo5.png" />
+    <Content Include="Images\glogo6.png" />
+    <Content Include="Images\glogo7.png" />
+    <Content Include="Images\glogo8.png" />
+    <Content Include="Images\good_image.png" />
+    <Content Include="Images\googleplay.png" />
+    <Content Include="Images\googleplay_bg.png" />
+    <Content Include="Images\googleplus.jpg" />
+    <Content Include="Images\goone-bg.png" />
+    <Content Include="Images\gp_ni.png" />
+    <Content Include="Images\greate_text.png" />
+    <Content Include="Images\great_image.png" />
+    <Content Include="Images\green.png" />
+    <Content Include="Images\grid-channelimg.png" />
+    <Content Include="Images\grid-channelimg2.png" />
+    <Content Include="Images\grid-channelimg3.png" />
+    <Content Include="Images\grid-line-bg.png" />
+    <Content Include="Images\grid-line-bg2.png" />
+    <Content Include="Images\grid10bg.png" />
+    <Content Include="Images\grid11bg.png" />
+    <Content Include="Images\grid12bg.png" />
+    <Content Include="Images\grid13bg.png" />
+    <Content Include="Images\grid14bg.png" />
+    <Content Include="Images\grid1bg.png" />
+    <Content Include="Images\grid2bg.png" />
+    <Content Include="Images\grid3bg.png" />
+    <Content Include="Images\grid4bg.png" />
+    <Content Include="Images\grid5bg.png" />
+    <Content Include="Images\grid6bg.png" />
+    <Content Include="Images\grid7bg.png" />
+    <Content Include="Images\grid8bg.png" />
+    <Content Include="Images\grid9bg.png" />
+    <Content Include="Images\gridp-rofile.png" />
+    <Content Include="Images\guides_bg.png" />
+    <Content Include="Images\g_img.png" />
+    <Content Include="Images\headerpic.png" />
+    <Content Include="Images\history.png" />
+    <Content Include="Images\historyb.png" />
+    <Content Include="Images\historyfrom_bg.png" />
+    <Content Include="Images\hphidbytelogo.png" />
+    <Content Include="Images\iboldicone.png" />
+    <Content Include="Images\icone.png" />
+    <Content Include="Images\icone1.png" />
+    <Content Include="Images\icone2.png" />
+    <Content Include="Images\icone3.png" />
+    <Content Include="Images\iconemian.png" />
+    <Content Include="Images\ie_icon.png" />
+    <Content Include="Images\iicone.png" />
+    <Content Include="Images\imax-hand.png" />
+    <Content Include="Images\imfo-bmenu-2.png" />
+    <Content Include="Images\imfo-bmenu.png" />
+    <Content Include="Images\img1.png" />
+    <Content Include="Images\img10.png" />
+    <Content Include="Images\img11.png" />
+    <Content Include="Images\img12.png" />
+    <Content Include="Images\img13.png" />
+    <Content Include="Images\img14.png" />
+    <Content Include="Images\img15.png" />
+    <Content Include="Images\img16.png" />
+    <Content Include="Images\img17.png" />
+    <Content Include="Images\img18.png" />
+    <Content Include="Images\img2.png" />
+    <Content Include="Images\img3.png" />
+    <Content Include="Images\img4.png" />
+    <Content Include="Images\img5.png" />
+    <Content Include="Images\img6.png" />
+    <Content Include="Images\img7.png" />
+    <Content Include="Images\img8.png" />
+    <Content Include="Images\img9.png" />
+    <Content Include="Images\inboxediticon.png" />
+    <Content Include="Images\inbox_ngimg.png" />
+    <Content Include="Images\indicates-bg.png" />
+    <Content Include="Images\info-nbox-bg.png" />
+    <Content Include="Images\info_page_logo-bg.png" />
+    <Content Include="Images\inputbg.png" />
+    <Content Include="Images\inputtextbg.png" />
+    <Content Include="Images\inputtextbg2.png" />
+    <Content Include="Images\inputtext_register.png" />
+    <Content Include="Images\in_text_bg.png" />
+    <Content Include="Images\ios_i_pic.png" />
+    <Content Include="Images\itunes.png" />
+    <Content Include="Images\Jay-Z-pic.png" />
+    <Content Include="Images\jay-zm.png" />
+    <Content Include="Images\Jeremy_Sheckell.png" />
+    <Content Include="Images\leftbox.png" />
+    <Content Include="Images\li-pic-menu.png" />
+    <Content Include="Images\light-b-m.png" />
+    <Content Include="Images\liiconebg.png" />
+    <Content Include="Images\line-bg.png" />
+    <Content Include="Images\linedwonp.png" />
+    <Content Include="Images\line_l_15.png" />
+    <Content Include="Images\linkdicone.png" />
+    <Content Include="Images\live_chatbg.png" />
+    <Content Include="Images\load_q.gif" />
+    <Content Include="Images\lock_image.png" />
+    <Content Include="Images\logo-channel.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logobg.png" />
+    <Content Include="Images\logout.png" />
+    <Content Include="Images\logo_a.png" />
+    <Content Include="Images\log_frame.png" />
+    <Content Include="Images\log_msg.png" />
+    <Content Include="Images\lte_icon.png" />
+    <Content Include="Images\market-send bg.png" />
+    <Content Include="Images\market-send.png" />
+    <Content Include="Images\marketingandadvertisingplatform.png" />
+    <Content Include="Images\market_team_p1.png" />
+    <Content Include="Images\mass-button-onclick.png" />
+    <Content Include="Images\mass-button.png" />
+    <Content Include="Images\massage-g1pic.png" />
+    <Content Include="Images\massage-g2pic.png" />
+    <Content Include="Images\massage-g3pic.png" />
+    <Content Include="Images\matrix-viewbg.png" />
+    <Content Include="Images\max_pic1.png" />
+    <Content Include="Images\mecbutton.png" />
+    <Content Include="Images\menim_bg_t1.png" />
+    <Content Include="Images\menu-post1.png" />
+    <Content Include="Images\merchant_accountbg.png" />
+    <Content Include="Images\merchant_account_bg.png" />
+    <Content Include="Images\merchant_bg.png" />
+    <Content Include="Images\micone.png" />
+    <Content Include="Images\miconepica.png" />
+    <Content Include="Images\miconexpic.png" />
+    <Content Include="Images\minelinxpic.png" />
+    <Content Include="Images\moniter2.png" />
+    <Content Include="Images\monthbg.png" />
+    <Content Include="Images\moz_icon.png" />
+    <Content Include="Images\mtv-bytli.png" />
+    <Content Include="Images\mtv-li.png" />
+    <Content Include="Images\mtv_icon.png" />
+    <Content Include="Images\myplaylists.png" />
+    <Content Include="Images\navbg-over.png" />
+    <Content Include="Images\navbg.png" />
+    <Content Include="Images\navibuttons.png" />
+    <Content Include="Images\nav_bg.png" />
+    <Content Include="Images\newbg.png" />
+    <Content Include="Images\newr_icon.png" />
+    <Content Include="Images\next-botton-byter.png" />
+    <Content Include="Images\nextpm_b.png" />
+    <Content Include="Images\next_b.png" />
+    <Content Include="Images\next_ms.png" />
+    <Content Include="Images\next_right.png" />
+    <Content Include="Images\next_s.png" />
+    <Content Include="Images\nickiminajprofile.png" />
+    <Content Include="Images\one_pic.png" />
+    <Content Include="Images\one_pic_2.png" />
+    <Content Include="Images\online.png" />
+    <Content Include="Images\onload.png" />
+    <Content Include="Images\othre_popup_bg.png" />
+    <Content Include="Images\OutofStorageButton.png" />
+    <Content Include="Images\pair_image.png" />
+    <Content Include="Images\passwordincorrect.png" />
+    <Content Include="Images\pause.png" />
+    <Content Include="Images\pauseb.png" />
+    <Content Include="Images\paypalbg.png" />
+    <Content Include="Images\pdr_pic.png" />
+    <Content Include="Images\pending-icone.png" />
+    <Content Include="Images\pepsi_pis.png" />
+    <Content Include="Images\pepsi_pis_logo.png" />
+    <Content Include="Images\personicon.png" />
+    <Content Include="Images\pevpm_b.png" />
+    <Content Include="Images\pev_b.png" />
+    <Content Include="Images\pev_right.png" />
+    <Content Include="Images\photo-icone.png" />
+    <Content Include="Images\photo_picon.png" />
+    <Content Include="Images\Picture1basicmessgae.png" />
+    <Content Include="Images\Picture1chat.png" />
+    <Content Include="Images\Picture1chat2.png" />
+    <Content Include="Images\Picture1fullscreen.png" />
+    <Content Include="Images\Picture1premiummesage.png" />
+    <Content Include="Images\Picture3.png" />
+    <Content Include="Images\pinticone.png" />
+    <Content Include="Images\play-bt.png" />
+    <Content Include="Images\play-pic.png" />
+    <Content Include="Images\playlist-bgz01.png" />
+    <Content Include="Images\playlist-bgz02.png" />
+    <Content Include="Images\playlist-bgz1.png" />
+    <Content Include="Images\playlist_viewa.png" />
+    <Content Include="Images\plus-m-i.png" />
+    <Content Include="Images\plusadd.png" />
+    <Content Include="Images\pluse+.png" />
+    <Content Include="Images\pluse-byter.png" />
+    <Content Include="Images\pluseblist.png" />
+    <Content Include="Images\plus_b.png" />
+    <Content Include="Images\poastyourwall.png" />
+    <Content Include="Images\poastyourwall2.png" />
+    <Content Include="Images\poor_image.png" />
+    <Content Include="Images\pop-cam-t.png" />
+    <Content Include="Images\pop-line-m.png" />
+    <Content Include="Images\pop-serachb.png" />
+    <Content Include="Images\postgreens.png" />
+    <Content Include="Images\power.png" />
+    <Content Include="Images\power2.png" />
+    <Content Include="Images\premimageline.png" />
+    <Content Include="Images\premimageline2.png" />
+    <Content Include="Images\premimageline3.png" />
+    <Content Include="Images\premiu-bmenu.png" />
+    <Content Include="Images\premium-left-bg.png" />
+    <Content Include="Images\premium-tools.png" />
+    <Content Include="Images\premiumaccountbx_bg.png" />
+    <Content Include="Images\premiumaccountlogo.png" />
+    <Content Include="Images\premiumaccount_bg.png" />
+    <Content Include="Images\PremiumAccount_Byte_Your_Icons_Grouped.png" />
+    <Content Include="Images\premiumaccount_star_bg.png" />
+    <Content Include="Images\premiummessage.png" />
+    <Content Include="Images\PremiumWelcomeLogo.png" />
+    <Content Include="Images\premium_account.png" />
+    <Content Include="Images\premium_accountpibg.png" />
+    <Content Include="Images\premium_account_apply.png" />
+    <Content Include="Images\premium_account_bg.png" />
+    <Content Include="Images\premium_ccountcompo.png" />
+    <Content Include="Images\premium_ccountcompob.png" />
+    <Content Include="Images\Premium_Navigation_Buttons.png" />
+    <Content Include="Images\Premium_Orange_Tab.png" />
+    <Content Include="Images\premiu_left-bg.png" />
+    <Content Include="Images\prev_b.png" />
+    <Content Include="Images\prev_ms.png" />
+    <Content Include="Images\prev_s.png" />
+    <Content Include="Images\prim_bold1.png" />
+    <Content Include="Images\prim_bold2.png" />
+    <Content Include="Images\prim_bold3.png" />
+    <Content Include="Images\prim_bold3_green.png" />
+    <Content Include="Images\prim_bold3_green_2.png" />
+    <Content Include="Images\prm_pic1.jpg" />
+    <Content Include="Images\proceed_image.png" />
+    <Content Include="Images\processing-bg.png" />
+    <Content Include="Images\profilebg.png" />
+    <Content Include="Images\Progress_bar.gif" />
+    <Content Include="Images\px_icon.png" />
+    <Content Include="Images\p_addpica.png" />
+    <Content Include="Images\p_addpica2.png" />
+    <Content Include="Images\p_addpica3.png" />
+    <Content Include="Images\p_addpica4.png" />
+    <Content Include="Images\p_addpica5.png" />
+    <Content Include="Images\q_icone.png" />
+    <Content Include="Images\q_icone_2.png" />
+    <Content Include="Images\q_namebg.png" />
+    <Content Include="Images\radiobutton.gif" />
+    <Content Include="Images\RedX.png" />
+    <Content Include="Images\red_x.png" />
+    <Content Include="Images\register_bg.png" />
+    <Content Include="Images\request-inputbg.png" />
+    <Content Include="Images\return-line-bg.png" />
+    <Content Include="Images\return-line-bg_yellow.png" />
+    <Content Include="Images\reversnpic.png" />
+    <Content Include="Images\right-icone.png" />
+    <Content Include="Images\right-line.png" />
+    <Content Include="Images\rightbox.png" />
+    <Content Include="Images\rightlinetop.png" />
+    <Content Include="Images\right_bg.png" />
+    <Content Include="Images\right_bg_2.png" />
+    <Content Include="Images\right_bg_21.png" />
+    <Content Include="Images\right_line.png" />
+    <Content Include="Images\right_pic.png" />
+    <Content Include="Images\rotate.png" />
+    <Content Include="Images\saf_icon.png" />
+    <Content Include="Images\savech-play.png" />
+    <Content Include="Images\sbb_img.png" />
+    <Content Include="Images\sbb_pic.png" />
+    <Content Include="Images\sb_img.png" />
+    <Content Include="Images\scicone.png" />
+    <Content Include="Images\scribdicone.png" />
+    <Content Include="Images\scroll.png" />
+    <Content Include="Images\scrollbg.png" />
+    <Content Include="Images\sear-m-i.png" />
+    <Content Include="Images\sear-mcredi-byter.png" />
+    <Content Include="Images\sear-mcredit-i.png" />
+    <Content Include="Images\searcclick.png" />
+    <Content Include="Images\search-b.png" />
+    <Content Include="Images\searmcrediti.png" />
+    <Content Include="Images\sec_img_p.png" />
+    <Content Include="Images\selectaccordingly.png" />
+    <Content Include="Images\selectbg.png" />
+    <Content Include="Images\selecton.png" />
+    <Content Include="Images\setting-pic.png" />
+    <Content Include="Images\sharebutton.png" />
+    <Content Include="Images\shortcutlogo.png" />
+    <Content Include="Images\sicone.png" />
+    <Content Include="Images\siconespic.png" />
+    <Content Include="Images\signorlog_icon.png" />
+    <Content Include="Images\signup_bg.png" />
+    <Content Include="Images\signup_register_bg.png" />
+    <Content Include="Images\singpic.png" />
+    <Content Include="Images\social-click-pic.png" />
+    <Content Include="Images\soundclickpic.png" />
+    <Content Include="Images\soundloadpic.png" />
+    <Content Include="Images\sponsored_logo.png" />
+    <Content Include="Images\sponsored_one.png" />
+    <Content Include="Images\sponsored_user_logo.png" />
+    <Content Include="Images\stop-bt.png" />
+    <Content Include="Images\strempic.png" />
+    <Content Include="Images\submitting_bg.png" />
+    <Content Include="Images\submit_bg.png" />
+    <Content Include="Images\submit_bg2.png" />
+    <Content Include="Images\subscribe_mir.png" />
+    <Content Include="Images\successstorageupdate.png" />
+    <Content Include="Images\Success_Button.png" />
+    <Content Include="Images\Success_Button_c.png" />
+    <Content Include="Images\Success_Button_d.png" />
+    <Content Include="Images\suicone.png" />
+    <Content Include="Images\symbol-i.png" />
+    <Content Include="Images\symbol-i2.png" />
+    <Content Include="Images\symbol-i2_2.png" />
+    <Content Include="Images\symboli.png" />
+    <Content Include="Images\s_icon.png" />
+    <Content Include="Images\s_iconta.png" />
+    <Content Include="Images\table-tr1.png" />
+    <Content Include="Images\table-tr2.png" />
+    <Content Include="Images\textareabg.png" />
+    <Content Include="Images\ticone.png" />
+    <Content Include="Images\Timedoutbutton.png" />
+    <Content Include="Images\Timedoutbutton1.png" />
+    <Content Include="Images\tmz_logo.png" />
+    <Content Include="Images\tools_page_bg.png" />
+    <Content Include="Images\tools_save.png" />
+    <Content Include="Images\toplogo.png" />
+    <Content Include="Images\unsubscribe_mir.png" />
+    <Content Include="Images\update.png" />
+    <Content Include="Images\upload-pic.png" />
+    <Content Include="Images\uploadmessage.png" />
+    <Content Include="Images\upload_pic1.png" />
+    <Content Include="Images\up_l_pic.png" />
+    <Content Include="Images\up_l_pic_5.png" />
+    <Content Include="Images\up_team.png" />
+    <Content Include="Images\User Sponsored Logo.png" />
+    <Content Include="Images\user_sponsored_icon1.png" />
+    <Content Include="Images\user_sponsored_icon2.png" />
+    <Content Include="Images\user_sponsored_icon3.png" />
+    <Content Include="Images\user_sponsored_icon4.png" />
+    <Content Include="Images\user_sponsored_icon5.png" />
+    <Content Include="Images\user_sponsored_logo.png" />
+    <Content Include="Images\user_sponsored_menubg.png" />
+    <Content Include="Images\vevo_pt1.png" />
+    <Content Include="Images\vevo_pt2.png" />
+    <Content Include="Images\vevo_pt3.png" />
+    <Content Include="Images\vevo_pt4.png" />
+    <Content Include="Images\vevo_pt5.png" />
+    <Content Include="Images\vh_logo.png" />
+    <Content Include="Images\video-icone.png" />
+    <Content Include="Images\videobgp.png" />
+    <Content Include="Images\Videotutorials.png" />
+    <Content Include="Images\video_tutorialsbg.png" />
+    <Content Include="Images\video_tutorialsbg2bg.png" />
+    <Content Include="Images\video_vicon.png" />
+    <Content Include="Images\view-channel.png" />
+    <Content Include="Images\vimeoicone.png" />
+    <Content Include="Images\vista.gif" />
+    <Content Include="Images\vista1.gif" />
+    <Content Include="Images\v_cha_icon.png" />
+    <Content Include="Images\w-icone.png" />
+    <Content Include="Images\waves.gif" />
+    <Content Include="Images\wavespng.jpg" />
+    <Content Include="Images\wifi_icon.png" />
+    <Content Include="Images\wifi_icon_1.png" />
+    <Content Include="Images\wifi_icon_big.png" />
+    <Content Include="Images\wi_f_icon.png" />
+    <Content Include="Images\word_sponsored.png" />
+    <Content Include="Images\writers-bg.png" />
+    <Content Include="Images\writerspad.png" />
+    <Content Include="Images\youticone.png" />
+    <Content Include="Images\y_2img.png" />
+    <Content Include="Images\y_img.png" />
+    <Content Include="Images\zoomout.png" />
+    <Content Include="Images\zoom_in.png" />
+    <Content Include="img\+green.png" />
+    <Content Include="img\+icone.png" />
+    <Content Include="img\-button.png" />
+    <Content Include="img\-buttonb.png" />
+    <Content Include="img\1.png" />
+    <Content Include="img\3d-chnagebg.png" />
+    <Content Include="img\3d-images1.png" />
+    <Content Include="img\3d-images2.png" />
+    <Content Include="img\3d-images3.png" />
+    <Content Include="img\3d-images4.png" />
+    <Content Include="img\3dview.png" />
+    <Content Include="img\ajax-loader-11.gif" />
+    <Content Include="img\amazone-p.png" />
+    <Content Include="img\apb_control_volume.png" />
+    <Content Include="img\apb_player_ticker.png" />
+    <Content Include="img\aphd_progressbar.png" />
+    <Content Include="img\aphid-teclogo.png" />
+    <Content Include="img\aphidtisebg.png" />
+    <Content Include="img\arrowpic.png" />
+    <Content Include="img\audio-p.png" />
+    <Content Include="img\b3bg.png" />
+    <Content Include="img\bg-onlogo.png" />
+    <Content Include="img\bg.jpg" />
+    <Content Include="img\bgbtn.png" />
+    <Content Include="img\bgbtn2.png" />
+    <Content Include="img\bgmainpaly.png" />
+    <Content Include="img\botton-bg.png" />
+    <Content Include="img\bottonplus.png" />
+    <Content Include="img\bphidbyte_sicon.png" />
+    <Content Include="img\bphidbyte_sicon2.png" />
+    <Content Include="img\button.png" />
+    <Content Include="img\button_bgw.png" />
+    <Content Include="img\centerpic.png" />
+    <Content Include="img\channel_view.png" />
+    <Content Include="img\clone-frame.png" />
+    <Content Include="img\clone-pa.png" />
+    <Content Include="img\close.png" />
+    <Content Include="img\cmicone.png" />
+    <Content Include="img\coltrol_play.png" />
+    <Content Include="img\controls_bg.png" />
+    <Content Include="img\control_pause.png" />
+    <Content Include="img\control_stop.png" />
+    <Content Include="img\csocialnetwork.png" />
+    <Content Include="img\dailymotionicone.png" />
+    <Content Include="img\das-left.png" />
+    <Content Include="img\devianicone.png" />
+    <Content Include="img\dots-close-byter.png" />
+    <Content Include="img\dots-close.png" />
+    <Content Include="img\dragBar.png" />
+    <Content Include="img\dwonload.png" />
+    <Content Include="img\dwonloadbw.png" />
+    <Content Include="img\ebook-icone.png" />
+    <Content Include="img\effectsbg.png" />
+    <Content Include="img\error.png" />
+    <Content Include="img\ErrorMessage.png" />
+    <Content Include="img\errorMSG.png" />
+    <Content Include="img\favopiv.png" />
+    <Content Include="img\ficone.png" />
+    <Content Include="img\ficone2.png" />
+    <Content Include="img\file-icone.png" />
+    <Content Include="img\flashing_flay.png" />
+    <Content Include="img\flickricone.png" />
+    <Content Include="img\fokiicone.png" />
+    <Content Include="img\framepic1.png" />
+    <Content Include="img\framepic2.png" />
+    <Content Include="img\framepic3.png" />
+    <Content Include="img\freebookicone.png" />
+    <Content Include="img\gicone.png" />
+    <Content Include="img\girl_wifi_bg.png" />
+    <Content Include="img\glogo1.png" />
+    <Content Include="img\glogo2.png" />
+    <Content Include="img\glogo3.png" />
+    <Content Include="img\glogo4.png" />
+    <Content Include="img\glogo5.png" />
+    <Content Include="img\glogo6.png" />
+    <Content Include="img\glogo7.png" />
+    <Content Include="img\glogo8.png" />
+    <Content Include="img\googleplay.png" />
+    <Content Include="img\grid10bg.png" />
+    <Content Include="img\grid11bg.png" />
+    <Content Include="img\grid12bg.png" />
+    <Content Include="img\grid13bg.png" />
+    <Content Include="img\grid14bg.png" />
+    <Content Include="img\grid1bg.png" />
+    <Content Include="img\grid2bg.png" />
+    <Content Include="img\grid3bg.png" />
+    <Content Include="img\grid4bg.png" />
+    <Content Include="img\grid5bg.png" />
+    <Content Include="img\grid6bg.png" />
+    <Content Include="img\grid7bg.png" />
+    <Content Include="img\grid8bg.png" />
+    <Content Include="img\grid9bg.png" />
+    <Content Include="img\g_social_fb.png" />
+    <Content Include="img\iboldicone.png" />
+    <Content Include="img\icone.png" />
+    <Content Include="img\iicone-z.png" />
+    <Content Include="img\iicone.png" />
+    <Content Include="img\inputbg.png" />
+    <Content Include="img\itunes.png" />
+    <Content Include="img\Jay-Z-pic.png" />
+    <Content Include="img\jay-zm.png" />
+    <Content Include="img\leftbox.png" />
+    <Content Include="img\line-bg.png" />
+    <Content Include="img\linkdicone.png" />
+    <Content Include="img\logo-channel.png" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\logout.png" />
+    <Content Include="img\logo_a.png" />
+    <Content Include="img\matrix-viewbg.png" />
+    <Content Include="img\mecbutton.png" />
+    <Content Include="img\micone.png" />
+    <Content Include="img\miconepica.png" />
+    <Content Include="img\miconexpic.png" />
+    <Content Include="img\minelinxpic.png" />
+    <Content Include="img\mixbotton.png" />
+    <Content Include="img\moniter2.png" />
+    <Content Include="img\mtv-li.png" />
+    <Content Include="img\mtv_icon.png" />
+    <Content Include="img\navbg-over.png" />
+    <Content Include="img\navbg.png" />
+    <Content Include="img\newr_icon.png" />
+    <Content Include="img\next_b.png" />
+    <Content Include="img\next_right.png" />
+    <Content Include="img\next_s.png" />
+    <Content Include="img\one_pic.png" />
+    <Content Include="img\one_pic_2.png" />
+    <Content Include="img\onload.png" />
+    <Content Include="img\overboxbg.png" />
+    <Content Include="img\pause.png" />
+    <Content Include="img\pauseb.png" />
+    <Content Include="img\pev_b.png" />
+    <Content Include="img\pev_right.png" />
+    <Content Include="img\photo-icone.png" />
+    <Content Include="img\pinticone.png" />
+    <Content Include="img\play-pic.png" />
+    <Content Include="img\pluse+.png" />
+    <Content Include="img\pluseb+.png" />
+    <Content Include="img\pluse_green.png" />
+    <Content Include="img\plusgreen.png" />
+    <Content Include="img\poastyourwall.png" />
+    <Content Include="img\poastyourwall2.png" />
+    <Content Include="img\pop_clcik1.png" />
+    <Content Include="img\pop_clcik2.png" />
+    <Content Include="img\power.png" />
+    <Content Include="img\power2.png" />
+    <Content Include="img\prev_b.png" />
+    <Content Include="img\prev_s.png" />
+    <Content Include="img\reversnpic.png" />
+    <Content Include="img\right-icone.png" />
+    <Content Include="img\right-line.png" />
+    <Content Include="img\rightbox.png" />
+    <Content Include="img\rightlinetop.png" />
+    <Content Include="img\right_bg.png" />
+    <Content Include="img\right_bg_2.png" />
+    <Content Include="img\right_bg_21.png" />
+    <Content Include="img\right_line.png" />
+    <Content Include="img\scicone.png" />
+    <Content Include="img\scribdicone.png" />
+    <Content Include="img\scroll.png" />
+    <Content Include="img\scrollbg.png" />
+    <Content Include="img\searcclick.png" />
+    <Content Include="img\search-b.png" />
+    <Content Include="img\sicone.png" />
+    <Content Include="img\siconespic.png" />
+    <Content Include="img\singpic.png" />
+    <Content Include="img\soundclickpic.png" />
+    <Content Include="img\soundloadpic.png" />
+    <Content Include="img\suicone.png" />
+    <Content Include="img\ticone.png" />
+    <Content Include="img\tmz_logo.png" />
+    <Content Include="img\toplogo.png" />
+    <Content Include="img\vh_logo.png" />
+    <Content Include="img\video-icone.png" />
+    <Content Include="img\videobgp.png" />
+    <Content Include="img\view-channel.png" />
+    <Content Include="img\vimeoicone.png" />
+    <Content Include="img\w-icone.png" />
+    <Content Include="img\wifi_icon.png" />
+    <Content Include="img\wifi_icon_1.png" />
+    <Content Include="img\wifi_icon_big.png" />
+    <Content Include="img\youticone.png" />
+    <Content Include="js\jquery-1.10.2.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\modernizr.custom.js" />
+    <Content Include="Lib\ASPSnippets.GoogleAPI.dll" />
+    <Content Include="Scripts\confirm.js" />
+    <Content Include="Scripts\CustomValidations.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Content\fonts\OCRAEXT.TTF" />
+    <Content Include="Content\fonts\square-721-bt.ttf" />
+    <Content Include="Images\grid1bg-z.psd" />
+    <Content Include="Images\table-tr2.psd" />
+    <Content Include="Areas\Admin\Views\AddAdmin\AddNewAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <None Include="Properties\PublishProfiles\aphid.pubxml" />
+    <None Include="Properties\PublishProfiles\AphidByte Published.pubxml" />
+    <None Include="Properties\PublishProfiles\AphidNew.pubxml" />
+    <None Include="Properties\PublishProfiles\NewAphidbyte29-4.pubxml" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.cycle.all.js" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.horizontal.scroll.js" />
+    <Content Include="Scripts\jquery.mCustomScrollbar.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.min1.10.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.0.min.js" />
+    <Content Include="Scripts\jquery.simplemodal.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\sagscroller.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\ui.core.js" />
+    <Content Include="Scripts\ui.progressbar.js" />
+    <Content Include="TempBasicAudio\Advertisment\49c329da-60d6-4a82-911e-10231aaddbb4_8a.jpg" />
+    <Content Include="TempBasicAudio\Advertisment\5eae7d67-8778-440e-9e59-077a38d70894_23.jpg" />
+    <Content Include="TempBasicAudio\Advertisment\8aa9755d-95e8-4c76-a939-b10647051049_12.jpg" />
+    <Content Include="TempBasicAudio\Advertisment\8aa9755d-95e8-4c76-a939-b10647051049_girl_wifi_bg.png" />
+    <Content Include="TempBasicAudio\Advertisment\a4d0825b-f27a-40e7-b6bb-dd8b8b2e732c_a.jpg" />
+    <Content Include="TempBasicImages\12.jpg" />
+    <Content Include="TempBasicImages\1fe30.jpg" />
+    <Content Include="TempBasicImages\1fe30802fbec751032731c198eaa2908-98.jpg" />
+    <Content Include="TempBasicImages\23.jpg" />
+    <Content Include="TempBasicImages\4b784307-2a68-4b4a-bbc1-843425e0a469_Suno_Na_Sangemarmar.mp3" />
+    <Content Include="TempBasicImages\5276694.jpg" />
+    <Content Include="TempBasicImages\8a.jpg" />
+    <Content Include="TempBasicImages\8a8b88a5f3aac1d601c1db135b2c96e7-98.jpg" />
+    <Content Include="TempBasicImages\a.jpg" />
+    <Content Include="TempBasicImages\AlbumArtSmall.jpg" />
+    <Content Include="TempBasicImages\c.jpg" />
+    <Content Include="TempBasicImages\e21ea88e-26bc-4fc9-8e6b-238610b9ae48_terebina.mp3" />
+    <Content Include="TempBasicImages\em.jpg" />
+    <Content Include="TempBasicImages\enr.jpg" />
+    <Content Include="TempBasicImages\Folder.jpg" />
+    <Content Include="TempBasicImages\girl_wifi_bg.png" />
+    <Content Include="TempBasicImages\images.jpg" />
+    <Content Include="TempBasicImages\images111.jpg" />
+    <Content Include="TempBasicImages\images11111.jpg" />
+    <Content Include="TempBasicImages\imagess.jpg" />
+    <Content Include="TempBasicImages\imagessd.jpg" />
+    <Content Include="TempBasicImages\index.jpg" />
+    <Content Include="TempBasicImages\index1.jpg" />
+    <Content Include="TempBasicImages\index11.jpg" />
+    <Content Include="TempBasicImages\p.jpg" />
+    <Content Include="TempBasicImages\stadium.jpg" />
+    <Content Include="TempBasicImages\Tulips.jpg" />
+    <Content Include="Unity.Mvc4.README.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Register\AphidTiseRegister.cshtml" />
+    <Content Include="Views\Register\BasicRegister.cshtml" />
+    <Content Include="Views\Register\ByterRegister.cshtml" />
+    <Content Include="Views\Register\PremiumRegister.cshtml" />
+    <Content Include="Views\Shared\_LayoutMatrix.cshtml" />
+    <Content Include="Views\Shared\_LayoutReg.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Accounts\LoginUser.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\AphidTise\AphidTiseAccountInfo.cshtml" />
+    <Content Include="Views\AphidTise\AphidTiseGenrateAds.cshtml" />
+    <Content Include="Views\Basic\BasicAccountInfo.cshtml" />
+    <Content Include="Views\Byter\ByterAccountInfo.cshtml" />
+    <Content Include="Views\Music\Index.cshtml" />
+    <Content Include="Views\Premium\PremiumAccountInfo.cshtml" />
+    <Content Include="Views\SocialNetworks\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\_LayoutNoHeaderFooter.cshtml" />
+    <Content Include="Views\Basic\Album.cshtml" />
+    <Content Include="Views\Basic\bytetracker.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Basic\ByteyourArtPhotography.cshtml" />
+    <Content Include="Views\Basic\ByteyourEbook.cshtml" />
+    <Content Include="Views\Basic\Byteyourfiles.cshtml" />
+    <Content Include="Views\Basic\Byteyourmusic.cshtml" />
+    <Content Include="Views\Basic\Byteyourvideo.cshtml" />
+    <Content Include="Views\Basic\channel.cshtml" />
+    <Content Include="Views\Basic\Dataplan.cshtml" />
+    <Content Include="Views\Basic\EbookPrivew.cshtml" />
+    <Content Include="Views\Basic\EditCreatePost.cshtml" />
+    <Content Include="Views\Basic\File.cshtml" />
+    <Content Include="Views\Basic\Files.cshtml" />
+    <Content Include="Views\Basic\FilesPosting.cshtml" />
+    <Content Include="Views\Basic\FilesPrivew.cshtml" />
+    <Content Include="Views\Basic\GenerateClones.cshtml" />
+    <Content Include="Views\Basic\History.cshtml" />
+    <Content Include="Views\Basic\LinkPost.cshtml" />
+    <Content Include="Views\Basic\Message.cshtml" />
+    <Content Include="Views\Basic\Music.cshtml" />
+    <Content Include="Views\Basic\MusicPosting.cshtml" />
+    <Content Include="Views\Basic\MusicPrivew.cshtml" />
+    <Content Include="Views\Basic\Partial1.cshtml" />
+    <Content Include="Views\Basic\PdfEbookPosting.cshtml" />
+    <Content Include="Views\Basic\Photo.cshtml" />
+    <Content Include="Views\Basic\PhotoArtposting.cshtml" />
+    <Content Include="Views\Basic\Playlist.cshtml" />
+    <Content Include="Views\Basic\selectchanneltoflood.cshtml" />
+    <Content Include="Views\Basic\Byteyourmusicsingle.cshtml" />
+    <Content Include="Views\Basic\socialposting.cshtml" />
+    <Content Include="Views\Basic\Video.cshtml" />
+    <Content Include="Views\Basic\VideoPreview.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Premium\PremiumPlaylist.cshtml" />
+    <Content Include="Views\Basic\ErrorPage.cshtml" />
+    <Content Include="Views\Basic\ArtAndPhotographyPrivew.cshtml" />
+    <Content Include="Views\Basic\ModifyingNetworks.cshtml" />
+    <Content Include="Views\Basic\PlaylistPrivew.cshtml" />
+    <Content Include="Views\Premium\PremiumPlayListPrivew.cshtml" />
+    <Content Include="Views\Home\EditNewRelease.cshtml" />
+    <Content Include="Views\Home\SearchListView.cshtml" />
+    <Content Include="Views\Home\EditResult.cshtml" />
+    <Content Include="Views\Home\IndexSearchMobile.cshtml" />
+    <Content Include="Views\Home\IndexSearch.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\SearchFilm.cshtml" />
+    <Content Include="Views\Accounts\AboutUsPage.cshtml" />
+    <Content Include="Views\Accounts\ChangePassword.cshtml" />
+    <Content Include="Views\Accounts\CompanyInfo.cshtml" />
+    <Content Include="Views\Accounts\ConfirmAccount.cshtml" />
+    <Content Include="Views\Accounts\ContactUs.cshtml" />
+    <Content Include="Views\Accounts\CorparateTeam.cshtml" />
+    <Content Include="Views\Accounts\ForgetPassword.cshtml" />
+    <Content Include="Views\Accounts\Legal.cshtml" />
+    <Content Include="Views\Accounts\LoginFailed.cshtml" />
+    <Content Include="Views\Accounts\NotAuthorised.cshtml" />
+    <Content Include="Views\Accounts\ResetPassword.cshtml" />
+    <Content Include="Views\Accounts\SecurityQuestion.cshtml" />
+    <Content Include="Views\Accounts\Services.cshtml" />
+    <Content Include="Views\Accounts\Support.cshtml" />
+    <Content Include="Views\Accounts\ThanksForSubmitting.cshtml" />
+    <Content Include="Views\Accounts\UserConfirmAccount.cshtml" />
+    <Content Include="Views\Accounts\UserConfirmationForgrtPassword.cshtml" />
+    <Content Include="Views\Accounts\UserConfirmationForgrtPasswordChange.cshtml" />
+    <Content Include="Views\Accounts\VideoTutorials.cshtml" />
+    <Content Include="Views\AphidTise\AphidtiseByteTracker.cshtml" />
+    <Content Include="Views\AphidTise\AphidtiseHistory.cshtml" />
+    <Content Include="Views\AphidTise\AphidtiseMessage.cshtml" />
+    <Content Include="Views\Byter\ByterAdCreditSummary.cshtml" />
+    <Content Include="Views\Byter\ByterCreditSummary.cshtml" />
+    <Content Include="Views\Byter\ByterErrorPage.cshtml" />
+    <Content Include="Views\Byter\ByterLinksToPostM.cshtml" />
+    <Content Include="Views\Byter\ByterPostQueue.cshtml" />
+    <Content Include="Views\Byter\CreditSubscription.cshtml" />
+    <Content Include="Views\Byter\Favorites.cshtml" />
+    <Content Include="Views\Byter\History.cshtml" />
+    <Content Include="Views\Byter\Message.cshtml" />
+    <Content Include="Views\Byter\Playlists.cshtml" />
+    <Content Include="Views\Premium\ByteyourphotographyPrivew.cshtml" />
+    <Content Include="Views\Premium\DashBoard.cshtml" />
+    <Content Include="Views\Premium\EditLinkPostPremium.cshtml" />
+    <Content Include="Views\Premium\Files.cshtml" />
+    <Content Include="Views\Premium\GenerateClones.cshtml" />
+    <Content Include="Views\Premium\FilesPosting.cshtml" />
+    <Content Include="Views\Premium\MarketTeamAudio.cshtml" />
+    <Content Include="Views\Premium\MarketTeamE_Book.cshtml" />
+    <Content Include="Views\Premium\MarketTeamPhotography_Art.cshtml" />
+    <Content Include="Views\Premium\MarketTeamVideo.cshtml" />
+    <Content Include="Views\Premium\MarketTeamZipFile.cshtml" />
+    <Content Include="Views\Premium\Music.cshtml" />
+    <Content Include="Views\Premium\photoArtPosting.cshtml" />
+    <Content Include="Views\Premium\PremiumAddCategory.cshtml" />
+    <Content Include="Views\Premium\PremiumAddDeletePlayList.cshtml" />
+    <Content Include="Views\Premium\PremiumAlbum.cshtml" />
+    <Content Include="Views\Premium\Premiumbytetracker.cshtml" />
+    <Content Include="Views\Premium\PremiumByteyourArtPhotography.cshtml" />
+    <Content Include="Views\Premium\PremiumByteyourEbook.cshtml" />
+    <Content Include="Views\Premium\PremiumByteyourfiles.cshtml" />
+    <Content Include="Views\Premium\PremiumByteyourmusic.cshtml" />
+    <Content Include="Views\Premium\PremiumByteyourvideo.cshtml" />
+    <Content Include="Views\Premium\PremiumChannel.cshtml" />
+    <Content Include="Views\Premium\PremiumDataplan.cshtml" />
+    <Content Include="Views\Premium\PremiumEbookPrivew.cshtml" />
+    <Content Include="Views\Premium\PremiumErrorPage.cshtml" />
+    <Content Include="Views\Premium\PremiumFavoritesList.cshtml" />
+    <Content Include="Views\Premium\PremiumFilesPrivew.cshtml" />
+    <Content Include="Views\Premium\PremiumHistory.cshtml" />
+    <Content Include="Views\Premium\PremiumLinkPost.cshtml" />
+    <Content Include="Views\Premium\PremiumMessage.cshtml" />
+    <Content Include="Views\Premium\PremiumMusicPrivew.cshtml" />
+    <Content Include="Views\Premium\Premiumsingle.cshtml" />
+    <Content Include="Views\Premium\PremiumTools.cshtml" />
+    <Content Include="Views\Premium\PremiumVideoPrivew.cshtml" />
+    <Content Include="Views\Premium\Sendinglinktomarketingteam.cshtml" />
+    <Content Include="Views\Premium\ShowUserTools.cshtml" />
+    <Content Include="Views\Premium\Video.cshtml" />
+    <Content Include="Views\Premium\VideoPosting.cshtml" />
+    <Content Include="Views\Premium\WritersPad.cshtml" />
+    <Content Include="Views\SocialNetworks\Facebook.cshtml" />
+    <Content Include="Views\SocialNetworks\GallEbook.cshtml" />
+    <Content Include="Views\SocialNetworks\GallMusic.cshtml" />
+    <Content Include="Views\SocialNetworks\GAllphotography.cshtml" />
+    <Content Include="Views\SocialNetworks\GallVideo.cshtml" />
+    <Content Include="Views\Premium\ChannelPage.cshtml" />
+    <Content Include="Views\Premium\EditChannelPage.cshtml" />
+    <Content Include="Views\Premium\EbookPosting.cshtml" />
+    <Content Include="Views\Premium\MusicPosting.cshtml" />
+    <Content Include="Views\Premium\MarketTeam.cshtml" />
+    <Content Include="Views\SocialNetworks\SoundCloud.cshtml" />
+    <Content Include="Views\Premium\MusicPosting.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Premium\_PremiumPartial.cshtml" />
+    <Content Include="Views\Premium\EbookPosting.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\UserSponsored\Index.cshtml" />
+    <Content Include="Views\UserSponsored\SponsoredAlbum.cshtml" />
+    <Content Include="Views\UserSponsored\SponsoredByteYourArtAndPhotography.cshtml" />
+    <Content Include="Views\UserSponsored\SponsoredByteYourEbook.cshtml" />
+    <Content Include="Views\UserSponsored\SponsoredByteYourFile.cshtml" />
+    <Content Include="Views\UserSponsored\SponsoredByteYourMusic.cshtml" />
+    <Content Include="Views\UserSponsored\SponsoredByteYourVideo.cshtml" />
+    <Content Include="Views\UserSponsored\SponsoredSingle.cshtml" />
+    <Content Include="Views\UserSponsored\UserSponsoredFileUploadAdminView.cshtml" />
+    <Content Include="Views\AphidTise\AdvGenAds.cshtml" />
+    <Content Include="Views\FeedBack\Index.cshtml" />
+    <Content Include="Views\Basic\DataPlanLimit.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Basic\Favourites.cshtml" />
+    <Content Include="Views\Basic\GenralErrorPage.cshtml" />
+    <Content Include="Views\Byter\EbookPrivew.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Byter\FilePrivew.cshtml" />
+    <Content Include="Views\Byter\MusicPrivew.cshtml" />
+    <Content Include="Views\Byter\VideoPrivew.cshtml" />
+    <Content Include="Views\Byter\ArtAndPhotographyPrivew.cshtml" />
+    <Content Include="Views\Byter\PlaylistPrivew.cshtml" />
+    <Content Include="Views\Home\ArtAndPhotographyPrivew.cshtml" />
+    <Content Include="Views\Home\EbookPrivew.cshtml" />
+    <Content Include="Views\Home\FilesPrivew.cshtml" />
+    <Content Include="Views\Home\VideoPreview.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Premium\DataPlanLimit.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Premium\PendingClones.cshtml" />
+    <Content Include="Views\Accounts\ChatSupport.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Accounts\SystemRequirment.cshtml" />
+    <Content Include="Views\Chat\ChatSupport.cshtml" />
+    <Content Include="Views\Premium\Photos.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Basic\Photos.cshtml" />
+    <Content Include="Views\Premium\Pdf.cshtml" />
+    <Content Include="Views\Basic\Ebook.cshtml" />
+    <Content Include="Views\AphidTise\BeforePlayAdd.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\AphidTise\EnteringMatrixAdd.cshtml" />
+    <Content Include="Views\AphidTise\InsideMatrixSearchAdd.cshtml" />
+    <Content Include="Views\AphidTise\PaymentPage.cshtml" />
+    <Content Include="Views\AphidTise\SearchBarAdd.cshtml" />
+    <Content Include="Views\Basic\Pdf.cshtml" />
+    <Content Include="Views\Accounts\LoginWtihSocialSite.cshtml" />
+    <Content Include="Views\Accounts\ByterSocialSignUp.cshtml" />
+    <Content Include="Views\Accounts\LoginorSignUp.cshtml" />
+    <Content Include="Views\Accounts\SelectsSignup.cshtml" />
+    <Content Include="Views\Accounts\SessionExpire.cshtml" />
+    <Content Include="Views\AphidLabs\AphidLabsAccountInfo.cshtml" />
+    <Content Include="Views\AphidLabs\AphidLAbUpload.cshtml" />
+    <Content Include="Views\AphidLabs\ByteTracker.cshtml" />
+    <Content Include="Views\AphidLabs\DataPlan.cshtml" />
+    <Content Include="Views\AphidLabs\Index.cshtml" />
+    <Content Include="Views\AphidLabs\Message.cshtml" />
+    <Content Include="Views\AphidLabs\UploadSoftware.cshtml" />
+    <Content Include="Views\AphidLabs\UploadVideo.cshtml" />
+    <Content Include="Views\Accounts\IhaveAccountConfrm.cshtml" />
+    <Content Include="Views\Accounts\AphidRegister.cshtml" />
+    <Content Include="Views\Register\AphidLabRegister.cshtml" />
+    <Content Include="Views\AphidLabs\AphidLabChannel.cshtml" />
+    <Content Include="Views\AphidLabs\EditAphidLAbChannel.cshtml" />
+    <Content Include="Views\Accounts\DataPlan.cshtml" />
+    <Content Include="Views\Accounts\Guides.cshtml" />
+    <Content Include="Views\Premium\socialposting.cshtml" />
+    <Content Include="Views\Accounts\SignUpWithFacebook.cshtml" />
+    <Content Include="Views\Accounts\SignUpWithGoogle.cshtml" />
+    <Content Include="Views\Basic\_MessageInbox.cshtml" />
+    <Content Include="Views\Accounts\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Accounts\RegisterPosting.cshtml" />
+    <Content Include="Views\Accounts\Terms.cshtml" />
+    <Content Include="Views\Accounts\Wallpapers.cshtml" />
+    <Content Include="Views\Accounts\Culture.cshtml" />
+    <Content Include="Views\Accounts\Contact.cshtml" />
+    <Content Include="Views\Accounts\Pictures.cshtml" />
+    <Content Include="Views\Accounts\submityourimage.cshtml" />
+    <Content Include="Views\Basic\Byteryourmusicalbum.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Basic\Uploadmedia.cshtml" />
+    <Content Include="Views\SocialNetworks\FacebookPost.cshtml" />
+    <Content Include="Views\SocialNetworks\Success.cshtml" />
+    <Content Include="Views\Premium\_MessageInbox.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Basic Audio Files\" />
+    <Folder Include="OriginalVideo\" />
+    <Folder Include="pdffile\" />
+    <Folder Include="Uploaded Files\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AphidBytes.Accounts.Contracts\AphidBytes.Accounts.Contracts.csproj">
+      <Project>{0c44007e-f2cd-4a2c-873b-14b046f478d6}</Project>
+      <Name>AphidBytes.Accounts.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AphidBytes.Accounts.Processor\AphidBytes.Accounts.Processor.csproj">
+      <Project>{df8736f4-3821-4f8d-a1f3-bcf4d46db307}</Project>
+      <Name>AphidBytes.Accounts.Processor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AphidBytes.BLL\AphidBytes.BLL.csproj">
+      <Project>{9edd97a3-a567-4101-be8c-db0c2ff72d71}</Project>
+      <Name>AphidBytes.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AphidBytes.Core\AphidBytes.Core.csproj">
+      <Project>{06b74118-702d-432d-ac0c-e26d613f8662}</Project>
+      <Name>AphidBytes.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55517/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

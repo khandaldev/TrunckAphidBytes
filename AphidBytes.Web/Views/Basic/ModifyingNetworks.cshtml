@@ -1,0 +1,182 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+ 
+ 
+ 
+  
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="js/jquery.cycle.all.js"></script>
+
+
+ 
+
+ 
+<div class="socialsetupwrap">
+<div style="width:20%;float:left;">
+<div class="logosocila"><img src="/img/bphidbyte_sicon2.png"></div>
+<div class="tophedboxa"><a href="goBack();">Back</a></div>
+</div>
+
+<div class="mec-hed">
+<div class="mec-hed1">
+<div class="mec-hed2">
+<div id="slider2" class="text-sllider">
+<p>Video</p>
+<p>Ebook</p>
+<p>Photography</p>
+<p>Files</p>
+</div>
+<div id='next' class="mecprev_s"><img src="/img/prev_s.png"></div>
+
+<div class="mec-video" style="overflow:hidden;">
+<div id="slider3" class="img-sllider">
+<img src="/img/video-icone.png">
+<img src="/img/ebook-icone.png">
+<img src="/img/photo-icone.png">
+<img src="/img/file-icone.png">
+</div>
+</div>
+
+<div id='prev' class="mecnext_s"><img src="/img/next_s.png"></div>
+</div>
+</div>
+
+<div id="mecsllider">
+<div class="aphidbytecenter content scrollWidth" id="content_1">
+<div class="mecscroll">
+	<div id="slider1">
+	<div style="width:100%;height:600px; margin:auto; overflow:hidden;">
+   
+    <div class="social-nav">
+	<ul>
+	<li><div id="sociallimain-pic"> <img src="/img/mtv-li.png"> </div><a href="#">MTV</a> <div id="mec-close"> <img src="/img/dots-close.png"></div></li>
+	
+    <li><div id="sociallipic"> <img src="/img/vimeoicone.png"> </div><a href="#">Daily Motion</a> <div id="mec-close"> <img src="/img/dots-close.png"></div></li>
+	<div>
+    <li><div id="sociallipic"> <img src="/img/youticone.png"> </div><a href="#">YouTube</a> <div id="mec-close"> <img src="/img/dots-close.png"></div></li>
+	<li><div id="sociallipic"> <img src="/img/dailymotionicone.png"> </div><a href="#">Vimeo</a> <div id="mec-close"> <img src="/img/dots-close.png"></div></li>
+	<li><div id="sociallipic"> <img src="/img/micone.png"> </div><a href="#">MySpace</a> <div id="mec-close"> <img src="/img/dots-close.png"></div></li>
+	</ul>
+	</div>	
+    
+    
+    
+    </div>
+    
+    <div style="width:100%;   height:345px; margin:auto;">test2</div>
+    <div style="width:100%;  height:345px; margin:auto;">test3</div>
+    <div style="width:100%;  height:345px; margin:auto;">test4</div>
+	</div>
+
+
+</div>
+</div>
+</div>
+
+<div id="mec-footer">
+<div class="mec-footer-box">
+        <div class="mecbox-l">
+            <img src="/img/icone.png">
+        </div>
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/AddChannel"style="color:white;cursor:pointer">Add more sites from our database to your Channel Group</a></samp>
+        </div>
+         <div class="mecbox-l" style="clear: left;">
+            <img src="/img/toplogo.png" style="width: 55%;">
+        </div>
+        
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/ModifyExistingNetworks"style="color:white;cursor:pointer">Modify Existing Channels</a></samp>
+        </div>
+       <div class="mecbox-l" style="clear: left;">
+            <img src="/img/w-icone.png">
+        </div>
+        <div class="mecbox-rec">
+            <samp class="mectext-t" style="margin-top: 5px;"><a href="/SocialNetworks/AddNetworkToDb"style="color:white;cursor:pointer"> Request another site</a></samp>
+        </div>
+        <div class="mecbox-l" style="clear: left;">
+            <img src="/img/csocialnetwork.png">
+        </div>
+        <div class="mecbox-r">
+            <samp class="mectext-t"><a href="/SocialNetworks/Index" style="color:white;cursor:pointer">Connect Your Social Networks</a></samp>
+        </div>
+    </div>
+<div id="mec-button"><a href="#">Save Changes</a></div>
+</div>
+</div>
+
+<script language="javascript">
+$(document).ready(function(){
+
+	$('#slider1').cycle({
+		fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+		speed:  'slow', 
+   		timeout: 0,
+   		next:   '#next', 
+    	prev:   '#prev',
+    	pager:  '#thumb',
+    	 
+		pagerAnchorBuilder: function(idx, slide) { 
+        	return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>'; 
+    	}  
+	});
+	
+	$('#slider2').cycle({
+		fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+		speed:  'slow', 
+   		timeout: 0,
+   		next:   '#next', 
+    	prev:   '#prev',
+    	pager:  '#thumb',
+    	 
+		pagerAnchorBuilder: function(idx, slide) { 
+        	return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>'; 
+    	}  
+	});
+	
+	$('#slider3').cycle({
+		fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+		speed:  'slow', 
+   		timeout: 0,
+   		next:   '#next', 
+    	prev:   '#prev',
+    	pager:  '#thumb',
+    	 
+		pagerAnchorBuilder: function(idx, slide) { 
+        	return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>'; 
+    	}  
+	});
+
+
+});	
+</script> 
+ 
+ 
+ 
+  		 
+<script src="js/jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+    function goBack()
+    {
+        window.history.back();
+    }
+</script> 
+ 
+

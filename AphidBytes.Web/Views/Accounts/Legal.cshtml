@@ -1,0 +1,94 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+  
+<div class="header_aphidtise">
+    <div class="menunav" style="width:80%;">
+        <ul>
+            <li><a href="Services">Services</a></li>
+            <li><a href="LoginUser">Login</a></li>
+            <li><a href="#">The Gall</a></li>
+            <li><a href="#">Store</a></li>
+            <li><a href="AboutUsPage">About Us</a></li>
+            <li><a href="Support">Support</a></li>
+        </ul>
+    </div>
+    <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a> </div>
+</div>
+
+ 
+
+<div class="aphidtise_wrap">
+</div>
+<div class="about_headtext" style="cursor:pointer;"><p><span id="AboutUs"> About Us </span><span> > Legal</span></p></div>
+<div class="about_headbg">
+<div class="aphidbytecenter content scrollWidth" id="content_1" style="margin:auto; float:none; height:90%;">
+<div class="massage_index">
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="menunav_footer2">
+<ul>
+<li><a href="#">Navigation  </a></li>
+<li><a href="#">Menu    </a></li>
+<li><a href="#">Advertise   </a></li>
+<li><a href="#">Store     </a></li>
+<li><a href="#">Terms    </a></li>
+<li><a href="#">Privacy Policy </a></li>
+<li><a href="#">Sponsoring</a></li>
+</ul>
+</div>
+</div>
+
+<script src="jquery.mCustomScrollbar.js"></script> 
+<script>
+    (function($){
+
+				$("#browseBtns,#browseBtnsAdd").fadeTo('slow',.2);
+				$( ".browseInput" ).each(function( index ) {
+				 if (index > 3)
+				 $(this).remove();
+				});
+				$("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled',true);
+				
+        $(window).load(function(){
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+ </script> 
+ 
+<script language="javascript">
+    $(document).ready(function () {
+        $("#AboutUs").click(function () {
+            window.location.href = "/Accounts/AboutUsPage";
+        });
+
+	$('#about_slider_ab').cycle({
+		fx: 'scrollHorz', //'scrollLeft,scrollDown,scrollRight,scrollUp',blindX, blindY, blindZ, cover, curtainX, curtainY, fade, fadeZoom, growX, growY, none, scrollUp,scrollDown,scrollLeft,scrollRight,scrollHorz,scrollVert,shuffle,slideX,slideY,toss,turnUp,turnDown,turnLeft,turnRight,uncover,ipe ,zoom
+		speed:  'slow', 
+   		timeout: 0,
+   		next:   '#next', 
+    	prev:   '#prev',
+    	pager:  '#thumb',
+    	 
+		pagerAnchorBuilder: function(idx, slide) { 
+        	return '<li><a href="#"><img src="' + slide.src + '" width="60" height="60" /></a></li>'; 
+    	}  
+	});
+	
+
+
+});	
+</script>
+ 
+
+
+
+
+ 
+

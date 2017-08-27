@@ -1,0 +1,279 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.AdvertisementModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+
+
+<div class="aphidtise_wrap">
+</div>
+<div class="header_aphidtise">
+    <div id="logo">
+      <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png"></a>
+    </div>
+</div>
+<div class="about_headtext">
+    <p><a href="#">Back</a></p>
+</div>
+<div class="per_vad">
+    <samp><a href="#" id="preivewadd">Preview Ad</a></samp>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "postform", enctype = "multipart/form-data" }))
+{
+    <div class="about_headbg" style="background: none !important;">
+
+        <div class="w_main_imax">
+            <div>
+                <p id="uplo" style="cursor: pointer;">Upload</p>
+                @*<input type="file" id="fileup" style="display: none;" />*@
+                @Html.TextBoxFor(model => model.AdVideo, new { type = "file", form = "file name", id = "fileup", style = "display:none;" })
+                <p>
+                    <video id="vi_d" style="border-radius: 0;" autoplay="autoplay"></video>
+                </p>
+                <p>Enter Price (If Applicable): $ @Model.PriceToDisplay</p>
+                <p>
+                    <samp>
+                        <img src="/Images/cr_d_img.png" /></samp>@Model.CreditsID credits
+                </p>
+                <p style="color: #F3B801;">Video or Image</p>
+            </div>
+
+            <div>
+                <p id="titleinfo" style="cursor: pointer;">Edit</p>
+                <samp class="imax_tital"></samp>
+                <p id="tital">@Model.Title</p>
+                @Html.TextBoxFor(model => model.Title, new { id = "htm_tital", style = "display:none;", onChange = "F2()" })
+                <br />
+                <p id="info">@Model.AdInformation</p>
+                @Html.TextAreaFor(model => model.AdInformation, new { id = "htm_info", style = "display:none;", onChange = "F3()" })
+                <p>
+                    <samp>250 Characters</samp>
+                </p>
+            </div>
+
+            <div>
+
+                <p>Inside Matrix Search Engine Ad</p>
+                <p>
+                    <img src="/images/3d-images_4.png" />
+                </p>
+
+                <div class="imax_hand">
+                    <p id="pay" style="cursor: pointer;"><a>Proceed to payment and scheduling configuration</a></p>
+                    <input id="sub" type="submit" style="display:none;" />
+
+                    <p>
+                        <samp></samp>
+                    </p>
+                </div>
+
+                <div class="view_st_max" style="width: 33%;">
+                    <p><a href="" id="ad_website">View Site</a></p>
+                    <p style="height: 15px;"></p>
+                    <p id="hlink">@Model.AdHyperLinkUrl</p>
+                    @Html.TextBoxFor(model => model.AdHyperLinkUrl, new { id = "htm_hlink", style = "display:none;", onChange = "F1()" })
+                    <p id="edit_hlink" style="cursor: pointer;">Edit</p>
+
+                    @Html.TextBoxFor(model => model.AdVideo, new { style = "display:none;" })
+                    @Html.TextBoxFor(model => model.TrackingNumber, new { style = "display:none;" })
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+        <div class="menunav_footer2">
+            <ul style="background: none !important; clear: both;">
+                <li><a href="#">Navigation  </a></li>
+                <li><a href="#">Menu    </a></li>
+                <li><a href="#">Advertise   </a></li>
+                <li><a href="#">Store     </a></li>
+                <li><a href="#">Terms    </a></li>
+                <li><a href="#">Privacy Policy </a></li>
+                <li><a href="#">Sponsoring</a></li>
+            </ul>
+        </div>
+    </div>
+}
+<div id="toPopup" style="left: 2% !important; margin: auto !important; width: 96%; top: 7%; border: none; z-index: 999; opacity: 0.9; bottom: 4%;">
+    <div style="position: absolute; width: 20%;">
+        <img src="/img/hphidbytelogo.png" />
+    </div>
+    <div class="close"></div>
+    <samp class="out_close" style="margin-top: -2%;">Close to go back to previous screen</samp>
+
+    <span class="ecs_tooltip"></span>
+
+
+    <div id="popup_content">
+        <!--your content start-->
+
+        <div class="main_wrapper" style="width: 98% !important; margin-top: 13%;">
+            <samp style="height: 20px; width: 500px; margin: auto;">
+                <img src="/img/line_searchbox_top.png" /></samp>
+            <div class="logo"></div>
+            <input type="text" class="searchmain_popup" placeholder="Enter Title or Tracking Number" id="popsearch" />
+            <input type="button" value="SEARCH" id="searchbtnpop" class="searchbtn" />
+            <ul class="navlinks">
+                <li id="SearchMusic">MUSIC</li>
+                <li id="SeachVideo">VIDEOS</li>
+                <li id="SearchPhotography">PHOTOGRAPHY/ART</li>
+                <li id="SearchEbook">EBOOK</li>
+                <li id="SearchFiles">FILES</li>
+            </ul>
+
+        </div>
+
+        <div class="p1_click">
+            <div>
+                <video id="prev_vid" autoplay="autoplay" src="" style="border-radius: 0; margin-left: 4%; margin-top: 6%;">
+                    <source src="video.webm" type='video/webm; codecs="vorbis,vp8"'>
+                    <source src="video.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                    <source src="video.ogv" type='video/ogg; codecs="theora, vorbis"'>
+                    <!-- embed Flash here -->
+
+                    <p>Your browser does not support video; download the <a href="video.webm">WebM</a>, <a href="video.mp4">mp4</a> or <a href="video.ogg">Ogg</a> video for off-line viewing.</p>
+                </video>
+            </div>
+            <div style="margin-left: 6%; margin-top: 4%; width: 20%;">
+                <p style="text-align: left;">
+                    <samp id="ad_title"></samp>
+                </p>
+                <p id="ad_desc" style="text-align: left;"></p>
+            </div>
+
+            <div style="margin-top: 5%; width: 40%;">
+                <p><a href="" id="ad_website1">View SIte</a></p>
+                <p id="ad_creadits" style="padding-top: 10px;"></p>
+                <p style="color: #ffc000;">
+                    Take survey or Visit site to redeem credits
+                </p>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--your content end-->
+
+</div>
+<!--toPopup end-->
+
+<script>
+    
+    var vidpath = "";
+    $('#uplo').click(function () {
+        document.getElementById('fileup').click();
+    });
+
+    $('#titleinfo').click(function () {
+        $('#tital').hide();
+        $('#info').hide();
+        $('#titleinfo').hide();
+        $('#htm_tital').show();
+        $('#htm_info').show();
+    });
+    function F2() {
+        $('#tital').text($('#htm_tital').val());
+        $('#tital').show();
+        $('#htm_tital').hide();
+    }
+    function F3() {
+        $('#info').text($('#htm_info').val());
+        $('#info').show();
+        $('#titleinfo').show();
+        $('#htm_info').hide();
+    }
+
+    $('#fileup').fileupload({
+        dataType: 'json',
+        url: '/AphidTise/vidtodb',
+        autoUpload: true,
+        done: function (e, data) {
+            vidpath = data.result.name;
+            var video_pl = document.getElementById("vi_d");
+            video_pl.setAttribute("src", vidpath);
+            video_pl.addEventListener("load", function () {
+            }, true);
+            video_pl.play();
+
+
+        }
+
+    });
+
+    $('#edit_hlink').click(function () {
+        $('#hlink').hide();
+        $('#edit_hlink').hide();
+        $('#htm_hlink').show();
+
+    });
+    function F1() {
+        $('#hlink').text($('#htm_hlink').val());
+        var link = document.getElementById("ad_website");
+        link.href = "http://" + $('#htm_hlink').val();
+        var link1 = document.getElementById("ad_website1");
+        link1.href = "http://" + $('#htm_hlink').val();
+        $('#hlink').show();
+        $('#edit_hlink').show();
+        $('#htm_hlink').hide();
+    }
+
+
+    $(document).ready(function () {
+        vidpath = '@Model.AdVideo';
+        var video_pl = document.getElementById("vi_d");
+        video_pl.setAttribute("src", vidpath);
+        video_pl.addEventListener("load", function () {
+        }, true);
+        video_pl.play();
+        var link = document.getElementById("ad_website");
+        link.href = "http://" + '@Model.AdHyperLinkUrl';
+        
+        var link1 = document.getElementById("ad_website1");
+        link1.href = "http://" + '@Model.AdHyperLinkUrl';
+
+        $('#pay').click(function () {
+            document.forms["postform"].submit();
+            //$('#postform').submit();
+        });
+
+    });
+
+    $("#preivewadd").click(function () {
+        $("#toPopup").show();
+        var anee = document.getElementById("vi_d");
+        anee.pause();
+
+        var videopr = document.getElementById("prev_vid");
+        videopr.setAttribute("src", vidpath);
+        videopr.addEventListener("load", function () {
+        }, true);
+        videopr.play();
+    })
+    $("#closeicon").show();
+    $(".close").click(function (event) {
+        event.preventDefault();
+        $(toPopup).hide();
+        var videopr = document.getElementById("prev_vid");
+        videopr.pause();
+    });
+
+    $(document).ready(function () {
+        $(window).keydown(function (event) {
+            if ((event.keyCode == 13)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    });
+
+</script>

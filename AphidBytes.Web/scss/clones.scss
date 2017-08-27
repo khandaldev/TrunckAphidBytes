@@ -1,0 +1,30 @@
+﻿@import "partials/mixins";
+@import "partials/variables";
+
+.media-type { 
+    text-align: center; 
+
+    img { 
+        height: 98px; 
+        display: table; 
+        margin-left: auto; 
+        margin-right: auto;
+    }
+
+    p { 
+        color: $dark-green;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    &:hover, &:focus, &.selected { 
+        p { 
+            color: $dark-green;
+            text-decoration: none;
+        }
+    }
+}
+
+.btn-music { 
+    width: 300px;
+}

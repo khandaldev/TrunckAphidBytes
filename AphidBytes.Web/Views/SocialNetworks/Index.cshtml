@@ -1,0 +1,635 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+@model AphidBytes.Accounts.Contracts.Model.SocialNetworkModel
+
+
+<div class="socialwrap">
+    <div class="tophed">
+        <div class="tophedboxa">
+         <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/img/bphidbyte_sicon.png"></a>
+            <p onclick="goBack()" style="color: #FFC000; cursor: pointer; font-size: 15px">Back</p>
+        </div>
+        <div class="tophedboxb">
+            <img src="/img/iboldicone.png">
+        </div>
+        <div class="tophedboxc">
+            <img src="/img/csocialnetwork.png">
+        </div>
+        <div class="tophedboxd">Connect Your Social Networks</div>
+    </div>
+    @if (ViewBag.ResultIndex==null)
+    {
+    <div class="tohead2" id="remclone"><a href="#"><span id="genclone">Generate Clones</span><span> > Connect Your Social Networks  </span></a></div>
+    }
+
+    <ul id="horiz_container_outer">
+        <li id="horiz_container_inner">
+            <ul id="horiz_container">
+
+                <div class="social-sidebar">
+                    <div class="top-logo">
+                        <img src="/img/toplogo.png" onclick="pop()">
+                    </div>
+                    <div style="border-right: 1px solid#98b954; float: left; border-right-style: dashed;">
+                        <div class="channel-tex">
+                            <samp class="chtexbox">Link Channels</samp>
+                        </div>
+                        <div style="float: right; width: 45px;">
+                            <a href="#" id="new1">
+                                <img src="/img/next_b.png"></a>
+                        </div>
+                        <div id="new" style="height: 300px; overflow: hidden; margin-top: 45px;">
+                            @foreach (var item in ViewBag.Status)
+                            {
+                                if ((item.category == "Facebook")&&(item.CurrentStatusSocial=="false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/ficone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Facebook</samp>
+                                    </div>
+                                    @if ((Session["fb_status"] != null) || (TempData["fb_back"] != null))
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">
+                                                <img src="/img/right-icone.png"></samp>
+                                        </div>
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Unlink", "Fb_Unlink", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                    else
+                                    {        
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Setup", "Facebook", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+
+                                </div>
+                                }
+                                if ((item.category == "Twitter") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/ticone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Twitter</samp>
+                                    </div>
+                                    @if ((Session["tw_status"] != null) || (TempData["twdata"] != null))
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">
+                                                <img src="/img/right-icone.png"></samp>
+                                        </div>
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Unlink", "Twitter_Unlink", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Setup", "Twitter_link", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+
+                                </div>
+                                }
+                                if ((item.category == "LinkedLin") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/iicone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">LinkedIn</samp>
+                                    </div>
+                                    @if ((Session["link_status"] != null) || (TempData["link_back"] != null))
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">
+                                                <img src="/img/right-icone.png"></samp>
+                                        </div>
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Unlink", "Link_Unlink", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Setup", "LinkedLin", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                </div>
+                                }
+                                if ((item.category == "GooglePlus")&&(item.CurrentStatusSocial=="false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/gicone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Google&nbsp;Plus</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Setup</samp>
+                                    </div>
+                                </div>
+                                }
+                                }
+                                <div style="float: right; width: 45px; margin-top: -20px">
+                                    <a href="#" id="new2">
+                                        <img src="/img/prev_b.png"></a>
+                                </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="social-sidebar">
+                    <div class="top-logo">
+                       <img src="/img/toplogo.png" onclick="pop()">
+                    </div>
+                    <div style="border-right: 1px solid#98b954; float: left; border-right-style: dashed;">
+                        <div class="channel-tex">
+                            <samp class="chtexbox">Music Channels</samp>
+                        </div>
+                        <div style="float: right; width: 45px;">
+                            <a href="#" id="new6">
+                                <img src="/img/next_b.png"></a>
+                        </div>
+                        <div id="new4" style="height: 300px; overflow: hidden; margin-top: 45px; margin-bottom: 0px;">
+                            @foreach (var item in ViewBag.Status)
+                            {
+                                if ((item.category == "MySpace") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/micone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">MySpace</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">
+                                            <img src="/img/right-icone.png"></samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="textunlink">Unlink</samp>
+                                    </div>
+                                </div>
+                                }
+                                if ((item.category == "Reverbnation") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpid">
+                                        <img src="/img/sicone.png" style="width: 50px;">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Reverbnation</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">
+                                            <img src="/img/right-icone.png"></samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Setup</samp>
+                                    </div>
+                                </div>
+                                }
+                                if ((item.category == "SoundCloud") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/suicone.png" style="width: 46px;">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Soundcloud</samp>
+                                    </div>
+                                    @if ((Session["sound_status"] != null) || (TempData["soundcloud"] != null))
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">
+                                                <img src="/img/right-icone.png"></samp>
+                                        </div>
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Unlink", "SoundCloud_Unlink", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("Setup", "SoundCloud", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+
+                                </div>
+                                }
+                                if ((item.category == "SoundClick") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/scicone.png" style="width: 145px; height: auto; margin-top: -17px;">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta"></samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">SoundClick</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Setup</samp>
+                                    </div>
+                                </div>
+                                }
+                            }
+                        </div>
+                        <div style="float: right; width: 45px; margin-top: -20px;">
+                            <a href="#" id="new5">
+                                <img src="/img/prev_b.png"></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="social-sidebar">
+                    <div class="top-logo">
+                        <img src="/img/toplogo.png" onclick="pop()">
+                    </div>
+                    <div style="border-right: 1px solid#98b954; float: left; border-right-style: dashed;">
+                        <div class="channel-tex">
+                            <samp class="chtexbox">Videos Channels</samp>
+                        </div>
+                        <div style="float: right; width: 45px;">
+                            <a href="#" id="newb">
+                                <img src="/img/next_b.png"></a>
+                        </div>
+                        <div id="newa6" style="height: 300px; overflow: hidden; margin-top: 45px; margin-bottom: 0px;">
+                            @foreach (var item in ViewBag.Status)
+                            {
+                                if ((item.category == "YouTube") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/youticone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">YouTube</samp>
+                                    </div>
+                                    @if ((Session["youtube_status"] != null) || (TempData["youtubedata"] != null))
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">
+                                                <img src="/img/right-icone.png"></samp>
+                                        </div>
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Unlink", "YouTube_Unlink", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                    else
+                                    {
+
+                                        //<div class="grid-box"><samp class="gridtexta">@Html.ActionLink("Setup","YouTube_link","SocialNetworks")</samp></div>
+                                        <div class="grid-box">
+                                            <samp class="gridtexta"><a href="#" onclick="Youtube()" class="topopup">Setup</a></samp>
+                                        </div>
+                                    }
+
+                                </div>
+                                }
+                                if ((item.category == "DailyMotion") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/vimeoicone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Dailymotion</samp>
+                                    </div>
+                                    @if ((Session["daily_status"] != null) || (TempData["daily_back"] != null))
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">
+                                                <img src="/img/right-icone.png"></samp>
+                                        </div>
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Unlink", "Dailymotion_Unlink", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                    else
+                                    {
+          
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("Setup", "DailyMotion_link", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                </div>
+                                }
+                                if ((item.category == "Vimeo") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/dailymotionicone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Vimeo</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta"></samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Setup</samp>
+                                    </div>
+                                </div>
+                                }
+                            }
+                        </div>
+                        <div style="float: right; width: 45px; margin-top: -20px;">
+                            <a href="#" id="newa">
+                                <img src="/img/prev_b.png"></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="social-sidebar">
+                    <div class="top-logo">
+                       <img src="/img/toplogo.png" onclick="pop()">
+                    </div>
+                    <div style="border-right: 1px solid#98b954; float: left; border-right-style: dashed;">
+                        <div class="channel-tex">
+                            <samp class="chtexbox">Photography/Art Channels</samp>
+                        </div>
+                        <div style="float: right; width: 45px;">
+                            <a href="#" id="newc1">
+                                <img src="/img/next_b.png"></a>
+                        </div>
+                        <div id="newb6" style="height: 300px; overflow: hidden; margin-top: 45px; margin-bottom: 0px;">
+                            @foreach (var item in ViewBag.Status)
+                            {
+                                if ((item.category == "Instagram") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/cmicone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Instagram</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">
+                                            <img src="/img/right-icone.png"></samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="textunlink">Unlink</samp>
+                                    </div>
+                                </div>
+                                }
+                                if ((item.category == "DeviantArt") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/devianicone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">DeviantArt</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">
+                                            <img src="/img/right-icone.png"></samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="textunlink">Unlink</samp>
+                                    </div>
+                                </div>
+                                }
+                                if ((item.category == "Flicker") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/flickricone.png">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Flicker</samp>
+                                    </div>
+                                    @if ((Session["flick_status"] != null) || (TempData["flick_back"] != null))
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">
+                                                <img src="/img/right-icone.png"></samp>
+                                        </div>
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Unlink", "Flicker_Unlink", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                    else
+                                    {
+          
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Setup", "Flicker_link", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+
+                                </div>
+                                }
+                                if ((item.category == "Fotki") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/fokiicone.png" style="width: 70px; height: auto;">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta"></samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Setup</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta"></samp>
+                                    </div>
+                                </div>
+                                }
+                            }
+                        </div>
+                        <div style="float: right; width: 45px; margin-top: -20px;">
+                            <a href="#" id="newd1">
+                                <img src="/img/prev_b.png"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-sidebar">
+                    <div class="top-logo">
+                       <img src="/img/toplogo.png" onclick="pop()">
+                    </div>
+                    <div style="border-right: 1px solid#98b954; float: left; border-right-style: dashed;">
+                        <div class="channel-tex">
+                            <samp class="chtexbox">EBook Channels</samp>
+                        </div>
+                        <div style="float: right; width: 45px;">
+                            <a href="#" id="newf1">
+                                <img src="/img/next_b.png"></a>
+                        </div>
+                        <div id="newc6" style="height: 300px; overflow: hidden; margin-top: 45px; margin-bottom: 0px;">
+                            @foreach (var item in ViewBag.Status)
+                            {
+                                if ((item.category == "FreeBook") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/freebookicone.png" style="width: 70px; height: auto;">
+                                    </div>
+                                    <div class="grid-box" style="margin: 17px 1px 3px 34px;">
+                                        <samp class="gridtexta">FreeBook</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Spot</samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Setup</samp>
+                                    </div>
+                                </div>
+                                }
+                                if ((item.category == "Scribd") && (item.CurrentStatusSocial == "false"))
+                                {
+                                <div style="height: 60px; margin-bottom: 15px;">
+                                    <div class="grid-boxpic">
+                                        <img src="/img/scribdicone.png" style="width: 70px; height: auto;">
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta"></samp>
+                                    </div>
+                                    <div class="grid-box">
+                                        <samp class="gridtexta">Scribd</samp>
+                                    </div>
+                                    @if ((Session["scribd_status"] != null) || (TempData["scribddata"] != null))
+                                    {
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">
+                                                <img src="/img/right-icone.png"></samp>
+                                        </div>
+                                        <div class="grid-box">
+                                            <samp class="gridtexta">@Html.ActionLink("Unlink", "Scribd_unlink", "SocialNetworks")</samp>
+                                        </div>
+                                    }
+                                    else
+                                    {          
+               
+                                        <div class="grid-box">
+                                            <samp class="gridtexta"><a href="#" class="topopup">Setup</a></samp>
+                                        </div>
+                                    }
+
+                                </div>
+                                }
+                            }
+                        </div>
+                        <div style="float: right; width: 45px; margin-top: -20px;">
+                            <a href="#" id="newe1">
+                                <img src="/img/prev_b.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div id="scrollbar">
+    <a id="left_scroll" class="mouseover_left" href="#"></a>
+    <div id="track">
+        <div id="dragBar"></div>
+    </div>
+    <a id="right_scroll" class="mouseover_right" href="#"></a>
+
+</div>
+<div id="backgroundPopup"></div>
+
+<div id="toPopup" style="  height: 372px;width: 65%;">
+
+    <div class="close"></div>
+    <span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+    <div id="popup_content">
+        <!--your content start-->
+        <div class="title">Subscribe now and try Scribd for free</div>
+        <div class="g_wrap_main">
+            <div class="g_title">
+                <p id="title" style="margin-left: -18%;width: 152%;">Log in to Scribd</p>
+            </div>
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(false)
+                <div class="g_content">
+
+                    <div class="g_content_2">
+                        <div class="facebook_container">
+                            <span class="scribd_fb_button">
+                                <span class="icon icon-facebook">
+                                    <img src="/img/g_social_fb.png" class="ic_img"></span>
+                                <span class="inner">Login with Facebook</span>
+                            </span>
+                        </div>
+
+                        <div class="g_log_f" style="padding-top: 30px;">
+                            <div>
+                                <samp class="samp_text" style="margin-bottom: 10px;width:10%">Email address</samp>
+                                @Html.EditorFor(model => model.UserName)
+                                @Html.ValidationMessageFor(model => model.UserName, null)
+                            </div>
+
+                            <div>
+                                <samp class="samp_text">Password</samp>
+                                @Html.PasswordFor(model => model.Password)
+                                @Html.ValidationMessageFor(model => model.Password, null)
+                            </div>
+
+                            <div class="button_container">
+                                <input type="submit" value="Login" id="tube" formaction="Scribd_link" style="margin-right: -101%; margin-top: -34%; width: 92%; height: 42px; color: black; font-size: 129%;" />                
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+    <!--your content end-->
+
+</div>
+<!--toPopup end-->
+<script>
+    var UserId = '@AphidSession.Current.AuthenticatedUser?.Identity?.UserId ';
+    $(document).ready(function () {
+        $("#genclone").click(function () {
+            //history.back();
+            $.post('/SocialNetworks/GenCLone', {}, function () {
+            }).done(function(data)
+            {
+                if (data == "Basic Account") {
+                    window.location.href = "/Basic/GenerateClones";
+
+                }
+                else
+                {
+                    window.location.href = "/Premium/GenerateClones"
+                }
+               
+            });
+        });
+    });
+
+    function Youtube()
+    {
+        $('.title').hide();
+        $('#tube').attr('formaction', 'YouTube_link');
+        $('#title').text("Login to YouTube Account");
+    }
+    function goBack() {
+       
+        window.history.back();
+    }
+    function pop() {
+        location.href = "/SocialNetworks/ModifyExistingNetworks";
+    }
+</script>

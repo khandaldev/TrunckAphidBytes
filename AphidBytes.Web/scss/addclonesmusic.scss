@@ -1,0 +1,87 @@
+$color_1: #605E5E;
+
+.main_content {
+	.right_content {
+		padding-left: 0px;
+		padding-top: 40px;
+	}
+}
+.addclonesmusic_list {
+	.search_heading {
+		padding-bottom: 40px;
+		h4 {
+			display: inline-block;
+			font-size: 13px;
+			color: $color_1;
+			font-weight: 600;
+			padding-top: 10px;
+			text-align: center;
+			width: 48%;
+		}
+		.search_box {
+			float: right;
+			width: 50%;
+			.form-control {
+				width: 80%;
+				float: left;
+			}
+			a {
+				float: left;
+				margin-left: 10px;
+			}
+		}
+	}
+	.addclonesmusic_list_tile {
+		width: 500px;
+		margin-top: 40px;
+		.addclonesmusic_box {
+			background: #f0f0ee;
+			width: 28%;
+			margin-left: 5%;
+			float: left;
+			padding: 45px 15px 25px 15px;
+			text-align: center;
+			border: 1px solid #adadad;
+			margin-bottom: 40px;
+			border-radius: 10px;
+			position: relative;
+			height: 120px;
+			&:before {
+				position: absolute;
+				content: '';
+				width: 1px;
+				height: 35px;
+				background: #000000;
+				top: -35px;
+				left: 50%;
+			}
+			&:after {
+				content: '';
+				width: 30px;
+				height: 30px;
+				border: 1px solid #000;
+				display: block;
+				border-radius: 50px;
+				top: 0;
+				left: 50%;
+				margin-left: -15px;
+				position: absolute;
+			}
+			img {
+				max-width: 100%;
+			}
+			.check_icon {
+				position: absolute;
+				width: 45px;
+				height: 46px;
+				right: 0px;
+				margin-right: -22px;
+				margin-top: -23px;
+				top: 0px;
+			}
+		}
+		.btn_wrapper {
+			text-align: center;
+		}
+	}
+}

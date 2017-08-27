@@ -1,0 +1,883 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.BasicGenerateCloneModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+}
+
+@*YesNo PopUP*@
+<div id="show_pop" style="display:none;">
+<div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+<div class="bg_yes_no">
+<div><p>Upload in Progress..</p></div>
+</div>
+</div>
+</div>
+@*YesNo PopUP*@
+
+<div id="button-bg1"  class="hidden" style="display:none">
+ 
+    <div class="errormsg">
+Invalid File</div>
+    <div id="button-c1"><img src="/img/button_bgw.png" /></div>
+
+</div>
+
+<div id="button-bg2"  class="hidden" style="display:none">
+ 
+    <div class="errormsg" >please select Image
+</div>
+    <div id="button-c2"><img src="/img/button_bgw.png" /></div>
+
+</div>
+<div id="button-bg3" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Captcha Do no match
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" /></div>
+
+</div>
+
+<div id="button-bg4" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Maximum Zoom
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" /></div>
+
+</div>
+<div id="confmBox" class="confirm_send_mail_div sendme_con" style="display:none;">
+    
+    <div>
+        <h5 class="sendme_con_h5">
+         Confirmation:<img onclick="close_confmBox_popup()" class="cancel_delete-link" style="cursor: pointer; float: right; margin-top: 7px;" src="/Images/close.png">
+        </h5>
+        <p style="margin-top:8%;">
+         <strong>Are you Sure want to Upgrade ?</strong> <span id="Ncontacts">
+</span>
+        </p>
+       
+
+        <div class="btn-group sendme_con_groupbtn">
+         <button id="confrm_yes"  class="btn add  sendme_con_yes" onclick="UpgradeTOPremium()">Yes</button>
+         <div class="btn cancel sendme_con_no" onclick="close_confmBox_popup()" style="cursor: pointer;">No</div>
+        </div>
+
+       </div>
+      </div>
+<div id="yesno" style="display:none;">
+<div class="bg_othr_xa" style="display: block; margin-left: 497px; margin-top: 227px; position: absolute; z-index: 100;">
+<div class="bg_yes_no">
+<div><p>Are you sure to Upgrade?</p></div>
+<div><p id="yes"><a href="#">Yes</a></p><p id="no"><a href="#">No</a></p></div>
+    </div>
+</div>
+</div>
+
+<div id="button-bg5" class="hidden" style="display: none">
+
+    <div class="errormsg">
+        Error Occured Try Again
+    </div>
+    <div id="button-c3">
+        <img src="/img/button_bgw.png" /></div>
+
+</div>
+
+<div style="display:none;" id="upgradebox">
+<div class="bg_othr_box">
+<div class="bg_othr_box_1">
+<P>Account Upgraded Successfully Completed</P>
+<p></p>
+<p style="margin-top: 22px; margin-left: 137px;"><img src="~/Images/right-icone.png"></p>
+
+<P style="margin-top: 88px;"><a href="~/Accounts/Logout">OK</a></P>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div>
+    @* <div>
+     <a id="popup-close" href="" class="button"><img src="~/Images/closebotton.png" onclick="CloseThis();" /> </a>
+            </div>*@
+    <div id="Popup1" style="display: none; /*margin-left: -44%; margin-top: -12%; margin-right: 7%; background: url(/images/aphidtisebg.png); overflow-y: scroll; */ height: 650px;">
+
+        <div>
+            <div id="progressbar"></div>
+        </div>
+        <div id="result"></div>
+        <br />
+
+
+        @*<a id="popup-close" href="" class="button">*@
+        @*  <img id="popup-close" class="button" src="~/Images/closebotton.png" onclick="CloseThis();" />*@
+        <div class="close" id="ImgClose">
+            <p id="popup1-close" class="close">
+              @*  <img src="/Images/closebotton.png" onclick="CloseThis();" />*@
+
+            </p>
+        </div>
+        @* </a>*@
+        <p>
+            @*<img src="" id="image-placeholder" width="200px" height="200px"  />*@
+            <div class="popbyter-mianz">
+                <div class="popbyter-miansub">
+                    <div class="popbyter-subleft">
+                       <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/bphidbyte_sicon.png"></a><br />
+                        <p><a href="goback();">Back</a></p>
+
+                    </div>
+
+                    <div class="popbyter-subright">
+                        <p>Processing 72%</p>
+                      <p>
+                            <img id="progressbar" src="/Images/ajax-loader-11.gif"/>
+ </p>
+                        <p>PhotoGraphy/Art Privew </p>
+                    </div>
+
+                    <div class="popbyter-sub1">
+                        <div class="popbyter-sub1left" style ="position:relative; left: 0; top: 0">
+                            @*<div>
+                                <audio id="player" src="" />
+                            </div>*@
+                             <img src="" id="imgpre" style="display: block;position:relative; top: 0; left: 0; margin-bottom: 15px; height: 300px; width: 450px" />
+                            <img src=""id ="waveimg" style="display:block;position:absolute;top: 48px; left: 38px;margin-bottom :25px; height: 200px; width: 350px"/>
+                            </div>
+                            <div style="float:left; top:65px; position:relative;">
+                            <input type="button" value="Zoomin" onclick="zoomin()"/ class="zom_img">
+                            <input type="button" value="Zoomout" onclick="zoomout()"/ class="zom_img2">
+                            </div>
+                       
+                       @* <p>Interruption File:</p>*@
+
+                        @*<dl id="samplebyter" class="dropdownbyter" style="margin: 5px 0 5px 5px; width: 210px;">*@
+
+                            @*<dt><a id="basicbyter"><span id="DefaultText">Default AphidByte</span></a></dt>*@
+                           @* <dd>*@
+                              @*  <ul id="byterclick">*@
+                                    @*<li><a>Default AphidByte</a></li>
+                                        @foreach (var item in ViewBag.AudioFiles)
+                                        {
+                                            <li><a>@item.Value</a></li>  
+                                        }*@
+                               @* </ul>*@
+                            @*</dd>*@
+                       @* </dl>*@
+
+                        <p style="font-size:14px; color:white; padding: 20px">Interruption  Picture:</p>
+                        <dl id="samplebyter" class="dropdownbyter" style="position:relative; float:right; right:0px; left:0px;">
+                            
+                            <dt><a id="basicbyterone"><span id="text1">Default</span></a></dt>
+                            <dd>
+                                <ul id="byterclick2">
+                                    <li><a>Default </a></li>
+                                    <li><a>WAtermark1</a></li>
+                                    @*<li><a>Beginning of File</a></li>
+                                        <li><a>Ending of File</a></li>*@
+                                </ul>
+                            </dd>
+                        </dl>
+
+
+
+                    </div>
+                </div>
+                  <div class="popbyter-footer1left"style ="float:right">
+
+                        @* <p class="byter-preview"><a href="#">Preview</a></p>*@
+                        <p class="byter-continue"id="Popupcontinue" ><a href="#">Continue </a></p>
+                    </div>
+                <div class="popbyter-footer1">
+                    <div class="popbyter-footer1left">
+                        @*<p style="font-size: 35px; text-align: center; padding: 30px;">“Song A”</p>*@
+                        <p style="float: right; width: 10px;">
+                            @*  <img src="/images/indicates-bg.png">
+                            </p>
+                            <p style="margin: 12px 12px 7px 34px;">Indicates Interruption Portion</p>*@
+                    </div>
+                    <div class="popbyter-footer1left">
+                        @*<p id="popuptext">
+                                Default, the music streams
+ and the audio interruption file interjects in the middle of song. The music resumes but not from the point in which it left off. The audio interruption replaces  the audio in the section in which it is placed.
+                            </p>*@
+
+                    </div>
+                  
+                </div>
+            </div>
+    </div>
+    </p>
+</div>
+</div>
+<div class="aphidtise_wrap">
+
+    <div class="logid">
+
+        <div class="logid_out">
+            <ul>
+                <li><a href="#">@{ var username = AphidBytes.Web.Session_Helper.AphidSession.Current.AuthenticatedUser.Identity.Username; } @username</a></li>
+                <li><a href="~/Accounts/Logout">Logout</a></li>
+            </ul>
+
+            <div class="profilebg">
+                <div class="migprofile">
+                    <img src="@Url.Action("Overview", "Basic")" height="100px" />
+
+                </div>
+                <div class="profiletext-ct-info">
+                    <img src="/images/clone-pa.png">
+                    Basic Account
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+@using (Html.BeginForm("UpdatePhotos", "Basic", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="header_aphidtise">
+        <div id="logo">
+         <a href="@Url.Action("Index","Home")" style="cursor:pointer;"><img src="/images/hphidbytelogo.png" style="margin-top: -35px;"></a>
+        </div>
+        <div class="processingbyter">
+            <div class="processingbyter-head">
+                <div class="processingbyterleft">
+                    <p id="progresstext"></p>
+                <p class="progressbar" role="progressbar" style="width: 0%"/>
+                </div>
+                <div class="processingbyterright">
+                    <p>
+                        <img src="/images/choose-existing.png">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="headertab_aphidtise">
+            <div class="aphidbyteleft">
+
+                <ul class="aphidbytelist-basic">
+                    <li><a href="BasicAccountInfo">Account Info</a></li>
+                    <li></li>
+                    <li><a href="Uploadmedia">Upload</a></li>
+                    <li>
+                        <img src="/images/right_line.png" height="2"></li>
+                    <li><a href="Message">Messages</a></li>
+                     @if (Model.NewCount != "0")
+                     {
+                  <p class="in_c_text_4">@Model.NewCount</p>                      }
+                    <li></li>
+                    <li><a href="bytetracker">Byte Tracker</a></li>
+                    <li></li>
+                    <li><a href="History">History</a></li>
+                    <li></li>
+                    <li><a href="Playlist">Playlists</a></li>
+                    <li></li>
+                    <li><a href="Dataplan">Data Plan</a></li>
+                    <li></li>
+                </ul>
+
+                <div class="dsbox-basic">
+                    <p>Dashboard<img src="/images/das-left.png"></p>
+                </div>
+                <p class="dstext-basic">
+                    UPGRADE to
+                    <samp id="upgradePremium" style="cursor:pointer;">Premium</samp>
+                </p>
+
+                <div class="info-footer-social"></div>
+                <div class="aphidbyteleftright-basic"></div>
+            </div>
+            <p class="info-p" style="cursor:pointer;"><span id="gen">Upload</span><span id="byteyou">> Byte Your Art/Photography</span></p>
+            <div style="height: 600px; width: 100%;">
+                <div class="from_aphid" style="width: 65%;">
+                    <ul>
+                          <li style="display: none;">
+
+                                <label for="Company Logo">Ebook Title: </label>
+                                @*<input type="text" name="email" id="email" size="30" />*@
+                                @Html.EditorFor(model => model.TrackingNumber)
+                            </li>
+                        <li style="display: none;">
+
+                                <label for="Company Logo">Ebook Title: </label>
+                                @*<input type="text" name="email" id="email" size="30" />*@
+                                @Html.EditorFor(model => model.CloneID)
+                            </li>
+                         <li style="display: none;">
+
+                                <label for="Company Logo">Ebook Title: </label>
+                                @*<input type="text" name="email" id="email" size="30" />*@
+                                @Html.EditorFor(model => model.UploadImagePath)
+                            </li>
+                         <li style="display: none;">
+
+                                <label for="Company Logo">Ebook Title: </label>
+                                @*<input type="text" name="email" id="email" size="30" />*@
+                                @Html.EditorFor(model => model.MatrixImageBytePath)
+                            </li>
+                        <li style="display: none;">
+
+                                <label for="Company Logo">Ebook Title: </label>
+                                @*<input type="text" name="email" id="email" size="30" />*@
+                                @Html.EditorFor(model => model.TotalLength)
+                            </li>
+
+                        <li>
+                            <label for="Company Logo">Art/Photo Title:</label>
+                            @*<input type="text" name="email" id="email" size="30" />*@
+                            @Html.EditorFor(model => model.Title)
+                        </li>
+                        <li>
+                            <label for="psw">Tags: </label>
+                            @Html.EditorFor(model => model.Tags)
+                            @*<input type="text" name="psw" id="psw" size="30" />*@
+                            <label for="Tags">(Automatically Populates)</label>
+
+                        </li>
+
+                        <li>
+                            <label for="Confirm Password">Artist Name:</label>
+                            @*<input name="email" type="text" id="email" value="Artist Name cannot be modified" size="30" />*@
+                             @Html.TextBoxFor(model => model.ArtistName, new { Value = username, @readonly = "readonly" })
+                        </li>
+
+
+                        <li>
+                            <label for="Last Name">Upload File:</label>
+                            @*<input type="file" form="file name">*@
+                            @Html.TextBoxFor(model => model.Image, new { type = "file", accept = "image/*", form = "file name" })
+                             @Html.TextBoxFor(model=>model.shortcatpath, new { style = "margin-left: -22%;width: 19%;", id = "auf" , @readonly = "readonly"})
+                            <label for="Tags" style="text-align: center;">( .jpg or .png files only )</label>
+                        </li>
+
+                        <li>
+                            <label for="Email Address">Upload Matrix Image:</label>
+                            @*<input type="file" form="file name">*@
+                            @Html.TextBoxFor(model => model.MatrixImage, new { type = "file", accept = "image/*", form = "file name" })
+                             @Html.TextBoxFor(model=>model.shortimagepath, new { style = "margin-left: -22%;width: 19%;", id = "vuf", @readonly = "readonly" })
+                            
+                            <label for="Tags">( .jpg or .png files only ) </label>
+                        </li>
+
+                        <li>
+                            <label for="Date of Birth">Composers:</label>
+                            @*<input type="text" name="email" id="email" size="30" />*@
+                            @Html.EditorFor(model => model.Composer)
+                        </li>
+
+
+                        <li>
+                            <label for="Company Logo">Select Interruption File:</label>
+                        </li>
+                        @Html.DropDownListFor(model => model.SelectedIntFile, new List<SelectListItem> 
+                        {
+                            new SelectListItem{Text="Default"},
+                            new SelectListItem{Text="myfile1"}
+                             
+                        }
+                        )
+                       
+                        <li>
+
+                            <label for="Company Logo">Watermark Matrix Image?:</label>
+                        </li>
+                        @Html.DropDownListFor(model => model.WatermarkMatrixImageText, new List<SelectListItem> {
+new SelectListItem{Text="Yes"},
+new SelectListItem{Text="No"}
+})
+                        @*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbyterone"><span>Constant Banner Display</span></a></dt>
+        <dd>
+            <ul id="byterclick2">
+                <li><a>Yes</a></li>
+                <li><a>NO</a></li>
+          
+               
+            </ul>
+        </dd>
+    </dl>*@
+                        <li>
+
+
+
+
+                        <label for="Company Logo">Available for Download:</label>
+                        </li>
+                        @Html.DropDownListFor(model => model.AvailableDownload, new List<SelectListItem> {
+new SelectListItem{Text="Yes"},
+new SelectListItem{Text="No"}
+})
+                        @*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbytertwo"><span>Please Select</span></a></dt>
+        <dd>
+            <ul id="byterclick3">
+                <li><a>Yes</a></li>
+                <li><a>No</a></li>
+               </ul>
+        </dd>
+    </dl>*@
+                        <li>
+                            <label for="Company Logo">Explicit Content?:</label>
+                        </li>
+                        @Html.DropDownListFor(model => model.ExplicitContent, new List<SelectListItem> {
+new SelectListItem{Text="Yes"},
+new SelectListItem{Text="No"}
+})
+                        @*<dl id="samplebyter" class="dropdownbyter" style=" margin: -10px 0 18px 195px; width: 210px;">
+      <dt><a id="basicbyterfour"><span>Please Select</span></a></dt>
+        <dd>
+            <ul id="byterclick4">
+               <li><a>Yes</a></li>
+               <li><a>No</a></li>
+            </ul>
+        </dd>
+    </dl>*@
+
+                        <li>
+                            <label for="Company Logo">Enter Captcha Code:</label>
+                            @*<input type="text" name="email" id="email" size="30" /> *@
+                            @Html.EditorFor(model => model.Captcha)
+                            <p class="captcha">
+                                <img src="/Premium/ShowCaptchaImage">
+                            </p>
+                        </li>
+
+
+                    </ul>
+
+
+
+                </div>
+            </div>
+
+            <div class="basicfooter-byter">
+                <div class="basicfooter-bytermain">
+                    <div class="bytet-mfm">
+                        @*<input name="" type="checkbox" value="" class="info-p">*@
+                        @Html.CheckBoxFor(model => model.Isvalid)
+                        <label for="Company Logo" class="info-p"><a href="#" id="trigger">Accept Terms & Conditions:</a></label>
+                    </div>
+                    <div class="bytet-mfm">
+                        <div>
+                            <p>
+                                <a href="#">
+                                    <img src="/images/sear-mcredi-byter.png" id="preview" /></a>
+                            </p>
+                            <p class="infof-p">Preview</p>
+                        </div>
+
+                        <div>
+                            <p>
+                                @* <a href="#">
+    <img src="/images/aphid_logo-byter.png"></a>*@
+                                <input type="submit" id="submitbutton" value="" disabled="disabled" style="background: url(/images/aphid_logo-byter.png); height: 78px; width: 85px; border: none;" />
+                            </p>
+                            <p class="info-p">Generate</p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+ 
+
+<script src="jquery.mCustomScrollbar.js"></script>
+<script>
+    (function ($) {
+
+        $("#browseBtns,#browseBtnsAdd").fadeTo('slow', .2);
+        $(".browseInput").each(function (index) {
+            if (index > 3)
+                $(this).remove();
+        });
+        $("#browseBtns,#browseBtnsAdd,#btnUpload").prop('disabled', true);
+
+        $(window).load(function () {
+            $(".content").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+
+<script type="text/javascript">
+    // var intfile = mattriximagefile;
+    var intStyle = $("#SelectedIntFile").val();
+    var width = 400;
+    var height = 250;
+    function zoomin() {
+
+        var new_width = width + 30 + "px";
+        var new_height = height + 30 + "px";
+        if (new_width <= "570px") {
+            //alert(new_width);
+            $("#imgpre").css('width', new_width);
+            $("#imgpre").css('height', new_height);
+            width = width + 30;
+            height = height + 30;
+        } else {
+            $("#button-bg4").dialog("open");
+           // alert("Maximun Zoom");
+        }
+    }
+
+    function zoomout() {
+        if (width > 450) {
+            new_width = width;
+            new_height = height;
+            var less_width = new_width - 30 + "px";
+            var less_height = new_height - 30 + "px";
+            if (less_width >= "330px") {
+
+                $("#imgpre").css('width', less_width);
+                $("#imgpre").css('height', less_height);
+                width = width - 30;
+                height = height - 30;
+            }
+            else {
+                alert("Minimum Zoom");
+            }
+        }
+
+        else {
+            width = 400;
+            height = 250;
+            var less_width = width - 30 + "px";
+            var less_height = height - 30 + "px";
+            if (less_width >= "250px") {
+
+                $("#imgpre").css('width', less_width);
+                $("#imgpre").css('height', less_height);
+                width = width - 30;
+                height = height - 30;
+            } else {
+                alert("Minium Width");
+            }
+        }
+
+
+
+    }
+
+    $(document).ready(function () {
+     
+
+        $("#gen").click(function () {
+            window.location.href = "/Basic/GenerateClones";
+        });
+     
+        $("#Image").change(function () {
+            var name = $(this).val();
+            var split = name.split('.');
+            if (split[1] == "jpg" || split[1] == "JPG" || split[1] == "png" || split[1] == "PNG") {
+                document.getElementById("auf").style.display = "none";
+                document.getElementById("UploadImagePath").text="";
+            }
+            else {
+                $("#button-bg1").dialog("open");
+                $("#Image").val("");
+            }
+
+        });
+
+
+        $("#MatrixImage").change(function () {
+            var name = $(this).val();
+            var split = name.split('.');
+            if (split[1] == "jpg" || split[1] == "JPG" || split[1] == "png" || split[1] == "PNG") {
+                document.getElementById("vuf").style.display = "none";
+                document.getElementById("MatrixImageBytePath").text="";
+            }
+            else {
+                $("#button-bg1").dialog("open");
+                $("#MatrixImage").val("");
+            }
+
+        });
+        $("#submitbutton").click(function () {
+
+            if ($('#Isvalid').is(":checked")) {
+                // it is checked
+            }
+            else {
+                alert("Accept terms and Conditions");
+            }
+        });
+
+        $("#basicbyter").click(function () {
+            $("#byterclick").toggle();
+        });
+
+        $("#byterclick li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyter span").html(text);
+            $("#byterclick").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick").hide();
+        });
+
+
+        $("#basicbyterone").click(function () {
+            $("#byterclick2").toggle();
+        });
+
+        $("#byterclick2 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyterone span").html(text);
+            $("#byterclick2").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick2").hide();
+        });
+
+
+
+        $("#basicbytertwo").click(function () {
+            $("#byterclick3").toggle();
+        });
+
+        $("#byterclick3 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbytertwo span").html(text);
+            $("#byterclick3").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick3").hide();
+        });
+
+
+        $("#basicbyterfour").click(function () {
+            $("#byterclick4").toggle();
+        });
+
+        $("#byterclick4 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyterfour span").html(text);
+            $("#byterclick4").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick4").hide();
+        });
+
+
+
+        $("#basicbyter5").click(function () {
+            $("#byterclick5").toggle();
+        });
+
+        $("#byterclick5 li a").click(function () {
+            var text = $(this).html();
+            $("#basicbyter5 span").html(text);
+            $("#byterclick5").hide();
+        });
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdownbyter"))
+                $("#byterclick5").hide();
+        });
+
+
+
+    });
+    $("#preview").click(function () {
+        $("#progressbar").html('<img src="/Images/ajax-loader-11.gif"')
+
+        if ($("#Image" && "#MatrixImage").val() != '') {
+            $("#Popup1:visible").hide();
+            //var dd = $("#text1").text();
+
+            $.post('/Basic/PhotoartInterruption',
+                           { IntF: intStyle, FileName: fileop, IntS: intfile }, function (data) {
+                               //alert("Success " + data.success);
+
+                           });
+
+            if (intStyle == "Default") {
+                $("#Popup1").fadeIn("fast");
+                $("#waveimg").attr('src', '/Images/logo.png');
+            }
+            if (intStyle == "myfile1") { $("#Popup1").fadeIn("fast"); $("#waveimg").attr('src', mattriximagefile); }
+
+
+            $("#imgpre").attr('src', fileinp);
+        }
+        $("#progressbar").remove();
+    });
+    $(function () {
+        $('#preview').click(function () {
+
+            if ($("#Image" && "#MatrixImage").val() == '') {
+                $("#button-bg2").dialog("open");
+
+            }
+
+        });
+    });
+    $("#byterclick2 ").click(function () {
+        var dd = $("#text1").text();
+        if (dd == "Default") {
+            $("#waveimg").attr('src', '/Images/logo.png');
+
+        }
+        if (dd == "WAtermark1") {
+            $("#waveimg").attr('src', mattriximagefile);
+
+        }
+    });
+
+    $("#ImgClose").click(function (e) {
+        $("#Popup1").fadeOut("fast");
+    });
+    var fileop;
+    var fileinp;
+    var prog = 0;
+    $('#Image').fileupload({
+        dataType: 'json',
+        url: '/Basic/PrievewImage',
+        autoUpload: true,
+        done: function (e, data) {
+
+            fileop = data.result.name;
+            $('.progressbar').css('width', 0 + '%');
+            document.getElementById('progresstext').innerHTML = '';
+            document.getElementById("auf").style.display = "none";
+            //if (fileinp == "Invalid") {
+            //    alert("invalid File");
+
+            //}
+            //else {
+            //    alert(fileop);
+            //}
+        }
+
+    }).on('fileuploadprogressall', function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('.progressbar').css('width', progress + '%');
+        document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+    });
+   
+    var intfile;
+    $('#MatrixImage').fileupload({
+        dataType: 'json',
+        url: '/Basic/PrievewMatrixImage',
+        autoUpload: true,
+        done: function (e, data) {
+            fileinp = data.result.name;
+            $('.progressbar').css('width', 0 + '%');
+            document.getElementById('progresstext').innerHTML = '';
+            $("#show_pop").hide();
+            $('#Image').removeAttr('disabled', 'disabled');
+            prog = 0;
+           
+        }
+
+    }).on('fileuploadprogressall', function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('.progressbar').css('width', progress + '%');
+        document.getElementById('progresstext').innerHTML = 'UPLOADED ' + progress + '%';
+        $("#show_pop").attr('style', 'display:block');
+        $("#submitbutton").attr('disabled', 'disabled');
+        prog = 1;
+        $("#Image").attr('disabled', 'disabled');
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#upgradePremium').click(function () {
+            $("#yesno").attr('style', 'display:block');
+        });
+
+        $("#yes").click(function () {
+            $("#yesno").attr('style', 'display:none');
+            $.post('/Basic/UpgardeToPremium', {}, function (data) {
+                if (data == "Success") {
+
+                    $("#upgradebox").attr('style', 'display:block');
+                } else { $("#button-bg5").attr('style', 'display:block'); }
+
+            });
+
+        });
+        $("#no").click(function () {
+            $("#yesno").attr("style", "display:none");
+        });
+
+
+
+
+
+        var captchaFlag = 0, isValid = 0;
+        $("#submitbutton").attr('disabled', 'disabled');
+        $("#Isvalid").change(function () {
+            if ($("#Isvalid").attr('checked')) {
+                isValid = 1;
+                if (captchaFlag == 1) {
+                    $("#submitbutton").removeAttr('disabled');
+                }
+                else { }
+            }
+            else
+            {
+                alert("Accept Terms and Conditions");
+                isValid = 0;
+                $("#submitbutton").attr('disabled', 'disabled');
+            }
+        });
+        $("#Captcha").change(function () {
+            $.post("/Basic/GetCaptcha", function () {
+            }).done(function (retObject) {
+                var bb = $("#Captcha").val();
+                if (retObject != bb) {
+                    $("#button-bg3").dialog("open");
+                    captchaFlag = 0;
+                    $("#submitbutton").attr('disabled', 'disabled');
+                }
+                else {
+                    captchaFlag = 1;
+                    if (isValid == 1) {
+                        $("#submitbutton").removeAttr('disabled');
+                    }
+                }
+            });
+        });
+        $('#button-c3').click(function () {
+            $('#button-bg3').hide();
+        });
+    });
+    function goback() {
+        window.history.back();
+    }
+</script>

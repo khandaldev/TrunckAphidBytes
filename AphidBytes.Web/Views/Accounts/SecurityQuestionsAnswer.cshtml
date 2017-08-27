@@ -1,0 +1,73 @@
+﻿@model AphidBytes.Accounts.Contracts.Model.ForgetPassword
+@{
+    Layout = "~/Views/Shared/_LayoutWhite.cshtml";
+    ViewBag.RenderFooter = true;
+    ViewBag.RenderHeader = true;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            @if (Model.Validation.HasCta)
+            {
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.Partial("~/Views/Shared/_ValidationErrors.cshtml", Model.Validation)
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-sm-12">
+                    @using (Html.BeginForm("SecurityQuestionsAnswer", "Accounts", FormMethod.Post, new { id = "forget", enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+                        @Html.HiddenFor(m => m.UserName, new { });
+                        @Html.HiddenFor(m => m.SecurityQuestion1, new { });
+                        @Html.HiddenFor(m => m.SecurityQuestion2, new { });
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-6 txt-center">
+                                <h3>
+                                    ? Reset with Security Questions
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-question1" class="col-sm-3 control-label">Question 1:</label>
+                            <div class="col-sm-6">
+                                @Model.SecurityQuestion1
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txt-answer1" class="col-sm-3 control-label">Answer:</label>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(model => model.SecurityAnswer1, new { id = "txt-answer1", @class = "form-control" })
+                                <span class="required-field">*</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txt-question2" class="col-sm-3 control-label">Question 2:</label>
+                            <div class="col-sm-6">
+                                @Model.SecurityQuestion2
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txt-answer2" class="col-sm-3 control-label">Answer:</label>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(model => model.SecurityAnswer2, new { id = "txt-answer2", @class = "form-control" })
+                                <span class="required-field">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-6 txt-center">
+                                <button type="submit" class="btn btn-primary">Next</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

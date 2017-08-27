@@ -1,0 +1,128 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoHeaderFooter.cshtml";
+
+}
+
+
+   
+<div class="aphidtise_wrap">
+    <div class="@*aphidtise_wrap*@" style="position: absolute; float: right; width: 100%; margin-top: 85px; text-align: center;">
+
+        <div class="logid">
+
+            <div class="logid_out">
+                <ul>
+                    <li><a href="#">sweet</a></li>
+                    <li><a href="/Accounts/Logout">Logout</a></li>
+                </ul>
+
+                <div class="profilebg">
+                    <div class="migprofile">
+
+                        <img height="100px" src="/Basic/Overview">
+                    </div>
+                    <div class="profiletext-ct-info"> <img src="/images/clone-pa.png"> Basic Account</div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="header_aphidtise">
+        <div class="menunav">
+            <ul>
+                <li><a href="~/Accounts/Services" class="sect_l">Services</a></li>
+                <li><a href="~/Accounts/LoginUser">Login</a></li>
+                <li><a href="#">The Gall</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="~/Accounts/AboutUsPage">About Us</a></li>
+                <li><a href="~/Accounts/Support">Support</a></li>
+            </ul>
+        </div>
+        <div id="logo"><a href="@Url.Action("Index","Home")" style="cursor:pointer;"> <img src="/images/hphidbytelogo.png"></a> </div>
+    </div>
+</div>
+
+
+
+<div class="headertab_aphidtise" style="margin-top:0px; margin-left:65px;">
+    <div class="aphidbyteleft">
+
+        <ul class="aphidbytelist-tq">
+            <li><a href="BasicAccountInfo">Account Info</a></li>
+            <li></li>
+            <li><a href="Uploadmedia" class="basicselects">Upload</a></li>
+            <li></li>
+            <li><a href="Message">Messages</a></li>
+            @*  @if (Model.NewCount != 0)
+                {
+                    <p class="in_c_text_4">@Model.NewCount</p>
+                }*@
+            <li></li>
+            <li><a href="bytetracker">Byte Tracker</a></li>
+            <li></li>
+            <li><a href="History" >History</a></li>
+            <li><img class="rltop_s" @*src="/images/right_line.png" height="2"*@></li>
+            <li><a href="Playlist">Playlists</a></li>
+            <li></li>
+            <li><a href="Dataplan">Data Plan</a></li>
+            <li></li>
+        </ul>
+
+
+
+        <div class="dsbox">
+            <samp><img src="../images/widegts_img.png"></samp>
+        </div>
+
+        <div class="info-footer-social">
+            <div style="margin: 8px 0px 0px 46px; height: 110px; clear: both;">
+                <p></p>
+                <p class="byter-pt" style="width:50%;margin-left:15px;"></p>
+                <p class="byter-pt" style="width:50%; margin-left:15px; margin-top:20px;"></p>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="creditt-left-box">
+        <p class="info-p">Upload>Byte Your</p>
+    </div>
+
+
+    <div class="aphidbytecenter content" id="content_1" style="height:400px; margin-top:0px; width:70%;">
+        <div class="massage_index">
+            <div style="width:100%; height:400px; margin:auto;">
+                
+                <div class="uplaodmeida">
+                    <p>Click Image</p>   
+                    <div class="uploaddivleft">
+                        <img src="/Images/boldlineimg.png" />
+                        <a href=""></a>
+                    </div> 
+                    <div class="uploaddivright">
+                        <img src="/Images/boldlineimg.png" />
+                        <a href=""></a>
+                    </div>   
+                </div> 
+                <div class="uplaodmeidabg">
+                    <p>Upload Media</p>
+                    <a href="GenerateClones"><img src="/Images/ganrate_ppi.png" /></a>
+                </div>
+                <ul class="uloadmediatext">
+                    <li>Upload Files into Matrix</li>
+                    <li>
+                        Postlinks of those Matrix Files to your
+                        personal social networks
+                    </li>
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
