@@ -436,6 +436,7 @@
     <Content Include="Content\bootstrap-tokenfield\tokenfield-typeahead.less" />
     <Content Include="Content\bootstrap-tokenfield\bootstrap-tokenfield.less" />
     <Content Include="Images\1bad7253ec3c4dfd9a570568fe023c05.webp" />
+    <Content Include="App_Data\stag_abyt2_31Aug" />
     <None Include="Properties\PublishProfiles\FilePath.pubxml" />
     <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -622,6 +623,10 @@
     <Content Include="scss\whichaccount.scss" />
     <Content Include="scss\widgets.scss" />
     <Content Include="Views\Register\UserSubscription.cshtml" />
+    <Content Include="Views\SocialNetworks\AddChannel.cshtml" />
+    <Content Include="Views\SocialNetworks\AddNetworkToDb.cshtml" />
+    <Content Include="Views\SocialNetworks\_SocialPartial.cshtml" />
+    <Content Include="Views\SocialNetworks\DataPlanLimit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\backdoorstyle.css" />
@@ -1919,7 +1924,6 @@
     <Content Include="Views\Premium\_MessageInbox.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Basic Audio Files\" />
